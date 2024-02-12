@@ -20,7 +20,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     /* 절대 경로 */
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
       "@apis/*": ["src/apis/*"],
       "@assets/*": ["src/assets/*"],
