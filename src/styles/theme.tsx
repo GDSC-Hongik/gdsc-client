@@ -8,7 +8,7 @@ export interface TypeOfTheme {
 
 export const theme: TypeOfTheme = {
   typo,
-  palette,
+  palette
 };
 
 export type TypeOfPalette = typeof palette;
@@ -24,5 +24,5 @@ export const customMediaQuery = (minWidth: number): string =>
 export const media = {
   custom: customMediaQuery,
   pc: customMediaQuery(988),
-  mobile: `@media (max-width : 988px)`,
+  mobile: `@media (max-width : 988px)`
 };

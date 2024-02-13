@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { KeyOfPalette, media, theme } from '../../styles/theme';
 
 export const Flex = styled.div<{
   direction?: string;
