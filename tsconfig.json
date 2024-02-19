@@ -19,21 +19,23 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    /* 절대 경로 */
-    "baseUrl": "./",
+
+    /* Alias */
+    "baseUrl": "./src",
     "paths": {
-      "@apis/*": ["src/apis/*"],
-      "@assets/*": ["src/assets/*"],
-      "@components/*": ["src/components/*"],
-      "@constants/*": ["src/constants/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@pages/*": ["src/pages/*"],
-      "@stores/*": ["src/stores/*"],
-      "@styles/*": ["src/styles/*"],
-      "@tests/*": ["src/__tests__/*"],
-      "@types/*": ["src/types/*"],
-      "@utils/*": ["src/utils/*"],
-      "@routes/*": ["src/routes/*"]
+      "@/*": ["./*"],
+      "@apis/*": ["apis/*"],
+      "@assets/*": ["assets/*"],
+      "@components/*": ["components/*"],
+      "@constants/*": ["constants/*"],
+      "@hooks/*": ["hooks/*"],
+      "@pages/*": ["pages/*"],
+      "@styles/*": ["styles/*"],
+      "@utils/*": ["utils/*"],
+      "@stores/*": ["stores/*"],
+      "@tests/*": ["__tests__/*"],
+      "@types/*": ["types/*"],
+      "@routes/*": ["routes/*"]
     }
   },
   "include": ["src"],

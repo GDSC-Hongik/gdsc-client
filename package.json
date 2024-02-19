@@ -21,6 +21,7 @@
     "emotion-reset": "^3.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.1",
     "zustand": "^4.5.0"
   },
   "devDependencies": {
@@ -47,7 +48,8 @@
     "prettier": "^3.2.5",
     "storybook": "^7.6.14",
     "typescript": "^5.2.2",
-    "vite": "^5.1.0"
+    "vite": "^5.1.0",
+    "vite-tsconfig-paths": "^4.3.1"
   },
   "packageManager": "yarn@4.1.0"
 }
