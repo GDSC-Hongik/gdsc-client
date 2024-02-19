@@ -13,5 +13,6 @@ const Layout = ({ children }: { children: ReactNode }) => {
 export default Layout;
 
 const Wrapper = styled(Flex)`
-  width: 988px;
+  width: 390px;
+  padding: 0px 16px 0px 16px;
 `;
