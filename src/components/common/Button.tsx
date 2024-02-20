@@ -9,7 +9,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 /**
  * @default {HTMLButtonElement}
  *
- * @param {numebr} width?: 버튼 너비
+ * @param {number} width?: 버튼 너비
  */
 export const Button = ({ children, width = 358, ...props }: ButtonProps) => {
   return (
