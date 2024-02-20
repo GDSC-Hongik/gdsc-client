@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
 import { Flex } from './Wrapper';
-import { ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
 
-const Layout = ({ children }: { children: ReactNode }) => {
+const Layout = ({ children }: PropsWithChildren) => {
   return (
-    <Flex>
-      {/* Header */}
+    <Flex style={{ margin: -8 }}>
+      {/* Todo: header */}
       <Wrapper>{children}</Wrapper>
     </Flex>
   );
@@ -13,5 +13,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 export default Layout;
 
 const Wrapper = styled(Flex)`
-  width: 988px;
+  width: 375px;
+  align-items: flex-start;
+  min-height: 100vh;
 `;
