@@ -1,4 +1,5 @@
 import { KeyOfPalette, KeyOfTypo, theme } from '@/styles';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
 export const Flex = styled.div<{
@@ -30,6 +31,7 @@ export const Space = styled.div<{
 export const Text = styled.p<{
   typo: KeyOfTypo;
   color: KeyOfPalette;
+  css?: ReturnType<typeof css>;
 }>`
   ${({ typo }) => theme.typo[typo]};
   color: ${({ color }) => theme.palette[color]};
@@ -41,4 +43,6 @@ export const Text = styled.p<{
 
   margin: 0;
   padding: 0;
+
+  ${({ css }) => css}
 `;
