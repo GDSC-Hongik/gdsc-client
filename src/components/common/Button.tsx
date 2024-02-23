@@ -3,15 +3,15 @@ import styled from '@emotion/styled';
 import { ButtonHTMLAttributes } from 'react';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  width?: number;
+  width?: string | number;
 }
 
 /**
  * @default {HTMLButtonElement}
  *
- * @param {number} width?: 버튼 너비
+ * @param {string |number} width?: 버튼 너비
  */
-export const Button = ({ children, width = 358, ...props }: ButtonProps) => {
+export const Button = ({ children, width, ...props }: ButtonProps) => {
   return (
     <StyledButton width={width} {...props}>
       {children}
@@ -19,14 +19,14 @@ export const Button = ({ children, width = 358, ...props }: ButtonProps) => {
   );
 };
 
-const StyledButton = styled.button<{ width: number }>`
+const StyledButton = styled.button<{ width?: string | number }>`
   display: flex;
   justify-content: center;
   align-items: center;
 
   padding: 14px 0px;
   border-radius: 100px;
-  width: ${({ width }) => (width ? `${width}px` : '100%')};
+  width: ${({ width }) => (width ? width : '100%')};
 
   background-color: ${theme.palette.blue100};
   ${theme.typo.label1}

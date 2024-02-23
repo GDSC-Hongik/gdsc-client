@@ -7,12 +7,11 @@ import { Link } from 'react-router-dom';
 
 /** 깃허브 로그인 및 가입하기 */
 export const Auth = () => {
-  const handleClick = () => {
-    console.log('hi');
-  };
+  const handleClick = () => {};
+
   return (
     <Container>
-      <LoginContainer>
+      <Box>
         <TextContainer>
           <Text typo={'heading3'} style={{ marginBottom: '12px' }}>
             로그인 및 가입하기
@@ -27,7 +26,7 @@ export const Auth = () => {
         <GithubGuideLink to={RoutePath.GitHubGuideLink}>
           GitHub 가이드라인
         </GithubGuideLink>
-      </LoginContainer>
+      </Box>
     </Container>
   );
 };
@@ -39,7 +38,7 @@ const Container = styled.div`
   align-items: flex-start;
 `;
 
-const LoginContainer = styled.div`
+const Box = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${theme.palette.white};

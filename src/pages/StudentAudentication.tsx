@@ -18,7 +18,7 @@ export const StudentAudentication = () => {
 
   return (
     <Container>
-      <LoginContainer>
+      <Box>
         <TextContainer>
           <Text typo={'heading3'} style={{ marginBottom: '12px' }}>
             재학생 인증하기
@@ -42,12 +42,12 @@ export const StudentAudentication = () => {
             )}
           />
 
-          <Button>재학생 인증하기</Button>
+          <Button width={'342px'}>재학생 인증하기</Button>
         </form>
         <StudentGuideLink to={RoutePath.StudentEmailLinkGuideLink}>
           학교 이메일이 무엇인가요?
         </StudentGuideLink>
-      </LoginContainer>
+      </Box>
     </Container>
   );
 };
@@ -59,7 +59,7 @@ const Container = styled.div`
   align-items: flex-start;
 `;
 
-const LoginContainer = styled.div`
+const Box = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${theme.palette.white};

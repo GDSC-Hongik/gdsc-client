@@ -5,7 +5,7 @@ import { MyPage } from '@pages/MyPage';
 import { MyPageEdit } from '@pages/MyPageEdit';
 import { Auth } from '@pages/Auth';
 import { SignUp } from '@pages/SignUp';
-import { StudentAudentication } from '@/pages/\bStudentAudentication';
+import { StudentAudentication } from '@/pages/StudentAudentication';
 import RoutePath from '@/routes/routePath';
 
 export const Routers = () => {
