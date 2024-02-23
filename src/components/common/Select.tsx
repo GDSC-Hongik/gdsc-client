@@ -1,13 +1,17 @@
-import { ForwardedRef, InputHTMLAttributes, forwardRef } from 'react';
+import { ForwardedRef, SelectHTMLAttributes, forwardRef } from 'react';
 import styled from '@emotion/styled';
 import { theme } from '@/styles';
 import { Flex, Text } from '@/components/common/Wrapper';
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface SelectProps
+  extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 'children'> {
   value: string;
   label?: string;
+  placeholder?: string;
   errorText?: string;
   isError?: boolean;
+  items: { id: number; [key: string]: any }[];
+  displayField: string;
 }
 
 /**
@@ -15,12 +19,22 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
  *
  * @param {string} value: input value
  * @param {string} label?: 제목
+ * @param {string} placeholder?: placeholder
  * @param {string} errorText?: 에러 메시지
  * @param {boolean} isError?: 에러 여부
  */
-export const Input = forwardRef<HTMLInputElement, InputProps>(
+export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   (
-    { value, placeholder, label, errorText, isError = false, ...props },
+    {
+      value,
+      items,
+      displayField,
+      label,
+      errorText,
+      placeholder = '선택하기',
+      isError = false,
+      ...props
+    },
     ref
   ) => {
     return (
@@ -30,14 +44,19 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             {label}
           </Text>
           <InputContainer isError={isError}>
-            <StyledInput
-              {...props}
+            <StyledSelect
               value={value}
-              ref={ref as ForwardedRef<HTMLInputElement>}
-              placeholder={placeholder}
-              spellCheck={false}
-              isError={isError}
-            />
+              {...props}
+              ref={ref as ForwardedRef<HTMLSelectElement>}>
+              <option value="" disabled>
+                {placeholder}
+              </option>
+              {items.map((item) => (
+                <option key={item.id} value={item.id}>
+                  {item[displayField]}
+                </option>
+              ))}
+            </StyledSelect>
           </InputContainer>
         </Flex>
         <StyledHelperTextBox>
@@ -74,7 +93,8 @@ const InputContainer = styled.div<{
     //글자색
   }
 `;
-const StyledInput = styled.input<{
+
+const StyledSelect = styled.select<{
   value: string;
   isError?: boolean;
 }>`
@@ -116,6 +136,14 @@ const StyledInput = styled.input<{
   ::placeholder {
     color: ${theme.palette.gray2};
     font-weight: 400;
+  }
+
+  option {
+    font-size: 12px;
+  }
+
+  option[value=''][disabled] {
+    display: none;
   }
 `;
 
