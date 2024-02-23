@@ -5,17 +5,20 @@ import { theme } from '@/styles';
 
 const Layout = ({ children }: PropsWithChildren) => {
   return (
-    <Flex style={{ backgroundColor: theme.palette.gray1 }}>
+    <Container>
       {/* Todo: header */}
       <Wrapper>{children}</Wrapper>
-    </Flex>
+    </Container>
   );
 };
 export default Layout;
 
+const Container = styled(Flex)`
+  background-color: ${theme.palette.gray1};
+  overflow: hidden;
+`;
 const Wrapper = styled(Flex)`
   width: 390px;
   align-items: flex-start;
   min-height: 100vh;
-  overflow: auto;
 `;
