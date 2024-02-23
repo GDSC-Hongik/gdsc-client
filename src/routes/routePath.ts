@@ -10,7 +10,10 @@ const RoutePath = {
   AuthenticationProcess3_Signup: '/signup',
 
   GitHubGuideLink: '#',
-  StudentEmailLinkGuideLink: '#'
+  StudentEmailLinkGuideLink: '#',
+
+  Terms: '#',
+  PersonalPrivacy: '#'
 } as const;
 
 export default RoutePath;

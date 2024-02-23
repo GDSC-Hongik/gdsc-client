@@ -38,11 +38,10 @@ const CheckBox = styled(Flex)<{ checked: boolean }>`
   height: 16px;
 
   border: 1px solid
-    ${({ checked }) =>
-      checked ? `${theme.palette.blue100}` : `${theme.palette.gray3}`};
+    ${({ checked }) => (checked ? theme.palette.blue100 : theme.palette.gray3)};
   border-radius: 4px;
   background-color: ${({ checked }) =>
-    checked ? `${theme.palette.blue30}` : `${theme.palette.white}`};
+    checked ? theme.palette.blue30 : theme.palette.white};
 
   cursor: pointer;
 `;
