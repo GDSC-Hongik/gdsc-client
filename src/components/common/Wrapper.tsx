@@ -28,11 +28,11 @@ export const Space = styled.div<{
 `;
 
 export const Text = styled.p<{
-  typo: KeyOfTypo;
-  color: KeyOfPalette;
+  typo?: KeyOfTypo;
+  color?: KeyOfPalette;
 }>`
-  ${({ typo }) => theme.typo[typo]};
-  color: ${({ color }) => theme.palette[color]};
+  ${({ typo = 'body1' }) => theme.typo[typo]};
+  color: ${({ color = 'black' }) => theme.palette[color]};
 
   display: flex;
   align-items: center;

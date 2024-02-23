@@ -6,6 +6,7 @@ import { MyPageEdit } from '@pages/MyPageEdit';
 import { Auth } from '@pages/Auth';
 import { SignUp } from '@pages/SignUp';
 import { StudentAudentication } from '@/pages/\bStudentAudentication';
+import RoutePath from '@/routes/routePath';
 
 export const Routers = () => {
   return <RouterProvider router={router} />;
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
     element: <App />
   },
   {
-    path: '/mypage',
+    path: RoutePath.MyPage,
     element: <AuthenticatedLayout />,
     children: [
       {
@@ -26,21 +27,21 @@ const router = createBrowserRouter([
         element: <MyPage />
       },
       {
-        path: '/mypage/edit',
+        path: RoutePath.MyPageEdit,
         element: <MyPageEdit />
       }
     ]
   },
   {
-    path: '/auth',
+    path: RoutePath.AuthenticationProcess1_GithubSignin,
     element: <Auth />
   },
   {
-    path: '/auth/student-verification',
+    path: RoutePath.AuthenticationProcess2_StudentVerification,
     element: <StudentAudentication />
   },
   {
-    path: '/auth/signup',
+    path: RoutePath.AuthenticationProcess3_Signup,
     element: <SignUp />
   },
   { path: '*', element: <>not found page</> }

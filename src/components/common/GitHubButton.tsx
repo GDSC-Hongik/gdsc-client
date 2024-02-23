@@ -19,10 +19,12 @@ export const GitHubButton = ({
 };
 
 const StyledButton = styled.button`
-  padding: 12px 65.5px;
+  padding: 12px 0;
+  width: 100%;
   border-radius: 100px;
 
   display: flex;
+  justify-content: center;
   gap: 8px;
 
   background-color: ${theme.palette.black};
