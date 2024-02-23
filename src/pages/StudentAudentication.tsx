@@ -1,4 +1,3 @@
-/** 재학생 인증 페이지 */
 import { Button } from '@/components/common/Button';
 import { Input } from '@/components/common/Input';
 import { Text } from '@/components/common/Wrapper';
@@ -8,12 +7,13 @@ import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import { Controller, FieldValues, useForm } from 'react-hook-form';
 
+/** 재학생 인증 페이지 */
 export const StudentAudentication = () => {
-  const { control, handleSubmit } = useForm({ mode: 'onBlur' });
+  const { control, handleSubmit } = useForm();
 
   const onSubmit = async (data: FieldValues) => {
-    const { email } = data;
-    console.log(email);
+    const { univEmail } = data;
+    console.log(univEmail);
   };
 
   return (
@@ -29,7 +29,7 @@ export const StudentAudentication = () => {
         </TextContainer>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Controller
-            name="email"
+            name="univEmail"
             control={control}
             defaultValue=""
             render={({ field }) => (
@@ -38,10 +38,10 @@ export const StudentAudentication = () => {
                 placeholder="아이디@g.hongik.ac.kr"
                 label="학교 이메일"
                 type="email"
+                required
               />
             )}
           />
-
           <Button width={'342px'}>재학생 인증하기</Button>
         </form>
         <StudentGuideLink to={RoutePath.StudentEmailLinkGuideLink}>
@@ -53,10 +53,8 @@ export const StudentAudentication = () => {
 };
 
 const Container = styled.div`
-  min-height: 100%;
   width: 100%;
   padding: 60px 16px;
-  align-items: flex-start;
 `;
 
 const Box = styled.div`
