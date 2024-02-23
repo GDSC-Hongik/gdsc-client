@@ -1,5 +1,5 @@
 import App from '@/App';
-import { AuthenticatedLayout } from '@/components/common/AuthenticatedLayout';
+import { AuthenticatedLayout } from '@/components/layout/AuthenticatedLayout';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { MyPage } from '@pages/MyPage';
 import { MyPageEdit } from '@pages/MyPageEdit';

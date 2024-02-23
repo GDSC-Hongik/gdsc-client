@@ -1,12 +1,11 @@
 import styled from '@emotion/styled';
-import { Flex } from './Wrapper';
+import { Flex } from '../common/Wrapper';
 import { PropsWithChildren } from 'react';
 import { theme } from '@/styles';
 
 const Layout = ({ children }: PropsWithChildren) => {
   return (
     <Container>
-      {/* Todo: header */}
       <Wrapper>{children}</Wrapper>
     </Container>
   );

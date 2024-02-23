@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import Layout from '@/components/common/Layout';
+import Layout from '@/components/layout/Layout';
 import { Routers } from '@/routes';
 import { GlobalStyle } from '@/styles';
 import { Global } from '@emotion/react';

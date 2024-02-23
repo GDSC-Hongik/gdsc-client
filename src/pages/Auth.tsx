@@ -1,4 +1,4 @@
-import { GitHubButton } from '@/components/common/GitHubButton';
+import { GitHubButton } from '@/components/GitHubButton';
 import { Text } from '@/components/common/Wrapper';
 import RoutePath from '@/routes/routePath';
 import { theme } from '@/styles';
@@ -32,7 +32,6 @@ export const Auth = () => {
 };
 
 const Container = styled.div`
-  min-height: 100%;
   width: 100%;
   padding: 60px 16px;
   align-items: flex-start;
