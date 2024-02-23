@@ -17,16 +17,16 @@ export const Auth = () => {
           <Text typo={'heading3'} style={{ marginBottom: '12px' }}>
             로그인 및 가입하기
           </Text>
-          <Text>깃허브 계정의 경우, 추후 과제 제출이나 </Text>
+          <Text>깃허브 계정의 경우, 추후 과제 제출이나</Text>
           <Text>개발 관련 프로그램 참여 시 사용되므로</Text>
           <Text>해당 활동이 가능한 계정으로 가입해주세요.</Text>
         </TextContainer>
         <GitHubButton onClick={handleClick}>
           GitHub 로그인/회원가입
         </GitHubButton>
-        <GithubGuideLineLink to={RoutePath.GitHubGuideLink}>
+        <GithubGuideLink to={RoutePath.GitHubGuideLink}>
           GitHub 가이드라인
-        </GithubGuideLineLink>
+        </GithubGuideLink>
       </LoginContainer>
     </Container>
   );
@@ -56,7 +56,7 @@ const TextContainer = styled.div`
   align-items: center;
 `;
 
-const GithubGuideLineLink = styled(Link)`
+const GithubGuideLink = styled(Link)`
   color: ${theme.palette.black};
   font-weight: 600;
   &:active {

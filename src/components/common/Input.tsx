@@ -104,7 +104,7 @@ const StyledInput = styled.input<{
       ? `1px solid ${theme.palette.red100}`
       : value
         ? `1px solid ${theme.palette.gray4}`
-        : `1px solid ${theme.palette.gray3}`};
+        : `1px solid ${theme.palette.gray2}`};
 
   :focus {
     border: ${({ isError }) =>
@@ -116,7 +116,8 @@ const StyledInput = styled.input<{
   }
 
   ::placeholder {
-    color: ${theme.palette.gray3};
+    color: ${theme.palette.gray2};
+    font-weight: 400;
   }
 `;
 

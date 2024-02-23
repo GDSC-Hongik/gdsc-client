@@ -26,7 +26,7 @@ const StyledButton = styled.button<{ width: number }>`
 
   padding: 14px 0px;
   border-radius: 100px;
-  width: ${({ width }) => (width ? `${width}px` : '358px')};
+  width: ${({ width }) => (width ? `${width}px` : '100%')};
 
   background-color: ${theme.palette.blue100};
   ${theme.typo.label1}
