@@ -3,7 +3,8 @@ const RoutePath = {
   Home: '/',
 
   MyPage: '/mypage',
-  MyPageEdit: '/mypage/edit',
+  Bevy: '/bevy',
+  Discord: '/discord',
 
   AuthenticationProcess1_GithubSignin: '/auth',
   AuthenticationProcess2_StudentVerification: '/student-verification',

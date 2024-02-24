@@ -1,4 +1,5 @@
 import { KeyOfPalette, KeyOfTypo, theme } from '@/styles';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
 export const Flex = styled.div<{
@@ -8,6 +9,7 @@ export const Flex = styled.div<{
   margin?: string;
   padding?: string;
   gap?: number;
+  css?: ReturnType<typeof css>;
 }>`
   display: flex;
   flex-direction: ${({ direction }) => (direction ? `${direction}` : 'row')};
@@ -17,19 +19,24 @@ export const Flex = styled.div<{
   margin: ${({ margin }) => (margin ? margin : '0')};
   padding: ${({ padding }) => (padding ? padding : '0')};
   width: 100%;
+  box-sizing: border-box;
+  ${({ css }) => css}
 `;
 
 export const Space = styled.div<{
   height?: number;
   width?: number;
+  css?: ReturnType<typeof css>;
 }>`
   height: ${({ height }) => (height ? `${height}px` : '')};
   width: ${({ width }) => (width ? `${width}px` : '')};
+  ${({ css }) => css}
 `;
 
 export const Text = styled.p<{
   typo?: KeyOfTypo;
   color?: KeyOfPalette;
+  css?: ReturnType<typeof css>;
 }>`
   ${({ typo = 'body1' }) => theme.typo[typo]};
   color: ${({ color = 'black' }) => theme.palette[color]};
@@ -41,4 +48,6 @@ export const Text = styled.p<{
 
   margin: 0;
   padding: 0;
+
+  ${({ css }) => css}
 `;

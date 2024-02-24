@@ -1,12 +1,13 @@
+import { JoinDiscrod } from '@/pages/JoinDiscrod';
+import { Bevy } from '@/pages/Bevy';
 import App from '@/App';
 import { AuthenticatedLayout } from '@/components/layout/AuthenticatedLayout';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { MyPage } from '@pages/MyPage';
-import { MyPageEdit } from '@pages/MyPageEdit';
-import { Auth } from '@pages/Auth';
-import { SignUp } from '@pages/SignUp';
+import { Auth } from '@/pages/Auth';
+import { MyPage } from '@/pages/MyPage';
+import { SignUp } from '@/pages/SignUp';
 import { StudentVerification } from '@/pages/StudentVerification';
 import RoutePath from '@/routes/routePath';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 export const Routers = () => {
   return <RouterProvider router={router} />;
@@ -19,16 +20,20 @@ const router = createBrowserRouter([
     element: <App />
   },
   {
-    path: RoutePath.MyPage,
+    path: RoutePath.Index,
     element: <AuthenticatedLayout />,
     children: [
       {
-        index: true,
+        path: RoutePath.MyPage,
         element: <MyPage />
       },
       {
-        path: RoutePath.MyPageEdit,
-        element: <MyPageEdit />
+        path: RoutePath.Discord,
+        element: <JoinDiscrod />
+      },
+      {
+        path: RoutePath.Bevy,
+        element: <Bevy />
       }
     ]
   },

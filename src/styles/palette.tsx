@@ -1,5 +1,6 @@
 export const palette = {
   blue100: '#4792EE',
+  blue70: '#2196F3',
   blue30: '#BCE0FB',
   red100: '#D32F2F',
 
@@ -9,5 +10,7 @@ export const palette = {
   gray3: '#888B91',
   gray4: '#888B91',
 
-  black: '#232021'
+  black: '#232021',
+
+  discord: '#5566FB'
 };

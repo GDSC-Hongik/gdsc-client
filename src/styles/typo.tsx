@@ -15,13 +15,27 @@ export const typo = {
     font-size: ${calcRem(32)};
     font-weight: 700;
     line-height: 140%;
-    letter-spacing: -2%;
+    letter-spacing: -0.64px;
   `,
   heading3: css`
     font-family: 'SUIT', 'Apple SD Gothic Neo';
     font-size: ${calcRem(24)};
     font-weight: 700;
     line-height: 140%;
+    letter-spacing: -2%;
+  `,
+  heading4: css`
+    font-family: 'SUIT', 'Apple SD Gothic Neo';
+    font-size: ${calcRem(18)};
+    font-weight: 700;
+    line-height: 130%;
+    letter-spacing: -2%;
+  `,
+  heading5: css`
+    font-family: 'SUIT', 'Apple SD Gothic Neo';
+    font-size: ${calcRem(16)};
+    font-weight: 700;
+    line-height: 130%;
     letter-spacing: -2%;
   `,
   body1: css`
@@ -37,6 +51,12 @@ export const typo = {
     font-weight: 500;
     line-height: 100%;
     letter-spacing: -2%;
+  `,
+  body3: css`
+    font-family: 'SUIT', 'Apple SD Gothic Neo';
+    font-size: ${calcRem(14)};
+    font-weight: 500;
+    line-height: 140%;
   `,
   label1: css`
     font-family: 'SUIT', 'Apple SD Gothic Neo';
