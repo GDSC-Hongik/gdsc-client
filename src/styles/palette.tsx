@@ -1,5 +1,6 @@
 export const palette = {
   blue100: '#4792EE',
+  blue70: '#2196F3',
   blue30: '#BCE0FB',
   red100: '#D32F2F',
 
