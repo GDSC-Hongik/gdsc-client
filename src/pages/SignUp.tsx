@@ -1,29 +1,27 @@
+import DepartmentSelect from '@/components/auth/DepartmentSelect';
 import { Button } from '@/components/common/Button';
 import { Checkbox } from '@/components/common/Checkbox';
 import { Input } from '@/components/common/Input';
-import { Select } from '@/components/common/Select';
+import { LoadingForm } from '@/components/common/LoadingForm';
 import { Flex, Text } from '@/components/common/Wrapper';
+import { useSignUp } from '@/hooks/auth';
 import RoutePath from '@/routes/routePath';
 import { KeyOfPalette, theme } from '@/styles';
-import { removeHyphens, formatPhoneNumberInProgress } from '@/utils/phone';
+import { formatPhoneNumberInProgress } from '@/utils/phone';
 import styled from '@emotion/styled';
-import { Controller, FieldValues, useForm } from 'react-hook-form';
+import { Suspense } from 'react';
+import { Controller } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
 /** 가입 신청서 페이지 */
 export const SignUp = () => {
-  const { control, handleSubmit } = useForm();
-
-  const onSubmit = async (data: FieldValues) => {
-    console.log(data);
-    const { name, studentId, phone, department, email } = data;
-    console.log(name, studentId, removeHyphens(phone), department, email);
-  };
+  const { isChecked, setIsChecked, onSubmit, control, disabledSubmitButton } =
+    useSignUp();
 
   return (
     <Container>
       <Text typo={'heading3'}>가입 신청서 작성하기</Text>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={onSubmit}>
         <Controller
           name="name"
           control={control}
@@ -43,7 +41,13 @@ export const SignUp = () => {
           control={control}
           defaultValue=""
           render={({ field }) => (
-            <Input {...field} placeholder="C000000" label="학번" required />
+            <Input
+              {...field}
+              placeholder="C000000"
+              label="학번"
+              required
+              pattern="[AaBbCc][0-9]{6}"
+            />
           )}
         />
         <Controller
@@ -63,23 +67,9 @@ export const SignUp = () => {
             />
           )}
         />
-        <Controller
-          name="department"
-          control={control}
-          defaultValue=""
-          render={({ field }) => (
-            <Select
-              {...field}
-              label="선택하기"
-              required
-              items={[
-                { id: 1, value: '컴퓨터공학과' },
-                { id: 2, value: '수학과' }
-              ]}
-              displayField="value"
-            />
-          )}
-        />
+        <Suspense fallback={<LoadingForm label="학과" />}>
+          <DepartmentSelect control={control} />
+        </Suspense>
         <Controller
           name="email"
           control={control}
@@ -97,8 +87,10 @@ export const SignUp = () => {
         <CheckboxContainer>
           <Checkbox
             name="community"
-            checked={false}
-            onClick={() => console.log()}
+            checked={isChecked.terms}
+            onClick={() =>
+              setIsChecked((prev) => ({ ...prev, terms: !prev.terms }))
+            }
             label={
               <Text typo="label1">
                 <GuideLink to={RoutePath.Terms}>
@@ -110,11 +102,16 @@ export const SignUp = () => {
           />
           <Checkbox
             name="privacy"
-            checked={true}
-            onClick={() => console.log()}
+            checked={isChecked.personalPrivacy}
+            onClick={() =>
+              setIsChecked((prev) => ({
+                ...prev,
+                personalPrivacy: !prev.personalPrivacy
+              }))
+            }
             label={
               <Text typo="body2" color="gray4">
-                <GuideLink to={RoutePath.Terms} color="gray4">
+                <GuideLink to={RoutePath.PersonalPrivacy} color="gray4">
                   개인정보 수집
                 </GuideLink>
                 에 동의합니다.
@@ -122,7 +119,9 @@ export const SignUp = () => {
             }
           />
         </CheckboxContainer>
-        <Button width={'342px'}>가입 신청하기</Button>
+        <Button width={'342px'} disabled={disabledSubmitButton}>
+          가입 신청하기
+        </Button>
       </form>
     </Container>
   );

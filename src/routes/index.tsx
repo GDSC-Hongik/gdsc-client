@@ -5,7 +5,7 @@ import { MyPage } from '@pages/MyPage';
 import { MyPageEdit } from '@pages/MyPageEdit';
 import { Auth } from '@pages/Auth';
 import { SignUp } from '@pages/SignUp';
-import { StudentAudentication } from '@/pages/StudentAudentication';
+import { StudentVerification } from '@/pages/StudentVerification';
 import RoutePath from '@/routes/routePath';
 
 export const Routers = () => {
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
   },
   {
     path: RoutePath.AuthenticationProcess2_StudentVerification,
-    element: <StudentAudentication />
+    element: <StudentVerification />
   },
   {
     path: RoutePath.AuthenticationProcess3_Signup,

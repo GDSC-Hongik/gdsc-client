@@ -31,4 +31,11 @@ const StyledButton = styled.button<{ width?: string | number }>`
   background-color: ${theme.palette.blue100};
   ${theme.typo.label1}
   color: ${theme.palette.white}
+
+  ${({ disabled }) =>
+    disabled &&
+    `
+      cursor: not-allowed; /* 커서 변경 */
+      background-color: ${theme.palette.blue30}
+    `}
 `;

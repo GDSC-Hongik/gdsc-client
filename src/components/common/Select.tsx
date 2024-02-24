@@ -6,12 +6,14 @@ import { Flex, Text } from '@/components/common/Wrapper';
 interface SelectProps
   extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 'children'> {
   value: string;
+  items: { [key: string]: any }[];
+  idField: string;
+  displayField: string;
+
   label?: string;
   placeholder?: string;
   errorText?: string;
   isError?: boolean;
-  items: { id: number; [key: string]: any }[];
-  displayField: string;
 }
 
 /**
@@ -28,6 +30,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
     {
       value,
       items,
+      idField,
       displayField,
       label,
       errorText,
@@ -38,7 +41,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
     ref
   ) => {
     return (
-      <Container gap={8}>
+      <Container>
         <Flex direction="column" align="flex-start" gap={8}>
           <Text typo="label2" color={value ? 'black' : 'gray4'}>
             {label}
@@ -52,7 +55,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
                 {placeholder}
               </option>
               {items.map((item) => (
-                <option key={item.id} value={item.id}>
+                <option key={item[idField]} value={item[idField]}>
                   {item[displayField]}
                 </option>
               ))}
@@ -147,8 +150,8 @@ const StyledSelect = styled.select<{
   }
 `;
 
-const StyledHelperTextBox = styled.div`
+const StyledHelperTextBox = styled(Flex)`
   color: ${theme.palette.red100};
-
-  height: 16px;
+  justify-content: start;
+  height: 24px;
 `;

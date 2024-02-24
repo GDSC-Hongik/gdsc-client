@@ -1,10 +1,10 @@
 import { Status } from '@/types/status';
 
 export type User = {
+  studentId: string; // C000000 (학번)
   name: string;
-  studentId: string;
-  phone: string;
-  department: string;
+  phone: string; // 01012345678
+  department: string; // D001(학과 code)
   email: string;
 
   discordUsername: string;
