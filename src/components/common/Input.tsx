@@ -24,7 +24,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     ref
   ) => {
     return (
-      <Container gap={8}>
+      <Container>
         <Flex direction="column" align="flex-start" gap={8}>
           <Text typo="label2" color={value ? 'black' : 'gray4'}>
             {label}
@@ -119,8 +119,8 @@ const StyledInput = styled.input<{
   }
 `;
 
-const StyledHelperTextBox = styled.div`
+const StyledHelperTextBox = styled(Flex)`
   color: ${theme.palette.red100};
-
-  height: 16px;
+  justify-content: start;
+  height: 24px;
 `;
