@@ -10,6 +10,7 @@ import { MyPageEdit } from '@pages/MyPageEdit';
 import { Auth } from '@pages/Auth';
 import { SignUp } from '@pages/SignUp';
 import { JoinDiscrod } from '@/pages/JoinDiscrod';
+import { Bevy } from '@/pages/Bevy';
 
 type RouteChildren = {
   auth: boolean;
@@ -39,6 +40,11 @@ const routeChildren: RouteChildren[] = [
   {
     path: '/discord',
     element: <JoinDiscrod />,
+    auth: true
+  },
+  {
+    path: '/bevy',
+    element: <Bevy />,
     auth: true
   }
 ];

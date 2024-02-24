@@ -86,13 +86,7 @@ export const JoinDiscrod = () => {
         </Flex>
       </Flex>
       <Space height={8} />
-      <Flex
-        justify="flex-start"
-        align="flex-start"
-        gap={8}
-        css={css`
-          position: relative;
-        `}>
+      <Flex justify="flex-start" align="flex-start" gap={8}>
         <StepSection icon={<Step3 />} height={211} />
         <Flex direction="column" align="flex-start" justify="flex-start">
           <StepInformation
@@ -112,21 +106,14 @@ export const JoinDiscrod = () => {
             typo="label3"
             color="blue100"
             css={css`
-              position: absolute;
-              top: 182px;
+              margin-top: -16px;
             `}>
             *한글, 6자까지로 제한됩니다.
           </Text>
         </Flex>
       </Flex>
       <Space height={4} />
-      <Flex
-        justify="flex-start"
-        align="flex-start"
-        gap={8}
-        css={css`
-          position: relative;
-        `}>
+      <Flex justify="flex-start" align="flex-start" gap={8}>
         <Step4 />
         <Flex direction="column" align="flex-start" justify="flex-start">
           <StepInformation
@@ -146,8 +133,7 @@ export const JoinDiscrod = () => {
             typo="label3"
             color="blue100"
             css={css`
-              position: absolute;
-              top: 182px;
+              margin-top: -16px;
             `}>
             *만료 시간 5:00
             {/* TODO 카운트다운 되어야 하나...? */}
