@@ -1,13 +1,23 @@
+import githubLoginApi from '@/apis/auth/githubLoginApi';
 import { GitHubButton } from '@/components/GitHubButton';
 import { Text } from '@/components/common/Wrapper';
 import RoutePath from '@/routes/routePath';
 import { theme } from '@/styles';
 import styled from '@emotion/styled';
+import { AxiosError } from 'axios';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 /** 깃허브 로그인 및 가입하기 */
 export const Auth = () => {
-  const handleClick = () => {};
+  const handleClick = async () => {
+    try {
+      const login = await githubLoginApi();
+      console.log(login);
+    } catch (error) {
+      toast.error((error as AxiosError).message);
+    }
+  };
 
   return (
     <Container>
