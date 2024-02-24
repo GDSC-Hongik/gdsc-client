@@ -5,16 +5,12 @@ import RoutePath from '@/routes/routePath';
 import { theme } from '@/styles';
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
-import { Controller, FieldValues, useForm } from 'react-hook-form';
+import { useStudentVerification } from '@/hooks/auth';
+import { Controller } from 'react-hook-form';
 
 /** 재학생 인증 페이지 */
-export const StudentAudentication = () => {
-  const { control, handleSubmit } = useForm();
-
-  const onSubmit = async (data: FieldValues) => {
-    const { univEmail } = data;
-    console.log(univEmail);
-  };
+export const StudentVerification = () => {
+  const { onSubmit, control, isPending } = useStudentVerification();
 
   return (
     <Container>
@@ -27,7 +23,7 @@ export const StudentAudentication = () => {
           <Text>본인의 학교 이메일을 통해 재학생 인증을</Text>
           <Text>마무리해주세요!</Text>
         </TextContainer>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={onSubmit}>
           <Controller
             name="univEmail"
             control={control}
@@ -42,7 +38,9 @@ export const StudentAudentication = () => {
               />
             )}
           />
-          <Button width={'342px'}>재학생 인증하기</Button>
+          <Button width={'342px'} disabled={isPending}>
+            재학생 인증하기
+          </Button>
         </form>
         <StudentGuideLink to={RoutePath.StudentEmailLinkGuideLink}>
           학교 이메일이 무엇인가요?
