@@ -9,5 +9,7 @@ export const palette = {
   gray3: '#888B91',
   gray4: '#888B91',
 
-  black: '#232021'
+  black: '#232021',
+
+  discord: '#5566FB'
 };

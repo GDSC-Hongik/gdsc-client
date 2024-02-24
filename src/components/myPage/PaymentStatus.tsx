@@ -3,6 +3,7 @@ import { Flex, Space, Text } from '@/components/common/Wrapper';
 import { theme } from '@/styles';
 import styled from '@emotion/styled';
 import { useState } from 'react';
+
 export type PaymentStatusType = 'PENDING' | 'VERIFIED';
 
 interface PaymentStatusProps {
