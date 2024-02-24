@@ -20,6 +20,8 @@ const Wrapper = styled(Flex)`
 
   background-color: ${theme.palette.white};
 
+  overflow: hidden;
+
   ${media.mobile} {
     width: 100vw;
   }
