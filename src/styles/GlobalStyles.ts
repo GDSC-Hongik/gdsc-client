@@ -11,7 +11,7 @@ export const GlobalStyle = css`
     }
     font-family: 'Pretendard';
 
-    background-color: gray;
+    background-color: #f8f8f8;
   }
   button {
     background: inherit;

@@ -4,10 +4,12 @@ import styled from '@emotion/styled';
 
 export const InformationBox = ({
   title,
-  description
+  description,
+  description2
 }: {
   title: string;
   description: string;
+  description2?: string;
 }) => {
   return (
     <Wrapper direction="column" gap={4} align="flex-start">
@@ -16,6 +18,9 @@ export const InformationBox = ({
       </Text>
       <Text typo="body1" color="black">
         {description}
+      </Text>
+      <Text typo="body1" color="black">
+        {description2}
       </Text>
     </Wrapper>
   );
