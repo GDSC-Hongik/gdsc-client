@@ -18,6 +18,7 @@ export const Flex = styled.div<{
   margin: ${({ margin }) => (margin ? margin : '0')};
   padding: ${({ padding }) => (padding ? padding : '0')};
   width: 100%;
+  box-sizing: border-box;
 `;
 
 export const Space = styled.div<{

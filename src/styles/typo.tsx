@@ -52,6 +52,12 @@ export const typo = {
     line-height: 100%;
     letter-spacing: -2%;
   `,
+  body3: css`
+    font-family: 'SUIT', 'Apple SD Gothic Neo';
+    font-size: ${calcRem(14)};
+    font-weight: 500;
+    line-height: 140%;
+  `,
   label1: css`
     font-family: 'SUIT', 'Apple SD Gothic Neo';
     font-size: ${calcRem(16)};

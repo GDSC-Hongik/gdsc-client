@@ -17,6 +17,26 @@ export const Pending = () => {
         stroke-width="2"
       />
       <line x1="20" y1="8" x2="123" y2="8" stroke="#4792EE" stroke-width="2" />
+      <line
+        x1="147"
+        y1="8"
+        x2="250"
+        y2="8"
+        stroke="url(#paint0_linear_848_3723)"
+        stroke-width="2"
+      />
+      <defs>
+        <linearGradient
+          id="paint0_linear_848_3723"
+          x1="147"
+          y1="9"
+          x2="250"
+          y2="9"
+          gradientUnits="userSpaceOnUse">
+          <stop stop-color="#4792EE" />
+          <stop offset="1" stop-color="#CCCCCC" />
+        </linearGradient>
+      </defs>
     </svg>
   );
 };
