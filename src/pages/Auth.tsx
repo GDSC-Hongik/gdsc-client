@@ -3,17 +3,23 @@ import { GitHubButton } from '@/components/GitHubButton';
 import { Text } from '@/components/common/Wrapper';
 import RoutePath from '@/routes/routePath';
 import { theme } from '@/styles';
+import { getLandingRoutePath } from '@/utils/auth';
 import styled from '@emotion/styled';
 import { AxiosError } from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 /** 깃허브 로그인 및 가입하기 */
 export const Auth = () => {
+  const navigation = useNavigate();
+
   const handleClick = async () => {
     try {
-      const login = await githubLoginApi();
-      console.log(login);
+      const result = await githubLoginApi();
+
+      const landingStatus = result.headers['Landing-Status'];
+      const landingRoutePath = getLandingRoutePath(landingStatus);
+      navigation(landingRoutePath, { replace: true });
     } catch (error) {
       toast.error((error as AxiosError).message);
     }
