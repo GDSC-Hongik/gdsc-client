@@ -9,6 +9,7 @@ import { MyPage } from '@pages/MyPage';
 import { MyPageEdit } from '@pages/MyPageEdit';
 import { Auth } from '@pages/Auth';
 import { SignUp } from '@pages/SignUp';
+import { JoinDiscrod } from '@/pages/JoinDiscrod';
 
 type RouteChildren = {
   auth: boolean;
@@ -36,8 +37,8 @@ const routeChildren: RouteChildren[] = [
     auth: true
   },
   {
-    path: '/mypage/edit',
-    element: <MyPageEdit />,
+    path: '/discord',
+    element: <JoinDiscrod />,
     auth: true
   }
 ];
