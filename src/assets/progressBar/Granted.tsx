@@ -12,7 +12,7 @@ export const Granted = () => {
         r="7"
         fill="#4792EE"
         stroke="#4792EE"
-        stroke-width="2"
+        strokeWidth="2"
       />
       <circle
         cx="135"
@@ -20,7 +20,7 @@ export const Granted = () => {
         r="7"
         fill="#4792EE"
         stroke="#4792EE"
-        stroke-width="2"
+        strokeWidth="2"
       />
       <circle
         cx="8"
@@ -28,7 +28,7 @@ export const Granted = () => {
         r="7"
         fill="#4792EE"
         stroke="#4792EE"
-        stroke-width="2"
+        strokeWidth="2"
       />
       <line
         x1="147"
@@ -36,9 +36,9 @@ export const Granted = () => {
         x2="250"
         y2="8.00001"
         stroke="#4792EE"
-        stroke-width="2"
+        strokeWidth="2"
       />
-      <line x1="20" y1="8" x2="123" y2="8" stroke="#4792EE" stroke-width="2" />
+      <line x1="20" y1="8" x2="123" y2="8" stroke="#4792EE" strokeWidth="2" />
     </svg>
   );
 };

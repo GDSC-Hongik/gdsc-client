@@ -1,5 +1,3 @@
-/* eslint-disable react/display-name */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { ForwardedRef, InputHTMLAttributes, forwardRef } from 'react';
 import styled from '@emotion/styled';
 import { theme } from '@/styles';
@@ -26,7 +24,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     ref
   ) => {
     return (
-      <Container gap={8}>
+      <Container>
         <Flex direction="column" align="flex-start" gap={8}>
           <Text typo="label2" color={value ? 'black' : 'gray4'}>
             {label}
@@ -104,7 +102,7 @@ const StyledInput = styled.input<{
       ? `1px solid ${theme.palette.red100}`
       : value
         ? `1px solid ${theme.palette.gray4}`
-        : `1px solid ${theme.palette.gray3}`};
+        : `1px solid ${theme.palette.gray2}`};
 
   :focus {
     border: ${({ isError }) =>
@@ -116,12 +114,13 @@ const StyledInput = styled.input<{
   }
 
   ::placeholder {
-    color: ${theme.palette.gray3};
+    color: ${theme.palette.gray2};
+    font-weight: 400;
   }
 `;
 
-const StyledHelperTextBox = styled.div`
+const StyledHelperTextBox = styled(Flex)`
   color: ${theme.palette.red100};
-
-  height: 16px;
+  justify-content: start;
+  height: 24px;
 `;

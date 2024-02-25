@@ -20,8 +20,6 @@ const IMG_SRC = [
 function App() {
   return (
     <Wrapper direction="column">
-      {/* TODO Header */}
-      <Space height={54} />
       <BlueSection
         direction="column"
         justify="space-between"
