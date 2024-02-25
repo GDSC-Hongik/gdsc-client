@@ -23,9 +23,14 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <Global styles={GlobalStyle} />
       <ApiErrorBoundary>
         <Routers />
-        <ToastContainer />
       </ApiErrorBoundary>
       <ReactQueryDevtools />
     </QueryClientProvider>
+    <ToastContainer
+      limit={1}
+      hideProgressBar
+      closeButton={false}
+      autoClose={4000}
+    />
   </React.StrictMode>
 );

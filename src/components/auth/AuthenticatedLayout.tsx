@@ -1,9 +1,11 @@
-import { Outlet } from 'react-router-dom';
+import RoutePath from '@/routes/routePath';
+import { checkAuthentication } from '@/utils/auth';
+import { Navigate, Outlet } from 'react-router-dom';
 
 export const AuthenticatedLayout = () => {
-  return (
-    <>
-      <Outlet />
-    </>
-  );
+  if (!checkAuthentication()) {
+    return <Navigate to={RoutePath.Index} />;
+  }
+
+  return <Outlet />;
 };
