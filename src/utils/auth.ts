@@ -16,3 +16,33 @@ export function getLandingRoutePath(landingStatus: LandingStatus) {
       return RoutePath.Home;
   }
 }
+
+/**
+ * 사용자의 인증 상태를 확인
+ * @returns {boolean} 사용자의 인증 상태 (true: 인증됨, false: 인증되지 않음)
+ */
+export function checkAuthentication(): boolean {
+  const accessToken: string | null = getCookie('accessToken');
+  const refreshToken: string | null = getCookie('refreshToken');
+
+  return Boolean(accessToken) && Boolean(refreshToken);
+}
+
+/**
+ * 쿠키 이름을 기반으로 쿠키 값을 가져옴
+ * @param {string} name 가져올 쿠키의 이름
+ * @returns {string|null} 쿠키 값 (존재하지 않을 경우 null 반환)
+ */
+function getCookie(name: string): string | null {
+  const cookieString: string = document.cookie;
+  const cookies: string[] = cookieString.split(';');
+
+  for (const cookie of cookies) {
+    const [cookieName, value] = cookie.trim().split('=');
+    if (cookieName === name) {
+      return value;
+    }
+  }
+
+  return null;
+}

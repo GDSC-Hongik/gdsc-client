@@ -3,6 +3,7 @@ import { Flex, Text } from '@/components/common/Wrapper';
 import { JoinButton } from '@/components/layout/JoinButton';
 import RoutePath from '@/routes/routePath';
 import { theme } from '@/styles';
+import { checkAuthentication } from '@/utils/auth';
 import styled from '@emotion/styled';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -16,7 +17,12 @@ export default function Header() {
   const navigation = useNavigate();
 
   const { pathname } = useLocation();
-  const displayJoinButton = !AuthRoutePaths.includes(pathname);
+  const displayJoinButton = (() => {
+    if (AuthRoutePaths.includes(pathname)) {
+      return false;
+    }
+    return !checkAuthentication();
+  })();
 
   const handleClick = () =>
     navigation(RoutePath.AuthenticationProcess1_GithubSignin);
