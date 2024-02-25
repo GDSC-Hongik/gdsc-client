@@ -12,9 +12,9 @@ export const RightArrow = (props: ButtonHTMLAttributes<HTMLButtonElement>) => {
         <path
           d="M1 13.5L7 7.5L0.999999 1.5"
           stroke="#D32F2F"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     </button>

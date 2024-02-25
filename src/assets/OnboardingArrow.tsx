@@ -23,25 +23,25 @@ export const OnboardingArrow = () => {
         <path
           d="M1 1L29 9L57 1"
           stroke="white"
-          stroke-opacity="0.5"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeOpacity="0.5"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M1 9L29 17L57 9"
           stroke="white"
-          stroke-opacity="0.7"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeOpacity="0.7"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M1 17L29 25L57 17"
           stroke="white"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     </>
