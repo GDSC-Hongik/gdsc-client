@@ -50,7 +50,6 @@ export const Auth = () => {
 const Container = styled.div`
   width: 100%;
   padding: 60px 16px;
-  align-items: flex-start;
 `;
 
 const Box = styled.div`

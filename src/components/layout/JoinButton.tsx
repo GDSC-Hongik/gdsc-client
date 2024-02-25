@@ -10,4 +10,5 @@ export const JoinButton = styled.button`
   color: ${theme.palette.black};
   border: 1px solid ${theme.palette.gray3};
   border-radius: 20px;
+  min-width: max-content;
 `;
