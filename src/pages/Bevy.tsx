@@ -2,6 +2,7 @@ import { Circle } from '@/assets/Circle';
 import { Button } from '@/components/common/Button';
 import { Flex, Space, Text } from '@/components/common/Wrapper';
 import { StepInformation } from '@/components/joinDiscord/StepInformation';
+import GlobalSize from '@/constants/globalSize';
 import { media, theme } from '@/styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -64,7 +65,7 @@ export const Bevy = () => {
 
 const Wrapper = styled(Flex)`
   min-height: 100vh;
-  width: 390px;
+  width: ${GlobalSize.width};
   margin: 0px -16px;
   padding: 0px 16px;
 

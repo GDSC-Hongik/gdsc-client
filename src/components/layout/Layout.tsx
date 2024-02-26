@@ -3,6 +3,7 @@ import { Flex } from '../common/Wrapper';
 import { media, theme } from '@/styles';
 import Header from '@/components/layout/Header';
 import { Outlet } from 'react-router-dom';
+import GlobalSize from '@/constants/globalSize';
 
 const Layout = () => {
   return (
@@ -23,9 +24,9 @@ const Container = styled(Flex)`
 `;
 
 const Wrapper = styled(Flex)`
-  width: 390px;
+  width: ${GlobalSize.width};
+  min-height: calc(100vh - ${GlobalSize.header});
   align-items: flex-start;
-  min-height: 100vh;
   overflow: hidden;
 
   ${media.mobile} {

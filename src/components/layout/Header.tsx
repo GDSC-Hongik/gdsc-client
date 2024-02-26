@@ -1,6 +1,7 @@
 import { Logo } from '@/assets/LogoIcon';
 import { Flex, Text } from '@/components/common/Wrapper';
 import { JoinButton } from '@/components/layout/JoinButton';
+import GlobalSize from '@/constants/globalSize';
 import RoutePath from '@/routes/routePath';
 import { media, theme } from '@/styles';
 import { checkAuthentication } from '@/utils/auth';
@@ -44,14 +45,14 @@ export default function Header() {
 
 const Container = styled(Flex)`
   width: 100%;
-
+  height: ${GlobalSize.header};
   gap: 16px;
   background-color: ${theme.palette.white};
   border-bottom: 1px solid ${theme.palette.gray2};
 `;
 
 const HeaderContainter = styled(Flex)`
-  width: 390px;
+  width: ${GlobalSize.width};
   padding: 0 16px;
 
   ${media.mobile} {
@@ -63,6 +64,5 @@ const LogoContainer = styled.button`
   width: 100%;
   align-items: center;
   justify-content: flex-start;
-  height: 54px;
   gap: 6px;
 `;
