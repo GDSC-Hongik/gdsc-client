@@ -1,5 +1,5 @@
 import apiClient from '@/apis';
-import { MemberInfoResponse } from '@/apis/auth/member/memberType';
+import { MemberInfoResponse } from '@/apis/member/memberType';
 
 const memberApi = {
   GET_MEMBERS_ME: async (): Promise<MemberInfoResponse> => {

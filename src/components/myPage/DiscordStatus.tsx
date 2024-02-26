@@ -3,16 +3,22 @@ import { RightArrow } from '@/assets/RightArrow';
 import { Flex, Text } from '@/components/common/Wrapper';
 import { theme } from '@/styles';
 import styled from '@emotion/styled';
+import { MouseEventHandler } from 'react';
 
 export type DiscordStatusType = 'PENDING' | 'VERIFIED';
 
 export const DiscordStatus = ({
-  discordStatus
+  discordStatus,
+  onClick
 }: {
   discordStatus: DiscordStatusType;
+  onClick: MouseEventHandler<HTMLDivElement>;
 }) => {
   return (
-    <Wrapper discordStatus={discordStatus} gap={12}>
+    <Wrapper
+      discordStatus={discordStatus}
+      gap={12}
+      onClick={discordStatus === 'PENDING' ? onClick : undefined}>
       <Discord />
       <Flex direction="column" align="flex-start" gap={12}>
         <Text typo="label1" color="discord">
@@ -43,5 +49,6 @@ const Wrapper = styled(Flex)<{
       ? `1px solid ${theme.palette.red100}`
       : `1px solid ${theme.palette.blue100}`};
 
-  cursor: pointer;
+  cursor: ${({ discordStatus }) =>
+    discordStatus === 'PENDING' ? 'pointer' : 'default'};
 `;

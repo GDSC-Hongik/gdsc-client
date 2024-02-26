@@ -6,6 +6,8 @@ import { media, theme } from '@/styles';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import GlobalSize from '@/constants/globalSize';
+import { useNavigate } from 'react-router-dom';
+import { checkAuthentication } from '@/utils/auth';
 
 const IMG_SRC = [
   '/onboarding/1.png',
@@ -19,6 +21,8 @@ const IMG_SRC = [
 ];
 
 function App() {
+  const navigate = useNavigate();
+
   return (
     <Wrapper direction="column">
       <BlueSection
@@ -132,7 +136,12 @@ function App() {
         </Text>
         <OnboardingLogo2 />
         <Space height={25} />
-        <ApplyButton>지원하기</ApplyButton>
+        <ApplyButton
+          onClick={() =>
+            checkAuthentication() ? navigate('/mypage') : navigate('/auth')
+          }>
+          지원하기
+        </ApplyButton>
         <Space height={40} />
       </BlueSection>
       <Space height={48} />

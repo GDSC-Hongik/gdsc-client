@@ -6,10 +6,12 @@ import GlobalSize from '@/constants/globalSize';
 import { media, theme } from '@/styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import { useNavigate } from 'react-router-dom';
 export const Bevy = () => {
+  const navigate = useNavigate();
+
   return (
     <Wrapper direction="column" justify="flex-start">
-      <Space height={67} />
       <Space height={40} />
       <Text typo="heading3" color="black">
         GDSC Bevy 가입하기
@@ -29,12 +31,13 @@ export const Bevy = () => {
           <Text
             typo="label1"
             color="blue100"
-            onClick={() => {}}
             css={css`
               cursor: pointer;
               text-decoration: underline;
             `}>
-            가입하러 가기↗︎
+            <a href="https://gdsc.community.dev/hongik-university/">
+              가입하러 가기↗︎
+            </a>
           </Text>
         </Flex>
       </Flex>
@@ -49,16 +52,17 @@ export const Bevy = () => {
         <Text
           typo="label1"
           color="gray4"
-          onClick={() => {}}
           css={css`
             cursor: pointer;
             text-decoration: underline;
           `}>
-          가이드라인 보기↗︎
+          <a href="https://www.gdschongik.com/guide/gdsc-bevy">
+            가이드라인 보기↗︎
+          </a>
         </Text>
       </InformationWrapper>
       <Space height={48} />
-      <Button onClick={() => {}}>가입 완료하기</Button>
+      <Button onClick={() => navigate('/mypage')}>가입 완료하기</Button>
     </Wrapper>
   );
 };

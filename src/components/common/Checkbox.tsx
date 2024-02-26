@@ -1,4 +1,3 @@
-import React from 'react';
 import { InputHTMLAttributes, ReactNode } from 'react';
 import { Flex } from './Wrapper';
 import { theme } from '../../styles';
