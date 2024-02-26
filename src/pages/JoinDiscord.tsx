@@ -32,8 +32,11 @@ export const JoinDiscord = () => {
   const postDiscordLinkMutation = useMutation({
     mutationFn: discordApi.POST_DISCORD,
     onSuccess: () => {
-      toast.done('디스코드 연동이 완료되었습니다.');
+      toast('디스코드 연동이 완료되었습니다.');
       navigate('/mypage');
+    },
+    onError: (error: any) => {
+      toast(error);
     }
   });
 

@@ -1,5 +1,9 @@
 import { OnboardingArrow } from '@/assets/OnboardingArrow';
-import { OnboardingLogo1, OnboardingLogo2 } from '@/assets/Onboarding';
+import {
+  JoinText,
+  OnboardingLogo1,
+  OnboardingLogo2
+} from '@/assets/Onboarding';
 import { Flex, Space, Text } from '@/components/common/Wrapper';
 import { InformationBox } from '@/components/onboarding/InformationBox';
 import { media, theme } from '@/styles';
@@ -8,6 +12,7 @@ import { css } from '@emotion/react';
 import GlobalSize from '@/constants/globalSize';
 import { useNavigate } from 'react-router-dom';
 import { checkAuthentication } from '@/utils/auth';
+import 'react-toastify/dist/ReactToastify.css';
 
 const IMG_SRC = [
   '/onboarding/1.png',
@@ -149,9 +154,7 @@ function App() {
       <Space height={48} />
       <BlueSection direction="column" justify="space-between">
         <Space height={60} />
-        <Text typo="heading1" color="white">
-          Join Us NOW!
-        </Text>
+        <JoinText />
         <OnboardingLogo2 />
         <Space height={25} />
         <ApplyButton
