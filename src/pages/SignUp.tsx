@@ -135,7 +135,7 @@ const Container = styled(Flex)`
   min-height: 100%;
   width: 100%;
   gap: 24px;
-  padding: 60px 16px;
+  padding: 40px 16px;
 `;
 
 const CheckboxContainer = styled(Flex)`

@@ -7,7 +7,7 @@ import { SignUp } from '@/pages/SignUp';
 import { StudentVerification } from '@/pages/StudentVerification';
 
 import { AuthServerRedirectNavigate } from '@/pages/redirect/AuthServerRedirectNavigate';
-import { StudentVerificationServerRedirectNavigate } from '@/pages/redirect/StudentVerificationServerRedirectNavigate';
+import { StudentVerificationServerRedirect } from '@/pages/redirect/StudentVerificationServerRedirect';
 
 import RoutePath from '@/routes/routePath';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
       },
       {
         path: RoutePath.StudentVerificationServerRedirect,
-        element: <StudentVerificationServerRedirectNavigate />
+        element: <StudentVerificationServerRedirect />
       },
       {
         path: RoutePath.AuthenticationProcess1_GithubSignin,

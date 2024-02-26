@@ -31,10 +31,9 @@ export default function ApiErrorBoundary({ children }: PropsWithChildren) {
 
   function handleError(axiosError: AxiosError) {
     const errorResponse = axiosError.response?.data as ErrorResponseType;
-    const { status } = errorResponse.errorCode;
     const message = errorResponse.message;
 
-    switch (status) {
+    switch (errorResponse.errorCode?.status) {
       case 401:
       case 403:
         toast.error(message);

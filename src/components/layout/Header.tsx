@@ -13,8 +13,6 @@ export default function Header() {
   const navigation = useNavigate();
   const { landingStatus } = useLandingStatus();
 
-  const displayJoinButton = landingStatus !== 'TO_DASHBOARD';
-
   const handleClick = () => {
     navigation(getAuthRedirectPath(landingStatus));
   };
@@ -26,9 +24,9 @@ export default function Header() {
           <Logo />
           <Text style={{ fontSize: '20px', fontWeight: 700 }}>GDSC</Text>
         </LogoContainer>
-        {displayJoinButton && (
-          <JoinButton onClick={handleClick}>로그인/가입하기</JoinButton>
-        )}
+        <JoinButton onClick={handleClick}>
+          {landingStatus === 'TO_DASHBOARD' ? '내 정보' : '로그인/가입하기'}
+        </JoinButton>
       </HeaderContainter>
     </Container>
   );
@@ -40,6 +38,8 @@ const Container = styled(Flex)`
   gap: 16px;
   background-color: ${theme.palette.white};
   border-bottom: 1px solid ${theme.palette.gray2};
+  position: fixed;
+  top: 0;
 `;
 
 const HeaderContainter = styled(Flex)`

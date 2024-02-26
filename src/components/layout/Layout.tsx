@@ -25,6 +25,7 @@ const Container = styled(Flex)`
 
 const Wrapper = styled(Flex)`
   width: ${GlobalSize.width};
+  margin-top: ${GlobalSize.header};
   min-height: calc(100vh - ${GlobalSize.header});
   align-items: flex-start;
   overflow: hidden;
