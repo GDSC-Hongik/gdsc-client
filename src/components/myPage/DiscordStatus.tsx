@@ -4,7 +4,6 @@ import { Flex, Text } from '@/components/common/Wrapper';
 import { theme } from '@/styles';
 import styled from '@emotion/styled';
 import { MouseEventHandler } from 'react';
-import { NavigateFunction } from 'react-router-dom';
 
 export type DiscordStatusType = 'PENDING' | 'VERIFIED';
 
