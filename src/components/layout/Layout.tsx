@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Flex } from '../common/Wrapper';
-import { theme } from '@/styles';
+import { media, theme } from '@/styles';
 import Header from '@/components/layout/Header';
 import { Outlet } from 'react-router-dom';
 
@@ -26,4 +26,9 @@ const Wrapper = styled(Flex)`
   width: 390px;
   align-items: flex-start;
   min-height: 100vh;
+  overflow: hidden;
+
+  ${media.mobile} {
+    width: 100vw;
+  }
 `;
