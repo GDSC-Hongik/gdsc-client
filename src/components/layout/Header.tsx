@@ -30,7 +30,7 @@ export default function Header() {
   return (
     <Container>
       <HeaderContainter>
-        <LogoContainer>
+        <LogoContainer onClick={() => navigation(RoutePath.Home)}>
           <Logo />
           <Text style={{ fontSize: '20px', fontWeight: 700 }}>GDSC</Text>
         </LogoContainer>
@@ -58,7 +58,10 @@ const HeaderContainter = styled(Flex)`
     width: 100vw;
   }
 `;
-const LogoContainer = styled(Flex)`
+const LogoContainer = styled.button`
+  display: flex;
+  width: 100%;
+  align-items: center;
   justify-content: flex-start;
   height: 54px;
   gap: 6px;
