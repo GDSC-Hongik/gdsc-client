@@ -1,7 +1,8 @@
+import { verifyStudentApi } from '@/apis/auth';
 import LandingStatus from '@/constants/landingStatus';
 import { useSendStudentEmail } from '@/hooks/mutation';
-import { useVerifyStudent } from '@/hooks/query';
 import useLandingStatus from '@/hooks/zustand/useLandingStatus';
+import useUnivEmail from '@/hooks/zustand/useUnivEmail';
 import RoutePath from '@/routes/routePath';
 import { useForm, FieldValues } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -14,19 +15,17 @@ export default function useStudentVerification() {
   const navigation = useNavigate();
   const { updateLandingStatue } = useLandingStatus();
   const { sendStudentEmail, ...rest } = useSendStudentEmail();
-  const {
-    data: { univStatus },
-    isLoading: isLoadingVerifyStudent,
-    isRefetching: isRefetchingVerifyStudent
-  } = useVerifyStudent();
+  const { updateUnivEmail } = useUnivEmail();
 
   const onSubmit = async ({ univEmail }: FieldValues) => {
+    updateUnivEmail(univEmail);
     sendStudentEmail(univEmail);
   };
 
-  const onVerifyStudent = () => {
-    console.log('onVerifyStudent', univStatus);
-    if (univStatus === 'VERIFIED') {
+  const onVerifyStudent = async () => {
+    const result = await verifyStudentApi();
+
+    if (result.univStatus === 'VERIFIED') {
       updateLandingStatue(LandingStatus.Signup);
       navigation(RoutePath.AuthenticationProcess3_Signup);
     }
@@ -34,9 +33,7 @@ export default function useStudentVerification() {
 
   return {
     onSubmit: handleSubmit(onSubmit),
-    univStudentStatus: univStatus,
     onVerifyStudent,
-    isLoadingVerifyStudent: isRefetchingVerifyStudent || isLoadingVerifyStudent,
     control,
     ...rest
   };

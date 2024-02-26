@@ -5,6 +5,7 @@ import { Auth } from '@/pages/Auth';
 import { MyPage } from '@/pages/MyPage';
 import { SignUp } from '@/pages/SignUp';
 import { StudentVerification } from '@/pages/StudentVerification';
+import UpdatedStudentVerification from '@/pages/UpdatedStudentVerification';
 
 import { AuthServerRedirectNavigate } from '@/pages/redirect/AuthServerRedirectNavigate';
 import { StudentVerificationServerRedirect } from '@/pages/redirect/StudentVerificationServerRedirect';
@@ -48,6 +49,11 @@ const router = createBrowserRouter([
         path: RoutePath.AuthenticationProcess2_StudentVerification,
         element: <StudentVerificationAccessGuard />,
         children: [{ index: true, element: <StudentVerification /> }]
+      },
+      {
+        path: RoutePath.AuthenticationProcess2_UpdatedStudentVerification,
+        element: <StudentVerificationAccessGuard />,
+        children: [{ index: true, element: <UpdatedStudentVerification /> }]
       },
       {
         path: RoutePath.AuthenticationProcess3_Signup,

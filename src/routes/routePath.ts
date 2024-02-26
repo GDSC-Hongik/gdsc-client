@@ -8,6 +8,8 @@ const RoutePath = {
 
   AuthenticationProcess1_GithubSignin: '/auth',
   AuthenticationProcess2_StudentVerification: '/student-verification',
+  AuthenticationProcess2_UpdatedStudentVerification:
+    '/updated-student-verification',
   AuthenticationProcess3_Signup: '/signup',
 
   AuthServerRedirect: '/social-login/redirect',
