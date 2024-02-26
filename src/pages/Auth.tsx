@@ -37,7 +37,7 @@ export const Auth = () => {
 
 const Container = styled.div`
   width: 100%;
-  padding: 60px 16px;
+  padding: 40px 16px;
 `;
 
 const Box = styled.div`
