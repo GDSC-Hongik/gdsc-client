@@ -16,7 +16,7 @@ export default function useStudentVerification() {
   const { sendStudentEmail, ...rest } = useSendStudentEmail();
   const {
     data: { univStatus },
-    isLoading,
+    isLoading: isLoadingVerifyStudent,
     isRefetching: isRefetchingVerifyStudent
   } = useVerifyStudent();
 
@@ -25,6 +25,7 @@ export default function useStudentVerification() {
   };
 
   const onVerifyStudent = () => {
+    console.log('onVerifyStudent', univStatus);
     if (univStatus === 'VERIFIED') {
       updateLandingStatue(LandingStatus.Signup);
       navigation(RoutePath.AuthenticationProcess3_Signup);
@@ -35,7 +36,7 @@ export default function useStudentVerification() {
     onSubmit: handleSubmit(onSubmit),
     univStudentStatus: univStatus,
     onVerifyStudent,
-    isLoadingVerifyStudent: isRefetchingVerifyStudent || isLoading,
+    isLoadingVerifyStudent: isRefetchingVerifyStudent || isLoadingVerifyStudent,
     control,
     ...rest
   };
