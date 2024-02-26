@@ -1,7 +1,7 @@
 const enum LandingStatus {
-  TO_STUDENT_AUTHENTICATION,
-  TO_REGISTRATION,
-  TO_DASHBOARD
+  StudentAuthentication = 'TO_STUDENT_AUTHENTICATION',
+  Signup = 'TO_REGISTRATION',
+  MyPage = 'TO_DASHBOARD'
 }
 
 export default LandingStatus;

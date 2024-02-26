@@ -93,7 +93,7 @@ export const SignUp = () => {
             }
             label={
               <Text typo="label1">
-                <GuideLink to={RoutePath.Terms}>
+                <GuideLink to={RoutePath.Terms} target="_blank">
                   커뮤니티 가이드라인 및 GDSC 회칙
                 </GuideLink>
                 에 동의합니다.
@@ -111,7 +111,10 @@ export const SignUp = () => {
             }
             label={
               <Text typo="body2" color="gray4">
-                <GuideLink to={RoutePath.PersonalPrivacy} color="gray4">
+                <GuideLink
+                  to={RoutePath.PersonalPrivacy}
+                  color="gray4"
+                  target="_blank">
                   개인정보 수집
                 </GuideLink>
                 에 동의합니다.

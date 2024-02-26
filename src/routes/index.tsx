@@ -1,15 +1,23 @@
+import App from '@/App';
 import { JoinDiscord } from '@/pages/JoinDiscord';
 import { Bevy } from '@/pages/Bevy';
-import { AuthenticatedLayout } from '@/components/auth/AuthenticatedLayout';
 import { Auth } from '@/pages/Auth';
 import { MyPage } from '@/pages/MyPage';
 import { SignUp } from '@/pages/SignUp';
 import { StudentVerification } from '@/pages/StudentVerification';
+
+import { AuthServerRedirectNavigate } from '@/pages/redirect/AuthServerRedirectNavigate';
+import { StudentVerificationServerRedirectNavigate } from '@/pages/redirect/StudentVerificationServerRedirectNavigate';
+
 import RoutePath from '@/routes/routePath';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
-import App from '@/App';
-import { AuthServerRedirectNavigate } from '@/pages/AuthServerRedirectNavigate';
+import {
+  MypageAccessGuard,
+  AuthAccessGuard,
+  SignupAccessGuard,
+  StudentVerificationAccessGuard
+} from '@/components/auth/guard';
 
 export const Routers = () => {
   return <RouterProvider router={router} />;
@@ -24,7 +32,7 @@ const router = createBrowserRouter([
       { index: true, element: <App /> },
       {
         path: RoutePath.Index,
-        element: <AuthenticatedLayout />,
+        element: <MypageAccessGuard />,
         children: [
           {
             path: RoutePath.MyPage,
@@ -45,16 +53,23 @@ const router = createBrowserRouter([
         element: <AuthServerRedirectNavigate />
       },
       {
+        path: RoutePath.StudentVerificationServerRedirect,
+        element: <StudentVerificationServerRedirectNavigate />
+      },
+      {
         path: RoutePath.AuthenticationProcess1_GithubSignin,
-        element: <Auth />
+        element: <AuthAccessGuard />,
+        children: [{ index: true, element: <Auth /> }]
       },
       {
         path: RoutePath.AuthenticationProcess2_StudentVerification,
-        element: <StudentVerification />
+        element: <StudentVerificationAccessGuard />,
+        children: [{ index: true, element: <StudentVerification /> }]
       },
       {
         path: RoutePath.AuthenticationProcess3_Signup,
-        element: <SignUp />
+        element: <SignupAccessGuard />,
+        children: [{ index: true, element: <SignUp /> }]
       },
       // Todo: 404 Not found page
       { path: '*', element: <>not found page</> }
