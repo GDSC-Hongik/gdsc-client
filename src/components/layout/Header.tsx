@@ -2,7 +2,7 @@ import { Logo } from '@/assets/LogoIcon';
 import { Flex, Text } from '@/components/common/Wrapper';
 import { JoinButton } from '@/components/layout/JoinButton';
 import RoutePath from '@/routes/routePath';
-import { theme } from '@/styles';
+import { media, theme } from '@/styles';
 import { checkAuthentication } from '@/utils/auth';
 import styled from '@emotion/styled';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -53,6 +53,10 @@ const Container = styled(Flex)`
 const HeaderContainter = styled(Flex)`
   width: 390px;
   padding: 0 16px;
+
+  ${media.mobile} {
+    width: 100vw;
+  }
 `;
 const LogoContainer = styled(Flex)`
   justify-content: flex-start;
