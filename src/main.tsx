@@ -7,6 +7,7 @@ import { GlobalStyle } from '@/styles';
 import { Global } from '@emotion/react';
 import ApiErrorBoundary from '@/components/ApiErrorBoundary';
 import { ToastContainer } from 'react-toastify';
+import './styles/styles.scss';
 
 const queryClient = new QueryClient({
   defaultOptions: {

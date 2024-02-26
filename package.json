@@ -49,6 +49,7 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "eslint-plugin-storybook": "^0.6.15",
     "prettier": "^3.2.5",
+    "sass": "^1.71.1",
     "storybook": "^7.6.14",
     "typescript": "^5.2.2",
     "vite": "^5.1.0",

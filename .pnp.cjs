@@ -2509,6 +2509,10 @@ const RAW_RUNTIME_STATE =
       "npm:5.3.1"\
     ],\
     [\
+      "immutable",\
+      "npm:4.3.5"\
+    ],\
+    [\
       "import-fresh",\
       "npm:3.3.0"\
     ],\
@@ -3513,6 +3517,10 @@ const RAW_RUNTIME_STATE =
       "npm:2.1.2"\
     ],\
     [\
+      "sass",\
+      "npm:1.71.1"\
+    ],\
+    [\
       "scheduler",\
       "npm:0.23.0"\
     ],\
@@ -4112,6 +4120,7 @@ const RAW_RUNTIME_STATE =
           ["react-router-dom", "virtual:3d54418dc1345bf2715d2d0d1359959c5178cbdf6d6a2157d053afdae254746024a331bf0c261c3bdb4431a3c73d46bd622ee2a0909a0e8aab4b4fde943604af#npm:6.22.1"],\
           ["react-spinners", "virtual:3d54418dc1345bf2715d2d0d1359959c5178cbdf6d6a2157d053afdae254746024a331bf0c261c3bdb4431a3c73d46bd622ee2a0909a0e8aab4b4fde943604af#npm:0.13.8"],\
           ["react-toastify", "virtual:3d54418dc1345bf2715d2d0d1359959c5178cbdf6d6a2157d053afdae254746024a331bf0c261c3bdb4431a3c73d46bd622ee2a0909a0e8aab4b4fde943604af#npm:10.0.4"],\
+          ["sass", "npm:1.71.1"],\
           ["storybook", "npm:7.6.17"],\
           ["typescript", "patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"],\
           ["vite", "virtual:3d54418dc1345bf2715d2d0d1359959c5178cbdf6d6a2157d053afdae254746024a331bf0c261c3bdb4431a3c73d46bd622ee2a0909a0e8aab4b4fde943604af#npm:5.1.4"],\
@@ -14517,6 +14526,7 @@ const RAW_RUNTIME_STATE =
           ["react-router-dom", "virtual:3d54418dc1345bf2715d2d0d1359959c5178cbdf6d6a2157d053afdae254746024a331bf0c261c3bdb4431a3c73d46bd622ee2a0909a0e8aab4b4fde943604af#npm:6.22.1"],\
           ["react-spinners", "virtual:3d54418dc1345bf2715d2d0d1359959c5178cbdf6d6a2157d053afdae254746024a331bf0c261c3bdb4431a3c73d46bd622ee2a0909a0e8aab4b4fde943604af#npm:0.13.8"],\
           ["react-toastify", "virtual:3d54418dc1345bf2715d2d0d1359959c5178cbdf6d6a2157d053afdae254746024a331bf0c261c3bdb4431a3c73d46bd622ee2a0909a0e8aab4b4fde943604af#npm:10.0.4"],\
+          ["sass", "npm:1.71.1"],\
           ["storybook", "npm:7.6.17"],\
           ["typescript", "patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"],\
           ["vite", "virtual:3d54418dc1345bf2715d2d0d1359959c5178cbdf6d6a2157d053afdae254746024a331bf0c261c3bdb4431a3c73d46bd622ee2a0909a0e8aab4b4fde943604af#npm:5.1.4"],\
@@ -15034,6 +15044,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../.yarn/berry/cache/ignore-npm-5.3.1-f6947c5df7-10c0.zip/node_modules/ignore/",\
         "packageDependencies": [\
           ["ignore", "npm:5.3.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["immutable", [\
+      ["npm:4.3.5", {\
+        "packageLocation": "../../.yarn/berry/cache/immutable-npm-4.3.5-5958499808-10c0.zip/node_modules/immutable/",\
+        "packageDependencies": [\
+          ["immutable", "npm:4.3.5"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -18314,6 +18333,18 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["sass", [\
+      ["npm:1.71.1", {\
+        "packageLocation": "../../.yarn/berry/cache/sass-npm-1.71.1-3aced13991-10c0.zip/node_modules/sass/",\
+        "packageDependencies": [\
+          ["sass", "npm:1.71.1"],\
+          ["chokidar", "npm:3.6.0"],\
+          ["immutable", "npm:4.3.5"],\
+          ["source-map-js", "npm:1.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["scheduler", [\
       ["npm:0.23.0", {\
         "packageLocation": "../../.yarn/berry/cache/scheduler-npm-0.23.0-a379a6bc3b-10c0.zip/node_modules/scheduler/",\
@@ -19782,7 +19813,7 @@ const RAW_RUNTIME_STATE =
           ["lightningcss", null],\
           ["postcss", "npm:8.4.35"],\
           ["rollup", "npm:4.12.0"],\
-          ["sass", null],\
+          ["sass", "npm:1.71.1"],\
           ["stylus", null],\
           ["sugarss", null],\
           ["terser", null]\
