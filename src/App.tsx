@@ -152,14 +152,11 @@ function App() {
       <Flex direction="column" gap={12}>
         <InformationBox
           title="Q. 서류, 면접 전형이 있나요?"
-          description="A. 아니요! 가입 절차만 지켜주시면 홍익대학교 
-          학생 누구나 가입이 가능합니다!"
+          description="A. 아니요! 가입 절차만 지켜주시면 홍익대학교 학생 누구나 가입이 가능합니다!"
         />
         <InformationBox
           title="Q. 다른 동아리, 학회와 병행 가능한가요?"
-          description="A. 가능합니다! GDSC Hongik은 커뮤니티라는 
-          이름에 걸맞게 모든 활동에 자율적으로 참여할 수 있습니다. 어딘가에 너무 오랫동안, 깊게 소속되지 않고, 가볍게 개발을 배우며 다른 사람들과 
-          교류하고 싶은 분들에게 좋은 곳이에요."
+          description="A. 가능합니다! GDSC Hongik은 커뮤니티라는 이름에 걸맞게 모든 활동에 자율적으로 참여할 수 있습니다. 어딘가에 너무 오랫동안, 깊게 소속되지 않고, 가볍게 개발을 배우며 다른 사람들과 교류하고 싶은 분들에게 좋은 곳이에요."
         />
         <InformationBox
           title="Q. 저는 코딩을 하나도 모르는 새내기인데, 따라갈 수 있나요?"
