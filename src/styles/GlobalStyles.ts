@@ -47,17 +47,6 @@ export const GlobalStyle = css`
     *:required {
       background-color: ${theme.palette.white};
     }
-
-    input:-webkit-autofill {
-      -webkit-box-shadow: 0 0 0 30px #fff inset;
-      -webkit-text-fill-color: #000;
-    }
-    input:-webkit-autofill,
-    input:-webkit-autofill:hover,
-    input:-webkit-autofill:focus,
-    input:-webkit-autofill:active {
-      transition: background-color 5000s ease-in-out 0s;
-    }
   }
   a {
     text-align: center;
@@ -71,5 +60,16 @@ export const GlobalStyle = css`
     border: 1px solid ${theme.palette.discord};
     border-radius: 4px;
     padding: 0px 4px;
+  }
+
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #fff inset;
+    -webkit-text-fill-color: #000;
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
   }
 `;
