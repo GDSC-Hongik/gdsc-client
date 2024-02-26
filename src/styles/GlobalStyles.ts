@@ -43,4 +43,9 @@ export const GlobalStyle = css`
     border: none;
     margin: 0;
   }
+  a {
+    text-align: center;
+    text-decoration: none; /* 링크의 밑줄 제거 */
+    color: inherit; /* 링크의 색상 제거 */
+  }
 `;

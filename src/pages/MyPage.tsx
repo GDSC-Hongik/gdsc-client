@@ -8,7 +8,7 @@ import { DiscordStatus } from '@/components/myPage/DiscordStatus';
 import { BevyStatus } from '@/components/myPage/BevyStatus';
 import { Privacy } from '@/components/myPage/Privacy';
 import { useQuery } from '@tanstack/react-query';
-import memberApi from '@/apis/auth/member/memberApi';
+import memberApi from '@/apis/member/memberApi';
 import GlobalSize from '@/constants/globalSize';
 import { useNavigate } from 'react-router-dom';
 

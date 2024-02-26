@@ -12,24 +12,43 @@ import { Step3 } from '@/assets/Step3';
 import { Step4 } from '@/assets/Step4';
 import { Button } from '@/components/common/Button';
 import GlobalSize from '@/constants/globalSize';
+import { useMutation } from '@tanstack/react-query';
+import discordApi from '@/apis/discord/discordApi';
+import { DiscordLinkRequest } from '@/apis/discord/discordType';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 export const JoinDiscord = () => {
-  const {
-    register,
-    watch,
-    formState: { errors }
-  } = useForm({
+  const navigate = useNavigate();
+  const { register, watch, formState, getValues } = useForm({
     defaultValues: {
       discordHandle: '',
       discordNickname: '',
-      certificationNumber: ''
+      code: ''
     },
     mode: 'onChange'
   });
 
+  const postDiscordLinkMutation = useMutation({
+    mutationFn: discordApi.POST_DISCORD,
+    onSuccess: () => {
+      toast.done('디스코드 연동이 완료되었습니다.');
+      navigate('/mypage');
+    }
+  });
+
+  const handleLinkButtonClick = () => {
+    const data = {
+      discordUsername: getValues('discordHandle'),
+      nickname: getValues('discordNickname'),
+      code: Number(getValues('code'))
+    } as DiscordLinkRequest;
+
+    postDiscordLinkMutation.mutate({ ...data });
+  };
+
   return (
     <Wrapper direction="column" justify="flex-start">
-      <Space height={67} />
       <Space height={40} />
       <Text typo="heading3" color="black">
         디스코드 가입 및 연동하기
@@ -52,7 +71,9 @@ export const JoinDiscord = () => {
               cursor: pointer;
               text-decoration: underline;
             `}>
-            디스코드 가입하러 가기↗︎
+            <a href="https://discord.gg/XVr4fMzKSt">
+              디스코드 가입하러 가기↗︎
+            </a>
           </Text>
         </Flex>
       </Flex>
@@ -74,7 +95,9 @@ export const JoinDiscord = () => {
               cursor: pointer;
               text-decoration: underline;
             `}>
-            가이드라인 보기↗︎
+            <a href="https://www.gdschongik.com/guide/discord">
+              가이드라인 보기↗︎
+            </a>
           </Text>
           <Space height={24} />
           <Input
@@ -125,8 +148,8 @@ export const JoinDiscord = () => {
           <Space height={24} />
           <Input
             label="인증번호"
-            value={watch('certificationNumber')}
-            {...register('certificationNumber', { required: true })}
+            value={watch('code')}
+            {...register('code', { required: true })}
             isError={false}
             placeholder="1234"
           />
@@ -137,13 +160,13 @@ export const JoinDiscord = () => {
               margin-top: -16px;
             `}>
             *만료 시간 5:00
-            {/* TODO 카운트다운 되어야 하나...? */}
           </Text>
         </Flex>
       </Flex>
       <Space height={24} />
-      {/* TODO 연동 완료 시 disabled 처리 */}
-      <Button onClick={() => {}}>인증하기</Button>
+      <Button disabled={!formState.isValid} onClick={handleLinkButtonClick}>
+        인증하기
+      </Button>
       <Space height={26} />
     </Wrapper>
   );
