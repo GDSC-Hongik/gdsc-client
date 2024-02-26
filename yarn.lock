@@ -5173,7 +5173,7 @@ __metadata:
     follow-redirects: "npm:^1.15.4"
     form-data: "npm:^4.0.0"
     proxy-from-env: "npm:^1.1.0"
-  checksum: 10c0/207ff754675ccdbed8cd05a089b51b622372ff8145d975b294cecb18166d49782943dc6b80233b8ef6c9fe1d6b3a3c8553a0ac1a9069a57ba4f235128b72fceb
+  checksum: 10c0/131bf8e62eee48ca4bd84e6101f211961bf6a21a33b95e5dfb3983d5a2fe50d9fffde0b57668d7ce6f65063d3dc10f2212cbcb554f75cfca99da1c73b210358d
   languageName: node
   linkType: hard
 
