@@ -86,8 +86,7 @@ export const JoinDiscord = () => {
         <Flex direction="column" align="flex-start" justify="flex-start">
           <StepInformation
             title="디스코드 사용자명을 적어주세요."
-            description="디스코드 사용자명에 대한 설명은 아래 가이드라인을 
-            참고해주세요!"
+            description="디스코드 사용자명에 대한 설명은 아래 가이드라인을 참고해주세요!"
           />
           <Space height={8} />
           <Text
@@ -118,8 +117,7 @@ export const JoinDiscord = () => {
         <Flex direction="column" align="flex-start" justify="flex-start">
           <StepInformation
             title="원하는 디스코드 커뮤니티 닉네임을 적어주세요."
-            description="커뮤니티 내에서 사용하는 별명으로, 한 번 설정 시
-            변경하기 어려우니 신중히 작성해주세요!"
+            description="커뮤니티 내에서 사용하는 별명으로, 한 번 설정 시 변경하기 어려우니 신중히 작성해주세요!"
           />
           <Space height={24} />
           <Input
@@ -145,8 +143,7 @@ export const JoinDiscord = () => {
         <Flex direction="column" align="flex-start" justify="flex-start">
           <StepInformation
             title="디스코드에서 받은 인증번호를 입력해주세요."
-            description="‘명령어’ 채널에서 /인증코드 명령어로 받은 
-            네 자리 인증번호를 입력해주세요."
+            description="‘명령어’ 채널에서 /인증코드 명령어로 받은 네 자리 인증번호를 입력해주세요."
           />
           <Space height={24} />
           <Input
