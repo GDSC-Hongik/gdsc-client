@@ -38,4 +38,6 @@ const Wrapper = styled(Flex)<{
     bevyStatus === 'PENDING'
       ? `1px solid ${theme.palette.red100}`
       : `1px solid ${theme.palette.blue100}`};
+
+  cursor: pointer;
 `;
