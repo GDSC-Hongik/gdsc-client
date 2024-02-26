@@ -13,7 +13,7 @@ import { Step4 } from '@/assets/Step4';
 import { Button } from '@/components/common/Button';
 import GlobalSize from '@/constants/globalSize';
 
-export const JoinDiscrod = () => {
+export const JoinDiscord = () => {
   const {
     register,
     watch,

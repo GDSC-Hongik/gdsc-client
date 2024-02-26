@@ -1,4 +1,4 @@
-import { JoinDiscrod } from '@/pages/JoinDiscrod';
+import { JoinDiscord } from '@/pages/JoinDiscord';
 import { Bevy } from '@/pages/Bevy';
 import { AuthenticatedLayout } from '@/components/auth/AuthenticatedLayout';
 import { Auth } from '@/pages/Auth';
@@ -32,7 +32,7 @@ const router = createBrowserRouter([
           },
           {
             path: RoutePath.Discord,
-            element: <JoinDiscrod />
+            element: <JoinDiscord />
           },
           {
             path: RoutePath.Bevy,
