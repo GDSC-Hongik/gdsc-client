@@ -32,7 +32,7 @@ export default function Header() {
         {landingStatus === 'TO_DASHBOARD' && (
           <JoinButton onClick={handleClick}>내 정보</JoinButton>
         )}
-        {pathname === '/' && (
+        {pathname === '/' && landingStatus !== 'TO_DASHBOARD' && (
           <JoinButton onClick={handleClick}>로그인/가입하기</JoinButton>
         )}
       </HeaderContainter>
