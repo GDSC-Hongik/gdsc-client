@@ -22,6 +22,7 @@ export default function Header() {
     if (AuthRoutePaths.includes(pathname)) {
       return false;
     }
+
     return !checkAuthentication();
   })();
 
