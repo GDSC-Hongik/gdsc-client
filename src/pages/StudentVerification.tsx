@@ -19,9 +19,9 @@ export const StudentVerification = () => {
           <Text typo={'heading3'} style={{ marginBottom: '12px' }}>
             재학생 인증하기
           </Text>
-          <Text>정보 입력 전, 재학생 인증 과정이 필요해요.</Text>
-          <Text>본인의 학교 이메일을 통해 재학생 인증을</Text>
-          <Text>마무리해주세요!</Text>
+          <Text>가입 신청서를 작성하려면 재학생 인증이 필요해요.</Text>
+          <Text>본인의 홍익대학교 지메일(g.hongik.ac.kr)로 </Text>
+          <Text>재학생 인증을 수행해주세요.</Text>
         </TextContainer>
         <form onSubmit={onSubmit}>
           <Controller
