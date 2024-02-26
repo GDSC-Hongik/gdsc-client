@@ -1,6 +1,5 @@
 import { JoinDiscord } from '@/pages/JoinDiscord';
 import { Bevy } from '@/pages/Bevy';
-import { MypageAccessGuard } from '@/components/auth/guard/MypageAccessGuard';
 import { Auth } from '@/pages/Auth';
 import { MyPage } from '@/pages/MyPage';
 import { StudentVerification } from '@/pages/StudentVerification';
@@ -9,10 +8,13 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import App from '@/App';
 import { AuthServerRedirectNavigate } from '@/pages/AuthServerRedirectNavigate';
-import StudentVerificationAccessGuard from '@/components/auth/guard/StudentVerificationAccessGuard';
-import SIgnupAccessGuard from '@/components/auth/guard/SIgnupAccessGuard';
+import {
+  MypageAccessGuard,
+  AuthAccessGuard,
+  SignupAccessGuard,
+  StudentVerificationAccessGuard
+} from '@/components/auth/guard';
 import { SignUp } from '@/pages/SignUp';
-import AuthAccessGuard from '@/components/auth/guard/AuthAccessGuard';
 
 export const Routers = () => {
   return <RouterProvider router={router} />;
@@ -59,7 +61,7 @@ const router = createBrowserRouter([
       },
       {
         path: RoutePath.AuthenticationProcess3_Signup,
-        element: <SIgnupAccessGuard />,
+        element: <SignupAccessGuard />,
         children: [{ index: true, element: <SignUp /> }]
       },
       // Todo: 404 Not found page

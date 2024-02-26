@@ -3,7 +3,7 @@ import useLandingStatus from '@/hooks/zustand/useLandingStatus';
 import RoutePath from '@/routes/routePath';
 import { Navigate, Outlet } from 'react-router-dom';
 
-export const MypageAccessGuard = () => {
+export default function MypageAccessGuard() {
   const { landingStatus } = useLandingStatus();
 
   if (landingStatus !== LandingStatus.MyPage) {
@@ -11,4 +11,4 @@ export const MypageAccessGuard = () => {
   }
 
   return <Outlet />;
-};
+}
