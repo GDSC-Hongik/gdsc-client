@@ -1,13 +1,12 @@
 import { HeaderLogo } from '@/assets/HeaderLogo';
 import { Logo } from '@/assets/LogoIcon';
-import { Flex, Text } from '@/components/common/Wrapper';
+import { Flex } from '@/components/common/Wrapper';
 import { JoinButton } from '@/components/layout/JoinButton';
 import GlobalSize from '@/constants/globalSize';
 import useLandingStatus from '@/hooks/zustand/useLandingStatus';
 import RoutePath from '@/routes/routePath';
 import { media, theme } from '@/styles';
 import { getAuthRedirectPath } from '@/utils/auth';
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 
