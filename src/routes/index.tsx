@@ -1,20 +1,23 @@
+import App from '@/App';
 import { JoinDiscord } from '@/pages/JoinDiscord';
 import { Bevy } from '@/pages/Bevy';
 import { Auth } from '@/pages/Auth';
 import { MyPage } from '@/pages/MyPage';
+import { SignUp } from '@/pages/SignUp';
 import { StudentVerification } from '@/pages/StudentVerification';
+
+import { AuthServerRedirectNavigate } from '@/pages/redirect/AuthServerRedirectNavigate';
+import { StudentVerificationServerRedirectNavigate } from '@/pages/redirect/StudentVerificationServerRedirectNavigate';
+
 import RoutePath from '@/routes/routePath';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
-import App from '@/App';
-import { AuthServerRedirectNavigate } from '@/pages/AuthServerRedirectNavigate';
 import {
   MypageAccessGuard,
   AuthAccessGuard,
   SignupAccessGuard,
   StudentVerificationAccessGuard
 } from '@/components/auth/guard';
-import { SignUp } from '@/pages/SignUp';
 
 export const Routers = () => {
   return <RouterProvider router={router} />;
@@ -48,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: RoutePath.AuthServerRedirect,
         element: <AuthServerRedirectNavigate />
+      },
+      {
+        path: RoutePath.StudentVerificationServerRedirect,
+        element: <StudentVerificationServerRedirectNavigate />
       },
       {
         path: RoutePath.AuthenticationProcess1_GithubSignin,

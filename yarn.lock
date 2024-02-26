@@ -7323,6 +7323,7 @@ __metadata:
     react-dom: "npm:^18.2.0"
     react-hook-form: "npm:^7.50.1"
     react-router-dom: "npm:^6.22.1"
+    react-spinners: "npm:^0.13.8"
     react-toastify: "npm:^10.0.4"
     storybook: "npm:^7.6.14"
     typescript: "npm:^5.2.2"
@@ -10101,6 +10102,16 @@ __metadata:
   peerDependencies:
     react: ">=16.8"
   checksum: 10c0/bb33c3a6457e73fa9977133be0c27b60accfc6452cc5d7b62c729cdd2d091a1345a9567cf852c651315548f1f16adac258eeab8ad193b46e4ce926c911dc857c
+  languageName: node
+  linkType: hard
+
+"react-spinners@npm:^0.13.8":
+  version: 0.13.8
+  resolution: "react-spinners@npm:0.13.8"
+  peerDependencies:
+    react: ^16.0.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0
+  checksum: 10c0/59a030ece288f045a443e0b720c94636fc00667bcb8cd5a36ed8342cc2bc52a98106a676875551b3389ae5943bd7c4d4aa2ede0fb914bbde4322211f0f0120a8
   languageName: node
   linkType: hard
 

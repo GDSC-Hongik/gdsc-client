@@ -1,4 +1,4 @@
-import { useVerifyStudent } from '@/hooks/mutation';
+import { useSendStudentEmail } from '@/hooks/mutation';
 import { useForm, FieldValues } from 'react-hook-form';
 
 export default function useStudentVerification() {
@@ -7,10 +7,10 @@ export default function useStudentVerification() {
     mode: 'onChange'
   });
 
-  const { verifyStudent, isPending } = useVerifyStudent();
+  const { sendStudentEmail, isPending } = useSendStudentEmail();
 
   const onSubmit = async ({ univEmail }: FieldValues) => {
-    verifyStudent(univEmail);
+    sendStudentEmail(univEmail);
   };
 
   return {

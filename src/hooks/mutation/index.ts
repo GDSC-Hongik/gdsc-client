@@ -1,2 +1,2 @@
 export { default as useCreateGuestUser } from './useCreateGuestUser';
-export { default as useVerifyStudent } from './useVerifyStudent';
+export { default as useSendStudentEmail } from './useSendStudentEmail';
