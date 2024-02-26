@@ -1,21 +1,42 @@
+import LandingStatus from '@/constants/landingStatus';
 import { useSendStudentEmail } from '@/hooks/mutation';
+import { useVerifyStudent } from '@/hooks/query';
+import useLandingStatus from '@/hooks/zustand/useLandingStatus';
+import RoutePath from '@/routes/routePath';
 import { useForm, FieldValues } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 export default function useStudentVerification() {
   const { control, handleSubmit } = useForm({
     defaultValues: { univEmail: '' },
     mode: 'onChange'
   });
-
-  const { sendStudentEmail, isPending } = useSendStudentEmail();
+  const navigation = useNavigate();
+  const { updateLandingStatue } = useLandingStatus();
+  const { sendStudentEmail, ...rest } = useSendStudentEmail();
+  const {
+    data: { univStatus },
+    isLoading,
+    isRefetching: isRefetchingVerifyStudent
+  } = useVerifyStudent();
 
   const onSubmit = async ({ univEmail }: FieldValues) => {
     sendStudentEmail(univEmail);
   };
 
+  const onVerifyStudent = () => {
+    if (univStatus === 'VERIFIED') {
+      updateLandingStatue(LandingStatus.Signup);
+      navigation(RoutePath.AuthenticationProcess3_Signup);
+    }
+  };
+
   return {
     onSubmit: handleSubmit(onSubmit),
-    isPending,
-    control
+    univStudentStatus: univStatus,
+    onVerifyStudent,
+    isLoadingVerifyStudent: isRefetchingVerifyStudent || isLoading,
+    control,
+    ...rest
   };
 }

@@ -18,6 +18,7 @@ import {
   SignupAccessGuard,
   StudentVerificationAccessGuard
 } from '@/components/auth/guard';
+import { Text } from '@/components/common/Wrapper';
 
 export const Routers = () => {
   return <RouterProvider router={router} />;
@@ -30,24 +31,6 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { index: true, element: <App /> },
-      {
-        path: RoutePath.Index,
-        element: <MypageAccessGuard />,
-        children: [
-          {
-            path: RoutePath.MyPage,
-            element: <MyPage />
-          },
-          {
-            path: RoutePath.Discord,
-            element: <JoinDiscord />
-          },
-          {
-            path: RoutePath.Bevy,
-            element: <Bevy />
-          }
-        ]
-      },
       {
         path: RoutePath.AuthServerRedirect,
         element: <AuthServerRedirectNavigate />
@@ -71,8 +54,26 @@ const router = createBrowserRouter([
         element: <SignupAccessGuard />,
         children: [{ index: true, element: <SignUp /> }]
       },
+      {
+        path: RoutePath.Index,
+        element: <MypageAccessGuard />,
+        children: [
+          {
+            path: RoutePath.MyPage,
+            element: <MyPage />
+          },
+          {
+            path: RoutePath.Discord,
+            element: <JoinDiscord />
+          },
+          {
+            path: RoutePath.Bevy,
+            element: <Bevy />
+          }
+        ]
+      },
       // Todo: 404 Not found page
-      { path: '*', element: <>not found page</> }
+      { path: '*', element: <Text>not found page</Text> }
     ]
   }
 ]);
