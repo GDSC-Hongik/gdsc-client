@@ -9,7 +9,6 @@ import styled from '@emotion/styled';
 export const Bevy = () => {
   return (
     <Wrapper direction="column" justify="flex-start">
-      <Space height={67} />
       <Space height={40} />
       <Text typo="heading3" color="black">
         GDSC Bevy 가입하기

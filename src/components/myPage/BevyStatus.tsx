@@ -2,12 +2,22 @@ import { RightArrow } from '@/assets/RightArrow';
 import { Flex, Text } from '@/components/common/Wrapper';
 import { theme } from '@/styles';
 import styled from '@emotion/styled';
+import { MouseEventHandler } from 'react';
 
 export type BevyStatusType = 'PENDING' | 'VERIFIED';
 
-export const BevyStatus = ({ bevyStatus }: { bevyStatus: BevyStatusType }) => {
+export const BevyStatus = ({
+  bevyStatus,
+  onClick
+}: {
+  bevyStatus: BevyStatusType;
+  onClick: MouseEventHandler<HTMLDivElement>;
+}) => {
   return (
-    <Wrapper bevyStatus={bevyStatus} gap={12}>
+    <Wrapper
+      bevyStatus={bevyStatus}
+      gap={12}
+      onClick={bevyStatus === 'PENDING' ? onClick : undefined}>
       <Flex direction="column" align="flex-start" gap={12}>
         <Text typo="label1" color="black">
           {bevyStatus === 'PENDING'
@@ -39,5 +49,6 @@ const Wrapper = styled(Flex)<{
       ? `1px solid ${theme.palette.red100}`
       : `1px solid ${theme.palette.blue100}`};
 
-  cursor: pointer;
+  cursor: ${({ bevyStatus }) =>
+    bevyStatus === 'PENDING' ? 'pointer' : 'default'};
 `;

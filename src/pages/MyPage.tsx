@@ -10,10 +10,12 @@ import { Privacy } from '@/components/myPage/Privacy';
 import { useQuery } from '@tanstack/react-query';
 import memberApi from '@/apis/auth/member/memberApi';
 import GlobalSize from '@/constants/globalSize';
+import { useNavigate } from 'react-router-dom';
 
 // TODO
 // 2. 각 버튼 onClick 이벤트 핸들러 등록
 export const MyPage = () => {
+  const navigate = useNavigate();
   const { data } = useQuery({
     queryKey: ['member'],
     queryFn: memberApi.GET_MEMBERS_ME
@@ -53,9 +55,15 @@ export const MyPage = () => {
           depositorName="김홍익"
         />
         <Space height={12} />
-        <DiscordStatus discordStatus={data?.discordStatus!} />
+        <DiscordStatus
+          discordStatus={data?.discordStatus!}
+          onClick={() => navigate('/discord')}
+        />
         <Space height={12} />
-        <BevyStatus bevyStatus={data?.bevyStatus!} />
+        <BevyStatus
+          bevyStatus={data?.bevyStatus!}
+          onClick={() => navigate('/bevy')}
+        />
         <Space height={48} />
         <Text typo="heading4" color="black">
           가입 정보
