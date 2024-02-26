@@ -39,10 +39,12 @@ export const StudentVerification = () => {
             )}
           />
           <Button width={'342px'} disabled={isPending}>
-            재학생 인증하기
+            인증 메일 발송하기
           </Button>
         </form>
-        <StudentGuideLink to={RoutePath.StudentEmailLinkGuideLink}>
+        <StudentGuideLink
+          to={RoutePath.StudentEmailLinkGuideLink}
+          target="_blank">
           학교 이메일이 무엇인가요?
         </StudentGuideLink>
       </Box>
