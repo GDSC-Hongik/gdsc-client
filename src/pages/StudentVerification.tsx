@@ -69,7 +69,7 @@ export const StudentVerification = () => {
             </Button>
           </ButtonContainer>
         </form>
-        {univStudentStatus === 'PENDING' && (
+        {isSuccess && univStudentStatus === 'PENDING' && (
           <Text color="red100">
             * 인증이 완료되지 않았어요! <br />
             {'    '}메일함을 확인해주세요.
