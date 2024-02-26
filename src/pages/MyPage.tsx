@@ -9,6 +9,7 @@ import { BevyStatus } from '@/components/myPage/BevyStatus';
 import { Privacy } from '@/components/myPage/Privacy';
 import { useQuery } from '@tanstack/react-query';
 import memberApi from '@/apis/auth/member/memberApi';
+import GlobalSize from '@/constants/globalSize';
 
 // TODO
 // 2. 각 버튼 onClick 이벤트 핸들러 등록
@@ -80,7 +81,7 @@ export const MyPage = () => {
 
 const Wrapper = styled(Flex)`
   min-height: 100vh;
-  width: 390px;
+  width: ${GlobalSize.width};
   margin: 0px -16px;
   padding: 0px 16px;
 

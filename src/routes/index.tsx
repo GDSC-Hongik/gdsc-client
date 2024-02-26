@@ -1,4 +1,4 @@
-import { JoinDiscrod } from '@/pages/JoinDiscrod';
+import { JoinDiscord } from '@/pages/JoinDiscord';
 import { Bevy } from '@/pages/Bevy';
 import { AuthenticatedLayout } from '@/components/auth/AuthenticatedLayout';
 import { Auth } from '@/pages/Auth';
@@ -9,6 +9,7 @@ import RoutePath from '@/routes/routePath';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import App from '@/App';
+import { AuthServerRedirectNavigate } from '@/pages/AuthServerRedirectNavigate';
 
 export const Routers = () => {
   return <RouterProvider router={router} />;
@@ -31,13 +32,17 @@ const router = createBrowserRouter([
           },
           {
             path: RoutePath.Discord,
-            element: <JoinDiscrod />
+            element: <JoinDiscord />
           },
           {
             path: RoutePath.Bevy,
             element: <Bevy />
           }
         ]
+      },
+      {
+        path: RoutePath.AuthServerRedirect,
+        element: <AuthServerRedirectNavigate />
       },
       {
         path: RoutePath.AuthenticationProcess1_GithubSignin,

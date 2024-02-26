@@ -10,6 +10,8 @@ const RoutePath = {
   AuthenticationProcess2_StudentVerification: '/student-verification',
   AuthenticationProcess3_Signup: '/signup',
 
+  AuthServerRedirect: '/social-login/redirect',
+
   GitHubGuideLink:
     'https://childlike-kumquat-540.notion.site/GitHub-0b7f5fa12fd84bd39c0a1ba732af04da?pvs=4',
   StudentEmailLinkGuideLink:

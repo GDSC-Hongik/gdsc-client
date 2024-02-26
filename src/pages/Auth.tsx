@@ -1,28 +1,16 @@
-import githubLoginApi from '@/apis/auth/githubLoginApi';
 import { GitHubButton } from '@/components/GitHubButton';
 import { Text } from '@/components/common/Wrapper';
+import { BASE_URL } from '@/constants/environment';
 import RoutePath from '@/routes/routePath';
 import { theme } from '@/styles';
-import { getLandingRoutePath } from '@/utils/auth';
 import styled from '@emotion/styled';
-import { AxiosError } from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 /** 깃허브 로그인 및 가입하기 */
 export const Auth = () => {
-  const navigation = useNavigate();
-
   const handleClick = async () => {
-    try {
-      const result = await githubLoginApi();
-
-      const landingStatus = result.headers['Landing-Status'];
-      const landingRoutePath = getLandingRoutePath(landingStatus);
-      navigation(landingRoutePath, { replace: true });
-    } catch (error) {
-      toast.error((error as AxiosError).message);
-    }
+    // GitHub 로그인 페이지로 직접 리다이렉트
+    window.location.href = `${BASE_URL}/oauth2/authorization/github`;
   };
 
   return (

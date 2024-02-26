@@ -5,6 +5,7 @@ import { InformationBox } from '@/components/onboarding/InformationBox';
 import { media, theme } from '@/styles';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
+import GlobalSize from '@/constants/globalSize';
 
 const IMG_SRC = [
   '/onboarding/1.png',
@@ -170,7 +171,7 @@ const Wrapper = styled(Flex)`
   text-align: center;
   box-sizing: border-box;
 
-  width: 390px;
+  width: ${GlobalSize.width};
   background-color: #f8f8f8;
   padding: 0px 16px;
 
@@ -180,8 +181,8 @@ const Wrapper = styled(Flex)`
 `;
 
 const BlueSection = styled(Flex)`
-  height: calc(100vh - 54px);
-  width: 390px;
+  height: calc(100vh - ${GlobalSize.header});
+  width: ${GlobalSize.width};
   background-color: ${theme.palette.blue100};
 
   box-sizing: border-box;

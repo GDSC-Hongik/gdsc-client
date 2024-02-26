@@ -11,8 +11,9 @@ import { useForm } from 'react-hook-form';
 import { Step3 } from '@/assets/Step3';
 import { Step4 } from '@/assets/Step4';
 import { Button } from '@/components/common/Button';
+import GlobalSize from '@/constants/globalSize';
 
-export const JoinDiscrod = () => {
+export const JoinDiscord = () => {
   const {
     register,
     watch,
@@ -150,7 +151,7 @@ export const JoinDiscrod = () => {
 
 const Wrapper = styled(Flex)`
   min-height: 100vh;
-  width: 390px;
+  width: ${GlobalSize.width};
   margin: 0px -16px;
   padding: 0px 16px;
 

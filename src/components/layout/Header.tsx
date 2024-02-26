@@ -1,6 +1,7 @@
 import { Logo } from '@/assets/LogoIcon';
 import { Flex, Text } from '@/components/common/Wrapper';
 import { JoinButton } from '@/components/layout/JoinButton';
+import GlobalSize from '@/constants/globalSize';
 import RoutePath from '@/routes/routePath';
 import { media, theme } from '@/styles';
 import { checkAuthentication } from '@/utils/auth';
@@ -30,7 +31,7 @@ export default function Header() {
   return (
     <Container>
       <HeaderContainter>
-        <LogoContainer>
+        <LogoContainer onClick={() => navigation(RoutePath.Home)}>
           <Logo />
           <Text style={{ fontSize: '20px', fontWeight: 700 }}>GDSC</Text>
         </LogoContainer>
@@ -44,22 +45,24 @@ export default function Header() {
 
 const Container = styled(Flex)`
   width: 100%;
-
+  height: ${GlobalSize.header};
   gap: 16px;
   background-color: ${theme.palette.white};
   border-bottom: 1px solid ${theme.palette.gray2};
 `;
 
 const HeaderContainter = styled(Flex)`
-  width: 390px;
+  width: ${GlobalSize.width};
   padding: 0 16px;
 
   ${media.mobile} {
     width: 100vw;
   }
 `;
-const LogoContainer = styled(Flex)`
+const LogoContainer = styled.button`
+  display: flex;
+  width: 100%;
+  align-items: center;
   justify-content: flex-start;
-  height: 54px;
   gap: 6px;
 `;
