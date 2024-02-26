@@ -7,7 +7,7 @@ import useLandingStatus from '@/hooks/zustand/useLandingStatus';
 import { getAuthRedirectPath } from '@/utils/auth';
 import { Button } from '@/components/common/Button';
 
-export const StudentVerificationServerRedirectNavigate = () => {
+export const StudentVerificationServerRedirect = () => {
   const [searchParams] = useSearchParams();
   const navigation = useNavigate();
   const token = searchParams.get('token');
