@@ -2,32 +2,22 @@ import { Logo } from '@/assets/LogoIcon';
 import { Flex, Text } from '@/components/common/Wrapper';
 import { JoinButton } from '@/components/layout/JoinButton';
 import GlobalSize from '@/constants/globalSize';
+import useLandingStatus from '@/hooks/auth/useLandingStatus';
 import RoutePath from '@/routes/routePath';
 import { media, theme } from '@/styles';
-import { checkAuthentication } from '@/utils/auth';
+import { getAuthRedirectPath } from '@/utils/auth';
 import styled from '@emotion/styled';
-import { useLocation, useNavigate } from 'react-router-dom';
-
-const AuthRoutePaths: string[] = [
-  RoutePath.AuthenticationProcess1_GithubSignin,
-  RoutePath.AuthenticationProcess2_StudentVerification,
-  RoutePath.AuthenticationProcess3_Signup
-];
+import { useNavigate } from 'react-router-dom';
 
 export default function Header() {
   const navigation = useNavigate();
+  const { landingStatus } = useLandingStatus();
 
-  const { pathname } = useLocation();
-  const displayJoinButton = (() => {
-    if (AuthRoutePaths.includes(pathname)) {
-      return false;
-    }
+  const displayJoinButton = landingStatus !== 'TO_DASHBOARD';
 
-    return !checkAuthentication();
-  })();
-
-  const handleClick = () =>
-    navigation(RoutePath.AuthenticationProcess1_GithubSignin);
+  const handleClick = () => {
+    navigation(getAuthRedirectPath(landingStatus));
+  };
 
   return (
     <Container>
