@@ -36,7 +36,7 @@ export default function Header() {
             </Text>
             <Text
               css={css`
-                font-family: 'Sofia Pro';
+                font-family: 'Sofia Pro', 'SUIT';
                 font-size: 14px;
                 font-weight: 500;
                 line-height: 14px;

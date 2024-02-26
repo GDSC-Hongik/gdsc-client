@@ -11,7 +11,7 @@ export const typo = {
     letter-spacing: -2%;
 
     :lang(en) {
-      font-family: 'Sofia Pro';
+      font-family: 'Sofia Pro', 'SUIT';
       font-weight: 500;
     }
   `,
@@ -23,7 +23,7 @@ export const typo = {
     letter-spacing: -0.64px;
 
     :lang(en) {
-      font-family: 'Sofia Pro';
+      font-family: 'Sofia Pro', 'SUIT';
       font-weight: 500;
     }
   `,
@@ -35,7 +35,7 @@ export const typo = {
     letter-spacing: -2%;
 
     :lang(en) {
-      font-family: 'Sofia Pro';
+      font-family: 'Sofia Pro', 'SUIT';
       font-weight: 500;
     }
   `,
@@ -47,7 +47,7 @@ export const typo = {
     letter-spacing: -2%;
 
     :lang(en) {
-      font-family: 'Sofia Pro';
+      font-family: 'Sofia Pro', 'SUIT';
       font-weight: 500;
     }
   `,
@@ -59,7 +59,7 @@ export const typo = {
     letter-spacing: -2%;
 
     :lang(en) {
-      font-family: 'Sofia Pro';
+      font-family: 'Sofia Pro', 'SUIT';
       font-weight: 500;
     }
   `,
