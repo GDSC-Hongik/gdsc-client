@@ -15,8 +15,7 @@ const RoutePath = {
   AuthServerRedirect: '/social-login/redirect',
   StudentVerificationServerRedirect: '/onboarding/verify-email',
 
-  GitHubGuideLink:
-    'https://childlike-kumquat-540.notion.site/GitHub-0b7f5fa12fd84bd39c0a1ba732af04da?pvs=4',
+  GitHubGuideLink: 'https://www.gdschongik.com/guide/github',
   StudentEmailLinkGuideLink:
     'https://childlike-kumquat-540.notion.site/af30789ee9f940ab95cb19ffe18f2e44?pvs=74',
 

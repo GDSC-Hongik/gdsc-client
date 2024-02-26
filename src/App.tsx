@@ -45,6 +45,8 @@ function App() {
           css={css`
             position: absolute;
             bottom: 30px;
+            left: 50%;
+            transform: translate(-50%, 0%);
           `}>
           <OnboardingArrow />
         </Flex>
@@ -148,7 +150,7 @@ function App() {
         <InformationBox
           title="지원 시 유의사항"
           description="GDSC 커뮤니티 가이드라인 및 오픈 커뮤니티 가이드라인을 준수해야 합니다."
-          description2=" 또한, 학기 당 2만원의 회비가 있습니다."
+          description2="또한, 학기 당 2만원의 회비가 있습니다."
         />
       </Flex>
       <Space height={48} />
@@ -161,7 +163,7 @@ function App() {
           onClick={() =>
             checkAuthentication() ? navigate('/mypage') : navigate('/auth')
           }>
-          지원하기
+          가입하기
         </ApplyButton>
         <Space height={40} />
       </BlueSection>

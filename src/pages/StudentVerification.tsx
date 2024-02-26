@@ -20,7 +20,7 @@ export const StudentVerification = () => {
             재학생 인증하기
           </Text>
           <Text>가입 신청서를 작성하려면 재학생 인증이 필요해요.</Text>
-          <Text>본인의 홍익대학교 지메일(g.hongik.ac.kr)로 </Text>
+          <Text>본인의 홍익대학교 Gmail(g.hongik.ac.kr)로 </Text>
           <Text>재학생 인증을 수행해주세요.</Text>
         </TextContainer>
         <form onSubmit={onSubmit}>

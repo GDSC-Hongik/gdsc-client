@@ -8,10 +8,11 @@ import RoutePath from '@/routes/routePath';
 import { media, theme } from '@/styles';
 import { getAuthRedirectPath } from '@/utils/auth';
 import styled from '@emotion/styled';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Header() {
   const navigation = useNavigate();
+  const { pathname } = useLocation();
   const { landingStatus } = useLandingStatus();
 
   const handleClick = () => {
@@ -27,9 +28,13 @@ export default function Header() {
             <HeaderLogo />
           </Flex>
         </LogoContainer>
-        <JoinButton onClick={handleClick}>
-          {landingStatus === 'TO_DASHBOARD' ? '내 정보' : '로그인/가입하기'}
-        </JoinButton>
+
+        {landingStatus === 'TO_DASHBOARD' && (
+          <JoinButton onClick={handleClick}>내 정보</JoinButton>
+        )}
+        {pathname === '/' && (
+          <JoinButton onClick={handleClick}>로그인/가입하기</JoinButton>
+        )}
       </HeaderContainter>
     </Container>
   );
