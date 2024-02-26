@@ -50,16 +50,19 @@ function App() {
           GDSC?
         </Text>
         <Space height={8} />
-        <Text typo="body1" color="black">
-          GDSC는 Google Developers에서
-          <br />
-          제공하는 프로그램을 통해 운영되는 <br />
-          대학교 기반의 개발자 커뮤니티 그룹입니다. <br />
-          개발자로서 성장하는 데 관심이 있는 학부생이라면 <br />
-          누구나 참여할 수 있습니다. <br />
-          GDSC의 목표는 전 세계의 대학생 개발자들이 <br />
-          구글 관련 기술 혹은 프로그래밍 실력을 높이고 <br />
-          지역 사회와 협력하여 실제 문제를 해결하도록 <br />
+        <Text
+          typo="body1"
+          color="black"
+          css={css`
+            text-align: center;
+            word-break: keep-all;
+          `}>
+          GDSC는 Google Developers에서 제공하는 프로그램을 통해 운영되는 대학교
+          기반의 개발자 커뮤니티 그룹입니다. <br />
+          개발자로서 성장하는 데 관심이 있는 학부생이라면 누구나 참여할 수
+          있습니다. <br />
+          GDSC의 목표는 전 세계의 대학생 개발자들이 구글 관련 기술 혹은
+          프로그래밍 실력을 높이고 지역 사회와 협력하여 실제 문제를 해결하도록
           성장하는 것입니다.
         </Text>
       </Introduction>
@@ -77,26 +80,34 @@ function App() {
       <Space height={16} />
       <Img src={IMG_SRC[3]} height={200} />
       <Space height={24} />
-      <Text typo="body1" color="black">
-        GDSC Hongik Open Community는 학생
-        <br />
-        개발자를 위한 홍익대학교의 개발 커뮤니티입니다.
-        <br /> 초심자들이 개발에 관심을 가지고 입문할 수 있도록
-        <br />
-        기초 학술 프로그램을 운영하며, 다양한 이벤트와 <br />
-        컨텐츠를 통해 학회원들과 소통할 수 있는 네트워킹 <br />
-        플랫폼을 제공하고 있습니다.
+      <Text
+        typo="body1"
+        color="black"
+        css={css`
+          text-align: center;
+          word-break: keep-all;
+        `}>
+        GDSC Hongik Open Community는 학생 개발자를 위한 홍익대학교의 개발
+        커뮤니티입니다.
+        <br /> 초심자들이 개발에 관심을 가지고 입문할 수 있도록 기초 학술
+        프로그램을 운영하며, 다양한 이벤트와 컨텐츠를 통해 학회원들과 소통할 수
+        있는 네트워킹 플랫폼을 제공하고 있습니다.
       </Text>
       <Space height={80} />
       <Text typo="heading3" color="black">
         지금 바로 함께해요
       </Text>
       <Space height={24} />
-      <Text typo="body1" color="black">
-        GDSC의 목표는 전 세계의 대학생 개발자들이 <br />
-        구글 관련 기술 혹은 프로그래밍 실력을 높이고 <br />
-        지역 사회와 협력하여 실제 문제를 해결하도록 <br />
-        성장하는 것입니다.
+      <Text
+        typo="body1"
+        color="black"
+        css={css`
+          text-align: center;
+          word-break: keep-all;
+        `}>
+        GDSC의 목표는 전 세계의 대학생 개발자들이 구글 관련 기술 혹은 프로그래밍
+        실력을 높이고 지역 사회와 협력하여 실제 문제를 해결하도록 성장하는
+        것입니다.
       </Text>
       <Space height={24} />
       <Flex direction="column" gap={16}>
@@ -105,16 +116,17 @@ function App() {
         <Img src={IMG_SRC[6]} width={'auto'} height={184} />
       </Flex>
       <Space height={24} />
-      <Text typo="body1" color="black">
-        GDSC의 이러한 비전에 맞추어, GDSC Hongik은
-        <br />
-        초심자들이 개발에 관심을 가지고 입문할 수 있도록
-        <br />
-        기초 학술 프로그램을 운영하며, 다양한 이벤트와
-        <br />
-        콘텐츠를 통해 학회원들과 소통할 수 있는 네트워킹
-        <br />
-        플랫폼을 제공하고 있습니다.
+      <Text
+        typo="body1"
+        color="black"
+        css={css`
+          text-align: center;
+          word-break: keep-all;
+        `}>
+        GDSC의 이러한 비전에 맞추어, GDSC Hongik은 초심자들이 개발에 관심을
+        가지고 입문할 수 있도록 기초 학술 프로그램을 운영하며, 다양한 이벤트와
+        콘텐츠를 통해 학회원들과 소통할 수 있는 네트워킹 플랫폼을 제공하고
+        있습니다.
       </Text>
       <Space height={48} />
       <Flex direction="column" gap={12}>
@@ -130,7 +142,8 @@ function App() {
         />
         <InformationBox
           title="지원 시 유의사항"
-          description="GDSC 커뮤니티 가이드라인 및 오픈 커뮤니티 가이드라인을 준수해야 합니다. 또한, 학기 당 2만원의 회비가 있습니다."
+          description="GDSC 커뮤니티 가이드라인 및 오픈 커뮤니티 가이드라인을 준수해야 합니다."
+          description2=" 또한, 학기 당 2만원의 회비가 있습니다."
         />
       </Flex>
       <Space height={48} />

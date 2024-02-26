@@ -1,3 +1,4 @@
+import bevyApi from '@/apis/bevy/bevyApi';
 import { Circle } from '@/assets/Circle';
 import { Button } from '@/components/common/Button';
 import { Flex, Space, Text } from '@/components/common/Wrapper';
@@ -6,9 +7,23 @@ import GlobalSize from '@/constants/globalSize';
 import { media, theme } from '@/styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 export const Bevy = () => {
   const navigate = useNavigate();
+
+  const postBevyLinkMutation = useMutation({
+    mutationFn: bevyApi.POST_LINK_BEVY,
+    onSuccess: () => {
+      toast.done('bevy 연동이 완료되었습니다.');
+      navigate('/mypage');
+    }
+  });
+
+  const handleLinkButtonClick = () => {
+    postBevyLinkMutation.mutate();
+  };
 
   return (
     <Wrapper direction="column" justify="flex-start">
@@ -62,7 +77,7 @@ export const Bevy = () => {
         </Text>
       </InformationWrapper>
       <Space height={48} />
-      <Button onClick={() => navigate('/mypage')}>가입 완료하기</Button>
+      <Button onClick={handleLinkButtonClick}>가입 완료하기</Button>
     </Wrapper>
   );
 };
