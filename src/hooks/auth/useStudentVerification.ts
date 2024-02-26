@@ -19,24 +19,18 @@ export default function useStudentVerification() {
   const { sendStudentEmail, ...rest } = useSendStudentEmail();
 
   const onSubmit = async ({ univEmail }: FieldValues) => {
-    console.log('이메일 발송 완료', univEmail);
     updateUnivEmail(univEmail);
     sendStudentEmail(univEmail);
   };
 
   const onVerifyStudent = async () => {
-    console.group('재학생 인증 단계');
     const result = await verifyStudentApi();
 
     if (result.univStatus === 'VERIFIED') {
-      console.log('재학생 인증 완료');
-
       updateLandingStatue(LandingStatus.Signup);
       navigation(RoutePath.AuthenticationProcess3_Signup);
     } else {
-      console.log('재학생 인증 보류');
     }
-    console.groupEnd();
   };
 
   return {
