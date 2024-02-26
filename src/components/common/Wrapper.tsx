@@ -44,7 +44,7 @@ export const Text = styled.p<{
   text-align: start;
 
   white-space: pre-wrap;
-  word-break: break-all;
+  word-break: keep-all;
 
   margin: 0;
   padding: 0;

@@ -1,4 +1,5 @@
 import { Flex, Text } from '@/components/common/Wrapper';
+import { css } from '@emotion/react';
 
 interface StepInformationProps {
   title: string;
@@ -21,7 +22,12 @@ export const StepInformation = ({
 
   return (
     <Flex direction="column" align="flex-start" justify="flex-start" gap={8}>
-      <Text typo="heading4" color="black">
+      <Text
+        typo="heading4"
+        color="black"
+        css={css`
+          word-break: keep-all;
+        `}>
         {title}
       </Text>
       <Text typo="body1" color="gray4">
