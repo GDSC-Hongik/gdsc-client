@@ -23,20 +23,24 @@ export default function Header() {
       <HeaderContainter>
         <LogoContainer onClick={() => navigation(RoutePath.Home)}>
           <Logo />
-          <Flex direction="column" align="flex-start">
+          <Flex direction="column" align="flex-start" justify="center" gap={2}>
             <Text
               css={css`
-                font-size: '20px';
-                font-weight: 700;
-                line-height: 130%;
+                font-family: 'Sofia Pro';
+                font-size: 20px;
+                font-weight: 500;
+                line-height: 20px;
+                text-align: center;
               `}>
               GDSC
             </Text>
             <Text
               css={css`
-                font-size: '14px';
-                font-weight: 700;
-                line-height: 130%;
+                font-family: 'Sofia Pro';
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 14px;
+                text-align: center;
               `}
               color="blue100">
               Hongik.Univ
