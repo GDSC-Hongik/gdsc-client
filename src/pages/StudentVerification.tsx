@@ -14,12 +14,12 @@ export const StudentVerification = () => {
     isSuccess,
     onSubmit,
     control,
-    isPending,
     isLoadingVerifyStudent,
     onVerifyStudent,
     univStudentStatus
   } = useStudentVerification();
 
+  console.log(isSuccess, isLoadingVerifyStudent);
   return (
     <Container>
       <Box>
@@ -27,7 +27,7 @@ export const StudentVerification = () => {
           <Text typo={'heading3'} style={{ marginBottom: '12px' }}>
             재학생 인증하기
           </Text>
-          {isSuccess ? (
+          {isSuccess || isLoadingVerifyStudent ? (
             <>
               <Text>전송된 이메일에서 재학생 인증을 완료했다면</Text>
               <Text>인증 완료 버튼을 눌러주세요.</Text>
@@ -59,22 +59,29 @@ export const StudentVerification = () => {
             {isSuccess ? (
               <Button
                 width="146px"
-                disabled={isLoadingVerifyStudent}
+                disabled={
+                  isLoadingVerifyStudent || univStudentStatus === 'PENDING'
+                }
                 onClick={onVerifyStudent}>
                 인증 완료
               </Button>
             ) : null}
-            <Button width={isSuccess ? '146px' : '342px'} disabled={isPending}>
-              {isSuccess ? '메일 재전송' : '인증 메일 발송하기'}
+            <Button
+              width={isSuccess || isLoadingVerifyStudent ? '146px' : '342px'}
+              disabled={isLoadingVerifyStudent}>
+              {isSuccess || isLoadingVerifyStudent
+                ? '메일 재전송'
+                : '인증 메일 발송하기'}
             </Button>
           </ButtonContainer>
         </form>
-        {isSuccess && univStudentStatus === 'PENDING' && (
-          <Text color="red100">
-            * 인증이 완료되지 않았어요! <br />
-            {'    '}메일함을 확인해주세요.
-          </Text>
-        )}
+        {(isSuccess || isLoadingVerifyStudent) &&
+          univStudentStatus === 'PENDING' && (
+            <Text color="red100">
+              * 인증이 완료되지 않았어요! <br />
+              {'    '}메일함을 확인해주세요.
+            </Text>
+          )}
         <StudentGuideLink
           to={RoutePath.StudentEmailLinkGuideLink}
           target="_blank">
