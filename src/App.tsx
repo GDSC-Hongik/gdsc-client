@@ -27,13 +27,20 @@ function App() {
     <Wrapper direction="column">
       <BlueSection
         direction="column"
-        justify="space-between"
+        justify="center"
         align="flex-start"
         css={css`
           padding: 8px 0px 30px 16px;
+          position: relative;
         `}>
         <OnboardingLogo1 />
-        <Flex>
+        <Flex
+          direction="column"
+          justify="flex-end"
+          css={css`
+            position: absolute;
+            bottom: 30px;
+          `}>
           <OnboardingArrow />
         </Flex>
       </BlueSection>

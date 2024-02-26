@@ -3,6 +3,7 @@ import { Text } from '@/components/common/Wrapper';
 import { BASE_URL } from '@/constants/environment';
 import RoutePath from '@/routes/routePath';
 import { theme } from '@/styles';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
@@ -28,7 +29,14 @@ export const Auth = () => {
           GitHub 로그인/회원가입
         </GitHubButton>
         <GithubGuideLink to={RoutePath.GitHubGuideLink} target="_blank">
-          GitHub 가이드라인
+          <Text
+            typo="label1"
+            color="black"
+            css={css`
+              text-decoration: underline;
+            `}>
+            GitHub 가이드라인
+          </Text>
         </GithubGuideLink>
       </Box>
     </Container>

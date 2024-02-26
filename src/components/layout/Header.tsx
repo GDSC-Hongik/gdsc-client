@@ -6,6 +6,7 @@ import useLandingStatus from '@/hooks/zustand/useLandingStatus';
 import RoutePath from '@/routes/routePath';
 import { media, theme } from '@/styles';
 import { getAuthRedirectPath } from '@/utils/auth';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 
@@ -22,7 +23,25 @@ export default function Header() {
       <HeaderContainter>
         <LogoContainer onClick={() => navigation(RoutePath.Home)}>
           <Logo />
-          <Text style={{ fontSize: '20px', fontWeight: 700 }}>GDSC</Text>
+          <Flex direction="column" align="flex-start">
+            <Text
+              css={css`
+                font-size: '20px';
+                font-weight: 700;
+                line-height: 130%;
+              `}>
+              GDSC
+            </Text>
+            <Text
+              css={css`
+                font-size: '14px';
+                font-weight: 700;
+                line-height: 130%;
+              `}
+              color="blue100">
+              Hongik.Univ
+            </Text>
+          </Flex>
         </LogoContainer>
         <JoinButton onClick={handleClick}>
           {landingStatus === 'TO_DASHBOARD' ? '내 정보' : '로그인/가입하기'}
@@ -40,6 +59,7 @@ const Container = styled(Flex)`
   border-bottom: 1px solid ${theme.palette.gray2};
   position: fixed;
   top: 0;
+  z-index: 99;
 `;
 
 const HeaderContainter = styled(Flex)`
