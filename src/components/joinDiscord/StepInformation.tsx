@@ -20,7 +20,7 @@ export const StepInformation = ({
     }, []);
 
   return (
-    <Flex direction="column" align="flex-start" gap={8}>
+    <Flex direction="column" align="flex-start" justify="flex-start" gap={8}>
       <Text typo="heading4" color="black">
         {title}
       </Text>
