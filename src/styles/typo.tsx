@@ -10,10 +10,10 @@ export const typo = {
     line-height: 100%;
     letter-spacing: -2%;
 
-    :lang(en) {
+    /* :lang(en) {
       font-family: 'Sofia Pro';
       font-weight: 500;
-    }
+    } */
   `,
   heading2: css`
     font-family: 'SUIT', 'Apple SD Gothic Neo';
@@ -22,10 +22,10 @@ export const typo = {
     line-height: 140%;
     letter-spacing: -0.64px;
 
-    :lang(en) {
+    /* :lang(en) {
       font-family: 'Sofia Pro';
       font-weight: 500;
-    }
+    } */
   `,
   heading3: css`
     font-family: 'SUIT', 'Apple SD Gothic Neo';
@@ -34,10 +34,10 @@ export const typo = {
     line-height: 140%;
     letter-spacing: -2%;
 
-    :lang(en) {
+    /* :lang(en) {
       font-family: 'Sofia Pro';
       font-weight: 500;
-    }
+    } */
   `,
   heading4: css`
     font-family: 'SUIT', 'Apple SD Gothic Neo';
@@ -46,10 +46,10 @@ export const typo = {
     line-height: 130%;
     letter-spacing: -2%;
 
-    :lang(en) {
+    /* :lang(en) {
       font-family: 'Sofia Pro';
       font-weight: 500;
-    }
+    } */
   `,
   heading5: css`
     font-family: 'SUIT', 'Apple SD Gothic Neo';
@@ -58,10 +58,10 @@ export const typo = {
     line-height: 130%;
     letter-spacing: -2%;
 
-    :lang(en) {
+    /* :lang(en) {
       font-family: 'Sofia Pro';
       font-weight: 500;
-    }
+    } */
   `,
   body1: css`
     font-family: 'SUIT', 'Apple SD Gothic Neo';

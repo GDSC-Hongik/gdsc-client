@@ -1,3 +1,4 @@
+import { HeaderLogo } from '@/assets/HeaderLogo';
 import { Logo } from '@/assets/LogoIcon';
 import { Flex, Text } from '@/components/common/Wrapper';
 import { JoinButton } from '@/components/layout/JoinButton';
@@ -24,27 +25,7 @@ export default function Header() {
         <LogoContainer onClick={() => navigation(RoutePath.Home)}>
           <Logo />
           <Flex direction="column" align="flex-start" justify="center" gap={2}>
-            <Text
-              css={css`
-                font-family: 'Sofia Pro', 'SUIT';
-                font-size: 20px;
-                font-weight: 500;
-                line-height: 20px;
-                text-align: center;
-              `}>
-              GDSC
-            </Text>
-            <Text
-              css={css`
-                font-family: 'Sofia Pro';
-                font-size: 14px;
-                font-weight: 500;
-                line-height: 14px;
-                text-align: center;
-              `}
-              color="blue100">
-              Hongik.Univ
-            </Text>
+            <HeaderLogo />
           </Flex>
         </LogoContainer>
         <JoinButton onClick={handleClick}>

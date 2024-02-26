@@ -16,8 +16,11 @@ export const Bevy = () => {
   const postBevyLinkMutation = useMutation({
     mutationFn: bevyApi.POST_LINK_BEVY,
     onSuccess: () => {
-      toast.done('bevy 연동이 완료되었습니다.');
+      toast('bevy 연동이 완료되었습니다.');
       navigate('/mypage');
+    },
+    onError: (error: any) => {
+      toast(error);
     }
   });
 
