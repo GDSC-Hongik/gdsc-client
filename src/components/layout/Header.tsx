@@ -26,7 +26,7 @@ export default function Header() {
           <Flex direction="column" align="flex-start" justify="center" gap={2}>
             <Text
               css={css`
-                font-family: 'Sofia Pro';
+                font-family: 'Sofia Pro', 'SUIT';
                 font-size: 20px;
                 font-weight: 500;
                 line-height: 20px;
