@@ -7,19 +7,22 @@ import { PaymentStatus } from '@/components/myPage/PaymentStatus';
 import { DiscordStatus } from '@/components/myPage/DiscordStatus';
 import { BevyStatus } from '@/components/myPage/BevyStatus';
 import { Privacy } from '@/components/myPage/Privacy';
+import { useQuery } from '@tanstack/react-query';
+import memberApi from '@/apis/auth/member/memberApi';
 
 // TODO
-// 1. 헤더 넣기
-// 2. 유저 정보 하드코딩 된 부분 수정
-// 3. 각 버튼 onClick 이벤트 핸들러 등록
+// 2. 각 버튼 onClick 이벤트 핸들러 등록
 export const MyPage = () => {
+  const { data } = useQuery({
+    queryKey: ['member'],
+    queryFn: memberApi.GET_MEMBERS_ME
+  });
+
   return (
     <Wrapper direction="column" justify="flex-start">
-      {/* Header */}
-      <Space height={67} />
-      <Space height={35} />
+      <Space height={40} />
       <Text typo="heading3" color="black">
-        강나연 님
+        {data?.name} 님
       </Text>
       <Space height={12} />
       <Text
@@ -38,23 +41,20 @@ export const MyPage = () => {
           신청 상태
         </Text>
         <Space height={19} />
-        <ProgressBar currentStatus="PENDING" />
+        <ProgressBar currentStatus={data?.registrationStatus!} />
         <Space height={48} />
         <Text typo="heading4" color="black">
           가입 조건
         </Text>
         <Space height={15} />
-        <PaymentStatus paymentStatus="PENDING" depositorName="김홍익" />
+        <PaymentStatus
+          paymentStatus={data?.paymentStatus!}
+          depositorName="김홍익"
+        />
         <Space height={12} />
-        <PaymentStatus paymentStatus="VERIFIED" depositorName="김홍익" />
+        <DiscordStatus discordStatus={data?.discordStatus!} />
         <Space height={12} />
-        <DiscordStatus discordStatus="PENDING" />
-        <Space height={12} />
-        <DiscordStatus discordStatus="VERIFIED" />
-        <Space height={12} />
-        <BevyStatus bevyStatus="VERIFIED" />
-        <Space height={12} />
-        <BevyStatus bevyStatus="PENDING" />
+        <BevyStatus bevyStatus={data?.bevyStatus!} />
         <Space height={48} />
         <Text typo="heading4" color="black">
           가입 정보
@@ -67,10 +67,10 @@ export const MyPage = () => {
         </Text>
         <Space height={15} />
         <Privacy
-          studentId="C011001"
-          department="컴퓨터공학과"
-          phone="01075546670"
-          email="nay35n@gmail.com"
+          studentId={data?.studentId!}
+          department={data?.department!}
+          phone={data?.phone!}
+          email={data?.email!}
         />
       </Flex>
       <Space height={104} />
