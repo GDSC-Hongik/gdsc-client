@@ -6,9 +6,9 @@ import { Navigate, Outlet } from 'react-router-dom';
 export default function MypageAccessGuard() {
   const { landingStatus } = useLandingStatus();
 
-  // if (landingStatus !== LandingStatus.MyPage) {
-  //   return <Navigate to={RoutePath.Index} />;
-  // }
+  if (landingStatus !== LandingStatus.MyPage) {
+    return <Navigate to={RoutePath.Index} />;
+  }
 
   return <Outlet />;
 }
