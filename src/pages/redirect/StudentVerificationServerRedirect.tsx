@@ -1,5 +1,5 @@
 import { Text } from '@/components/common/Wrapper';
-import { useVerifyStudent } from '@/hooks/query';
+import { useVerifyStudentEmail } from '@/hooks/query';
 import { theme } from '@/styles';
 import styled from '@emotion/styled';
 import { useSearchParams } from 'react-router-dom';
@@ -9,7 +9,7 @@ export const StudentVerificationServerRedirect = () => {
   const [searchParams] = useSearchParams();
 
   const token = searchParams.get('token');
-  const { isSuccess, isPending } = useVerifyStudent(token);
+  const { isSuccess, isPending } = useVerifyStudentEmail(token);
 
   return (
     <Container>
