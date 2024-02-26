@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 /** 깃허브 로그인 및 가입하기 */
 export const Auth = () => {
-  const handleClick = async () => {
+  const handleClick = () => {
     // GitHub 로그인 페이지로 직접 리다이렉트
     window.location.href = `${BASE_URL}/oauth2/authorization/github`;
   };
