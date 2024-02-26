@@ -33,7 +33,7 @@ export function checkAuthentication(): boolean {
 /**
  * 쿠키 이름을 기반으로 쿠키 값을 가져옴
  * @param {string} name 가져올 쿠키의 이름
- * @returns {string|null} 쿠키 값 (존재하지 않을 경우 null 반환)
+ * @returns {string} 쿠키 값 (존재하지 않을 경우 빈 스트링('') 반환)
  */
 export function getCookie(name: string): string | null {
   const cookieString: string = document.cookie;
@@ -46,5 +46,5 @@ export function getCookie(name: string): string | null {
     }
   }
 
-  return null;
+  return '';
 }
