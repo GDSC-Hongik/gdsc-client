@@ -43,6 +43,10 @@ export const GlobalStyle = css`
   textarea {
     border: none;
     margin: 0;
+
+    *:required {
+      background-color: ${theme.palette.white};
+    }
   }
   a {
     text-align: center;
