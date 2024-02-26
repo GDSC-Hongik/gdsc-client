@@ -1,5 +1,5 @@
 import { BASE_URL } from '@/constants/environment';
-import { getCookie } from '@/utils/auth';
+import { getToken } from '@/utils/auth';
 import axios from 'axios';
 
 const apiClient = axios.create({
@@ -9,6 +9,6 @@ const apiClient = axios.create({
 });
 
 apiClient.defaults.headers.common['Authorization'] =
-  `Bearer ${getCookie('accessToken')}`;
+  `Bearer ${getToken('access')}`;
 
 export default apiClient;
