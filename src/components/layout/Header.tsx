@@ -2,7 +2,7 @@ import { Logo } from '@/assets/LogoIcon';
 import { Flex, Text } from '@/components/common/Wrapper';
 import { JoinButton } from '@/components/layout/JoinButton';
 import GlobalSize from '@/constants/globalSize';
-import useLandingStatus from '@/hooks/auth/useLandingStatus';
+import useLandingStatus from '@/hooks/zustand/useLandingStatus';
 import RoutePath from '@/routes/routePath';
 import { media, theme } from '@/styles';
 import { getAuthRedirectPath } from '@/utils/auth';
