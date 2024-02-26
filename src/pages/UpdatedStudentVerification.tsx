@@ -1,16 +1,15 @@
 import { Button } from '@/components/common/Button';
 import { Input } from '@/components/common/Input';
 import { Flex, Text } from '@/components/common/Wrapper';
+import { useStudentVerification } from '@/hooks/auth';
 import RoutePath from '@/routes/routePath';
 import { theme } from '@/styles';
 import styled from '@emotion/styled';
-import { Link } from 'react-router-dom';
-import { useStudentVerification } from '@/hooks/auth';
 import { Controller } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 
-/** 재학생 인증 페이지 */
-export const StudentVerification = () => {
-  const { onSubmit, control, isPending } = useStudentVerification();
+export default function UpdatedStudentVerification() {
+  const { onSubmit, control, onVerifyStudent } = useStudentVerification();
 
   return (
     <Container>
@@ -19,15 +18,13 @@ export const StudentVerification = () => {
           <Text typo={'heading3'} style={{ marginBottom: '12px' }}>
             재학생 인증하기
           </Text>
-          <Text>가입 신청서를 작성하려면 재학생 인증이 필요해요.</Text>
-          <Text>본인의 홍익대학교 지메일(g.hongik.ac.kr)로 </Text>
-          <Text>재학생 인증을 수행해주세요.</Text>
+          <Text>전송된 이메일에서 재학생 인증을 완료했다면</Text>
+          <Text>인증 완료 버튼을 눌러주세요.</Text>
         </TextContainer>
         <form onSubmit={onSubmit}>
           <Controller
             name="univEmail"
             control={control}
-            defaultValue=""
             render={({ field }) => (
               <Input
                 {...field}
@@ -39,11 +36,16 @@ export const StudentVerification = () => {
             )}
           />
           <ButtonContainer>
-            <Button disabled={isPending} width={'342px'}>
-              인증 메일 발송하기
+            <Button width="146px" onClick={onVerifyStudent}>
+              인증 완료
             </Button>
+            <Button width={'146px'}>메일 재전송</Button>
           </ButtonContainer>
         </form>
+        <Text color="red100">
+          * 인증이 완료되지 않았어요! <br />
+          {'    '}메일함을 확인해주세요.
+        </Text>
         <StudentGuideLink
           to={RoutePath.StudentEmailLinkGuideLink}
           target="_blank">
@@ -52,7 +54,7 @@ export const StudentVerification = () => {
       </Box>
     </Container>
   );
-};
+}
 
 const Container = styled.div`
   width: 100%;
