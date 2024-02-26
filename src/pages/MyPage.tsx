@@ -12,6 +12,7 @@ import memberApi from '@/apis/member/memberApi';
 import GlobalSize from '@/constants/globalSize';
 import { useNavigate } from 'react-router-dom';
 import { ApproveBox } from '@/components/myPage/ApproveBox';
+import { logout } from '@/utils/auth';
 
 export const MyPage = () => {
   const navigate = useNavigate();
@@ -19,6 +20,11 @@ export const MyPage = () => {
     queryKey: ['member'],
     queryFn: memberApi.GET_MEMBERS_ME
   });
+
+  const handleLogoutClick = () => {
+    logout();
+    navigate('/');
+  };
 
   return (
     <Wrapper direction="column" justify="flex-start">
@@ -28,7 +34,7 @@ export const MyPage = () => {
       </Text>
       <Space height={12} />
       <Text
-        onClick={() => {}}
+        onClick={handleLogoutClick}
         typo="label2"
         color="gray4"
         css={css`

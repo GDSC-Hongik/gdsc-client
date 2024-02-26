@@ -39,4 +39,5 @@ export class LocalStorage implements StorageType {
 }
 
 const lStorage = new LocalStorage();
+
 export default lStorage;

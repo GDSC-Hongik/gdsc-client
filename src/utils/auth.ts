@@ -49,6 +49,10 @@ export function getCookie(name: string): string {
   return '';
 }
 
+function deleteCookie(name: string) {
+  document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
 export function getToken(type: 'access' | 'refresh'): string {
   const accessTokenFromCookie = getCookie(
     type === 'access' ? CookieKeys.AccessToken : CookieKeys.RefreshToken
@@ -61,4 +65,11 @@ export function getToken(type: 'access' | 'refresh'): string {
   return accessTokenFromCookie.length > 0
     ? accessTokenFromCookie
     : accessTokenFromLocalStorage;
+}
+
+export function logout() {
+  deleteCookie(CookieKeys.AccessToken);
+  deleteCookie(CookieKeys.RefreshToken);
+  sessionStorage.clear();
+  location.reload();
 }
