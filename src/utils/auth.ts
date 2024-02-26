@@ -1,3 +1,4 @@
+import LandingStatus from '@/constants/landingStatus';
 import RoutePath from '@/routes/routePath';
 import lStorage from '@/utils/storage';
 import { CookieKeys, StorageKeys } from '@/utils/storage/key';
@@ -7,11 +8,11 @@ import { CookieKeys, StorageKeys } from '@/utils/storage/key';
  */
 export function getAuthRedirectPath(landingStatus: string | null | undefined) {
   switch (landingStatus) {
-    case 'TO_STUDENT_AUTHENTICATION':
+    case LandingStatus.StudentAuthentication:
       return RoutePath.AuthenticationProcess2_StudentVerification;
-    case 'TO_REGISTRATION':
+    case LandingStatus.Signup:
       return RoutePath.AuthenticationProcess3_Signup;
-    case 'TO_DASHBOARD':
+    case LandingStatus.MyPage:
       return RoutePath.MyPage;
     default:
       return RoutePath.AuthenticationProcess1_GithubSignin;

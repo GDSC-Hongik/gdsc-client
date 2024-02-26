@@ -5,7 +5,9 @@ export default function useLandingStatus() {
   return {
     landingStatus: useLandingStatusStore.getState().landingStatus,
     updateLandingStatue: (landingStatus: string | null) =>
-      useLandingStatusStore.setState({ landingStatus })
+      useLandingStatusStore.setState({ landingStatus }),
+    clearLandingStatus: () =>
+      useLandingStatusStore.setState({ landingStatus: null })
   };
 }
 
