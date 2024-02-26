@@ -11,9 +11,8 @@ import { useQuery } from '@tanstack/react-query';
 import memberApi from '@/apis/member/memberApi';
 import GlobalSize from '@/constants/globalSize';
 import { useNavigate } from 'react-router-dom';
+import { ApproveBox } from '@/components/myPage/ApproveBox';
 
-// TODO
-// 2. 각 버튼 onClick 이벤트 핸들러 등록
 export const MyPage = () => {
   const navigate = useNavigate();
   const { data } = useQuery({
@@ -45,6 +44,12 @@ export const MyPage = () => {
         </Text>
         <Space height={19} />
         <ProgressBar currentStatus={data?.registrationStatus!} />
+        {data?.registrationStatus === 'GRANTED' && (
+          <>
+            <Space height={24} />
+            <ApproveBox />
+          </>
+        )}
         <Space height={48} />
         <Text typo="heading4" color="black">
           가입 조건

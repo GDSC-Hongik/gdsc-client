@@ -1,3 +1,4 @@
+import { theme } from '@/styles';
 import { css } from '@emotion/react';
 import emotionReset from 'emotion-reset';
 
@@ -47,5 +48,13 @@ export const GlobalStyle = css`
     text-align: center;
     text-decoration: none; /* 링크의 밑줄 제거 */
     color: inherit; /* 링크의 색상 제거 */
+  }
+
+  strong {
+    color: ${theme.palette.discord};
+    background-color: ${theme.palette.white};
+    border: 1px solid ${theme.palette.discord};
+    border-radius: 4px;
+    padding: 0px 4px;
   }
 `;

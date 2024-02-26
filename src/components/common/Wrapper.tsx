@@ -41,8 +41,7 @@ export const Text = styled.p<{
   ${({ typo = 'body1' }) => theme.typo[typo]};
   color: ${({ color = 'black' }) => theme.palette[color]};
 
-  display: flex;
-  align-items: center;
+  text-align: start;
 
   white-space: pre-wrap;
 
