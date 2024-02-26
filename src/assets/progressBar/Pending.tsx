@@ -2,7 +2,6 @@ export const Pending = () => {
   return (
     <svg
       width="100%"
-      height="auto"
       viewBox="0 0 270 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg">
@@ -33,8 +32,8 @@ export const Pending = () => {
           x2="250"
           y2="9"
           gradientUnits="userSpaceOnUse">
-          <stop stop-color="#4792EE" />
-          <stop offset="1" stop-color="#CCCCCC" />
+          <stop stopColor="#4792EE" />
+          <stop offset="1" stopColor="#CCCCCC" />
         </linearGradient>
       </defs>
     </svg>
