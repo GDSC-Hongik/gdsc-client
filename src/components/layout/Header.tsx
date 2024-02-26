@@ -40,6 +40,8 @@ const Container = styled(Flex)`
   gap: 16px;
   background-color: ${theme.palette.white};
   border-bottom: 1px solid ${theme.palette.gray2};
+  position: fixed;
+  top: 0;
 `;
 
 const HeaderContainter = styled(Flex)`
