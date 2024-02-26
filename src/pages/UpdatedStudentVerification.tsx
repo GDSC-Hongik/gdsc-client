@@ -2,7 +2,6 @@ import { Button } from '@/components/common/Button';
 import { Input } from '@/components/common/Input';
 import { Flex, Text } from '@/components/common/Wrapper';
 import { useStudentVerification } from '@/hooks/auth';
-import useUnivEmail from '@/hooks/zustand/useUnivEmail';
 import RoutePath from '@/routes/routePath';
 import { theme } from '@/styles';
 import styled from '@emotion/styled';
@@ -11,7 +10,7 @@ import { Link } from 'react-router-dom';
 
 export default function UpdatedStudentVerification() {
   const { onSubmit, control, onVerifyStudent } = useStudentVerification();
-  const { univEmail } = useUnivEmail();
+
   return (
     <Container>
       <Box>
@@ -26,7 +25,6 @@ export default function UpdatedStudentVerification() {
           <Controller
             name="univEmail"
             control={control}
-            defaultValue={univEmail}
             render={({ field }) => (
               <Input
                 {...field}
