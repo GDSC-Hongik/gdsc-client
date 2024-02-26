@@ -9,6 +9,7 @@ import RoutePath from '@/routes/routePath';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import App from '@/App';
+import { AuthServerRedirectNavigate } from '@/pages/AuthServerRedirectNavigate';
 
 export const Routers = () => {
   return <RouterProvider router={router} />;
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
             element: <Bevy />
           }
         ]
+      },
+      {
+        path: RoutePath.AuthServerRedirect,
+        element: <AuthServerRedirectNavigate />
       },
       {
         path: RoutePath.AuthenticationProcess1_GithubSignin,
