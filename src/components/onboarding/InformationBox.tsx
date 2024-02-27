@@ -1,4 +1,4 @@
-import { Flex, Text } from '@/components/common/Wrapper';
+import { Flex, Space, Text } from '@/components/common/Wrapper';
 import { theme } from '@/styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -13,24 +13,25 @@ export const InformationBox = ({
   description2?: string;
 }) => {
   return (
-    <Wrapper direction="column" gap={4} align="flex-start">
+    <Wrapper direction="column" align="flex-start" justify="flex-start">
       <Text
         typo="heading5"
         color="black"
         css={css`
           word-break: keep-all;
-          height: 25px;
           display: flex;
           justify-content: center;
           align-items: center;
         `}>
         {title}
       </Text>
+      <Space height={8} />
       <Text
         typo="body1"
         color="black"
         css={css`
           word-break: keep-all;
+          line-height: 160%;
         `}>
         {description}
       </Text>
@@ -55,4 +56,5 @@ const Wrapper = styled(Flex)`
   border: 1px solid #d9d9d9;
 
   text-align: start;
+  height: fit-content;
 `;

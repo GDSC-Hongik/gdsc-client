@@ -23,8 +23,8 @@ export default function Header() {
     <Container>
       <HeaderContainter>
         <LogoContainer onClick={() => navigation(RoutePath.Home)}>
-          <Logo />
-          <Flex direction="column" align="flex-start" justify="center" gap={2}>
+          <Flex direction="row" align="center" justify="flex-start" gap={6}>
+            <Logo />
             <HeaderLogo />
           </Flex>
         </LogoContainer>
