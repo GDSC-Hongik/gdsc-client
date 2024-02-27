@@ -52,14 +52,6 @@ export const Privacy = ({ user }: PrivacyProps) => {
           {discordUsername ?? '-'}
         </Text>
       </Flex>
-      <Flex justify="flex-start" gap={8}>
-        <Text typo="label2" color="gray4">
-          이메일
-        </Text>
-        <Text typo="body3" color="black">
-          {nickname ?? '-'}
-        </Text>
-      </Flex>
     </Wrapper>
   );
 };
