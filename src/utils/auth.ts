@@ -1,7 +1,6 @@
 import LandingStatus from '@/constants/landingStatus';
 import RoutePath from '@/routes/routePath';
-import lStorage from '@/utils/storage';
-import { CookieKeys, StorageKeys } from '@/utils/storage/key';
+import { CookieKeys } from '@/utils/storage/key';
 
 /**
  * 깃허브 로그인 성공 시 header에서 추출한 landing status 통해 이동할 페이지 반환
@@ -49,7 +48,29 @@ export function getCookie(name: string): string {
   return '';
 }
 
-function deleteCookie(name: string) {
+export function setCookie({
+  key,
+  value,
+  days
+}: {
+  key: string;
+  value: string;
+  days: number;
+}) {
+  const expirationDate = new Date();
+  expirationDate.setDate(expirationDate.getDate() + days);
+
+  const cookieValue =
+    encodeURIComponent(key) +
+    '=' +
+    encodeURIComponent(value) +
+    '; expires=' +
+    expirationDate.toUTCString() +
+    '; path=/';
+  document.cookie = cookieValue;
+}
+
+export function deleteCookie(name: string) {
   document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 
@@ -58,13 +79,7 @@ export function getToken(type: 'access' | 'refresh'): string {
     type === 'access' ? CookieKeys.AccessToken : CookieKeys.RefreshToken
   );
 
-  const accessTokenFromLocalStorage = lStorage.get(
-    type === 'access' ? StorageKeys.AccessToken : StorageKeys.RefreshToken
-  );
-
-  return accessTokenFromCookie.length > 0
-    ? accessTokenFromCookie
-    : accessTokenFromLocalStorage;
+  return accessTokenFromCookie;
 }
 
 export function logout() {
