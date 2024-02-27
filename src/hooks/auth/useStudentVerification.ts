@@ -22,7 +22,7 @@ export default function useStudentVerification() {
   const onSubmit = async ({ univEmail }: FieldValues) => {
     updateUnivEmail(univEmail);
     sendStudentEmail(univEmail);
-    alert('제출 1');
+    onVerifyStudent();
   };
 
   const onVerifyStudent = async () => {
