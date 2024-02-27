@@ -93,8 +93,12 @@ export const SignUp = () => {
             }
             label={
               <Text typo="label1">
-                <GuideLink to={RoutePath.Terms} target="_blank">
-                  커뮤니티 가이드라인 및 GDSC 회칙
+                <GuideLink to={RoutePath.CommunityGuideLink} target="_blank">
+                  커뮤니티 가이드라인
+                </GuideLink>{' '}
+                및{' '}
+                <GuideLink to={RoutePath.TermsLink} target="_blank">
+                  GDSC 회칙
                 </GuideLink>
                 에 동의합니다.
               </Text>
@@ -109,17 +113,7 @@ export const SignUp = () => {
                 personalPrivacy: !prev.personalPrivacy
               }))
             }
-            label={
-              <Text typo="body2" color="gray4">
-                <GuideLink
-                  to={RoutePath.PersonalPrivacy}
-                  color="gray4"
-                  target="_blank">
-                  개인정보 수집
-                </GuideLink>
-                에 동의합니다.
-              </Text>
-            }
+            label={<Text typo="body2">개인정보 수집 에 동의합니다.</Text>}
           />
         </CheckboxContainer>
         <Button width={'342px'} disabled={disabledSubmitButton}>
@@ -146,6 +140,7 @@ const CheckboxContainer = styled(Flex)`
 
 const GuideLink = styled(Link)<{ color?: KeyOfPalette }>`
   color: ${({ color = 'black' }) => theme.palette[color]};
+  text-decoration: underline;
   &:active {
     color: ${theme.palette.gray4};
   }

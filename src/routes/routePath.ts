@@ -16,13 +16,11 @@ const RoutePath = {
   StudentVerificationServerRedirect: '/onboarding/verify-email',
 
   GitHubGuideLink: 'https://www.gdschongik.com/guide/github',
-  StudentEmailLinkGuideLink:
-    'https://childlike-kumquat-540.notion.site/af30789ee9f940ab95cb19ffe18f2e44?pvs=74',
+  StudentEmailLinkGuideLink: 'https://www.gdschongik.com/guide/student-email',
 
-  Terms:
-    'https://childlike-kumquat-540.notion.site/GDSC-Bevy-64588c93dbc147ebbd01fe7971af07df?pvs=4',
-  PersonalPrivacy:
-    'https://childlike-kumquat-540.notion.site/af30789ee9f940ab95cb19ffe18f2e44?pvs=74'
+  CommunityGuideLink:
+    'https://www.gdschongik.com/onboarding/community-guideline',
+  TermsLink: 'https://www.gdschongik.com/onboarding/community-rule'
 } as const;
 
 export default RoutePath;
