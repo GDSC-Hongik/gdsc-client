@@ -39,6 +39,8 @@ export const JoinDiscord = () => {
     },
     onError: (error: AxiosError) => {
       toast(error?.message);
+      console.log(error);
+      console.log('response', error.response);
     }
   });
 
