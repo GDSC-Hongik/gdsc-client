@@ -7,10 +7,18 @@ import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import { useStudentVerification } from '@/hooks/auth';
 import { Controller } from 'react-hook-form';
+import { useState } from 'react';
 
 /** 재학생 인증 페이지 */
 export const StudentVerification = () => {
+  const [isClicked, setIsClicked] = useState(false);
   const { onSubmit, control, isPending } = useStudentVerification();
+
+  const handleSubmit = async () => {
+    if (isClicked) return;
+    setIsClicked(true);
+    onSubmit();
+  };
 
   return (
     <Container>
@@ -23,7 +31,7 @@ export const StudentVerification = () => {
           <Text>본인의 홍익대학교 Gmail(g.hongik.ac.kr)로 </Text>
           <Text>재학생 인증을 수행해주세요.</Text>
         </TextContainer>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={handleSubmit}>
           <Controller
             name="univEmail"
             control={control}
