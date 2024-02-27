@@ -175,7 +175,7 @@ function App() {
       <Flex direction="column" gap={12}>
         <InformationBox
           title="Q. 서류, 면접 전형이 있나요?"
-          description="A. 없습니다! 홍익대학교 학생이라면 누구나 본 사이트의 ‘지원하기' 를 통해 가입할 수 있어요."
+          description="A. 없습니다! 홍익대학교 학생이라면 누구나 본 사이트의 '가입하기' 를 통해 가입할 수 있어요."
         />
         <InformationBox
           title="Q. 다른 동아리, 학회와 병행 가능한가요?"
