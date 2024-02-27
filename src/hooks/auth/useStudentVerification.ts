@@ -6,7 +6,6 @@ import useUnivEmail from '@/hooks/zustand/useUnivEmail';
 import RoutePath from '@/routes/routePath';
 import { useForm, FieldValues } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 
 export default function useStudentVerification() {
   const { univEmail, updateUnivEmail } = useUnivEmail();
