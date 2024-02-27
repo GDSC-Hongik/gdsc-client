@@ -25,6 +25,7 @@ export default function useStudentVerification() {
   };
 
   const onVerifyStudent = async () => {
+    alert('클릭');
     try {
       const result = await verifyStudentApi();
 
