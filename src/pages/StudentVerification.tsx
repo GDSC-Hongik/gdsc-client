@@ -40,7 +40,10 @@ export const StudentVerification = () => {
             )}
           />
           <ButtonContainer>
-            <Button disabled={isPending} width={'342px'}>
+            <Button
+              disabled={isPending}
+              width={'342px'}
+              onClick={onVerifyStudent}>
               인증 메일 발송하기
             </Button>
           </ButtonContainer>
