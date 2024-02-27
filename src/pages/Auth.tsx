@@ -19,7 +19,10 @@ export const Auth = () => {
 
   const handleClick = () => {
     // GitHub 로그인 페이지로 직접 리다이렉트
-    window.location.href = `${BASE_URL}/oauth2/authorization/github`;
+
+    setTimeout(function () {
+      document.location.href = `${BASE_URL}/oauth2/authorization/github`;
+    }, 250);
   };
 
   return (
