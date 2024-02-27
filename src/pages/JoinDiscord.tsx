@@ -38,8 +38,6 @@ export const JoinDiscord = () => {
     },
     onError: (error: any) => {
       toast(error.response?.data?.errorMessage);
-      console.log(error);
-      console.log('response', error.response?.data?.errorMessage);
     }
   });
 
