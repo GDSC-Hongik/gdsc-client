@@ -82,7 +82,7 @@ export const JoinDiscord = () => {
               cursor: pointer;
               text-decoration: underline;
             `}>
-            <a href="https://discord.gg/XVr4fMzKSt">
+            <a href="https://discord.gg/dSV6vSEuGU">
               디스코드 서버 입장하기↗︎
             </a>
           </Text>
