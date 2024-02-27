@@ -74,6 +74,7 @@ export const MyPage = () => {
         <DiscordStatus
           discordStatus={data?.discordStatus!}
           onClick={() => navigate(RoutePath.Discord)}
+          onVerifiedClick={() => window.open('https://discord.gg/dSV6vSEuGU')}
         />
         <Space height={12} />
         <BevyStatus

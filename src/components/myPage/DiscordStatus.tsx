@@ -9,16 +9,18 @@ export type DiscordStatusType = 'PENDING' | 'VERIFIED';
 
 export const DiscordStatus = ({
   discordStatus,
-  onClick
+  onClick,
+  onVerifiedClick
 }: {
   discordStatus: DiscordStatusType;
   onClick: MouseEventHandler<HTMLDivElement>;
+  onVerifiedClick: MouseEventHandler<HTMLDivElement>;
 }) => {
   return (
     <Wrapper
       discordStatus={discordStatus}
       gap={12}
-      onClick={discordStatus === 'PENDING' ? onClick : undefined}>
+      onClick={discordStatus === 'PENDING' ? onClick : onVerifiedClick}>
       <Discord />
       <Flex direction="column" align="flex-start" gap={12}>
         <Text typo="label1" color="discord">
