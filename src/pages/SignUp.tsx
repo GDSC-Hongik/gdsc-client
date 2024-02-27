@@ -126,7 +126,7 @@ export const SignUp = () => {
                 <GuideLink
                   to={RoutePath.PersonalPrivacyLink}
                   target="_blank"
-                  color={isChecked.terms ? 'black' : 'gray3'}>
+                  color={isChecked.personalPrivacy ? 'black' : 'gray3'}>
                   개인정보 수집
                 </GuideLink>
                 에 동의합니다.
