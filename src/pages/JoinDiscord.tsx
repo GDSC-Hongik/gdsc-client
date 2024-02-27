@@ -17,6 +17,7 @@ import discordApi from '@/apis/discord/discordApi';
 import { DiscordLinkRequest } from '@/apis/discord/discordType';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { AxiosError } from 'axios';
 
 export const JoinDiscord = () => {
   const navigate = useNavigate();
@@ -35,8 +36,9 @@ export const JoinDiscord = () => {
       toast('디스코드 연동이 완료되었습니다.');
       navigate('/mypage');
     },
-    onError: (error: any) => {
-      toast(error);
+    onError: (error: AxiosError) => {
+      toast(error.response?.data as string);
+      toast(error.response?.statusText as string);
     }
   });
 
@@ -84,7 +86,7 @@ export const JoinDiscord = () => {
           </Text>
         </Flex>
       </Flex>
-      <Space height={8} />
+      <Space height={16} />
       <Flex justify="flex-start" align="flex-start" gap={8}>
         <StepSection icon={<Step2 />} height={208} />
         <Flex direction="column" align="flex-start" justify="flex-start">
@@ -92,7 +94,7 @@ export const JoinDiscord = () => {
             title="디스코드 사용자명을 적어주세요."
             description="디스코드 사용자명에 대한 설명은 아래 가이드라인을 참고해주세요!"
           />
-          <Space height={8} />
+          <Space height={20} />
           <Text
             typo="label1"
             color="gray4"
@@ -115,7 +117,7 @@ export const JoinDiscord = () => {
           />
         </Flex>
       </Flex>
-      <Space height={8} />
+      <Space height={16} />
       <Flex justify="flex-start" align="flex-start" gap={8}>
         <StepSection icon={<Step3 />} height={211} />
         <Flex direction="column" align="flex-start" justify="flex-start">
@@ -141,7 +143,7 @@ export const JoinDiscord = () => {
           </Text>
         </Flex>
       </Flex>
-      <Space height={4} />
+      <Space height={16} />
       <Flex justify="flex-start" align="flex-start" gap={8}>
         <Step4 />
         <Flex direction="column" align="flex-start" justify="flex-start">
