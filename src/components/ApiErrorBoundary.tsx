@@ -36,12 +36,12 @@ export default function ApiErrorBoundary({ children }: PropsWithChildren) {
     switch (errorResponse.errorCode?.status) {
       case 401:
       case 403:
-        toast.error(message);
+        toast(message);
         // TODO: where ?
         redirect(RoutePath.Home);
         break;
       default:
-        toast.error(message);
+        toast(message);
         break;
     }
   }

@@ -13,6 +13,23 @@ import GlobalSize from '@/constants/globalSize';
 import { useNavigate } from 'react-router-dom';
 import { ApproveBox } from '@/components/myPage/ApproveBox';
 import { logout } from '@/utils/auth';
+import DepartmentSelect from '@/components/auth/DepartmentSelect';
+import { BaseSyntheticEvent } from 'react';
+import {
+  FieldValues,
+  FormState,
+  FieldArrayPath,
+  FieldArray,
+  FieldErrors,
+  Field,
+  RegisterOptions,
+  UseFormRegisterReturn,
+  SubmitHandler,
+  SubmitErrorHandler,
+  FieldError,
+  ErrorOption
+} from 'react-hook-form';
+import { useSignUp } from '@/hooks/auth';
 
 export const MyPage = () => {
   const navigate = useNavigate();
@@ -63,7 +80,7 @@ export const MyPage = () => {
         <Space height={15} />
         <PaymentStatus
           paymentStatus={data?.paymentStatus!}
-          depositorName="김홍익"
+          depositorName={data?.depositorName!}
         />
         <Space height={12} />
         <DiscordStatus

@@ -2,6 +2,7 @@ import { ForwardedRef, SelectHTMLAttributes, forwardRef } from 'react';
 import styled from '@emotion/styled';
 import { theme } from '@/styles';
 import { Flex, Text } from '@/components/common/Wrapper';
+import { SelectBoxArrow } from '@/assets/SelectBoxArrorw';
 
 interface SelectProps
   extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 'children'> {
@@ -60,6 +61,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
                 </option>
               ))}
             </StyledSelect>
+            <SelectBoxArrow />
           </InputContainer>
         </Flex>
         <StyledHelperTextBox>
@@ -81,7 +83,7 @@ const Container = styled(Flex)`
   align-items: flex-start;
 `;
 
-const InputContainer = styled.div<{
+const InputContainer = styled(Flex)<{
   value?: string | number | readonly string[] | undefined;
   isError?: boolean;
 }>`
@@ -94,6 +96,11 @@ const InputContainer = styled.div<{
   input:-webkit-autofill:active {
     -webkit-text-fill-color: ${theme.palette.black};
     //글자색
+  }
+
+  svg {
+    position: absolute;
+    right: 12px;
   }
 `;
 
@@ -148,6 +155,10 @@ const StyledSelect = styled.select<{
   option[value=''][disabled] {
     display: none;
   }
+
+  -webkit-appearance: none; /* 크롬 화살표 없애기 */
+  -moz-appearance: none; /* 파이어폭스 화살표 없애기 */
+  appearance: none; /* 화살표 없애기 */
 `;
 
 const StyledHelperTextBox = styled(Flex)`

@@ -30,7 +30,7 @@ export const PaymentStatus = ({
           <Text typo="body1" color="gray4">
             토스뱅크 1000-8784-8797 김유진
           </Text>
-          <Flex gap={8} justify="flex-start">
+          <Flex gap={6} justify="flex-start">
             <Text typo="body1" color="gray4">
               납입금액
             </Text>
@@ -38,7 +38,7 @@ export const PaymentStatus = ({
               20,000원
             </Text>
           </Flex>
-          <Flex gap={8} justify="flex-start">
+          <Flex gap={6} justify="flex-start">
             <Text typo="body1" color="gray4">
               입금자명
             </Text>
