@@ -27,7 +27,7 @@ export const BevyStatus = ({
         <Text typo="body2" color="gray4">
           {bevyStatus === 'PENDING'
             ? '전체 GDSC 이벤트를 확인할 수 있는 플랫폼이에요. 지금 가입해볼까요? '
-            : '전 세계 GDSC에서 어떤 이벤트가 진행되고 있는지 직접 확인해보실 수 있어요.'}
+            : '이제 전체 GDSC 이벤트에 대한 정보를 확인하고 참여할 수 있어요.'}
         </Text>
       </Flex>
       {/* TODO 디스코드 연동 페이지로 라우팅 */}
