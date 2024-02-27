@@ -51,8 +51,7 @@ const Wrapper = styled(Flex)<{
       ? `1px solid ${theme.palette.red100}`
       : `1px solid ${theme.palette.blue100}`};
 
-  cursor: ${({ discordStatus }) =>
-    discordStatus === 'PENDING' ? 'pointer' : 'default'};
+  cursor: pointer;
 
   svg {
     overflow: visible;
