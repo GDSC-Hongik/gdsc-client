@@ -11,6 +11,8 @@ import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AxiosError } from 'axios';
+import RoutePath from '@/routes/routePath';
+
 export const Bevy = () => {
   const navigate = useNavigate();
 
@@ -18,7 +20,7 @@ export const Bevy = () => {
     mutationFn: bevyApi.POST_LINK_BEVY,
     onSuccess: () => {
       toast('bevy 연동이 완료되었습니다.');
-      navigate('/mypage');
+      navigate(RoutePath.MyPage);
     },
     onError: (error: AxiosError) => {
       toast(error.response?.data as string);

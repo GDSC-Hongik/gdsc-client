@@ -1,14 +1,4 @@
 import App from '@/App';
-import { JoinDiscord } from '@/pages/JoinDiscord';
-import { Bevy } from '@/pages/Bevy';
-import { Auth } from '@/pages/Auth';
-import { MyPage } from '@/pages/MyPage';
-import { SignUp } from '@/pages/SignUp';
-import { StudentVerification } from '@/pages/StudentVerification';
-import UpdatedStudentVerification from '@/pages/UpdatedStudentVerification';
-
-import { AuthServerRedirectNavigate } from '@/pages/redirect/AuthServerRedirectNavigate';
-import { StudentVerificationServerRedirect } from '@/pages/redirect/StudentVerificationServerRedirect';
 
 import RoutePath from '@/routes/routePath';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
@@ -20,6 +10,17 @@ import {
   StudentVerificationAccessGuard
 } from '@/components/auth/guard';
 import { Text } from '@/components/common/Wrapper';
+import {
+  AuthServerRedirectNavigate,
+  StudentVerificationServerRedirect,
+  Auth,
+  StudentVerification,
+  SignUp,
+  MyPage,
+  JoinDiscord,
+  UpdatedStudentVerification,
+  Bevy
+} from '@/pages';
 
 export const Routers = () => {
   return <RouterProvider router={router} />;

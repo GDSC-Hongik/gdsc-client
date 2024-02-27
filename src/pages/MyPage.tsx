@@ -15,6 +15,7 @@ import { ApproveBox } from '@/components/myPage/ApproveBox';
 import { logout } from '@/utils/auth';
 import useLandingStatus from '@/hooks/zustand/useLandingStatus';
 import { countTextInObject } from '@/utils/mypage/countTextInObject';
+import RoutePath from '@/routes/routePath';
 
 export const MyPage = () => {
   const navigate = useNavigate();
@@ -72,12 +73,12 @@ export const MyPage = () => {
         <Space height={12} />
         <DiscordStatus
           discordStatus={data?.discordStatus!}
-          onClick={() => navigate('/discord')}
+          onClick={() => navigate(RoutePath.Discord)}
         />
         <Space height={12} />
         <BevyStatus
           bevyStatus={data?.bevyStatus!}
-          onClick={() => navigate('/bevy')}
+          onClick={() => navigate(RoutePath.Bevy)}
         />
         <Space height={48} />
         {data ? (
