@@ -58,7 +58,7 @@ export const Bevy = () => {
             <a
               href="https://gdsc.community.dev/hongik-university/"
               target="_blank">
-              가입하러 가기↗︎
+              가입하러 가기&#8599;
             </a>
           </Text>
         </Flex>
@@ -80,7 +80,7 @@ export const Bevy = () => {
             text-decoration: underline;
           `}>
           <a href="https://www.gdschongik.com/guide/gdsc-bevy">
-            가이드라인 보기↗︎
+            가이드라인 보기&#8599;
           </a>
         </Text>
       </InformationWrapper>

@@ -81,7 +81,7 @@ export const JoinDiscord = () => {
               text-decoration: underline;
             `}>
             <a href="https://discord.gg/dSV6vSEuGU">
-              디스코드 서버 입장하기↗︎
+              디스코드 서버 입장하기&#8599;
             </a>
           </Text>
         </Flex>
@@ -104,7 +104,7 @@ export const JoinDiscord = () => {
               text-decoration: underline;
             `}>
             <a href="https://www.gdschongik.com/guide/discord">
-              가이드라인 보기↗︎
+              가이드라인 보기&#8599;
             </a>
           </Text>
           <Space height={24} />
