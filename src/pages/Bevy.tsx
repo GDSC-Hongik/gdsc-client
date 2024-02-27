@@ -62,10 +62,11 @@ export const Bevy = () => {
       <Space height={48} />
       <InformationWrapper direction="column" align="flex-start" gap={12}>
         <Text typo="heading5" color="black">
-          Q. GDSC Bevy가 뭔가요?
+          Q. GDSC Bevy에 어떻게 가입하나요?
         </Text>
         <Text typo="body1" color="gray4">
-          궁금한 점이 있으시다면 하단 가이드라인을 참고해주세요.
+          위 페이지에서 구글 로그인 후 ‘Join Us’ 버튼을 누르면 돼요. 자세한
+          내용은 아래 가이드라인을 참고해주세요.
         </Text>
         <Text
           typo="label1"
@@ -102,4 +103,5 @@ const InformationWrapper = styled(Flex)`
   padding: 24px;
   background-color: ${theme.palette.white};
   border-radius: 8px;
+  border: 1px solid ${theme.palette.gray2};
 `;

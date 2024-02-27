@@ -23,7 +23,7 @@ export const PaymentStatus = ({
         <Flex direction="column" justify="flex-start" align="flex-start">
           <Text typo="label1" color="black">
             {paymentStatus === 'PENDING'
-              ? '아직 회비 납부가 확인되지 않았어요'
+              ? '아직 회비 납부가 확인되지 않았어요.'
               : '회비 납부가 정상적으로 완료되었어요.'}
           </Text>
           <Space height={12} />
@@ -94,4 +94,5 @@ const Wrapper = styled(Flex)<{
 const InformationWrapper = styled(Flex)`
   background-color: ${theme.palette.white};
   border-radius: 8px;
+  border: 1px solid ${theme.palette.gray2};
 `;

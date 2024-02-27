@@ -11,8 +11,9 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import GlobalSize from '@/constants/globalSize';
 import { useNavigate } from 'react-router-dom';
-import { checkAuthentication } from '@/utils/auth';
+import { getAuthRedirectPath } from '@/utils/auth';
 import 'react-toastify/dist/ReactToastify.css';
+import useLandingStatus from '@/hooks/zustand/useLandingStatus';
 
 const IMG_SRC = [
   '/onboarding/1.png',
@@ -27,6 +28,7 @@ const IMG_SRC = [
 
 function App() {
   const navigate = useNavigate();
+  const { landingStatus } = useLandingStatus();
 
   return (
     <Wrapper direction="column">
@@ -160,9 +162,7 @@ function App() {
         <OnboardingLogo2 />
         <Space height={25} />
         <ApplyButton
-          onClick={() =>
-            checkAuthentication() ? navigate('/mypage') : navigate('/auth')
-          }>
+          onClick={() => navigate(getAuthRedirectPath(landingStatus))}>
           가입하기
         </ApplyButton>
         <Space height={40} />

@@ -1,12 +1,7 @@
-export interface MemberInfoResponse {
+import { User } from '@/types/user';
+
+export interface MemberInfoResponse extends User {
   memberId: number;
-  studentId: string;
-  name: string;
-  phone: string;
-  department: string;
-  email: string;
-  discordUsername: string;
-  nickname: string;
   paymentStatus: 'PENDING' | 'VERIFIED';
   discordStatus: 'PENDING' | 'VERIFIED';
   bevyStatus: 'PENDING' | 'VERIFIED';

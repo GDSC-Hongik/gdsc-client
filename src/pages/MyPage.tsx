@@ -13,33 +13,20 @@ import GlobalSize from '@/constants/globalSize';
 import { useNavigate } from 'react-router-dom';
 import { ApproveBox } from '@/components/myPage/ApproveBox';
 import { logout } from '@/utils/auth';
-import DepartmentSelect from '@/components/auth/DepartmentSelect';
-import { BaseSyntheticEvent } from 'react';
-import {
-  FieldValues,
-  FormState,
-  FieldArrayPath,
-  FieldArray,
-  FieldErrors,
-  Field,
-  RegisterOptions,
-  UseFormRegisterReturn,
-  SubmitHandler,
-  SubmitErrorHandler,
-  FieldError,
-  ErrorOption
-} from 'react-hook-form';
-import { useSignUp } from '@/hooks/auth';
+import useLandingStatus from '@/hooks/zustand/useLandingStatus';
 
 export const MyPage = () => {
   const navigate = useNavigate();
+  const { clearLandingStatus } = useLandingStatus();
   const { data } = useQuery({
     queryKey: ['member'],
     queryFn: memberApi.GET_MEMBERS_ME
   });
 
   const handleLogoutClick = () => {
+    clearLandingStatus();
     logout();
+
     navigate('/');
   };
 
@@ -93,22 +80,21 @@ export const MyPage = () => {
           onClick={() => navigate('/bevy')}
         />
         <Space height={48} />
-        <Text typo="heading4" color="black">
-          가입 정보
-        </Text>
-        <Space height={12} />
-        <Text typo="body1" color="gray4">
-          이미 제출한 기존 정보를 수정해야 할 경우,
-          <br />
-          GDSC 채널톡으로 문의 주세요.
-        </Text>
-        <Space height={15} />
-        <Privacy
-          studentId={data?.studentId!}
-          department={data?.department!}
-          phone={data?.phone!}
-          email={data?.email!}
-        />
+        {data ? (
+          <>
+            <Text typo="heading4" color="black">
+              내 정보
+            </Text>
+            <Space height={12} />
+            <Text typo="body1" color="gray4">
+              이미 제출한 기존 정보를 수정해야 할 경우,
+              <br />
+              GDSC 채널톡으로 문의 주세요.
+            </Text>
+            <Space height={15} />
+            <Privacy user={data} />
+          </>
+        ) : null}
       </Flex>
       <Space height={104} />
     </Wrapper>
