@@ -93,4 +93,5 @@ const StudentGuideLink = styled(Link)`
   &:visited {
     color: ${theme.palette.black};
   }
+  ${theme.typo.label1};
 `;

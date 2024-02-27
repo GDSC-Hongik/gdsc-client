@@ -19,6 +19,7 @@ export const AuthServerRedirectNavigate = () => {
     }
     setToken({ type: 'access', value: accessToken });
     setToken({ type: 'refresh', value: refreshToken });
+    location.reload();
   }, [originLandingStatus, landingStatus]);
 
   return <Navigate to={getAuthRedirectPath(landingStatus)} replace={true} />;
