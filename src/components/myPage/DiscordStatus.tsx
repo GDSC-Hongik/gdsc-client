@@ -51,4 +51,8 @@ const Wrapper = styled(Flex)<{
 
   cursor: ${({ discordStatus }) =>
     discordStatus === 'PENDING' ? 'pointer' : 'default'};
+
+  svg {
+    overflow: visible;
+  }
 `;
