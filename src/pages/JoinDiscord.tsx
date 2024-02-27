@@ -38,8 +38,9 @@ export const JoinDiscord = () => {
       navigate(RoutePath.MyPage);
     },
     onError: (error: AxiosError) => {
-      toast(error.response?.data as string);
-      toast(error.response?.statusText as string);
+      toast(error?.message);
+      console.log(error);
+      console.log('response', error.response);
     }
   });
 
@@ -82,7 +83,7 @@ export const JoinDiscord = () => {
               cursor: pointer;
               text-decoration: underline;
             `}>
-            <a href="https://discord.gg/XVr4fMzKSt">
+            <a href="https://discord.gg/dSV6vSEuGU">
               디스코드 서버 입장하기↗︎
             </a>
           </Text>
