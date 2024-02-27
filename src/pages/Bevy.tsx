@@ -55,7 +55,9 @@ export const Bevy = () => {
               cursor: pointer;
               text-decoration: underline;
             `}>
-            <a href="https://gdsc.community.dev/hongik-university/">
+            <a
+              href="https://gdsc.community.dev/hongik-university/"
+              target="_blank">
               가입하러 가기↗︎
             </a>
           </Text>
