@@ -40,7 +40,7 @@ export default function useStudentVerification() {
     } catch (error: any) {
       // 에러 처리
       // 예를 들어, 사용자에게 알림을 표시하거나, 로깅을 수행할 수 있습니다.
-      toast('Failed to verify student:', error);
+      alert(error as string);
       // 에러 상황에 대한 사용자 피드백이나 다른 액션을 추가할 수 있습니다.
     }
   };

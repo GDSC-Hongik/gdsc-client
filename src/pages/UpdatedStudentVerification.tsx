@@ -9,7 +9,7 @@ import { Controller } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
 export default function UpdatedStudentVerification() {
-  const { onSubmit, control, onVerifyStudent } = useStudentVerification();
+  const { onSubmit, control } = useStudentVerification();
 
   return (
     <Container>
@@ -36,9 +36,7 @@ export default function UpdatedStudentVerification() {
             )}
           />
           <ButtonContainer>
-            <Button width="146px" onClick={onVerifyStudent}>
-              인증 완료
-            </Button>
+            <Button width="146px">인증 완료</Button>
             <Button width={'146px'}>메일 재전송</Button>
           </ButtonContainer>
         </form>
