@@ -10,7 +10,8 @@ import { Controller } from 'react-hook-form';
 
 /** 재학생 인증 페이지 */
 export const StudentVerification = () => {
-  const { onSubmit, control, isPending } = useStudentVerification();
+  const { onSubmit, control, isPending, onVerifyStudent } =
+    useStudentVerification();
 
   return (
     <Container>
