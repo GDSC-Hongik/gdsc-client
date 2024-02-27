@@ -1,5 +1,5 @@
 import { BASE_URL } from '@/constants/environment';
-import { getToken } from '@/utils/auth';
+import useAuthToken from '@/hooks/auth/useAuthToken';
 import axios from 'axios';
 
 const apiClient = axios.create({
@@ -9,6 +9,6 @@ const apiClient = axios.create({
 });
 
 apiClient.defaults.headers.common['Authorization'] =
-  `Bearer ${getToken('access')}`;
+  `Bearer ${useAuthToken().accessToken}`;
 
 export default apiClient;
