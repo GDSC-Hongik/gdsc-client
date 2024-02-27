@@ -1,6 +1,5 @@
 import { GitHubButton } from '@/components/auth/GitHubButton';
 import { Text } from '@/components/common/Wrapper';
-import { BASE_URL } from '@/constants/environment';
 import useLandingStatus from '@/hooks/zustand/useLandingStatus';
 import RoutePath from '@/routes/routePath';
 import { theme } from '@/styles';
@@ -21,7 +20,7 @@ export const Auth = () => {
     // GitHub 로그인 페이지로 직접 리다이렉트
 
     setTimeout(function () {
-      document.location.href = `${BASE_URL}/oauth2/authorization/github`;
+      document.location.href = `${RoutePath.AuthGithubLoginRedirect}?redirect-uri=${window.location.origin}`;
     }, 250);
   };
 
