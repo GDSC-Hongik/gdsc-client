@@ -3,7 +3,6 @@ import LandingStatus from '@/constants/landingStatus';
 import useLandingStatus from '@/hooks/zustand/useLandingStatus';
 import RoutePath from '@/routes/routePath';
 import { useMutation } from '@tanstack/react-query';
-import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -16,8 +15,8 @@ export default function useCreateGuestUser() {
       updateLandingStatue(LandingStatus.MyPage);
       navigation(RoutePath.MyPage, { replace: true });
     },
-    onError: (error: AxiosError) => {
-      toast(error?.message);
+    onError: (error: any) => {
+      toast(error.response?.data?.errorMessage);
     }
   });
 

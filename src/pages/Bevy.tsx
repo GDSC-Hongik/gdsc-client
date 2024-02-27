@@ -10,7 +10,6 @@ import styled from '@emotion/styled';
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { AxiosError } from 'axios';
 import RoutePath from '@/routes/routePath';
 
 export const Bevy = () => {
@@ -22,8 +21,8 @@ export const Bevy = () => {
       toast('bevy 연동이 완료되었습니다.');
       navigate(RoutePath.MyPage);
     },
-    onError: (error: AxiosError) => {
-      toast(error?.message);
+    onError: (error: any) => {
+      toast(error.response?.data?.errorMessage);
     }
   });
 

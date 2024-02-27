@@ -1,7 +1,6 @@
 import { sendStudentEmailApi } from '@/apis/auth';
 import RoutePath from '@/routes/routePath';
 import { useMutation } from '@tanstack/react-query';
-import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -15,8 +14,8 @@ export default function useSendStudentEmail() {
         {}
       );
     },
-    onError: (error: AxiosError) => {
-      toast(error?.message);
+    onError: (error: any) => {
+      toast(error.response?.data?.errorMessage);
     }
   });
 
