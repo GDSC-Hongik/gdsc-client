@@ -7,7 +7,7 @@ interface PrivacyProps {
 }
 
 export const Privacy = ({ user }: PrivacyProps) => {
-  const { studentId, department, phone, email, discordUsername } = user;
+  const { studentId, department, phone, email, discordUsername, nickname } = user;
 
   return (
     <Wrapper direction="column" align="flex-start" gap={12}>
@@ -49,6 +49,14 @@ export const Privacy = ({ user }: PrivacyProps) => {
         </Text>
         <Text typo="body3" color="black">
           {discordUsername ?? '-'}
+        </Text>
+      </Flex>
+      <Flex justify="flex-start" gap={8}>
+        <Text typo="label2" color="gray4">
+          디스코드 닉네임
+        </Text>
+        <Text typo="body3" color="black">
+          {nickname ?? '-'}
         </Text>
       </Flex>
     </Wrapper>
