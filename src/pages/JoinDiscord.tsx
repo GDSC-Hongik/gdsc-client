@@ -17,6 +17,7 @@ import discordApi from '@/apis/discord/discordApi';
 import { DiscordLinkRequest } from '@/apis/discord/discordType';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { AxiosError } from 'axios';
 
 export const JoinDiscord = () => {
   const navigate = useNavigate();
@@ -35,8 +36,9 @@ export const JoinDiscord = () => {
       toast('디스코드 연동이 완료되었습니다.');
       navigate('/mypage');
     },
-    onError: (error: any) => {
-      toast(error);
+    onError: (error: AxiosError) => {
+      toast(error.response?.data as string);
+      toast(error.response?.statusText as string);
     }
   });
 
