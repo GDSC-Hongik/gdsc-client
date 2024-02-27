@@ -54,16 +54,20 @@ export const JoinDiscord = () => {
     <Wrapper direction="column" justify="flex-start">
       <Space height={40} />
       <Text typo="heading3" color="black">
-        디스코드 가입 및 연동하기
+        디스코드 연동하기
       </Text>
       <Space height={48} />
       <Flex justify="flex-start" align="flex-start" gap={8}>
         <StepSection icon={<Step1 />} height={120} />
         <Flex direction="column" align="flex-start" justify="flex-start">
           <StepInformation
-            title="본인 디스코드 계정으로 서버에 가입해주세요."
-            description="가입 후에는 (3)의 디스코드 커뮤니티 닉네임으로
-서버 프로필을 변경해주세요!"
+            title="GDSC 디스코드 서버에 입장해주세요."
+            description={
+              <>
+                아직 디스코드 계정이 없는 분이라면,
+                <br /> 가입 후 서버에 입장해주세요.
+              </>
+            }
           />
           <Space height={34} />
           <Text
@@ -75,7 +79,7 @@ export const JoinDiscord = () => {
               text-decoration: underline;
             `}>
             <a href="https://discord.gg/XVr4fMzKSt">
-              디스코드 가입하러 가기↗︎
+              디스코드 서버 입장하기↗︎
             </a>
           </Text>
         </Flex>
