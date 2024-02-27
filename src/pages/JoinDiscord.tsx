@@ -18,6 +18,7 @@ import { DiscordLinkRequest } from '@/apis/discord/discordType';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { AxiosError } from 'axios';
+import RoutePath from '@/routes/routePath';
 
 export const JoinDiscord = () => {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ export const JoinDiscord = () => {
     mutationFn: discordApi.POST_DISCORD,
     onSuccess: () => {
       toast('디스코드 연동이 완료되었습니다.');
-      navigate('/mypage');
+      navigate(RoutePath.MyPage);
     },
     onError: (error: AxiosError) => {
       toast(error.response?.data as string);
@@ -67,7 +68,8 @@ export const JoinDiscord = () => {
             description={
               <>
                 아직 디스코드 계정이 없는 분이라면,
-                <br />가입 후 서버에 입장해주세요.
+                <br />
+                가입 후 서버에 입장해주세요.
               </>
             }
           />
