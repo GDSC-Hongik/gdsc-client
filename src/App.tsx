@@ -180,7 +180,7 @@ function App() {
         <InformationBox
           title="Q. 다른 동아리, 학회와 병행 가능한가요?"
           description="A. 가능합니다!"
-          description2="GDSC Hongik에서는 모든 활동에 자율적으로 참여할 수 있어요. 저희는 회원 분들이 각자의 일정과 여유에 맞춰 활동할 수 있는 환경을 만들기 위해 노력하고 있어요."
+          description2="GDSC Hongik은 멤버 분들이 각자의 일정과 시간에 맞춰서 편하게 활동하실 수 있게, 모든 활동에 자율적으로 참여할 수 있는 환경을 제공하고 있어요."
         />
         <InformationBox
           title="Q. 저는 코딩을 하나도 모르는 새내기인데, 따라갈 수 있나요?"
