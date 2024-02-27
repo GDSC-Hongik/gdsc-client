@@ -7,8 +7,7 @@ interface PrivacyProps {
 }
 
 export const Privacy = ({ user }: PrivacyProps) => {
-  const { studentId, department, phone, email, discordUsername, nickname } =
-    user;
+  const { studentId, department, phone, email, discordUsername } = user;
 
   return (
     <Wrapper direction="column" align="flex-start" gap={12}>
