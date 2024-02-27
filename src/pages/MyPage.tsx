@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import { ApproveBox } from '@/components/myPage/ApproveBox';
 import { logout } from '@/utils/auth';
 import useLandingStatus from '@/hooks/zustand/useLandingStatus';
+import { countTextInObject } from '@/utils/mypage/countTextInObject';
 
 export const MyPage = () => {
   const navigate = useNavigate();
@@ -54,12 +55,11 @@ export const MyPage = () => {
         </Text>
         <Space height={19} />
         <ProgressBar currentStatus={data?.registrationStatus!} />
-        {data?.registrationStatus === 'GRANTED' && (
-          <>
-            <Space height={24} />
-            <ApproveBox />
-          </>
-        )}
+        <Space height={24} />
+        <ApproveBox
+          count={countTextInObject(data, 'VERIFIED')}
+          registrationStatus={data?.registrationStatus!}
+        />
         <Space height={48} />
         <Text typo="heading4" color="black">
           가입 조건
