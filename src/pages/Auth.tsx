@@ -1,4 +1,4 @@
-import { GitHubButton } from '@/components/GitHubButton';
+import { GitHubButton } from '@/components/auth/GitHubButton';
 import { Text } from '@/components/common/Wrapper';
 import { BASE_URL } from '@/constants/environment';
 import useLandingStatus from '@/hooks/zustand/useLandingStatus';
