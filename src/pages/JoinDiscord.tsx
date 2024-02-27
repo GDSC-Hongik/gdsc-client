@@ -113,7 +113,7 @@ export const JoinDiscord = () => {
             value={watch('discordHandle')}
             {...register('discordHandle', { required: true })}
             isError={false}
-            placeholder="eugene028"
+            placeholder="ex) eugene028"
           />
         </Flex>
       </Flex>
@@ -131,7 +131,7 @@ export const JoinDiscord = () => {
             value={watch('discordNickname')}
             {...register('discordNickname', { required: true })}
             isError={false}
-            placeholder="율리"
+            placeholder="ex) 율리"
           />
           <Text
             typo="label3"
@@ -157,7 +157,7 @@ export const JoinDiscord = () => {
             value={watch('code')}
             {...register('code', { required: true })}
             isError={false}
-            placeholder="1234"
+            placeholder="ex) 1234"
           />
           <Text
             typo="label3"
