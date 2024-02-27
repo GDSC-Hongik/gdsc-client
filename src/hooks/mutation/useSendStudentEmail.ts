@@ -1,6 +1,7 @@
 import { sendStudentEmailApi } from '@/apis/auth';
 import RoutePath from '@/routes/routePath';
 import { useMutation } from '@tanstack/react-query';
+import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 export default function useSendStudentEmail() {
@@ -12,6 +13,9 @@ export default function useSendStudentEmail() {
         RoutePath.AuthenticationProcess2_UpdatedStudentVerification,
         {}
       );
+    },
+    onError: (error: AxiosError) => {
+      alert(error);
     }
   });
 

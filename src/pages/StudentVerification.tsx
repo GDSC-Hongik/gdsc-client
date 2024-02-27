@@ -10,8 +10,7 @@ import { Controller } from 'react-hook-form';
 
 /** 재학생 인증 페이지 */
 export const StudentVerification = () => {
-  const { onSubmit, control, isPending, onVerifyStudent } =
-    useStudentVerification();
+  const { onSubmit, control, isPending } = useStudentVerification();
 
   return (
     <Container>
@@ -40,10 +39,7 @@ export const StudentVerification = () => {
             )}
           />
           <ButtonContainer>
-            <Button
-              disabled={isPending}
-              width={'342px'}
-              onClick={onVerifyStudent}>
+            <Button disabled={isPending} width={'342px'}>
               인증 메일 발송하기
             </Button>
           </ButtonContainer>

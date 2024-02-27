@@ -21,7 +21,6 @@ export default function useStudentVerification() {
   const onSubmit = async ({ univEmail }: FieldValues) => {
     updateUnivEmail(univEmail);
     sendStudentEmail(univEmail);
-    onVerifyStudent();
   };
 
   const onVerifyStudent = async () => {
