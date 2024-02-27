@@ -36,10 +36,12 @@ export default function UpdatedStudentVerification() {
             )}
           />
           <ButtonContainer>
-            <Button width="146px" onClick={onVerifyStudent}>
+            <Button type="button" width="146px" onClick={onVerifyStudent}>
               인증 완료
             </Button>
-            <Button width={'146px'}>메일 재전송</Button>
+            <Button type="submit" width={'146px'}>
+              메일 재전송
+            </Button>
           </ButtonContainer>
         </form>
         <Text color="red100">
