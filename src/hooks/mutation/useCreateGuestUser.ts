@@ -5,6 +5,7 @@ import RoutePath from '@/routes/routePath';
 import { useMutation } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export default function useCreateGuestUser() {
   const navigation = useNavigate();
@@ -16,7 +17,7 @@ export default function useCreateGuestUser() {
       navigation(RoutePath.MyPage, { replace: true });
     },
     onError: (error: AxiosError) => {
-      alert(error);
+      toast(error?.message);
     }
   });
 

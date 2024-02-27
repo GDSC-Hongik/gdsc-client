@@ -23,8 +23,7 @@ export const Bevy = () => {
       navigate(RoutePath.MyPage);
     },
     onError: (error: AxiosError) => {
-      toast(error.response?.data as string);
-      toast(error.response?.statusText as string);
+      toast(error?.message);
     }
   });
 

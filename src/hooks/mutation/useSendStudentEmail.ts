@@ -3,6 +3,7 @@ import RoutePath from '@/routes/routePath';
 import { useMutation } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export default function useSendStudentEmail() {
   const navigation = useNavigate();
@@ -15,7 +16,7 @@ export default function useSendStudentEmail() {
       );
     },
     onError: (error: AxiosError) => {
-      alert(error);
+      toast(error?.message);
     }
   });
 
