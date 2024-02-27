@@ -1,14 +1,22 @@
 import { GitHubButton } from '@/components/GitHubButton';
 import { Text } from '@/components/common/Wrapper';
 import { BASE_URL } from '@/constants/environment';
+import useLandingStatus from '@/hooks/zustand/useLandingStatus';
 import RoutePath from '@/routes/routePath';
 import { theme } from '@/styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 /** 깃허브 로그인 및 가입하기 */
 export const Auth = () => {
+  const { clearLandingStatus } = useLandingStatus();
+
+  useEffect(() => {
+    clearLandingStatus();
+  }, []);
+
   const handleClick = () => {
     // GitHub 로그인 페이지로 직접 리다이렉트
     window.location.href = `${BASE_URL}/oauth2/authorization/github`;
