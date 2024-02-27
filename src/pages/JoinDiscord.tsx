@@ -67,7 +67,7 @@ export const JoinDiscord = () => {
             description={
               <>
                 아직 디스코드 계정이 없는 분이라면,
-                <br /> 가입 후 서버에 입장해주세요.
+                <br />가입 후 서버에 입장해주세요.
               </>
             }
           />
