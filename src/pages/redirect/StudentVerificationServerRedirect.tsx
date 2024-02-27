@@ -24,13 +24,19 @@ export const StudentVerificationServerRedirect = () => {
             {isSuccess ? (
               <>
                 <Text>원래 페이지로 돌아가</Text>
-                <Text>인증하기 버튼을 눌러주세요.</Text>
+                <Text>
+                  <span style={{ fontWeight: 700 }}>인증하기</span> 버튼을
+                  눌러주세요.
+                </Text>
               </>
             ) : (
               <>
                 <Text>유효하지 않거나 만료된 인증코드예요.</Text>
                 <Text>원래 페이지로 돌아가서</Text>
-                <Text>메일 재전송 버튼을 눌러주세요.</Text>
+                <Text>
+                  <span style={{ fontWeight: 700 }}>메일 재전송</span> 버튼을
+                  눌러주세요.
+                </Text>
               </>
             )}
           </TextContainer>
