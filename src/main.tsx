@@ -8,6 +8,7 @@ import { Global } from '@emotion/react';
 import ApiErrorBoundary from '@/components/ApiErrorBoundary';
 import { ToastContainer } from 'react-toastify';
 import './styles/styles.scss';
+import Chatbot from '@/components/chatbot/Chatbot';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -23,6 +24,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <QueryClientProvider client={queryClient}>
       <Global styles={GlobalStyle} />
       <ApiErrorBoundary>
+        <Chatbot />
         <Routers />
       </ApiErrorBoundary>
       <ReactQueryDevtools />

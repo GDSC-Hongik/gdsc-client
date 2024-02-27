@@ -1,1 +1,4 @@
-export const { VITE_BASE_URL: BASE_URL } = import.meta.env;
+export const {
+  VITE_BASE_URL: BASE_URL,
+  VITE_CHANNELIO_PLUGIN_KEY: CHANNELIO_PLUGIN_KEY
+} = import.meta.env;
