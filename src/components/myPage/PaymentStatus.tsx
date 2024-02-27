@@ -94,4 +94,5 @@ const Wrapper = styled(Flex)<{
 const InformationWrapper = styled(Flex)`
   background-color: ${theme.palette.white};
   border-radius: 8px;
+  border: 1px solid ${theme.palette.gray2};
 `;
