@@ -20,7 +20,8 @@ const RoutePath = {
 
   CommunityGuideLink:
     'https://www.gdschongik.com/onboarding/community-guideline',
-  TermsLink: 'https://www.gdschongik.com/onboarding/community-rule'
+  TermsLink: 'https://www.gdschongik.com/onboarding/community-rule',
+  PersonalPrivacyLink: 'https://www.gdschongik.com/privacy-policy'
 } as const;
 
 export default RoutePath;

@@ -123,7 +123,13 @@ export const SignUp = () => {
               <Text
                 typo="body2"
                 color={isChecked.personalPrivacy ? 'black' : 'gray3'}>
-                개인정보 수집에 동의합니다.
+                <GuideLink
+                  to={RoutePath.PersonalPrivacyLink}
+                  target="_blank"
+                  color={isChecked.terms ? 'black' : 'gray3'}>
+                  개인정보 수집
+                </GuideLink>
+                에 동의합니다.
               </Text>
             }
           />
