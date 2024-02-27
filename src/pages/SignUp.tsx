@@ -92,12 +92,18 @@ export const SignUp = () => {
               setIsChecked((prev) => ({ ...prev, terms: !prev.terms }))
             }
             label={
-              <Text typo="label1">
-                <GuideLink to={RoutePath.CommunityGuideLink} target="_blank">
+              <Text typo="label1" color={isChecked.terms ? 'black' : 'gray3'}>
+                <GuideLink
+                  to={RoutePath.CommunityGuideLink}
+                  target="_blank"
+                  color={isChecked.terms ? 'black' : 'gray3'}>
                   커뮤니티 가이드라인
                 </GuideLink>{' '}
                 및{' '}
-                <GuideLink to={RoutePath.TermsLink} target="_blank">
+                <GuideLink
+                  to={RoutePath.TermsLink}
+                  target="_blank"
+                  color={isChecked.terms ? 'black' : 'gray3'}>
                   GDSC 회칙
                 </GuideLink>
                 에 동의합니다.
@@ -113,7 +119,13 @@ export const SignUp = () => {
                 personalPrivacy: !prev.personalPrivacy
               }))
             }
-            label={<Text typo="body2">개인정보 수집 에 동의합니다.</Text>}
+            label={
+              <Text
+                typo="body2"
+                color={isChecked.personalPrivacy ? 'black' : 'gray3'}>
+                개인정보 수집에 동의합니다.
+              </Text>
+            }
           />
         </CheckboxContainer>
         <Button width={'342px'} disabled={disabledSubmitButton}>
