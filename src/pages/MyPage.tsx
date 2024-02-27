@@ -13,16 +13,20 @@ import GlobalSize from '@/constants/globalSize';
 import { useNavigate } from 'react-router-dom';
 import { ApproveBox } from '@/components/myPage/ApproveBox';
 import { logout } from '@/utils/auth';
+import useLandingStatus from '@/hooks/zustand/useLandingStatus';
 
 export const MyPage = () => {
   const navigate = useNavigate();
+  const { clearLandingStatus } = useLandingStatus();
   const { data } = useQuery({
     queryKey: ['member'],
     queryFn: memberApi.GET_MEMBERS_ME
   });
 
   const handleLogoutClick = () => {
+    clearLandingStatus();
     logout();
+
     navigate('/');
   };
 
