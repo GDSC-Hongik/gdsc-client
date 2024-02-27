@@ -19,6 +19,10 @@ export const InformationBox = ({
         color="black"
         css={css`
           word-break: keep-all;
+          height: 25px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         `}>
         {title}
       </Text>
