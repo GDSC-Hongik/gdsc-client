@@ -32,9 +32,10 @@ export const Auth = () => {
           <Text typo={'heading3'} style={{ marginBottom: '12px' }}>
             로그인 및 가입하기
           </Text>
-          <Text>깃허브 계정의 경우, 추후 과제 제출이나</Text>
-          <Text>개발 관련 프로그램 참여 시 사용되므로</Text>
-          <Text>해당 활동이 가능한 계정으로 가입해주세요.</Text>
+          <Text>GDSC Hongik에서는 더 나은 커뮤니티 운영과</Text>
+          <Text>안전한 회원 정보 관리를 위해</Text>
+          <Text>Github 소셜 로그인을 사용하고 있어요.</Text>
+          <Text>계정이 없다면, 새로 가입해야 해요.</Text>
         </TextContainer>
         <GitHubButton onClick={handleClick}>
           GitHub 로그인/회원가입
