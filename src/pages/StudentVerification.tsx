@@ -19,7 +19,7 @@ export const StudentVerification = () => {
     if (isClicked) return;
     setIsClicked(true);
     onSubmit();
-    navigate(RoutePath.AuthenticationProcess3_Signup);
+    navigate(RoutePath.AuthenticationProcess2_UpdatedStudentVerification);
   };
 
   return (
