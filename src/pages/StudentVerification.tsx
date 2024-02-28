@@ -4,13 +4,14 @@ import { Flex, Text } from '@/components/common/Wrapper';
 import RoutePath from '@/routes/routePath';
 import { theme } from '@/styles';
 import styled from '@emotion/styled';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useStudentVerification } from '@/hooks/auth';
 import { Controller } from 'react-hook-form';
 import { useState } from 'react';
 
 /** 재학생 인증 페이지 */
 export const StudentVerification = () => {
+  const navigate = useNavigate();
   const [isClicked, setIsClicked] = useState(false);
   const { onSubmit, control, isPending } = useStudentVerification();
 
@@ -18,6 +19,7 @@ export const StudentVerification = () => {
     if (isClicked) return;
     setIsClicked(true);
     onSubmit();
+    navigate(RoutePath.AuthenticationProcess3_Signup);
   };
 
   return (

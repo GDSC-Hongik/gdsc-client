@@ -9,10 +9,7 @@ export default function useSendStudentEmail() {
   const { mutate: sendStudentEmail, ...rest } = useMutation({
     mutationFn: sendStudentEmailApi,
     onSuccess: () => {
-      navigation(
-        RoutePath.AuthenticationProcess2_UpdatedStudentVerification,
-        {}
-      );
+      navigation(RoutePath.AuthenticationProcess2_UpdatedStudentVerification);
     },
     onError: (error: any) => {
       toast(error.response?.data?.errorMessage);
