@@ -1,3 +1,5 @@
+import { BASE_URL } from '@/constants/environment';
+
 const RoutePath = {
   Index: '/',
   Home: '/',
@@ -11,6 +13,8 @@ const RoutePath = {
   AuthenticationProcess2_UpdatedStudentVerification:
     '/updated-student-verification',
   AuthenticationProcess3_Signup: '/signup',
+
+  AuthGithubLoginRedirect: `${BASE_URL}/oauth2/authorization/github`,
 
   AuthServerRedirect: '/social-login/redirect',
   StudentVerificationServerRedirect: '/onboarding/verify-email',
