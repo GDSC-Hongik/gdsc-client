@@ -8,6 +8,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useStudentVerification } from '@/hooks/auth';
 import { Controller } from 'react-hook-form';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 /** 재학생 인증 페이지 */
 export const StudentVerification = () => {
@@ -20,6 +21,7 @@ export const StudentVerification = () => {
     setIsClicked(true);
     onSubmit();
     navigate(RoutePath.AuthenticationProcess2_UpdatedStudentVerification);
+    toast('메일 전송이 완료되었습니다.');
   };
 
   return (
