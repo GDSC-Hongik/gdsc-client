@@ -3,6 +3,7 @@ import { Text } from '@/components/common/Wrapper';
 import useLandingStatus from '@/hooks/zustand/useLandingStatus';
 import RoutePath from '@/routes/routePath';
 import { theme } from '@/styles';
+import { setCookie } from '@/utils/auth';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useEffect } from 'react';
@@ -14,13 +15,16 @@ export const Auth = () => {
 
   useEffect(() => {
     clearLandingStatus();
+    setCookie({
+      key: 'oauth-base-uri',
+      value: window.location.origin
+    });
   }, []);
 
   const handleClick = () => {
     // GitHub 로그인 페이지로 직접 리다이렉트
-
     setTimeout(function () {
-      document.location.href = `${RoutePath.AuthGithubLoginRedirect}?redirect-uri=${window.location.origin}`;
+      document.location.href = RoutePath.AuthGithubLoginRedirect;
     }, 250);
   };
 

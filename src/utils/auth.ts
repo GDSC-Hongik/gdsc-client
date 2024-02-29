@@ -40,11 +40,11 @@ export function getCookie(name: string): string {
 export function setCookie({
   key,
   value,
-  days
+  days = 1
 }: {
   key: string;
   value: string;
-  days: number;
+  days?: number;
 }) {
   const expirationDate = new Date();
   expirationDate.setDate(expirationDate.getDate() + days);

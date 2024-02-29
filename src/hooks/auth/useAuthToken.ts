@@ -18,8 +18,7 @@ export default function useAuthToken() {
             type === 'access'
               ? CookieKeys.AccessToken
               : CookieKeys.RefreshToken,
-          value,
-          days: 1
+          value
         });
       }
     },
