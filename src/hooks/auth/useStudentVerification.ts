@@ -22,12 +22,12 @@ export default function useStudentVerification() {
   const onSubmit = async ({ univEmail }: FieldValues) => {
     updateUnivEmail(univEmail);
     sendStudentEmail(univEmail);
+    toast('메일 전송이 완료되었습니다.');
   };
 
   const onVerifyStudent = async () => {
     try {
       const result = await verifyStudentApi();
-      toast('메일 전송이 완료되었습니다.');
 
       if (result.univStatus === 'VERIFIED') {
         updateLandingStatue(LandingStatus.Signup);
