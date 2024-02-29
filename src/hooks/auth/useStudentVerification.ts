@@ -27,6 +27,7 @@ export default function useStudentVerification() {
   const onVerifyStudent = async () => {
     try {
       const result = await verifyStudentApi();
+      toast('메일 전송이 완료되었습니다.');
 
       if (result.univStatus === 'VERIFIED') {
         updateLandingStatue(LandingStatus.Signup);
@@ -36,10 +37,7 @@ export default function useStudentVerification() {
         // 여기에서 사용자에게 메시지를 표시하거나 다른 조치를 취할 수 있습니다.
       }
     } catch (error: any) {
-      // 에러 처리
-      // 예를 들어, 사용자에게 알림을 표시하거나, 로깅을 수행할 수 있습니다.
       toast(error as string);
-      // 에러 상황에 대한 사용자 피드백이나 다른 액션을 추가할 수 있습니다.
     }
   };
 
