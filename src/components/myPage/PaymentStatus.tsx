@@ -23,7 +23,7 @@ export const PaymentStatus = ({
         <Flex direction="column" justify="flex-start" align="flex-start">
           <Text typo="label1" color="black">
             {paymentStatus === 'PENDING'
-              ? '아직 회비 납부가 확인되지 않았어요.'
+              ? '아직 회비 납입 승인이 시작되지 않았어요.'
               : '회비 납부가 정상적으로 완료되었어요.'}
           </Text>
           <Space height={12} />
@@ -61,15 +61,15 @@ export const PaymentStatus = ({
             Q. 입금 이후에도 계속 확인되지 않았다고 표시돼요.
           </Text>
           <Text typo="body3" color="gray4">
-            A. 납부 여부의 경우 운영진이 직접 체크하고 있기 때문에, 변경사항이
-            바로 반영되지 않을 수도 있어요.
+            A. 납입 여부의 경우 모집 기간 중 지정된 날부터 운영진이 일괄적으로
+            승인할 예정이에요.
             <br />
             <br />
-            입금 후에도 납부 상태가 계속해서 변경되지 않는다면, 입금자명을 (이름
-            + 전화번호 마지막 4자리)로 올바르게 작성했는지 확인해주세요.
+            아직 납입 승인을 진행하고 있지 않아요. 승인 프로세스가 시작될 경우
+            디스코드 채널을 통해 공지하도록 할게요.
             <br />
             <br />
-            잘못된 부분이 있다면 GDSC 채널톡으로 문의 부탁드려요.
+            조금만 기다려주세요!
           </Text>
         </InformationWrapper>
       )}
