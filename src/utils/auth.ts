@@ -58,6 +58,10 @@ export function setCookie({
   const encodedKey = encodeURIComponent(key);
   const processedValue = encoding ? encodeURIComponent(value) : value;
 
+  const domain = window.location.origin.includes('localhost')
+    ? 'localhost'
+    : '.gdschongik.com';
+
   const cookieValue =
     encodedKey +
     '=' +
@@ -68,6 +72,8 @@ export function setCookie({
     '; SameSite=' +
     sameSite +
     (secure ? '; Secure' : '') +
+    '; Domain=' +
+    domain; // 도메인 설정 추가
 
   document.cookie = cookieValue;
 }
