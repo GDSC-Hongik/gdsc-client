@@ -23,11 +23,12 @@ const RoutePath = {
 
   GitHubGuideLink: 'https://www.gdschongik.com/guide/github',
   StudentEmailLinkGuideLink: 'https://www.gdschongik.com/guide/student-email',
-
   CommunityGuideLink:
     'https://www.gdschongik.com/onboarding/community-guideline',
   TermsLink: 'https://www.gdschongik.com/onboarding/community-rule',
-  PersonalPrivacyLink: 'https://www.gdschongik.com/privacy-policy'
+  PersonalPrivacyLink: 'https://www.gdschongik.com/privacy-policy',
+
+  InstagramLink: 'https://www.instagram.com/gdsc.hongik/'
 } as const;
 
 export default RoutePath;
