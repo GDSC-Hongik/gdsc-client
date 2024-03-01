@@ -11,10 +11,9 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import GlobalSize from '@/constants/globalSize';
 import { useNavigate } from 'react-router-dom';
-import { getAuthRedirectPath, setCookie } from '@/utils/auth';
+import { getAuthRedirectPath } from '@/utils/auth';
 import 'react-toastify/dist/ReactToastify.css';
 import useLandingStatus from '@/hooks/zustand/useLandingStatus';
-import { useEffect } from 'react';
 
 const IMG_SRC = [
   '/onboarding/1.png',
@@ -30,15 +29,6 @@ const IMG_SRC = [
 function App() {
   const navigate = useNavigate();
   const { landingStatus } = useLandingStatus();
-
-  useEffect(() => {
-    // 로그인을 위한 oauth-base-uri 쿠키 값 세팅
-    setCookie({
-      key: 'oauth-base-uri',
-      value: window.location.origin,
-      encoding: false
-    });
-  }, []);
 
   return (
     <Wrapper direction="column">
@@ -157,12 +147,12 @@ function App() {
         <InformationBox
           title="지원 자격"
           description="학과, 전공, 학년 무관 홍익대학교 학생이라면"
-          description2="누구나 활동할 수 있습니다."
+          description2="누구나 활동할 수 있어요."
         />
         <InformationBox
           title="지원 시 유의사항"
-          description="GDSC 커뮤니티 가이드라인 및 오픈 커뮤니티 가이드라인을 준수해야 합니다."
-          description2="또한, 학기 당 2만원의 회비가 있습니다."
+          description="GDSC 커뮤니티 가이드라인 및 오픈 커뮤니티 가이드라인을 준수해야 해요."
+          description2="또한, 학기 당 2만원의 회비가 있어요."
         />
       </Flex>
       <Space height={48} />

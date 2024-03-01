@@ -1,12 +1,12 @@
 import LandingStatus from '@/constants/landingStatus';
-import { Navigate, Outlet } from 'react-router-dom';
 import useLandingStatus from '@/hooks/zustand/useLandingStatus';
 import { getAuthRedirectPath } from '@/utils/auth';
+import { Navigate, Outlet } from 'react-router-dom';
 
-export default function SignupAccessGuard() {
+export default function OnboardingNotOpenedAccessGuard() {
   const { landingStatus } = useLandingStatus();
 
-  if (landingStatus !== LandingStatus.Signup) {
+  if (landingStatus !== LandingStatus.OnboardingNotOpened) {
     return <Navigate to={getAuthRedirectPath(landingStatus)} />;
   }
 
