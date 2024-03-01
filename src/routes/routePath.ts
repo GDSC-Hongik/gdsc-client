@@ -8,6 +8,8 @@ const RoutePath = {
   Bevy: '/bevy',
   Discord: '/discord',
 
+  OnboardingNotOpened: '/not-opened',
+
   AuthenticationProcess1_GithubSignin: '/auth',
   AuthenticationProcess2_StudentVerification: '/student-verification',
   AuthenticationProcess2_UpdatedStudentVerification:
