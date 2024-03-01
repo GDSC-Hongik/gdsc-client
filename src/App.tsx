@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import GlobalSize from '@/constants/globalSize';
 import { useNavigate } from 'react-router-dom';
-import { getAuthRedirectPath, setCookie } from '@/utils/auth';
+import { getAuthRedirectPath } from '@/utils/auth';
 import 'react-toastify/dist/ReactToastify.css';
 import useLandingStatus from '@/hooks/zustand/useLandingStatus';
 
