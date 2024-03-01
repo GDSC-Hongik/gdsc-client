@@ -5,22 +5,9 @@ export default function useAuthToken() {
   return {
     accessToken: getCookie(CookieKeys.AccessToken),
     refreshToken: getCookie(CookieKeys.RefreshToken),
-    setToken: ({
-      type,
-      value
-    }: {
-      type: 'access' | 'refresh';
-      value: string | null;
-    }) => {
-      if (value && value.length > 0) {
-        setCookie({
-          key:
-            type === 'access'
-              ? CookieKeys.AccessToken
-              : CookieKeys.RefreshToken,
-          value,
-          days: 1
-        });
+    setToken: ({ type, value }: { type: CookieKeys; value: string | null }) => {
+      if (value) {
+        setCookie({ key: type, value });
       }
     },
     clearToken: () => {

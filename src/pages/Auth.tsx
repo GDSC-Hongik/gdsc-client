@@ -18,9 +18,8 @@ export const Auth = () => {
 
   const handleClick = () => {
     // GitHub 로그인 페이지로 직접 리다이렉트
-
     setTimeout(function () {
-      document.location.href = `${RoutePath.AuthGithubLoginRedirect}?redirect-uri=${window.location.origin}`;
+      document.location.href = RoutePath.AuthGithubLoginRedirect;
     }, 250);
   };
 

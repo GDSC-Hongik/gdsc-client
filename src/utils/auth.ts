@@ -40,22 +40,35 @@ export function getCookie(name: string): string {
 export function setCookie({
   key,
   value,
-  days
+  days = 1,
+  encoding = true
 }: {
   key: string;
   value: string;
-  days: number;
+  days?: number;
+  encoding?: boolean;
 }) {
   const expirationDate = new Date();
   expirationDate.setDate(expirationDate.getDate() + days);
 
+  const encodedKey = encodeURIComponent(key);
+  const processedValue = encoding ? encodeURIComponent(value) : value;
+
+  const isBaseUriCookie = key === 'oauth-base-uri';
+  const domain = window.location.origin.includes('localhost')
+    ? 'localhost'
+    : '.gdschongik.com';
+  const baseUriCookieValue = '; samesite=none; secure; domain=' + domain;
+
   const cookieValue =
-    encodeURIComponent(key) +
+    encodedKey +
     '=' +
-    encodeURIComponent(value) +
+    processedValue +
     '; expires=' +
     expirationDate.toUTCString() +
-    '; path=/';
+    '; path=/' +
+    (isBaseUriCookie ? baseUriCookieValue : '');
+
   document.cookie = cookieValue;
 }
 
