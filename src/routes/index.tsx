@@ -7,7 +7,8 @@ import {
   MypageAccessGuard,
   AuthAccessGuard,
   SignupAccessGuard,
-  StudentVerificationAccessGuard
+  StudentVerificationAccessGuard,
+  OnboardingNotOpenedAccessGuard
 } from '@/components/auth/guard';
 import { Text } from '@/components/common/Wrapper';
 import {
@@ -19,7 +20,8 @@ import {
   MyPage,
   JoinDiscord,
   UpdatedStudentVerification,
-  Bevy
+  Bevy,
+  OnboardingNotOpened
 } from '@/pages';
 
 export const Routers = () => {
@@ -37,6 +39,7 @@ const router = createBrowserRouter([
         path: RoutePath.AuthServerRedirect,
         element: <AuthServerRedirectNavigate />
       },
+
       {
         path: RoutePath.StudentVerificationServerRedirect,
         element: <StudentVerificationServerRedirect />
@@ -78,6 +81,11 @@ const router = createBrowserRouter([
             element: <Bevy />
           }
         ]
+      },
+      {
+        path: RoutePath.OnboardingNotOpened,
+        element: <OnboardingNotOpenedAccessGuard />,
+        children: [{ index: true, element: <OnboardingNotOpened /> }]
       },
       // Todo: 404 Not found page
       { path: '*', element: <Text>not found page</Text> }

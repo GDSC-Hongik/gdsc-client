@@ -13,6 +13,8 @@ export function getAuthRedirectPath(landingStatus: string | null | undefined) {
       return RoutePath.AuthenticationProcess3_Signup;
     case LandingStatus.MyPage:
       return RoutePath.MyPage;
+    case LandingStatus.OnboardingNotOpened:
+      return RoutePath.OnboardingNotOpened;
     default:
       return RoutePath.AuthenticationProcess1_GithubSignin;
   }
