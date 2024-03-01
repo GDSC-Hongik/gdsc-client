@@ -41,12 +41,16 @@ export function setCookie({
   key,
   value,
   days = 1,
-  encoding = true
+  encoding = true,
+  secure = true,
+  sameSite = 'None'
 }: {
   key: string;
   value: string;
   days?: number;
   encoding?: boolean;
+  secure?: boolean;
+  sameSite?: 'None' | 'Strict' | 'Lax';
 }) {
   const expirationDate = new Date();
   expirationDate.setDate(expirationDate.getDate() + days);
@@ -60,7 +64,10 @@ export function setCookie({
     processedValue +
     '; expires=' +
     expirationDate.toUTCString() +
-    '; path=/';
+    '; path=/' +
+    '; SameSite=' +
+    sameSite +
+    (secure ? '; Secure' : '') +
 
   document.cookie = cookieValue;
 }
