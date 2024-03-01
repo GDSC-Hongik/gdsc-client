@@ -8,7 +8,6 @@ export default function useAuthToken() {
     setToken: ({ type, value }: { type: CookieKeys; value: string | null }) => {
       if (value) {
         setCookie({ key: type, value });
-        console.info(`[${CookieKeys.AccessToken}] `, value);
       }
     },
     clearToken: () => {

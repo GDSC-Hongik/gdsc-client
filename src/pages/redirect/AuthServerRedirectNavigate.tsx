@@ -19,7 +19,6 @@ export const AuthServerRedirectNavigate = () => {
       updateLandingStatue(landingStatus);
     }
 
-    console.info('[Auth Server Redirect] ', accessToken, refreshToken);
     setToken({ type: CookieKeys.AccessToken, value: accessToken });
     setToken({ type: CookieKeys.RefreshToken, value: refreshToken });
 
