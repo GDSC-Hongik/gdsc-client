@@ -11,9 +11,10 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import GlobalSize from '@/constants/globalSize';
 import { useNavigate } from 'react-router-dom';
-import { getAuthRedirectPath } from '@/utils/auth';
+import { getAuthRedirectPath, setCookie } from '@/utils/auth';
 import 'react-toastify/dist/ReactToastify.css';
 import useLandingStatus from '@/hooks/zustand/useLandingStatus';
+import { useEffect } from 'react';
 
 const IMG_SRC = [
   '/onboarding/1.png',
@@ -29,6 +30,15 @@ const IMG_SRC = [
 function App() {
   const navigate = useNavigate();
   const { landingStatus } = useLandingStatus();
+
+  useEffect(() => {
+    // 로그인을 위한 oauth-base-uri 쿠키 값 세팅
+    setCookie({
+      key: 'oauth-base-uri',
+      value: window.location.origin,
+      encoding: false
+    });
+  }, []);
 
   return (
     <Wrapper direction="column">
