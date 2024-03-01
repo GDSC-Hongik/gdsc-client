@@ -40,22 +40,28 @@ export function getCookie(name: string): string {
 export function setCookie({
   key,
   value,
-  days = 1
+  days = 1,
+  encoding = true
 }: {
   key: string;
   value: string;
   days?: number;
+  encoding?: boolean;
 }) {
   const expirationDate = new Date();
   expirationDate.setDate(expirationDate.getDate() + days);
 
+  const encodedKey = encodeURIComponent(key);
+  const processedValue = encoding ? encodeURIComponent(value) : value;
+
   const cookieValue =
-    encodeURIComponent(key) +
+    encodedKey +
     '=' +
-    encodeURIComponent(value) +
+    processedValue +
     '; expires=' +
     expirationDate.toUTCString() +
     '; path=/';
+
   document.cookie = cookieValue;
 }
 

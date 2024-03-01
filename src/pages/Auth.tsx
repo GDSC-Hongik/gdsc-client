@@ -17,7 +17,8 @@ export const Auth = () => {
     clearLandingStatus();
     setCookie({
       key: 'oauth-base-uri',
-      value: window.location.origin
+      value: window.location.origin,
+      encoding: false
     });
   }, []);
 
