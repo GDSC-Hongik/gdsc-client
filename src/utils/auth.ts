@@ -41,16 +41,12 @@ export function setCookie({
   key,
   value,
   days = 1,
-  encoding = true,
-  secure = true,
-  sameSite = 'None'
+  encoding = true
 }: {
   key: string;
   value: string;
   days?: number;
   encoding?: boolean;
-  secure?: boolean;
-  sameSite?: 'None' | 'Strict' | 'Lax';
 }) {
   const expirationDate = new Date();
   expirationDate.setDate(expirationDate.getDate() + days);
@@ -70,10 +66,8 @@ export function setCookie({
     expirationDate.toUTCString() +
     '; path=/' +
     '; SameSite=' +
-    sameSite +
-    (secure ? '; Secure' : '') +
     '; Domain=' +
-    domain; // 도메인 설정 추가
+    domain;
 
   document.cookie = cookieValue;
 }
