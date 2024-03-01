@@ -54,9 +54,11 @@ export function setCookie({
   const encodedKey = encodeURIComponent(key);
   const processedValue = encoding ? encodeURIComponent(value) : value;
 
+  const isBaseUriCookie = key === 'oauth-base-uri';
   const domain = window.location.origin.includes('localhost')
     ? 'localhost'
     : '.gdschongik.com';
+  const baseUriCookieValue = '; samesite=none; secure; domain=' + domain;
 
   const cookieValue =
     encodedKey +
@@ -65,9 +67,7 @@ export function setCookie({
     '; expires=' +
     expirationDate.toUTCString() +
     '; path=/' +
-    '; SameSite=' +
-    '; Domain=' +
-    domain;
+    (isBaseUriCookie ? baseUriCookieValue : '');
 
   document.cookie = cookieValue;
 }
