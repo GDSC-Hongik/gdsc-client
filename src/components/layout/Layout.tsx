@@ -4,15 +4,18 @@ import { media, theme } from '@/styles';
 import Header from '@/components/layout/Header';
 import { Outlet } from 'react-router-dom';
 import GlobalSize from '@/constants/globalSize';
+import ApiErrorBoundary from '@/components/ApiErrorBoundary';
 
 const Layout = () => {
   return (
-    <Container>
-      <Header />
-      <Wrapper>
-        <Outlet />
-      </Wrapper>
-    </Container>
+    <ApiErrorBoundary>
+      <Container>
+        <Header />
+        <Wrapper>
+          <Outlet />
+        </Wrapper>
+      </Container>
+    </ApiErrorBoundary>
   );
 };
 export default Layout;

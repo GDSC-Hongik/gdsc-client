@@ -2,7 +2,7 @@ import { PropsWithChildren } from 'react';
 
 import { useQueryClient } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import RoutePath from '@/routes/routePath';
 
@@ -13,7 +13,7 @@ type ErrorResponseType = {
 
 export default function ApiErrorBoundary({ children }: PropsWithChildren) {
   const queryClient = useQueryClient();
-  const navigation = useNavigate();
+
   queryClient.getQueryCache().config = {
     onError: (error) => handleError(error as AxiosError)
   };
@@ -31,7 +31,7 @@ export default function ApiErrorBoundary({ children }: PropsWithChildren) {
       case 401:
       case 403:
         toast.error(message);
-        navigation(RoutePath.Index);
+        redirect(RoutePath.Index);
         break;
       default:
         toast.error(message);
