@@ -35,9 +35,6 @@ export const JoinDiscord = () => {
     onSuccess: () => {
       toast('디스코드 연동이 완료되었습니다.');
       navigate(RoutePath.MyPage);
-    },
-    onError: (error: any) => {
-      toast(error.response?.data?.errorMessage);
     }
   });
 
