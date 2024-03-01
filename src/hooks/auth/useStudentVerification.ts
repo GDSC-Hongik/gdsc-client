@@ -9,19 +9,20 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 export default function useStudentVerification() {
+  const navigation = useNavigate();
   const { univEmail, updateUnivEmail } = useUnivEmail();
 
   const { control, handleSubmit } = useForm({
     defaultValues: { univEmail: univEmail ?? '' },
     mode: 'onChange'
   });
-  const navigation = useNavigate();
   const { updateLandingStatue } = useLandingStatus();
   const { sendStudentEmail, ...rest } = useSendStudentEmail();
 
   const onSubmit = async ({ univEmail }: FieldValues) => {
     updateUnivEmail(univEmail);
     sendStudentEmail(univEmail);
+    toast('메일 전송이 완료되었습니다.');
   };
 
   const onVerifyStudent = async () => {
@@ -36,10 +37,7 @@ export default function useStudentVerification() {
         // 여기에서 사용자에게 메시지를 표시하거나 다른 조치를 취할 수 있습니다.
       }
     } catch (error: any) {
-      // 에러 처리
-      // 예를 들어, 사용자에게 알림을 표시하거나, 로깅을 수행할 수 있습니다.
       toast(error as string);
-      // 에러 상황에 대한 사용자 피드백이나 다른 액션을 추가할 수 있습니다.
     }
   };
 
