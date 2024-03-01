@@ -37,7 +37,7 @@ export default function useStudentVerification() {
         // 여기에서 사용자에게 메시지를 표시하거나 다른 조치를 취할 수 있습니다.
       }
     } catch (error: any) {
-      toast(error as string);
+      toast.error(error as string);
     }
   };
 

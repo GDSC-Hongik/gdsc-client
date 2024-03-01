@@ -5,7 +5,6 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Routers } from '@/routes';
 import { GlobalStyle } from '@/styles';
 import { Global } from '@emotion/react';
-import ApiErrorBoundary from '@/components/ApiErrorBoundary';
 import { ToastContainer } from 'react-toastify';
 import './styles/styles.scss';
 import Chatbot from '@/components/chatbot/Chatbot';
@@ -23,10 +22,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <Global styles={GlobalStyle} />
-      <ApiErrorBoundary>
-        <Chatbot />
-        <Routers />
-      </ApiErrorBoundary>
+      <Chatbot />
+      <Routers />
       <ReactQueryDevtools />
     </QueryClientProvider>
     <ToastContainer

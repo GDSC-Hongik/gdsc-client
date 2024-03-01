@@ -4,18 +4,11 @@ import { useQueryClient } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import { redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
-
-import RoutePath from '@routes/routePath';
-
-type ErrorCodeType = {
-  errorCode: string;
-  status: number;
-  statusCode: string;
-};
+import RoutePath from '@/routes/routePath';
 
 type ErrorResponseType = {
-  errorCode: ErrorCodeType;
-  message: string;
+  errorCodeName: string;
+  errorMessage: string;
 };
 
 export default function ApiErrorBoundary({ children }: PropsWithChildren) {
@@ -31,17 +24,17 @@ export default function ApiErrorBoundary({ children }: PropsWithChildren) {
 
   function handleError(axiosError: AxiosError) {
     const errorResponse = axiosError.response?.data as ErrorResponseType;
-    const message = errorResponse.message;
 
-    switch (errorResponse.errorCode?.status) {
+    const message = errorResponse.errorMessage;
+
+    switch (axiosError.response?.status) {
       case 401:
       case 403:
-        toast(message);
-        // TODO: where ?
-        redirect(RoutePath.Home);
+        toast.error(message);
+        redirect(RoutePath.Index);
         break;
       default:
-        toast(message);
+        toast.error(message);
         break;
     }
   }
