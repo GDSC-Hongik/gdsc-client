@@ -16,6 +16,7 @@ export const Auth = () => {
   useEffect(() => {
     clearLandingStatus();
     // 로그인을 위한 oauth-base-uri 쿠키 값 세팅
+    console.log(window.location.origin);
     setCookie({
       key: 'oauth-base-uri',
       value: window.location.origin,
