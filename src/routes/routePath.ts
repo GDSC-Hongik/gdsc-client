@@ -9,6 +9,7 @@ const RoutePath = {
   Discord: '/discord',
 
   OnboardingNotOpened: '/not-opened',
+  OnboardingClosed: '/closed',
 
   AuthenticationProcess1_GithubSignin: '/auth',
   AuthenticationProcess2_StudentVerification: '/student-verification',
