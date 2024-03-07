@@ -162,8 +162,11 @@ function App() {
         <OnboardingLogo2 />
         <Space height={25} />
         <ApplyButton
+          disabled={landingStatus === 'ONBOARDING_CLOSED'}
           onClick={() => navigate(getAuthRedirectPath(landingStatus))}>
-          가입하기
+          {landingStatus === 'ONBOARDING_CLOSED'
+            ? '지금은 지원 기간이 아니에요'
+            : '가입하기'}
         </ApplyButton>
         <Space height={40} />
       </BlueSection>
@@ -248,4 +251,9 @@ const ApplyButton = styled.button`
   ${theme.typo.heading4};
 
   flex-shrink: 0;
+
+  :disabled {
+    background-color: ${theme.palette.gray2};
+    color: ${theme.palette.gray1};
+  }
 `;

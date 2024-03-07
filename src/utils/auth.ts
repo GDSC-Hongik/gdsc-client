@@ -15,6 +15,8 @@ export function getAuthRedirectPath(landingStatus: string | null | undefined) {
       return RoutePath.MyPage;
     case LandingStatus.OnboardingNotOpened:
       return RoutePath.OnboardingNotOpened;
+    case LandingStatus.OnboardingClosed:
+      return RoutePath.OnboardingClosed;
     default:
       return RoutePath.AuthenticationProcess1_GithubSignin;
   }
