@@ -26,7 +26,8 @@ import {
   OnboardingClosed,
   Payments,
   PaymentsSuccess,
-  PaymentsFail
+  PaymentsFail,
+  PaymentsCheckout
 } from '@/pages';
 import { DicordConnect } from '@/pages/DiscordConnect';
 import { DiscordGuide } from '@/pages/DiscordGuide';
@@ -120,6 +121,10 @@ const router = createBrowserRouter([
       {
         path: RoutePath.Payments,
         element: <Payments />
+      },
+      {
+        path: RoutePath.PaymentsCheckout,
+        element: <PaymentsCheckout />
       },
       {
         path: RoutePath.PaymentsFail,

@@ -1,19 +1,14 @@
 import { Flex, Space, Text } from '@/components/common/Wrapper';
 import { media, theme } from '@/styles';
 import styled from '@emotion/styled';
-import { ProgressBar } from '@/components/myPage/ProgressBar';
-import { PaymentStatus } from '@/components/myPage/PaymentStatus';
-import { DiscordStatus } from '@/components/myPage/DiscordStatus';
-import { BevyStatus } from '@/components/myPage/BevyStatus';
-import { Privacy } from '@/components/myPage/Privacy';
+
 import { useQuery } from '@tanstack/react-query';
 import memberApi from '@/apis/member/memberApi';
 import GlobalSize from '@/constants/globalSize';
 import { useNavigate } from 'react-router-dom';
-import { ApproveBox } from '@/components/myPage/ApproveBox';
-import { countTextInObject } from '@/utils/mypage/countTextInObject';
-import RoutePath from '@/routes/routePath';
+
 import { Button } from '@/components/common/Button';
+import RoutePath from '@/routes/routePath';
 
 export const Payments = () => {
   const navigate = useNavigate();
@@ -21,6 +16,10 @@ export const Payments = () => {
     queryKey: ['member'],
     queryFn: memberApi.GET_MEMBERS_ME
   });
+
+  const handleClickRoute = () => {
+    navigate(RoutePath.PaymentsCheckout);
+  };
 
   return (
     <Wrapper direction="column" justify="space-between">
@@ -52,7 +51,7 @@ export const Payments = () => {
         </Flex>
       </Flex>
       <Flex direction="column">
-        <Button>결제하기</Button>
+        <Button onClick={handleClickRoute}>결제하기</Button>
         <Space height={38} />
       </Flex>
     </Wrapper>

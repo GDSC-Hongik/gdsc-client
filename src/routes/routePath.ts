@@ -35,6 +35,7 @@ const RoutePath = {
   DiscordRegisterLink: 'https://discord.com/register',
 
   Payments: '/payments',
+  PaymentsCheckout: '/payments/checkout',
   PaymentsSuccess: '/payments/success',
   PaymentsFail: '/payments/fail'
 } as const;
