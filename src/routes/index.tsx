@@ -23,7 +23,10 @@ import {
   UpdatedStudentVerification,
   Bevy,
   OnboardingNotOpened,
-  OnboardingClosed
+  OnboardingClosed,
+  Payments,
+  PaymentsSuccess,
+  PaymentsFail
 } from '@/pages';
 import { DicordConnect } from '@/pages/DiscordConnect';
 import { DiscordGuide } from '@/pages/DiscordGuide';
@@ -114,7 +117,18 @@ const router = createBrowserRouter([
         element: <OnboardingClosedAccessGuard />,
         children: [{ index: true, element: <OnboardingClosed /> }]
       },
-
+      {
+        path: RoutePath.Payments,
+        element: <Payments />
+      },
+      {
+        path: RoutePath.PaymentsFail,
+        element: <PaymentsFail />
+      },
+      {
+        path: RoutePath.PaymentsSuccess,
+        element: <PaymentsSuccess />
+      },
       // Todo: 404 Not found page
       { path: '*', element: <Text>not found page</Text> }
     ]
