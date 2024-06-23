@@ -11,5 +11,6 @@ export { default as OnboardingClosed } from './OnboardingClosed';
 export * from './redirect/AuthServerRedirectNavigate';
 export * from './redirect/StudentVerificationServerRedirect';
 export * from './Payments';
+export * from './PaymentsCheckout';
 export * from './PaymentsFail';
 export * from './PaymentsSuccess';

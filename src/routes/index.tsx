@@ -26,7 +26,8 @@ import {
   OnboardingClosed,
   Payments,
   PaymentsSuccess,
-  PaymentsFail
+  PaymentsFail,
+  PaymentsCheckout
 } from '@/pages';
 
 export const Routers = () => {
@@ -100,6 +101,10 @@ const router = createBrowserRouter([
       {
         path: RoutePath.Payments,
         element: <Payments />
+      },
+      {
+        path: RoutePath.PaymentsCheckout,
+        element: <PaymentsCheckout />
       },
       {
         path: RoutePath.PaymentsFail,

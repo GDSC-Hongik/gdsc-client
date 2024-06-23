@@ -32,6 +32,7 @@ const RoutePath = {
   InstagramLink: 'https://www.instagram.com/gdsc.hongik/',
 
   Payments: '/payments',
+  PaymentsCheckout: '/payments/checkout',
   PaymentsSuccess: '/payments/success',
   PaymentsFail: '/payments/fail'
 } as const;
