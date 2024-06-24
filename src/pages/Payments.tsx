@@ -23,7 +23,7 @@ export const Payments = () => {
 
   return (
     <Wrapper direction="column" justify="space-between">
-      <Flex direction="column">
+      <Flex direction="column" gap={40}>
         <Heading typo="heading3" color="black">
           회비 납부
         </Heading>
@@ -33,7 +33,7 @@ export const Payments = () => {
           </Text>
           <Space height={19} />
           <Box>
-            <Flex direction="column" justify="flex-start" align="flex-start">
+            <Flex direction="column" align="flex-start" gap={4}>
               <Text typo="label1" color="black">
                 2024년 1학기 정회원 회비
               </Text>
@@ -50,7 +50,36 @@ export const Payments = () => {
           </Box>
         </Flex>
       </Flex>
-      <Flex direction="column">
+      <Flex direction="column" gap={20}>
+        <Box>
+          <Flex direction="column" gap={12}>
+            <Flex justify="space-between">
+              <Text typo="label2" color="black">
+                총 회비
+              </Text>
+              <Text typo="body1" color="black">
+                20,000원
+              </Text>
+            </Flex>
+            <Flex justify="space-between">
+              <Text typo="label2" color="black">
+                총 할인금액
+              </Text>
+              <Text typo="body1" color="black">
+                0원
+              </Text>
+            </Flex>
+            <Divider />
+            <Flex justify="space-between">
+              <Text typo="body1" color="black">
+                총 결제금액
+              </Text>
+              <Text typo="heading4" color="black">
+                15,000원
+              </Text>
+            </Flex>
+          </Flex>
+        </Box>
         <Button onClick={handleClickRoute}>결제하기</Button>
         <Space height={38} />
       </Flex>
@@ -59,7 +88,7 @@ export const Payments = () => {
 };
 
 const Heading = styled(Text)`
-  padding: 40px 0;
+  padding-top: 40px;
 `;
 
 const Wrapper = styled(Flex)`
@@ -83,4 +112,11 @@ const Box = styled(Flex)`
   background-color: ${theme.palette.white};
   border-radius: 8px;
   border: 1px solid ${theme.palette.blue100};
+`;
+
+const Divider = styled.div`
+  width: 100%;
+  height: 1px;
+
+  background: ${theme.palette.gray2};
 `;
