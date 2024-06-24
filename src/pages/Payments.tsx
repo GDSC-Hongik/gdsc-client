@@ -75,7 +75,7 @@ export const Payments = () => {
                 총 결제금액
               </Text>
               <Text typo="heading4" color="black">
-                15,000원
+                20,000원
               </Text>
             </Flex>
           </Flex>
