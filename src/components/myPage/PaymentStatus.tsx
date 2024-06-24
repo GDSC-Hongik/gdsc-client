@@ -21,7 +21,7 @@ export const PaymentStatus = ({
   const navigate = useNavigate();
 
   const handleClickRoute = (e: MouseEvent<HTMLDivElement>) => {
-    if (paymentStatus === 'VERIFIED') {
+    if (paymentStatus !== 'PENDING') {
       return;
     }
     navigate(RoutePath.Payments);
