@@ -8,10 +8,13 @@ import { nanoid } from 'nanoid';
 import { useQuery } from '@tanstack/react-query';
 import RoutePath from '@/routes/routePath';
 
+import { media, theme } from '@/styles';
 import { Flex, Space, Text } from '@/components/common/Wrapper';
+import GlobalSize from '@/constants/globalSize';
 import styled from '@emotion/styled';
 import memberApi from '@/apis/member/memberApi';
 import { CLIENT_KEY } from '@/constants/environment';
+import { Button } from '@/components/common/Button';
 
 const selector = '#payment-widget';
 const customerKey = nanoid();
@@ -74,42 +77,36 @@ export function PaymentsCheckout() {
   };
 
   return (
-    <Flex>
-      <div className="box_section">
+    <Wrapper direction="column" justify="space-around">
+      <Contents className="box_section">
         <div id="payment-widget" />
         <div id="agreement" />
-
-        <Button
-          style={{ marginTop: '30px' }}
-          disabled={!paymentMethodsWidgetReady}
-          onClick={handleClickOpenPaymentWidget}>
-          결제하기
-        </Button>
-      </div>
-    </Flex>
+      </Contents>
+      <Button
+        disabled={!paymentMethodsWidgetReady}
+        onClick={handleClickOpenPaymentWidget}>
+        결제하기
+      </Button>
+    </Wrapper>
   );
 }
 
-const Button = styled.button`
-  color: #f9fafb;
-  background-color: #3182f6;
-  margin: 30px 15px 0px 15px;
-  font-size: 15px;
-  font-weight: 600;
-  line-height: 18px;
-  white-space: nowrap;
-  text-align: center;
-  vertical-align: middle;
-  cursor: pointer;
-  border: 0 solid transparent;
-  user-select: none;
-  transition:
-    background 0.2s ease,
-    color 0.1s ease;
-  text-decoration: none;
-  border-radius: 7px;
-  padding: 11px 16px;
-  width: 250px;
+const Wrapper = styled(Flex)`
+  box-sizing: border-box;
+
+  height: calc(100vh - ${GlobalSize.header});
+  width: ${GlobalSize.width};
+  padding: 0px 16px;
+
+  background-color: ${theme.palette.gray1};
+
+  ${media.mobile} {
+    width: 100vw;
+  }
+`;
+
+const Contents = styled.div`
+  width: 100%;
 `;
 
 function usePaymentWidget(clientKey: string, customerKey: string) {
