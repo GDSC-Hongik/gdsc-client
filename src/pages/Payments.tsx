@@ -9,12 +9,19 @@ import { useNavigate } from 'react-router-dom';
 
 import { Button } from '@/components/common/Button';
 import RoutePath from '@/routes/routePath';
+import couponApi from '@/apis/coupon/couponApi';
+import { CouponResponse } from '@/apis/coupon/couponType';
 
 export const Payments = () => {
   const navigate = useNavigate();
   const { data } = useQuery({
     queryKey: ['member'],
     queryFn: memberApi.GET_MEMBERS_ME
+  });
+
+  const { data: coupons } = useQuery({
+    queryKey: ['coupon'],
+    queryFn: couponApi.GET_COUPONS_ME
   });
 
   const handleClickRoute = () => {
@@ -48,6 +55,17 @@ export const Payments = () => {
               </Flex>
             </Flex>
           </Box>
+        </Flex>
+        <Flex justify="flex-start" direction="column" align="flex-start">
+          <Text typo="heading4" color="black">
+            할인 쿠폰
+          </Text>
+          <Space height={19} />
+          <Flex>
+            {coupons?.map((coupon: CouponResponse) => {
+              return <Text>{coupon.couponName}</Text>;
+            })}
+          </Flex>
         </Flex>
       </Flex>
       <Flex direction="column" gap={20}>
