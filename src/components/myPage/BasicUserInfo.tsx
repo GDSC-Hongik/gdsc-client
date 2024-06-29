@@ -1,9 +1,8 @@
-import { Flex, Text } from '@/components/common/Wrapper';
-import { css } from '@emotion/react';
+import { Flex } from '@/components/common/Wrapper';
 import { User } from '@/types/user';
 import useLandingStatus from '@/hooks/zustand/useLandingStatus';
 import { logout } from '@/utils/auth';
-import { typography } from 'wowds-tokens';
+import { typography, color } from 'wowds-tokens';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -20,19 +19,19 @@ const BaiscUserInfo = ({ member }: { member: User }) => {
 
   return (
     <Flex gap={12} direction="column">
-      <Text typo="heading1" color="black">
+      <p style={typography.h1} color={color.textBlack}>
         {member.basicInfo.name} 님
-      </Text>
-      <Text
+      </p>
+      <div
         onClick={handleLogoutClick}
-        typo="label2"
-        color="gray4"
-        css={css`
-          text-decoration: underline;
-          cursor: pointer;
-        `}>
+        style={{
+          textDecoration: 'underline',
+          cursor: 'pointer',
+          ...typography.label1,
+          color: color.sub
+        }}>
         로그아웃
-      </Text>
+      </div>
     </Flex>
   );
 };

@@ -1,5 +1,6 @@
 import { Flex, Space, Text } from '@/components/common/Wrapper';
-import { color, space } from 'wowds-tokens';
+
+import { typography, color } from 'wowds-tokens';
 import BaiscUserInfo from '@/components/myPage/BasicUserInfo';
 import { media, theme } from '@/styles';
 import styled from '@emotion/styled';
@@ -36,13 +37,13 @@ export const MyPage = () => {
   console.log(data);
   return (
     <Wrapper direction="column" justify="flex-start" gap={40}>
-      <Space height={40} />
+      <Space height={20} />
       <BaiscUserInfo member={member} />
 
       <Flex justify="flex-start" direction="column" align="flex-start">
-        <Text typo="heading4" color="black">
-          신청 상태
-        </Text>
+        <p style={typography.h2} color="black">
+          현재 회원 상태
+        </p>
         <Space height={19} />
         {/* <ProgressBar currentStatus={data?.!} /> */}
         <Space height={24} />
