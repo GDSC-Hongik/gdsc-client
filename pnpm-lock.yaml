@@ -136,6 +136,9 @@ devDependencies:
   vite-tsconfig-paths:
     specifier: ^4.3.1
     version: 4.3.1(typescript@5.3.3)(vite@5.1.4)
+  wowds-tokens:
+    specifier: ^0.0.3
+    version: 0.0.3
 
 packages:
 
@@ -9821,6 +9824,10 @@ packages:
 
   /wordwrap@1.0.0:
     resolution: {integrity: sha512-gvVzJFlPycKc5dZN4yPkP8w7Dc37BtP1yczEneOb4uq34pXZcvrtRTmWV8W+Ume+XCxKgbjM+nevkyFPMybd4Q==}
+    dev: true
+
+  /wowds-tokens@0.0.3:
+    resolution: {integrity: sha512-EmDEsAs53DN/gux/zPMOW9JsGeHwFQBKSmwWPCmiX/w8GIH2xFDzvv0qXm5jDruuRO0FFB0GHLmNltySOx/FVw==}
     dev: true
 
   /wrap-ansi@7.0.0:

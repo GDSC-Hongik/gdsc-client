@@ -9,6 +9,7 @@ const apiClient = axios.create({
 });
 
 apiClient.defaults.headers.common['Authorization'] =
-  `Bearer ${useAuthToken().accessToken}`;
+  // `Bearer ${useAuthToken().accessToken}`;
+  `Bearer eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJnZHNjLWhvbmdpayIsInN1YiI6IjI5NCIsImlhdCI6MTcwOTAzMzUxNywiZXhwIjoxODA5MDQwNzE3LCJyb2xlIjoiUkVHVUxBUiJ9.63RmsXULrgf2Nh0vU4IsJRyeVB_93yo34-U3hTsMm6eTANik5iiBHXBYd86YyY_v`;
 
 export default apiClient;

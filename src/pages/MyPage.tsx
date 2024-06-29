@@ -1,7 +1,10 @@
 import { Flex, Space, Text } from '@/components/common/Wrapper';
+import { color, space } from 'wowds-tokens';
+import BaiscUserInfo from '@/components/myPage/BasicUserInfo';
 import { media, theme } from '@/styles';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
+import CurrentUserInfo from '@/components/myPage/BasicUserInfo';
 import { ProgressBar } from '@/components/myPage/ProgressBar';
 import { PaymentStatus } from '@/components/myPage/PaymentStatus';
 import { DiscordStatus } from '@/components/myPage/DiscordStatus';
@@ -18,38 +21,24 @@ import { countTextInObject } from '@/utils/mypage/countTextInObject';
 import RoutePath from '@/routes/routePath';
 
 export const MyPage = () => {
-  const navigate = useNavigate();
   const { clearLandingStatus } = useLandingStatus();
   const { data } = useQuery({
     queryKey: ['member'],
     queryFn: memberApi.GET_DASHBOARD
   });
 
-  const handleLogoutClick = () => {
-    clearLandingStatus();
-    logout();
+  //TODO: 추후 로딩 스피너 삽입할 것
+  if (!data) {
+    return <div> 로딩중 ...</div>;
+  }
 
-    navigate('/');
-  };
-
+  const { member } = data;
+  console.log(data);
   return (
-    <Wrapper direction="column" justify="flex-start">
+    <Wrapper direction="column" justify="flex-start" gap={40}>
       <Space height={40} />
-      <Text typo="heading3" color="black">
-        {data?.basicInfo.name} 님
-      </Text>
-      <Space height={12} />
-      <Text
-        onClick={handleLogoutClick}
-        typo="label2"
-        color="gray4"
-        css={css`
-          text-decoration: underline;
-          cursor: pointer;
-        `}>
-        로그아웃
-      </Text>
-      <Space height={24} />
+      <BaiscUserInfo member={member} />
+
       <Flex justify="flex-start" direction="column" align="flex-start">
         <Text typo="heading4" color="black">
           신청 상태
@@ -66,21 +55,21 @@ export const MyPage = () => {
           가입 조건
         </Text>
         <Space height={15} />
-        <PaymentStatus
+        {/* <PaymentStatus
           paymentStatus={data?.currentMembership.regularRequirement.paymentSatisfied!}
           // depositorName={data?.depositorName!}
-        />
+        /> */}
         <Space height={12} />
-        <DiscordStatus
+        {/* <DiscordStatus
           discordStatus={data?.discordStatus!}
           onClick={() => navigate(RoutePath.Discord)}
           onVerifiedClick={() => window.open('https://discord.gg/dSV6vSEuGU')}
-        />
+        /> */}
         <Space height={12} />
-        <BevyStatus
+        {/* <BevyStatus
           bevyStatus={data?.bevyStatus!}
           onClick={() => navigate(RoutePath.Bevy)}
-        />
+        /> */}
         <Space height={48} />
         {data ? (
           <>
@@ -94,7 +83,7 @@ export const MyPage = () => {
               GDSC 채널톡으로 문의 주세요.
             </Text>
             <Space height={15} />
-            <Privacy user={data} />
+            {/* <Privacy user={data} /> */}
           </>
         ) : null}
       </Flex>
@@ -115,3 +104,5 @@ const Wrapper = styled(Flex)`
     width: 100vw;
   }
 `;
+
+const Container = styled(Flex)``;
