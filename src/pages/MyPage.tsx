@@ -22,7 +22,7 @@ export const MyPage = () => {
   const { clearLandingStatus } = useLandingStatus();
   const { data } = useQuery({
     queryKey: ['member'],
-    queryFn: memberApi.GET_MEMBERS_ME
+    queryFn: memberApi.GET_DASHBOARD
   });
 
   const handleLogoutClick = () => {
@@ -36,7 +36,7 @@ export const MyPage = () => {
     <Wrapper direction="column" justify="flex-start">
       <Space height={40} />
       <Text typo="heading3" color="black">
-        {data?.name} 님
+        {data?.basicInfo.name} 님
       </Text>
       <Space height={12} />
       <Text
@@ -55,20 +55,20 @@ export const MyPage = () => {
           신청 상태
         </Text>
         <Space height={19} />
-        <ProgressBar currentStatus={data?.registrationStatus!} />
+        {/* <ProgressBar currentStatus={data?.!} /> */}
         <Space height={24} />
-        <ApproveBox
+        {/* <ApproveBox
           count={countTextInObject(data, 'VERIFIED')}
           registrationStatus={data?.registrationStatus!}
-        />
+        /> */}
         <Space height={48} />
         <Text typo="heading4" color="black">
           가입 조건
         </Text>
         <Space height={15} />
         <PaymentStatus
-          paymentStatus={data?.paymentStatus!}
-          depositorName={data?.depositorName!}
+          paymentStatus={data?.currentMembership.regularRequirement.paymentSatisfied!}
+          // depositorName={data?.depositorName!}
         />
         <Space height={12} />
         <DiscordStatus
