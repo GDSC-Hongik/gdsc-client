@@ -9,7 +9,7 @@ export default function OnboardingNotOpened() {
     <Container>
       <Box>
         <TextContainer>
-          <AlignCenteredText typo={'heading3'}>
+          <AlignCenteredText typo="h3">
             아직 2차 지원 기간이 시작되지 않았어요
           </AlignCenteredText>
           <AlignCenteredText>

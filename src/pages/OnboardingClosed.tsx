@@ -9,7 +9,7 @@ export default function OnboardingClosed() {
     <Container>
       <Box>
         <TextContainer>
-          <AlignCenteredText typo={'heading3'}>
+          <AlignCenteredText typo="h3">
             학회원 모집이 마감되었어요
           </AlignCenteredText>
           <AlignCenteredText>

@@ -6,6 +6,7 @@ import GlobalSize from '@/constants/globalSize';
 import useLandingStatus from '@/hooks/zustand/useLandingStatus';
 import RoutePath from '@/routes/routePath';
 import { media, theme } from '@/styles';
+import { css } from '@emotion/react';
 import { getAuthRedirectPath } from '@/utils/auth';
 import styled from '@emotion/styled';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -23,7 +24,7 @@ export default function Header() {
     <Container>
       <HeaderContainter>
         <LogoContainer onClick={() => navigation(RoutePath.Home)}>
-          <Flex direction="row" align="center" justify="flex-start" gap={6}>
+          <Flex direction="row" align="center" justify="flex-start" gap="xs">
             <Logo />
             <HeaderLogo />
           </Flex>

@@ -1,5 +1,5 @@
 import { Flex, Space, Text } from '@/components/common/Wrapper';
-import { theme } from '@/styles';
+import { color } from 'wowds-tokens';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
@@ -50,7 +50,7 @@ export const InformationBox = ({
 const Wrapper = styled(Flex)`
   box-sizing: border-box;
   padding: 20px 24px;
-  background-color: ${theme.palette.white};
+  background-color: ${color.white};
 
   border-radius: 8px;
   border: 1px solid #d9d9d9;

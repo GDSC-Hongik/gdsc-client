@@ -12,7 +12,7 @@ export const StepSection = ({
   return (
     <Flex
       direction="column"
-      gap={4}
+      gap="xxs"
       css={css`
         width: 18px;
       `}>

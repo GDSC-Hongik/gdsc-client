@@ -12,8 +12,8 @@ interface InputProps {
 export const LoadingForm = ({ label }: InputProps) => {
   return (
     <Container>
-      <Flex direction="column" align="flex-start" gap={8}>
-        <Text typo="label2" color={'gray4'}>
+      <Flex direction="column" align="flex-start" gap="sm">
+        <Text typo="label2" color="sub">
           {label}
         </Text>
         <InputContainer>

@@ -32,7 +32,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           css={css`
             gap: '8px';
           `}>
-          <Text typo="label2" color={value ? 'textBlack' : 'mono600'}>
+          <Text typo="label2" color={value ? 'textBlack' : 'sub'}>
             {label}
           </Text>
           <InputContainer isError={isError}>

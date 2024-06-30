@@ -14,16 +14,16 @@ export const StepInformation = ({
   const command = '/인증코드';
 
   return (
-    <Flex direction="column" align="flex-start" justify="flex-start" gap={8}>
+    <Flex direction="column" align="flex-start" gap="xs" justify="flex-start">
       <Text
-        typo="heading4"
+        typo="h3"
         color="black"
         css={css`
           word-break: keep-all;
         `}>
         {title}
       </Text>
-      <Text typo="body1" color="gray4">
+      <Text typo="body1" color="sub">
         {typeof description === 'string'
           ? description
               .split(command)

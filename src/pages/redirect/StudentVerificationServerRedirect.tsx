@@ -18,7 +18,7 @@ export const StudentVerificationServerRedirect = () => {
           <PulseLoader loading={isPending} />
         ) : (
           <TextContainer>
-            <Text typo={'heading3'} style={{ marginBottom: '12px' }}>
+            <Text typo="h3" style={{ marginBottom: '12px' }}>
               {isSuccess ? '재학생 인증 완료' : '인증에 실패했어요'}
             </Text>
             {isSuccess ? (

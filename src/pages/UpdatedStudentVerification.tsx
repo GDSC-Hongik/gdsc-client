@@ -15,7 +15,7 @@ export default function UpdatedStudentVerification() {
     <Container>
       <Box>
         <TextContainer>
-          <Text typo={'heading3'} style={{ marginBottom: '12px' }}>
+          <Text typo="h3" style={{ marginBottom: '12px' }}>
             재학생 인증하기
           </Text>
           <Text>전송된 이메일에서 재학생 인증을 완료했다면</Text>

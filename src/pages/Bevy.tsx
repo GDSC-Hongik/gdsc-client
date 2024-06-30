@@ -30,11 +30,11 @@ export const Bevy = () => {
   return (
     <Wrapper direction="column" justify="flex-start">
       <Space height={40} />
-      <Text typo="heading3" color="black">
+      <Text typo="h3" color="black">
         GDSC Bevy 가입하기
       </Text>
       <Space height={48} />
-      <Flex justify="flex-start" align="flex-start" gap={8}>
+      <Flex justify="flex-start" align="flex-start" gap="xs">
         <div>
           <Space height={4} />
           <Circle />
@@ -61,17 +61,17 @@ export const Bevy = () => {
         </Flex>
       </Flex>
       <Space height={48} />
-      <InformationWrapper direction="column" align="flex-start" gap={12}>
-        <Text typo="heading5" color="black">
+      <InformationWrapper direction="column" align="flex-start" gap="sm">
+        <Text typo="body3" color="black">
           Q. GDSC Bevy에 어떻게 가입하나요?
         </Text>
-        <Text typo="body1" color="gray4">
+        <Text typo="body1" color="sub">
           위 페이지에서 구글 로그인 후 ‘Join Us’ 버튼을 누르면 돼요. 자세한
           내용은 아래 가이드라인을 참고해주세요.
         </Text>
         <Text
           typo="label1"
-          color="gray4"
+          color="sub"
           css={css`
             cursor: pointer;
             text-decoration: underline;

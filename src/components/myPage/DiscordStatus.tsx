@@ -19,14 +19,14 @@ export const DiscordStatus = ({
   return (
     <Wrapper
       discordStatus={discordStatus}
-      gap={12}
+      gap="sm"
       onClick={discordStatus === 'PENDING' ? onClick : onVerifiedClick}>
       <Discord />
-      <Flex direction="column" align="flex-start" gap={12}>
+      <Flex direction="column" align="flex-start" gap="sm">
         <Text typo="label1" color="discord">
           GDSC Hongik Discord
         </Text>
-        <Text typo="body2" color="gray4">
+        <Text typo="body2" color="sub">
           {discordStatus === 'PENDING'
             ? '디스코드 연동이 필요해요.'
             : '디스코드 연동이 완료되었어요.'}

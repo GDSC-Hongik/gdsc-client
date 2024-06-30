@@ -28,7 +28,7 @@ export const StudentVerification = () => {
     <Container>
       <Box>
         <TextContainer>
-          <Text typo={'heading3'} style={{ marginBottom: '12px' }}>
+          <Text typo="h3" style={{ marginBottom: '12px' }}>
             재학생 인증하기
           </Text>
           <Text>가입 신청서를 작성하려면 재학생 인증이 필요해요.</Text>
