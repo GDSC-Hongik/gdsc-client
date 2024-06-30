@@ -1,14 +1,13 @@
 import { Flex, Space, Text } from '@/components/common/Wrapper';
 
-import { typography, color } from 'wowds-tokens';
 import BaiscUserInfo from '@/components/myPage/BasicUserInfo';
-import { media, theme } from '@/styles';
+import { media } from '@/styles';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import CurrentUserInfo from '@/components/myPage/BasicUserInfo';
 import { ProgressBar } from '@/components/myPage/ProgressBar';
 import { PaymentStatus } from '@/components/myPage/PaymentStatus';
-import { color } from 'wowds-tokens';
+import { color, typography } from 'wowds-tokens';
 import { DiscordStatus } from '@/components/myPage/DiscordStatus';
 import { BevyStatus } from '@/components/myPage/BevyStatus';
 import { Privacy } from '@/components/myPage/Privacy';
@@ -37,7 +36,12 @@ export const MyPage = () => {
   const { member } = data;
   console.log(data);
   return (
-    <Wrapper direction="column" justify="flex-start" gap={40}>
+    <Wrapper
+      direction="column"
+      justify="flex-start"
+      css={css`
+        gap: '40px';
+      `}>
       <Space height={20} />
       <BaiscUserInfo member={member} />
 
