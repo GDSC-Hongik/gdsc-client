@@ -1,7 +1,7 @@
 import { Discord } from '@/assets/Discord';
 import { RightArrow } from '@/assets/RightArrow';
 import { Flex, Text } from '@/components/common/Wrapper';
-import { theme } from '@/styles';
+import { color } from 'wowds-tokens';
 import styled from '@emotion/styled';
 import { MouseEventHandler } from 'react';
 
@@ -19,14 +19,14 @@ export const DiscordStatus = ({
   return (
     <Wrapper
       discordStatus={discordStatus}
-      gap={12}
+      gap="sm"
       onClick={discordStatus === 'PENDING' ? onClick : onVerifiedClick}>
       <Discord />
-      <Flex direction="column" align="flex-start" gap={12}>
+      <Flex direction="column" align="flex-start" gap="sm">
         <Text typo="label1" color="discord">
           GDSC Hongik Discord
         </Text>
-        <Text typo="body2" color="gray4">
+        <Text typo="body2" color="sub">
           {discordStatus === 'PENDING'
             ? '디스코드 연동이 필요해요.'
             : '디스코드 연동이 완료되었어요.'}
@@ -44,12 +44,12 @@ const Wrapper = styled(Flex)<{
   padding: 24px 24px 20px 24px;
   box-sizing: border-box;
 
-  background-color: ${theme.palette.white};
+  background-color: ${color.white};
   border-radius: 8px;
   border: ${({ discordStatus }) =>
     discordStatus === 'PENDING'
-      ? `1px solid ${theme.palette.red100}`
-      : `1px solid ${theme.palette.blue100}`};
+      ? `1px solid ${color.error}`
+      : `1px solid ${color.primary}`};
 
   cursor: pointer;
 

@@ -8,6 +8,7 @@ import { css } from '@emotion/react';
 import CurrentUserInfo from '@/components/myPage/BasicUserInfo';
 import { ProgressBar } from '@/components/myPage/ProgressBar';
 import { PaymentStatus } from '@/components/myPage/PaymentStatus';
+import { color } from 'wowds-tokens';
 import { DiscordStatus } from '@/components/myPage/DiscordStatus';
 import { BevyStatus } from '@/components/myPage/BevyStatus';
 import { Privacy } from '@/components/myPage/Privacy';
@@ -52,7 +53,7 @@ export const MyPage = () => {
           registrationStatus={data?.registrationStatus!}
         /> */}
         <Space height={48} />
-        <Text typo="heading4" color="black">
+        <Text typo="label1" color="black">
           가입 조건
         </Text>
         <Space height={15} />
@@ -74,11 +75,11 @@ export const MyPage = () => {
         <Space height={48} />
         {data ? (
           <>
-            <Text typo="heading4" color="black">
+            <Text typo="label1" color="black">
               내 정보
             </Text>
             <Space height={12} />
-            <Text typo="body1" color="gray4">
+            <Text typo="body1" color="sub">
               이미 제출한 기존 정보를 수정해야 할 경우,
               <br />
               GDSC 채널톡으로 문의 주세요.
@@ -99,7 +100,7 @@ const Wrapper = styled(Flex)`
   margin: 0px -16px;
   padding: 0px 16px;
 
-  background-color: ${theme.palette.gray1};
+  background-color: ${color.mono150};
 
   ${media.mobile} {
     width: 100vw;

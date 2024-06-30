@@ -2,7 +2,7 @@ import { Button } from '@/components/common/Button';
 import { Input } from '@/components/common/Input';
 import { Flex, Text } from '@/components/common/Wrapper';
 import RoutePath from '@/routes/routePath';
-import { theme } from '@/styles';
+import { color, typography } from 'wowds-tokens';
 import styled from '@emotion/styled';
 import { Link, useNavigate } from 'react-router-dom';
 import { useStudentVerification } from '@/hooks/auth';
@@ -28,7 +28,7 @@ export const StudentVerification = () => {
     <Container>
       <Box>
         <TextContainer>
-          <Text typo={'heading3'} style={{ marginBottom: '12px' }}>
+          <Text typo="h3" style={{ marginBottom: '12px' }}>
             재학생 인증하기
           </Text>
           <Text>가입 신청서를 작성하려면 재학생 인증이 필요해요.</Text>
@@ -74,11 +74,11 @@ const Container = styled.div`
 const Box = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: ${theme.palette.white};
+  background-color: ${color.white};
   align-items: center;
   gap: 24px;
   padding: 80px 24px;
-  border: 1px solid ${theme.palette.gray2};
+  border: 1px solid ${color.mono400};
   border-radius: 8px;
 `;
 
@@ -93,17 +93,17 @@ const ButtonContainer = styled(Flex)`
 `;
 
 const StudentGuideLink = styled(Link)`
-  color: ${theme.palette.black};
+  color: ${color.textBlack};
   text-decoration: underline;
   font-weight: 600;
   &:active {
-    color: ${theme.palette.gray4};
+    color: ${color.sub};
   }
   &:hover {
-    color: ${theme.palette.gray4};
+    color: ${color.sub};
   }
   &:visited {
-    color: ${theme.palette.black};
+    color: ${color.textBlack};
   }
-  ${theme.typo.label1};
+  ${typography.label1};
 `;

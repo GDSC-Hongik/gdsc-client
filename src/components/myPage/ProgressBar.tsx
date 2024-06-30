@@ -25,12 +25,12 @@ export const ProgressBar = ({
         </Text>
         <Text
           typo="label2"
-          color={currentStatus !== 'APPLIED' ? 'black' : 'gray4'}>
+          color={currentStatus !== 'APPLIED' ? 'textBlack' : 'sub'}>
           승인 대기
         </Text>
         <Text
           typo="label2"
-          color={currentStatus === 'GRANTED' ? 'black' : 'gray4'}>
+          color={currentStatus === 'GRANTED' ? 'textBlack' : 'sub'}>
           가입 승인
         </Text>
       </TextWrapper>

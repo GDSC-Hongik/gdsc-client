@@ -1,4 +1,4 @@
-import { theme } from '@/styles';
+import { color } from 'wowds-tokens';
 import { css } from '@emotion/react';
 import emotionReset from 'emotion-reset';
 
@@ -45,7 +45,7 @@ export const GlobalStyle = css`
     margin: 0;
 
     *:required {
-      background-color: ${theme.palette.white};
+      background-color: ${color.white};
     }
   }
   a {
@@ -55,9 +55,9 @@ export const GlobalStyle = css`
   }
 
   strong {
-    color: ${theme.palette.discord};
-    background-color: ${theme.palette.white};
-    border: 1px solid ${theme.palette.discord};
+    color: ${color.discord};
+    background-color: ${color.white};
+    border: 1px solid ${color.discord};
     border-radius: 4px;
     padding: 0px 4px;
   }

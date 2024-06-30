@@ -137,8 +137,8 @@ devDependencies:
     specifier: ^4.3.1
     version: 4.3.1(typescript@5.3.3)(vite@5.1.4)
   wowds-tokens:
-    specifier: ^0.0.3
-    version: 0.0.3
+    specifier: ^0.0.9
+    version: 0.0.9
 
 packages:
 
@@ -9826,8 +9826,8 @@ packages:
     resolution: {integrity: sha512-gvVzJFlPycKc5dZN4yPkP8w7Dc37BtP1yczEneOb4uq34pXZcvrtRTmWV8W+Ume+XCxKgbjM+nevkyFPMybd4Q==}
     dev: true
 
-  /wowds-tokens@0.0.3:
-    resolution: {integrity: sha512-EmDEsAs53DN/gux/zPMOW9JsGeHwFQBKSmwWPCmiX/w8GIH2xFDzvv0qXm5jDruuRO0FFB0GHLmNltySOx/FVw==}
+  /wowds-tokens@0.0.9:
+    resolution: {integrity: sha512-fMGyb92sZ1iSf0TGSabQVym/MWsYyfetgBBNbZ0K6eGfESKtZF8AM1aDYRODmwyPkPSnt0SmOtRWMDxnPsnCqg==}
     dev: true
 
   /wrap-ansi@7.0.0:

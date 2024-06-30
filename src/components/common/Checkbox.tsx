@@ -1,6 +1,6 @@
 import { InputHTMLAttributes, ReactNode } from 'react';
 import { Flex } from './Wrapper';
-import { theme } from '../../styles';
+import { color } from 'wowds-tokens';
 import styled from '@emotion/styled';
 import { CheckIcon } from '../../assets/CheckIcon';
 
@@ -36,11 +36,9 @@ const CheckBox = styled(Flex)<{ checked: boolean }>`
   width: 16px;
   height: 16px;
 
-  border: 1px solid
-    ${({ checked }) => (checked ? theme.palette.blue100 : theme.palette.gray3)};
+  border: 1px solid ${({ checked }) => (checked ? color.blue100 : color.sub)};
   border-radius: 4px;
-  background-color: ${({ checked }) =>
-    checked ? theme.palette.blue30 : theme.palette.white};
+  background-color: ${({ checked }) => (checked ? color.blue100 : color.white)};
 
   cursor: pointer;
 `;
