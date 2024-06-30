@@ -3,8 +3,9 @@ import { Circle } from '@/assets/Circle';
 import { Button } from '@/components/common/Button';
 import { Flex, Space, Text } from '@/components/common/Wrapper';
 import { StepInformation } from '@/components/joinDiscord/StepInformation';
+import { color } from 'wowds-tokens';
 import GlobalSize from '@/constants/globalSize';
-import { media, theme } from '@/styles';
+import { media } from '@/styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useMutation } from '@tanstack/react-query';
@@ -93,7 +94,7 @@ const Wrapper = styled(Flex)`
   margin: 0px -16px;
   padding: 0px 16px;
 
-  background-color: ${theme.palette.gray1};
+  background-color: ${color.mono150};
 
   ${media.mobile} {
     width: 100vw;
@@ -102,7 +103,7 @@ const Wrapper = styled(Flex)`
 
 const InformationWrapper = styled(Flex)`
   padding: 24px;
-  background-color: ${theme.palette.white};
+  background-color: ${color.white};
   border-radius: 8px;
-  border: 1px solid ${theme.palette.gray2};
+  border: 1px solid ${color.mono400};
 `;

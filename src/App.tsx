@@ -6,7 +6,8 @@ import {
 } from '@/assets/Onboarding';
 import { Flex, Space, Text } from '@/components/common/Wrapper';
 import { InformationBox } from '@/components/onboarding/InformationBox';
-import { media, theme } from '@/styles';
+import { color, typography } from 'wowds-tokens';
+import { media } from '@/styles';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import GlobalSize from '@/constants/globalSize';
@@ -216,7 +217,7 @@ const Wrapper = styled(Flex)`
 const BlueSection = styled(Flex)`
   height: calc(100vh - ${GlobalSize.header});
   width: ${GlobalSize.width};
-  background-color: ${theme.palette.blue100};
+  background-color: ${color.primary};
 
   box-sizing: border-box;
 
@@ -246,14 +247,14 @@ const ApplyButton = styled.button`
   width: calc(100% - 32px);
   border-radius: 100px;
 
-  background-color: ${theme.palette.white};
-  color: ${theme.palette.blue100};
-  ${theme.typo.heading4};
+  background-color: ${color.white};
+  color: ${color.primary};
+  ${typography.h2};
 
   flex-shrink: 0;
 
   :disabled {
-    background-color: ${theme.palette.gray2};
-    color: ${theme.palette.gray1};
+    background-color: ${color.mono400};
+    color: ${color.mono100};
   }
 `;

@@ -1,6 +1,6 @@
 import { RightArrow } from '@/assets/RightArrow';
 import { Flex, Text } from '@/components/common/Wrapper';
-import { theme } from '@/styles';
+import { color } from 'wowds-tokens';
 import styled from '@emotion/styled';
 import { MouseEventHandler } from 'react';
 
@@ -42,12 +42,12 @@ const Wrapper = styled(Flex)<{
   padding: 24px 24px 20px 24px;
   box-sizing: border-box;
 
-  background-color: ${theme.palette.white};
+  background-color: ${color.white};
   border-radius: 8px;
   border: ${({ bevyStatus }) =>
     bevyStatus === 'PENDING'
-      ? `1px solid ${theme.palette.red100}`
-      : `1px solid ${theme.palette.blue100}`};
+      ? `1px solid ${color.error}`
+      : `1px solid ${color.primary}`};
 
   cursor: ${({ bevyStatus }) =>
     bevyStatus === 'PENDING' ? 'pointer' : 'default'};

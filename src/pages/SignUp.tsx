@@ -8,7 +8,7 @@ import { Flex, Text } from '@/components/common/Wrapper';
 import { useSignUp } from '@/hooks/auth';
 import RoutePath from '@/routes/routePath';
 import { color as wowColor } from 'wowds-tokens';
-import { theme } from '@/styles';
+
 import { formatPhoneNumberInProgress } from '@/utils/phone';
 import styled from '@emotion/styled';
 import { Suspense } from 'react';
@@ -164,10 +164,10 @@ const GuideLink = styled(Link)<{ color?: colorKey }>`
   color: ${({ color = 'black' }) => wowColor[color]};
   text-decoration: underline;
   &:active {
-    color: ${theme.palette.gray4};
+    color: ${wowColor.sub};
   }
   &:hover {
-    color: ${theme.palette.gray4};
+    color: ${wowColor.sub};
   }
   &:visited {
     color: ${({ color = 'black' }) => wowColor[color]};

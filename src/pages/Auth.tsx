@@ -2,7 +2,6 @@ import { GitHubButton } from '@/components/auth/GitHubButton';
 import { Text } from '@/components/common/Wrapper';
 import useLandingStatus from '@/hooks/zustand/useLandingStatus';
 import RoutePath from '@/routes/routePath';
-import { theme } from '@/styles';
 import { color } from 'wowds-tokens';
 import { setCookie } from '@/utils/auth';
 import { css } from '@emotion/react';
@@ -70,11 +69,11 @@ const Container = styled.div`
 const Box = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: ${theme.palette.white};
+  background-color: ${color.white};
   align-items: center;
   gap: 24px;
   padding: 80px 24px;
-  border: 1px solid ${theme.palette.gray2};
+  border: 1px solid ${color.mono400};
   border-radius: 8px;
 `;
 

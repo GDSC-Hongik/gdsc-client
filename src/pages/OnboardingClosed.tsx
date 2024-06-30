@@ -1,6 +1,6 @@
 import { Text } from '@/components/common/Wrapper';
 import RoutePath from '@/routes/routePath';
-import { theme } from '@/styles';
+import { color, typography } from 'wowds-tokens';
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
@@ -52,11 +52,11 @@ const AlignCenteredText = styled(Text)`
 const Box = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: ${theme.palette.white};
+  background-color: ${color.white};
   align-items: center;
   gap: 24px;
   padding: 80px 24px;
-  border: 1px solid ${theme.palette.gray2};
+  border: 1px solid ${color.mono400};
   border-radius: 8px;
 `;
 
@@ -68,17 +68,17 @@ const TextContainer = styled.div`
 `;
 
 const InstagramLink = styled(Link)`
-  color: ${theme.palette.black};
+  color: ${color.textBlack};
   font-weight: 600;
   text-decoration: underline;
   &:active {
-    color: ${theme.palette.gray4};
+    color: ${color.sub};
   }
   &:hover {
-    color: ${theme.palette.gray4};
+    color: ${color.sub};
   }
   &:visited {
-    color: ${theme.palette.black};
+    color: ${color.textBlack};
   }
 `;
 
@@ -87,9 +87,9 @@ const BackButton = styled.button`
   width: calc(100% - 42px);
   border-radius: 100px;
 
-  color: ${theme.palette.white};
-  background-color: ${theme.palette.blue100};
-  ${theme.typo.heading4};
+  color: ${color.white};
+  background-color: ${color.primary};
+  ${typography.h2};
 
   flex-shrink: 0;
 `;

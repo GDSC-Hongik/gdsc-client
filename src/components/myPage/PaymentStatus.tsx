@@ -1,6 +1,6 @@
 import { PaymentInfo } from '@/assets/PaymentInfo';
 import { Flex, Space, Text } from '@/components/common/Wrapper';
-import { theme } from '@/styles';
+import { color } from 'wowds-tokens';
 import styled from '@emotion/styled';
 import { useState } from 'react';
 
@@ -84,16 +84,16 @@ const Wrapper = styled(Flex)<{
   padding: 24px 24px 20px 24px;
   box-sizing: border-box;
 
-  background-color: ${theme.palette.white};
+  background-color: ${color.white};
   border-radius: 8px;
   border: ${({ paymentStatus }) =>
     paymentStatus === 'PENDING'
-      ? `1px solid ${theme.palette.red100}`
-      : `1px solid ${theme.palette.blue100}`};
+      ? `1px solid ${color.error}`
+      : `1px solid ${color.primary}`};
 `;
 
 const InformationWrapper = styled(Flex)`
-  background-color: ${theme.palette.white};
+  background-color: ${color.white};
   border-radius: 8px;
-  border: 1px solid ${theme.palette.gray2};
+  border: 1px solid ${color.mono400};
 `;

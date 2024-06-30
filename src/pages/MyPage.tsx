@@ -1,9 +1,10 @@
 import { Flex, Space, Text } from '@/components/common/Wrapper';
-import { media, theme } from '@/styles';
+import { media } from '@/styles';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { ProgressBar } from '@/components/myPage/ProgressBar';
 import { PaymentStatus } from '@/components/myPage/PaymentStatus';
+import { color } from 'wowds-tokens';
 import { DiscordStatus } from '@/components/myPage/DiscordStatus';
 import { BevyStatus } from '@/components/myPage/BevyStatus';
 import { Privacy } from '@/components/myPage/Privacy';
@@ -109,7 +110,7 @@ const Wrapper = styled(Flex)`
   margin: 0px -16px;
   padding: 0px 16px;
 
-  background-color: ${theme.palette.gray1};
+  background-color: ${color.mono150};
 
   ${media.mobile} {
     width: 100vw;

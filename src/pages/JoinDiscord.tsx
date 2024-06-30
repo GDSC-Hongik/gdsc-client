@@ -2,7 +2,8 @@ import { Step1 } from '@/assets/Step1';
 import { Flex, Space, Text } from '@/components/common/Wrapper';
 import { StepInformation } from '@/components/joinDiscord/StepInformation';
 import { StepSection } from '@/components/joinDiscord/StepSection';
-import { media, theme } from '@/styles';
+import { color } from 'wowds-tokens';
+import { media } from '@/styles';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { Step2 } from '@/assets/Step2';
@@ -181,7 +182,7 @@ const Wrapper = styled(Flex)`
   margin: 0px -16px;
   padding: 0px 16px;
 
-  background-color: ${theme.palette.gray1};
+  background-color: ${color.mono150};
 
   ${media.mobile} {
     width: 100vw;

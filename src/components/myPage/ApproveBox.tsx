@@ -1,5 +1,5 @@
 import { Flex, Text } from '@/components/common/Wrapper';
-import { theme } from '@/styles';
+import { color } from 'wowds-tokens';
 import styled from '@emotion/styled';
 
 type TextKey = 'APPLIED' | 'PENDING' | 'GRANTED';
@@ -61,7 +61,7 @@ const Wrapper = styled(Flex)`
   padding: 24px 11px 20px 24px;
   box-sizing: border-box;
 
-  background-color: ${theme.palette.white};
+  background-color: ${color.white};
   border-radius: 8px;
-  border: 1px solid ${theme.palette.blue100};
+  border: 1px solid ${color.primary};
 `;

@@ -1,7 +1,6 @@
 import { ForwardedRef, SelectHTMLAttributes, forwardRef } from 'react';
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { theme } from '@/styles';
+import { color, typography } from 'wowds-tokens';
 import { Flex, Text } from '@/components/common/Wrapper';
 import { SelectBoxArrow } from '@/assets/SelectBoxArrorw';
 
@@ -95,7 +94,7 @@ const InputContainer = styled(Flex)<{
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
   input:-webkit-autofill:active {
-    -webkit-text-fill-color: ${theme.palette.black};
+    -webkit-text-fill-color: ${color.textBlack};
     //글자색
   }
 
@@ -115,37 +114,35 @@ const StyledSelect = styled.select<{
 
   box-sizing: border-box;
 
-  background: ${theme.palette.white};
+  background: ${color.white};
   border-radius: 4px;
 
-  ${theme.typo.body2};
-  color: ${theme.palette.black};
+  ${typography.body2};
+  color: ${color.black};
 
   & + div {
-    color: ${theme.palette.black};
+    color: ${color.black};
   }
 
   & + div {
-    color: ${({ isError }) => (isError ? theme.palette.red100 : 'transparent')};
+    color: ${({ isError }) => (isError ? color.error : 'transparent')};
   }
   border: ${({ isError, value }) =>
     isError
-      ? `1px solid ${theme.palette.red100}`
+      ? `1px solid ${color.error}`
       : value
-        ? `1px solid ${theme.palette.gray4}`
-        : `1px solid ${theme.palette.gray2}`};
+        ? `1px solid ${color.sub}`
+        : `1px solid ${color.mono400}`};
 
   :focus {
     border: ${({ isError }) =>
-      isError
-        ? `1px solid ${theme.palette.red100}`
-        : `1px solid ${theme.palette.gray4}`};
+      isError ? `1px solid ${color.error}` : `1px solid ${color.sub}`};
 
     outline: none;
   }
 
   ::placeholder {
-    color: ${theme.palette.gray2};
+    color: ${color.mono400};
     font-weight: 400;
   }
 
@@ -163,7 +160,7 @@ const StyledSelect = styled.select<{
 `;
 
 const StyledHelperTextBox = styled(Flex)`
-  color: ${theme.palette.red100};
+  color: ${color.error};
   justify-content: start;
   height: 24px;
 `;
