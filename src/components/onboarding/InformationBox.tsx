@@ -15,7 +15,7 @@ export const InformationBox = ({
   return (
     <Wrapper direction="column" align="flex-start" justify="flex-start">
       <Text
-        typo="heading5"
+        typo="h3"
         color="black"
         css={css`
           word-break: keep-all;

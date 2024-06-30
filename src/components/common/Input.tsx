@@ -1,4 +1,5 @@
 import { ForwardedRef, InputHTMLAttributes, forwardRef } from 'react';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { theme } from '@/styles';
 import { Flex, Text } from '@/components/common/Wrapper';
@@ -25,8 +26,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
   ) => {
     return (
       <Container>
-        <Flex direction="column" align="flex-start" gap={8}>
-          <Text typo="label2" color={value ? 'black' : 'gray4'}>
+        <Flex
+          direction="column"
+          align="flex-start"
+          css={css`
+            gap: '8px';
+          `}>
+          <Text typo="label2" color={value ? 'textBlack' : 'mono600'}>
             {label}
           </Text>
           <InputContainer isError={isError}>

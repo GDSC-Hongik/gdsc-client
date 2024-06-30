@@ -55,7 +55,7 @@ function App() {
       </BlueSection>
       <Space height={40} />
       <Introduction direction="column">
-        <Text typo="heading3" color="blue100">
+        <Text typo="h1" color="primary">
           GDSC?
         </Text>
         <Space height={8} />
@@ -76,13 +76,13 @@ function App() {
         </Text>
       </Introduction>
       <Space height={80} />
-      <Text typo="heading3" color="black">
+      <Text typo="h1" color="textBlack">
         GDSC Hongik
       </Text>
       <Space height={24} />
       <Img src={IMG_SRC[0]} height={200} />
       <Space height={16} />
-      <Flex gap={16}>
+      <Flex gap="md">
         <Img src={IMG_SRC[1]} width={'auto'} height={120} />
         <Img src={IMG_SRC[2]} width={'auto'} height={120} />
       </Flex>
@@ -103,7 +103,7 @@ function App() {
         있는 네트워킹 플랫폼을 제공하고 있습니다.
       </Text>
       <Space height={80} />
-      <Text typo="heading3" color="black">
+      <Text typo="h1" color="black">
         지금 바로 함께해요
       </Text>
       <Space height={24} />
@@ -119,7 +119,7 @@ function App() {
         것입니다.
       </Text>
       <Space height={24} />
-      <Flex direction="column" gap={16}>
+      <Flex direction="column" gap="md">
         <Img src={IMG_SRC[4]} width={'auto'} height={184} />
         <Img src={IMG_SRC[5]} width={'auto'} height={184} />
         <Img src={IMG_SRC[6]} width={'auto'} height={184} />
@@ -138,7 +138,7 @@ function App() {
         있습니다.
       </Text>
       <Space height={48} />
-      <Flex direction="column" gap={12}>
+      <Flex direction="column" gap="sm">
         <InformationBox
           title="모집 기간"
           description="1차 지원 기간: 2월 27일 ~ 3월 1일"
@@ -171,11 +171,11 @@ function App() {
         <Space height={40} />
       </BlueSection>
       <Space height={48} />
-      <Text typo="heading3" color="black">
+      <Text typo="h1" color="black">
         자주 묻는 질문
       </Text>
       <Space height={24} />
-      <Flex direction="column" gap={12}>
+      <Flex direction="column" gap="sm">
         <InformationBox
           title="Q. 서류, 면접 전형이 있나요?"
           description="A. 없습니다! 홍익대학교 학생이라면 누구나 본 사이트의 '가입하기' 를 통해 지원할 수 있어요."

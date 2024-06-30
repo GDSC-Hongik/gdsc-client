@@ -37,13 +37,13 @@ export const ApproveBox = ({
 }) => {
   const command = '/가입하기';
   return (
-    <Wrapper gap={12}>
-      <Flex direction="column" align="flex-start" gap={12}>
+    <Wrapper gap="sm">
+      <Flex direction="column" align="flex-start" gap="sm">
         <Text typo="label1" color="black">
           {text[registrationStatus]?.title}
           {registrationStatus === 'APPLIED' && `(${count}/3)`}
         </Text>
-        <Text typo="body1" color="gray4">
+        <Text typo="body1" color="mono700">
           {text[registrationStatus].description
             .split(command)
             .reduce<React.ReactNode[]>((prev, current, index) => {
