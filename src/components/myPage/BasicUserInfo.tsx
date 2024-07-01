@@ -1,4 +1,4 @@
-import { Flex } from '@/components/common/Wrapper';
+import { Flex, Text } from '@/components/common/Wrapper';
 import { User } from '@/types/user';
 import useLandingStatus from '@/hooks/zustand/useLandingStatus';
 import { logout } from '@/utils/auth';
@@ -19,9 +19,15 @@ const BasicUserInfo = ({ member }: { member: User }) => {
 
   return (
     <Flex gap="sm" direction="column">
-      <p style={typography.h1} color={color.textBlack}>
-        {member.basicInfo.name} 님
-      </p>
+      {member.basicInfo.name ? (
+        <p style={typography.h1} color={color.textBlack}>
+          {member.basicInfo.name} 님
+        </p>
+      ) : (
+        <Text typo="h1" color="darkDisabled">
+          정보를 입력해주세요
+        </Text>
+      )}
 
       <div
         onClick={handleLogoutClick}
