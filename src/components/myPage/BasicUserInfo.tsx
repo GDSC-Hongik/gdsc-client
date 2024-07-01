@@ -6,7 +6,7 @@ import { typography, color } from 'wowds-tokens';
 
 import { useNavigate } from 'react-router-dom';
 
-const BaiscUserInfo = ({ member }: { member: User }) => {
+const BasicUserInfo = ({ member }: { member: User }) => {
   const navigate = useNavigate();
   const { clearLandingStatus } = useLandingStatus();
 
@@ -18,10 +18,11 @@ const BaiscUserInfo = ({ member }: { member: User }) => {
   };
 
   return (
-    <Flex gap={12} direction="column">
+    <Flex gap="sm" direction="column">
       <p style={typography.h1} color={color.textBlack}>
         {member.basicInfo.name} 님
       </p>
+
       <div
         onClick={handleLogoutClick}
         style={{
@@ -36,4 +37,4 @@ const BaiscUserInfo = ({ member }: { member: User }) => {
   );
 };
 
-export default BaiscUserInfo;
+export default BasicUserInfo;

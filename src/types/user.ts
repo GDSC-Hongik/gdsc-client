@@ -2,22 +2,24 @@ import { Status } from '@/types/status';
 
 export type User = {
   memberId: string; // C000000 (학번)
-  role: UserRole;
-  basicInfo : UserBasicInfo
+  role: UserRoleType;
+  basicInfo: UserBasicInfo;
   associateRequirement: {
-    univStatus: Status,
-    discordStatus: Status,
-    bevyStatus: Status,
-    infoStatus: Status
-  }
+    univStatus: Status;
+    discordStatus: Status;
+    bevyStatus: Status;
+    infoStatus: Status;
+  };
 };
 
-export type GuestUser = Pick<
-  UserBasicInfo,
-  'name' | 'studentId' | 'phone' | 'department' | 'email'
->;
+export type UserRoleType = 'GUEST' | 'ASSOCIATE' | 'REGULAR' | 'ADMIN';
 
-export type UserRole = 'GUEST' | 'ASSOCIATE' | 'REGULAR' | 'ADMIN'
+export type AssociateRequirement = {
+  univStatus: Status;
+  discordStatus: Status;
+  bevyStatus: Status;
+  infoStatus: Status;
+};
 
 export type UserBasicInfo = {
   name: string;
@@ -26,5 +28,5 @@ export type UserBasicInfo = {
   department: string;
   phone: string;
   discordUsername: string;
-  nickname:string;
-}
+  nickname: string;
+};
