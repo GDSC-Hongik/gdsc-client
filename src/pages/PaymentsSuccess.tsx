@@ -4,8 +4,9 @@ import { Flex, Text } from '@/components/common/Wrapper';
 import { media } from '@/styles';
 import styled from '@emotion/styled';
 
+import Button from 'wowds-ui/Button';
+
 import GlobalSize from '@/constants/globalSize';
-import { Button } from '@/components/common/Button';
 import RoutePath from '@/routes/routePath';
 import { color } from 'wowds-tokens';
 
