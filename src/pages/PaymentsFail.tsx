@@ -1,47 +1,49 @@
-import { useSearchParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import styled from '@emotion/styled';
+import { Flex, Space, Text } from '@/components/common/Wrapper';
+import { Button } from '@/components/common/Button';
+import RoutePath from '@/routes/routePath';
+import { useNavigate } from 'react-router-dom';
+import GlobalSize from '@/constants/globalSize';
+import { theme, media } from '@/styles';
 
 export function PaymentsFail() {
-  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   return (
-    <div id="info" className="box_section" style={{ width: '600px' }}>
-      <img
-        width="100px"
-        src="https://static.toss.im/lotties/error-spot-no-loop-space-apng.png"
-        alt="에러 이미지"
-      />
-      <h2>결제를 실패했어요</h2>
-
-      <div className="p-grid typography--p" style={{ marginTop: '50px' }}>
-        <div className="p-grid-col text--left">
-          <b>에러메시지</b>
-        </div>
-        <div
-          className="p-grid-col text--right"
-          id="message">{`${searchParams.get('message')}`}</div>
-      </div>
-      <div className="p-grid typography--p" style={{ marginTop: '10px' }}>
-        <div className="p-grid-col text--left">
-          <b>에러코드</b>
-        </div>
-        <div
-          className="p-grid-col text--right"
-          id="code">{`${searchParams.get('code')}`}</div>
-      </div>
-
-      <div className="p-grid-col">
-        <Link to="https://docs.tosspayments.com/guides/payment-widget/integration">
-          <button className="button p-grid-col5">연동 문서</button>
-        </Link>
-        <Link to="https://discord.gg/A4fRFXQhRu">
-          <button
-            className="button p-grid-col5"
-            style={{ backgroundColor: '#e8f3ff', color: '#1b64da' }}>
-            실시간 문의
-          </button>
-        </Link>
-      </div>
-    </div>
+    <Wrapper direction="column"  justify='space-between'>
+      <Flex  direction="column"gap={20} >
+        <Heading typo="heading3" color="black">
+          회비 결제 실패
+        </Heading>
+        <Flex direction="column" align='start' >
+          <Text>
+            회비 결제에 실패했어요.
+          </Text>
+          <Text>
+            결제 화면으로 다시 돌아가서 진행해주세요.
+          </Text>
+        </Flex>
+      </Flex>
+      <Button onClick={()=>navigate(RoutePath.PaymentsCheckout)}>돌아가기</Button>
+      <Space height={20}/>
+    </Wrapper>
   );
 }
+
+const Heading = styled(Text)`
+  padding-top: 40px;
+`;
+
+const Wrapper = styled(Flex)`
+  box-sizing: border-box;
+
+  height: calc(100vh - ${GlobalSize.header});
+  width: ${GlobalSize.width};
+  padding: 0px 16px;
+
+  background-color: ${theme.palette.gray1};
+
+  ${media.mobile} {
+    width: 100vw;
+  }
+`;

@@ -1,6 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { Flex, Text } from '@/components/common/Wrapper';
+import { media, theme } from '@/styles';
+import styled from '@emotion/styled';
+
+import GlobalSize from '@/constants/globalSize';
+import { Button } from '@/components/common/Button';
+import RoutePath from '@/routes/routePath';
+
 
 export function PaymentsSuccess() {
   const navigate = useNavigate();
@@ -49,13 +57,26 @@ export function PaymentsSuccess() {
       // console.log(json);
       return json;
     }
+  
     confirm().then((data) => {
       setResponseData(data);
     });
   }, [searchParams]);
 
   return (
-    <>
+    <Wrapper direction="column" gap={20} justify='start'>
+      <Flex  direction="column" justify='space-between'>
+        <Heading typo="heading3" color="black">
+          회비 결제 완료
+        </Heading>
+        <Flex direction="column" align='start' >
+        <Text>
+          이번 학기 회비 결제를 완료했어요.
+        </Text>
+        <Text>
+          이제 GDSC 정회원으로 이번 학기에 활동하실 수 있어요!
+        </Text>
+
       <div className="box_section" style={{ width: '600px' }}>
         <img
           width="100px"
@@ -110,6 +131,30 @@ export function PaymentsSuccess() {
           {responseData && <pre>{JSON.stringify(responseData, null, 4)}</pre>}
         </div>
       </div>
-    </>
+
+    </Flex>
+    </Flex>
+    <Button onClick={()=>navigate(RoutePath.MyPage)}>완료하기</Button>
+
+    </Wrapper>
   );
 }
+
+const Heading = styled(Text)`
+  padding-top: 40px;
+`;
+
+const Wrapper = styled(Flex)`
+  box-sizing: border-box;
+
+  height: calc(100vh - ${GlobalSize.header});
+  width: ${GlobalSize.width};
+  padding: 0px 16px;
+
+  background-color: ${theme.palette.gray1};
+
+  ${media.mobile} {
+    width: 100vw;
+  }
+`;
+
