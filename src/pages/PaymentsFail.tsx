@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { Flex, Space, Text } from '@/components/common/Wrapper';
-import { Button } from '@/components/common/Button';
+import Button from 'wowds-ui/Button';
+
 import RoutePath from '@/routes/routePath';
 import { useNavigate } from 'react-router-dom';
 import GlobalSize from '@/constants/globalSize';
@@ -21,10 +22,12 @@ export function PaymentsFail() {
           <Text>결제 화면으로 다시 돌아가서 진행해주세요.</Text>
         </Flex>
       </Flex>
-      <Button onClick={() => navigate(RoutePath.PaymentsCheckout)}>
-        돌아가기
-      </Button>
-      <Space height={20} />
+      <Flex direction="column">
+        <Button onClick={() => navigate(RoutePath.PaymentsCheckout)}>
+          돌아가기
+        </Button>
+        <Space height={28} />
+      </Flex>
     </Wrapper>
   );
 }

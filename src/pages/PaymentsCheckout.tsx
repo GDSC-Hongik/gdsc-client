@@ -10,11 +10,12 @@ import RoutePath from '@/routes/routePath';
 
 import { media } from '@/styles';
 import { Flex, Space, Text } from '@/components/common/Wrapper';
+import Button from 'wowds-ui/Button';
+
 import GlobalSize from '@/constants/globalSize';
 import styled from '@emotion/styled';
 import memberApi from '@/apis/member/memberApi';
 import { CLIENT_KEY } from '@/constants/environment';
-import { Button } from '@/components/common/Button';
 import { color } from 'wowds-tokens';
 
 const selector = '#payment-widget';
@@ -78,16 +79,19 @@ export function PaymentsCheckout() {
   };
 
   return (
-    <Wrapper direction="column" justify="space-around">
+    <Wrapper direction="column" justify="space-between">
       <Contents className="box_section">
         <div id="payment-widget" />
         <div id="agreement" />
       </Contents>
-      <Button
-        disabled={!paymentMethodsWidgetReady}
-        onClick={handleClickOpenPaymentWidget}>
-        결제하기
-      </Button>
+      <Flex direction="column">
+        <Button
+          disabled={!paymentMethodsWidgetReady}
+          onClick={handleClickOpenPaymentWidget}>
+          결제하기
+        </Button>
+        <Space height={28} />
+      </Flex>
     </Wrapper>
   );
 }

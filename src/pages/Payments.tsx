@@ -1,30 +1,31 @@
 import { Flex, Space, Text } from '@/components/common/Wrapper';
 import { media } from '@/styles';
 import DropDown from 'wowds-ui/DropDown';
+import DropDownOption from 'wowds-ui/DropDownOption';
 import Box from 'wowds-ui/Box';
+import Button from 'wowds-ui/Button';
 import styled from '@emotion/styled';
 import { color } from 'wowds-tokens';
 
-import { useQuery } from '@tanstack/react-query';
-import memberApi from '@/apis/member/memberApi';
 import GlobalSize from '@/constants/globalSize';
 import { useNavigate } from 'react-router-dom';
 
-import { Button } from '@/components/common/Button';
 import RoutePath from '@/routes/routePath';
-import couponApi from '@/apis/coupon/couponApi';
+// import { useQuery } from '@tanstack/react-query';
+// import memberApi from '@/apis/member/memberApi';
+// import couponApi from '@/apis/coupon/couponApi';
 
 export const Payments = () => {
   const navigate = useNavigate();
-  const { data } = useQuery({
-    queryKey: ['member'],
-    queryFn: memberApi.GET_MEMBERS_ME
-  });
+  // const { data } = useQuery({
+  //   queryKey: ['member'],
+  //   queryFn: memberApi.GET_MEMBERS_ME
+  // });
 
-  const { data: coupons } = useQuery({
-    queryKey: ['coupon'],
-    queryFn: couponApi.GET_COUPONS_ME
-  });
+  // const { data: coupons } = useQuery({
+  //   queryKey: ['coupon'],
+  //   queryFn: couponApi.GET_COUPONS_ME
+  // });
 
   const handleClickRoute = () => {
     navigate(RoutePath.PaymentsCheckout);
@@ -32,44 +33,41 @@ export const Payments = () => {
 
   return (
     <Wrapper direction="column" justify="space-between">
-      <Flex direction="column" justify="space-between">
+      <Flex direction="column" justify="space-between" gap="xl">
         <Heading typo="h1" color="black">
           회비 납부
         </Heading>
-        <Flex justify="flex-start" direction="column" align="flex-start">
+        <Flex
+          justify="flex-start"
+          direction="column"
+          align="flex-start"
+          gap="sm">
           <Text typo="h2" color="black">
             결제 항목
           </Text>
-          <Space height={19} />
           <Box
-            text={
-              <Flex direction="column" align="flex-start" gap="xxs">
-                <Text typo="label1" color="black">
-                  2024년 1학기 정회원 회비
-                </Text>
-                <Space height={4} />
-                <Flex justify="flex-start" gap="xxs">
-                  <Text typo="body1" color="sub">
-                    금액
-                  </Text>
-                  <Text typo="body1" color="black">
-                    20,000원
-                  </Text>
-                </Flex>
-              </Flex>
-            }
+            text="2024년 1학기 정회원 회비"
+            subText="금액 20,000원"
+            status="success"
           />
         </Flex>
-        <Flex justify="flex-start" direction="column" align="flex-start">
+        <Flex
+          justify="flex-start"
+          direction="column"
+          align="flex-start"
+          gap="sm">
           <Text typo="h2" color="black">
             할인 쿠폰
           </Text>
-          <Space height={19} />
-          <DropDown />
+          <DropDown style={{ width: '100%' }} placeholder="목록을 입력하세요">
+            <DropDownOption text="option 1" value="option 1" />
+            <DropDownOption text="option 1" value="option 2" />
+          </DropDown>
         </Flex>
       </Flex>
       <Flex direction="column" gap="lg">
         <Box
+          status="success"
           text={
             <Flex direction="column" gap="sm">
               <Flex justify="space-between">
@@ -93,14 +91,15 @@ export const Payments = () => {
                 <Text typo="body1" color="black">
                   총 결제금액
                 </Text>
-                <Text typo="body1" color="black">
+                <Text typo="h2" color="black">
                   20,000원
                 </Text>
               </Flex>
             </Flex>
-          }></Box>
+          }
+        />
         <Button onClick={handleClickRoute}>결제하기</Button>
-        <Space height={38} />
+        <Space height={28} />
       </Flex>
     </Wrapper>
   );
