@@ -11,8 +11,8 @@ export default function useCreateGuestUser() {
   const { mutate: createGuestUser, ...rest } = useMutation({
     mutationFn: createGuestUserApi,
     onSuccess: () => {
-      updateLandingStatue(LandingStatus.MyPage);
-      navigation(RoutePath.MyPage, { replace: true });
+      updateLandingStatue(LandingStatus.Dashboard);
+      navigation(RoutePath.Dashboard, { replace: true });
     }
   });
 

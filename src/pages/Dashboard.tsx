@@ -13,7 +13,7 @@ import memberApi from '@/apis/member/memberApi';
 import GlobalSize from '@/constants/globalSize';
 import { ApproveBox } from '@/components/myPage/ApproveBox';
 
-export const MyPage = () => {
+export const Dashboard = () => {
   const [openInfo, setOpenInfo] = useState(false);
   const helpButtonRef = useRef<HTMLDivElement>(null);
   const { data } = useQuery({
