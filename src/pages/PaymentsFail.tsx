@@ -4,28 +4,27 @@ import { Button } from '@/components/common/Button';
 import RoutePath from '@/routes/routePath';
 import { useNavigate } from 'react-router-dom';
 import GlobalSize from '@/constants/globalSize';
-import { theme, media } from '@/styles';
+import { media } from '@/styles';
+import { color } from 'wowds-tokens';
 
 export function PaymentsFail() {
   const navigate = useNavigate();
 
   return (
-    <Wrapper direction="column"  justify='space-between'>
-      <Flex  direction="column"gap={20} >
-        <Heading typo="heading3" color="black">
+    <Wrapper direction="column" justify="space-between">
+      <Flex direction="column" gap="lg">
+        <Heading typo="h1" color="black">
           회비 결제 실패
         </Heading>
-        <Flex direction="column" align='start' >
-          <Text>
-            회비 결제에 실패했어요.
-          </Text>
-          <Text>
-            결제 화면으로 다시 돌아가서 진행해주세요.
-          </Text>
+        <Flex direction="column" align="start">
+          <Text>회비 결제에 실패했어요.</Text>
+          <Text>결제 화면으로 다시 돌아가서 진행해주세요.</Text>
         </Flex>
       </Flex>
-      <Button onClick={()=>navigate(RoutePath.PaymentsCheckout)}>돌아가기</Button>
-      <Space height={20}/>
+      <Button onClick={() => navigate(RoutePath.PaymentsCheckout)}>
+        돌아가기
+      </Button>
+      <Space height={20} />
     </Wrapper>
   );
 }
@@ -41,7 +40,7 @@ const Wrapper = styled(Flex)`
   width: ${GlobalSize.width};
   padding: 0px 16px;
 
-  background-color: ${theme.palette.gray1};
+  background-color: ${color.backgroundAlternative};
 
   ${media.mobile} {
     width: 100vw;

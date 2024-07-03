@@ -8,13 +8,14 @@ import { nanoid } from 'nanoid';
 import { useQuery } from '@tanstack/react-query';
 import RoutePath from '@/routes/routePath';
 
-import { media, theme } from '@/styles';
+import { media } from '@/styles';
 import { Flex, Space, Text } from '@/components/common/Wrapper';
 import GlobalSize from '@/constants/globalSize';
 import styled from '@emotion/styled';
 import memberApi from '@/apis/member/memberApi';
 import { CLIENT_KEY } from '@/constants/environment';
 import { Button } from '@/components/common/Button';
+import { color } from 'wowds-tokens';
 
 const selector = '#payment-widget';
 const customerKey = nanoid();
@@ -98,7 +99,7 @@ const Wrapper = styled(Flex)`
   width: ${GlobalSize.width};
   padding: 0px 16px;
 
-  background-color: ${theme.palette.gray1};
+  background-color: ${color.backgroundAlternative};
 
   ${media.mobile} {
     width: 100vw;

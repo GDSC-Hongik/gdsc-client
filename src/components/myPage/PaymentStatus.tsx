@@ -63,9 +63,3 @@ const Wrapper = styled(Flex)<{
   cursor: ${({ paymentStatus }) =>
     paymentStatus === 'PENDING' ? 'pointer' : 'default'};
 `;
-
-const InformationWrapper = styled(Flex)`
-  background-color: ${color.white};
-  border-radius: 8px;
-  border: 1px solid ${color.mono400};
-`;
