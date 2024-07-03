@@ -1,10 +1,12 @@
 import { Flex, Space, Text } from '@/components/common/Wrapper';
+import { space, color } from 'wowds-tokens';
+import { css } from '@emotion/react';
+import MemberStatusInfoBox from '@/components/myPage/MemberStatusInfoBox';
 import AssociateRequirementCheck from '@/components/myPage/AssociateRequirementCheck';
 import BasicUserInfo from '@/components/myPage/BasicUserInfo';
 import { media } from '@/styles';
+import { useRef, useState } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-import { color } from 'wowds-tokens';
 import { Privacy } from '@/components/myPage/Privacy';
 import { useQuery } from '@tanstack/react-query';
 import memberApi from '@/apis/member/memberApi';
@@ -12,6 +14,8 @@ import GlobalSize from '@/constants/globalSize';
 import { ApproveBox } from '@/components/myPage/ApproveBox';
 
 export const MyPage = () => {
+  const [openInfo, setOpenInfo] = useState(false);
+  const helpButtonRef = useRef<HTMLDivElement>(null);
   const { data } = useQuery({
     queryKey: ['member'],
     queryFn: memberApi.GET_DASHBOARD
@@ -35,9 +39,25 @@ export const MyPage = () => {
       <Space height={20} />
       <BasicUserInfo member={member} />
       <Flex justify="flex-start" direction="column" align="flex-start">
-        <Text typo="h2" color="textBlack">
-          현재 회원 상태
-        </Text>
+        <Container>
+          <Text typo="h2" color="textBlack">
+            현재 회원 상태
+          </Text>
+          <div
+            ref={helpButtonRef}
+            style={{ backgroundColor: 'red' }}
+            onClick={() => {
+              setOpenInfo(!openInfo);
+            }}>
+            아이콘
+          </div>
+          {openInfo && (
+            <MemberStatusInfoBox
+              setOpenInfo={setOpenInfo}
+              exceptRef={helpButtonRef}
+            />
+          )}
+        </Container>
         <Space height={20} />
         프로그래스바 자리
         <Space height={24} />
@@ -66,4 +86,13 @@ const Wrapper = styled(Flex)`
   ${media.mobile} {
     width: 100vw;
   }
+`;
+
+const Container = styled.div`
+  position: relative;
+  width: 100%;
+  display: flex;
+  gap: ${space.xxs};
+  justify-content: 'flex-start';
+  align-items: 'center';
 `;
