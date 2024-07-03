@@ -1,6 +1,9 @@
 import { Flex, Space, Text } from '@/components/common/Wrapper';
-import { media, theme } from '@/styles';
+import { media } from '@/styles';
+import DropDown from 'wowds-ui/DropDown';
+import Box from 'wowds-ui/Box';
 import styled from '@emotion/styled';
+import { color } from 'wowds-tokens';
 
 import { useQuery } from '@tanstack/react-query';
 import memberApi from '@/apis/member/memberApi';
@@ -10,7 +13,6 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/common/Button';
 import RoutePath from '@/routes/routePath';
 import couponApi from '@/apis/coupon/couponApi';
-import { CouponResponse } from '@/apis/coupon/couponType';
 
 export const Payments = () => {
   const navigate = useNavigate();
@@ -30,74 +32,73 @@ export const Payments = () => {
 
   return (
     <Wrapper direction="column" justify="space-between">
-      <Flex direction="column" gap={40}>
-        <Heading typo="heading3" color="black">
+      <Flex direction="column" justify="space-between">
+        <Heading typo="h1" color="black">
           회비 납부
         </Heading>
         <Flex justify="flex-start" direction="column" align="flex-start">
-          <Text typo="heading4" color="black">
+          <Text typo="h2" color="black">
             결제 항목
           </Text>
           <Space height={19} />
-          <Box>
-            <Flex direction="column" align="flex-start" gap={4}>
-              <Text typo="label1" color="black">
-                2024년 1학기 정회원 회비
-              </Text>
-              <Space height={4} />
-              <Flex justify="flex-start" gap={4}>
-                <Text typo="body1" color="gray4">
-                  금액
+          <Box
+            text={
+              <Flex direction="column" align="flex-start" gap="xxs">
+                <Text typo="label1" color="black">
+                  2024년 1학기 정회원 회비
+                </Text>
+                <Space height={4} />
+                <Flex justify="flex-start" gap="xxs">
+                  <Text typo="body1" color="sub">
+                    금액
+                  </Text>
+                  <Text typo="body1" color="black">
+                    20,000원
+                  </Text>
+                </Flex>
+              </Flex>
+            }
+          />
+        </Flex>
+        <Flex justify="flex-start" direction="column" align="flex-start">
+          <Text typo="h2" color="black">
+            할인 쿠폰
+          </Text>
+          <Space height={19} />
+          <DropDown />
+        </Flex>
+      </Flex>
+      <Flex direction="column" gap="lg">
+        <Box
+          text={
+            <Flex direction="column" gap="sm">
+              <Flex justify="space-between">
+                <Text typo="label2" color="black">
+                  총 회비
+                </Text>
+                <Text typo="body1" color="black">
+                  20,000원
+                </Text>
+              </Flex>
+              <Flex justify="space-between">
+                <Text typo="label2" color="black">
+                  총 할인금액
+                </Text>
+                <Text typo="body1" color="black">
+                  0원
+                </Text>
+              </Flex>
+              <Divider />
+              <Flex justify="space-between">
+                <Text typo="body1" color="black">
+                  총 결제금액
                 </Text>
                 <Text typo="body1" color="black">
                   20,000원
                 </Text>
               </Flex>
             </Flex>
-          </Box>
-        </Flex>
-        <Flex justify="flex-start" direction="column" align="flex-start">
-          <Text typo="heading4" color="black">
-            할인 쿠폰
-          </Text>
-          <Space height={19} />
-          <Flex>
-            {coupons?.map((coupon: CouponResponse) => {
-              return <Text>{coupon.couponName}</Text>;
-            })}
-          </Flex>
-        </Flex>
-      </Flex>
-      <Flex direction="column" gap={20}>
-        <Box>
-          <Flex direction="column" gap={12}>
-            <Flex justify="space-between">
-              <Text typo="label2" color="black">
-                총 회비
-              </Text>
-              <Text typo="body1" color="black">
-                20,000원
-              </Text>
-            </Flex>
-            <Flex justify="space-between">
-              <Text typo="label2" color="black">
-                총 할인금액
-              </Text>
-              <Text typo="body1" color="black">
-                0원
-              </Text>
-            </Flex>
-            <Divider />
-            <Flex justify="space-between">
-              <Text typo="body1" color="black">
-                총 결제금액
-              </Text>
-              <Text typo="heading4" color="black">
-                20,000원
-              </Text>
-            </Flex>
-          </Flex>
-        </Box>
+          }></Box>
         <Button onClick={handleClickRoute}>결제하기</Button>
         <Space height={38} />
       </Flex>
@@ -116,25 +117,16 @@ const Wrapper = styled(Flex)`
   width: ${GlobalSize.width};
   padding: 0px 16px;
 
-  background-color: ${theme.palette.gray1};
+  background-color: ${color.backgroundAlternative};
 
   ${media.mobile} {
     width: 100vw;
   }
 `;
 
-const Box = styled(Flex)`
-  padding: 24px 24px 20px 24px;
-  box-sizing: border-box;
-
-  background-color: ${theme.palette.white};
-  border-radius: 8px;
-  border: 1px solid ${theme.palette.blue100};
-`;
-
 const Divider = styled.div`
   width: 100%;
   height: 1px;
 
-  background: ${theme.palette.gray2};
+  background: ${color.lightDisabled};
 `;
