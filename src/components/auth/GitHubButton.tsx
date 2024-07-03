@@ -1,5 +1,5 @@
 import { GitHubIcon } from '@/assets/GitHubIcon';
-import { theme } from '@/styles';
+import { color, typography } from 'wowds-tokens';
 import styled from '@emotion/styled';
 import { ButtonHTMLAttributes } from 'react';
 
@@ -27,8 +27,8 @@ const StyledButton = styled.button`
   justify-content: center;
   gap: 8px;
 
-  background-color: ${theme.palette.black};
-  color: ${theme.palette.white};
+  background-color: ${color.textBlack};
+  color: ${color.white};
 
-  ${theme.typo.label1};
+  ${typography.label1};
 `;

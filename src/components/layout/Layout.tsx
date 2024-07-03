@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { Flex } from '../common/Wrapper';
-import { media, theme } from '@/styles';
+import { media } from '@/styles';
+import { color } from 'wowds-tokens';
 import Header from '@/components/layout/Header';
 import { Outlet } from 'react-router-dom';
 import GlobalSize from '@/constants/globalSize';
@@ -21,7 +22,7 @@ const Layout = () => {
 export default Layout;
 
 const Container = styled(Flex)`
-  background-color: ${theme.palette.gray1};
+  background-color: ${color.mono150};
   overflow: hidden;
   flex-direction: column;
 `;

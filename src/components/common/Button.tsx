@@ -1,4 +1,4 @@
-import { theme } from '@/styles';
+import { color, typography } from 'wowds-tokens';
 import styled from '@emotion/styled';
 import { ButtonHTMLAttributes } from 'react';
 
@@ -28,14 +28,14 @@ const StyledButton = styled.button<{ width?: string | number }>`
   border-radius: 100px;
   width: ${({ width }) => (width ? width : '100%')};
 
-  background-color: ${theme.palette.blue100};
-  ${theme.typo.label1}
-  color: ${theme.palette.white}
+  background-color: ${color.blue100};
+  ${typography.label1}
+  color: ${color.white}
 
   ${({ disabled }) =>
     disabled &&
     `
       cursor: not-allowed; /* 커서 변경 */
-      background-color: ${theme.palette.blue30}
+      background-color: ${color.blue100}
     `}
 `;
