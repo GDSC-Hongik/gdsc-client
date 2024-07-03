@@ -68,7 +68,7 @@ export function PaymentsCheckout() {
         customerName: user?.name,
         customerEmail: user?.email,
         customerMobilePhone: user?.phone,
-        successUrl: `${window.location.origin}${RoutePath.MyPage}`,
+        successUrl: `${window.location.origin}${RoutePath.PaymentsSuccess}`,
         failUrl: `${window.location.origin}${RoutePath.PaymentsFail}`
       });
     } catch (error) {
