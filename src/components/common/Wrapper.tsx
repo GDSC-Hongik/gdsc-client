@@ -39,21 +39,21 @@ export const Flex = styled.div<{
 `;
 
 export const Space = styled.div<{
-  height?: number | string;
-  width?: number | string;
+  height?: number | spaceKey;
+  width?: number | spaceKey;
   css?: ReturnType<typeof css>;
 }>`
   height: ${({ height }) =>
     height && typeof height === 'number'
       ? `${height}px`
-      : height && typeof height === 'string'
-        ? height
+      : height && height in wowSpace
+        ? wowSpace[height]
         : ''};
   width: ${({ width }) =>
     width && typeof width === 'number'
       ? `${width}px`
-      : width && typeof width === 'string'
-        ? width
+      : width && width in wowSpace
+        ? wowSpace[width]
         : ''};
   ${({ css }) => css}
 `;
