@@ -1,10 +1,16 @@
 import { css } from '@emotion/react';
-import type { color as colorType } from 'wowds-tokens';
-import type { typography as typographyType } from 'wowds-tokens';
-import type { space as spaceType } from 'wowds-tokens';
-import { color as wowColor } from 'wowds-tokens';
-import { typography as wowTypo } from 'wowds-tokens';
-import { space as wowSpace } from 'wowds-tokens';
+import type {
+  color as colorType,
+  typography as typographyType,
+  space as spaceType
+} from 'wowds-tokens';
+
+import {
+  color as wowColor,
+  typography as wowTypo,
+  space as wowSpace
+} from 'wowds-tokens';
+
 import styled from '@emotion/styled';
 
 type colorKey = keyof typeof colorType;
@@ -33,11 +39,16 @@ export const Flex = styled.div<{
 `;
 
 export const Space = styled.div<{
-  height?: number;
+  height?: number | string;
   width?: number;
   css?: ReturnType<typeof css>;
 }>`
-  height: ${({ height }) => (height ? `${height}px` : '')};
+  height: ${({ height }) =>
+    height && typeof height === 'number'
+      ? `${height}px`
+      : height
+        ? height
+        : ''};
   width: ${({ width }) => (width ? `${width}px` : '')};
   ${({ css }) => css}
 `;
@@ -47,9 +58,9 @@ export const Text = styled.p<{
   color?: colorKey;
   css?: ReturnType<typeof css>;
 }>`
+  font-family: 'SUIT', 'Apple SD Gothic Neo';
   ${({ typo = 'body1' }) => wowTypo[typo]};
   color: ${({ color = 'textBlack' }) => wowColor[color]};
-
   text-align: start;
 
   white-space: pre-wrap;

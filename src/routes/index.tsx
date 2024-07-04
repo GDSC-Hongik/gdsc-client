@@ -25,6 +25,7 @@ import {
   OnboardingNotOpened,
   OnboardingClosed
 } from '@/pages';
+import { DicordConnect } from '@/pages/DiscordConnect';
 
 export const Routers = () => {
   return <RouterProvider router={router} />;
@@ -77,6 +78,10 @@ const router = createBrowserRouter([
           {
             path: RoutePath.Discord,
             element: <JoinDiscord />
+          },
+          {
+            path: RoutePath.DiscordConnect,
+            element: <DicordConnect />
           },
           {
             path: RoutePath.Bevy,

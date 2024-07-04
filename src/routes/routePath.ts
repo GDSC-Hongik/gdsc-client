@@ -7,6 +7,7 @@ const RoutePath = {
   MyPage: '/mypage',
   Bevy: '/bevy',
   Discord: '/discord',
+  DiscordConnect: '/discord/connect',
 
   OnboardingNotOpened: '/not-opened',
   OnboardingClosed: '/closed',
