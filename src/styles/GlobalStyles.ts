@@ -10,7 +10,7 @@ export const GlobalStyle = css`
       min-height: -webkit-fill-available;
       scroll: smooth;
     }
-    font-family: 'Pretendard';
+    font-family: 'SUIT', 'Apple SD Gothic Neo';
 
     background-color: #f8f8f8;
   }

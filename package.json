@@ -26,7 +26,7 @@
     "react-spinners": "^0.13.8",
     "react-toastify": "^10.0.4",
     "zustand": "^4.5.0",
-    "wowds-ui": "^0.0.16"
+    "wowds-ui": "^0.1.1"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.6.14",

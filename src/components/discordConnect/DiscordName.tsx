@@ -1,8 +1,10 @@
 import { Flex, Space, Text } from '@/components/common/Wrapper';
-import { Button } from '@/components/common/Button';
-import DiscordExample from '@assets/discord-example.png';
+import Button from 'wowds-ui/Button';
+import DiscordImage from '/discord/discord-name.png';
 import { space } from 'wowds-tokens';
 import TextField from 'wowds-ui/TextField';
+import TextButton from 'wowds-ui/TextButton';
+import RoutePath from '@/routes/routePath';
 
 export const DiscordName = ({ onNext }: { onNext: () => void }) => {
   //   const { register, watch, formState, getValues } = useForm({
@@ -34,25 +36,18 @@ export const DiscordName = ({ onNext }: { onNext: () => void }) => {
 
   return (
     <>
-      <Flex direction="column" align="flex-start">
-        <Space height={25} />
-        <Text typo="h1">{`사용자명을 알려주세요.`}</Text>
-        <Space height={space.sm} />
-        <Text typo="body1">
-          GDSC Hongik 디스코드 서버에서는 사용자명을 통해 멤버를 구분해요.
-        </Text>
-        <Space height={space.lg} />
-        <img
-          src={DiscordExample}
-          alt="discord-example-name"
-          width={325}
-          height={157}
-        />
-        <Space height={space.lg} />
+      <Flex direction="column" align="flex-start" gap="lg">
+        <div>
+          <Text typo="h1">사용자명을 알려주세요.</Text>
+          <Space height={space.sm} />
+          <Text typo="body1">
+            GDSC Hongik 디스코드 서버에서는 사용자명을 통해 멤버를 구분해요.
+          </Text>
+        </div>
+        <img src={DiscordImage} alt="discord-name" width={325} height={157} />
         <Text typo="body1">
           본인의 디스코드 사용자명을 아래 규정과 맞게 설정한 후 입력해주세요.
         </Text>
-        <Space height={space.lg} />
       </Flex>
       <Space height={space.lg} />
       <TextField
@@ -71,7 +66,7 @@ export const DiscordName = ({ onNext }: { onNext: () => void }) => {
         placeholder="내용을 입력해주세요"
         style={{
           backgroundColor: 'white',
-          fontFamily: 'SUIT, Apple SD Gothic Neo'
+          borderStyle: 'solid'
         }}
       />
       <Space height={75} />
@@ -79,13 +74,16 @@ export const DiscordName = ({ onNext }: { onNext: () => void }) => {
         <Button
           onClick={() => {
             onNext();
-            console.log(1);
           }}>
           다음으로
         </Button>
         <Space height={space.xs} />
-        <Button>디스코드 계정이 없으신가요?</Button>
-        <Space height={28} />
+        <TextButton
+          text="디스코드 계정이 없으신가요?"
+          as="a"
+          target="_blank"
+          href={RoutePath.DiscordRegisterLink}
+        />
       </Flex>
     </>
   );

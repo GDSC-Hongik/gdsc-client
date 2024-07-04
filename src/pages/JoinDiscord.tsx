@@ -5,41 +5,15 @@ import styled from '@emotion/styled';
 import GlobalSize from '@/constants/globalSize';
 import { useNavigate } from 'react-router-dom';
 import RoutePath from '@/routes/routePath';
-import { Button } from '@/components/common/Button';
+import Button from 'wowds-ui/Button';
+import TextButton from 'wowds-ui/TextButton';
 
 export const JoinDiscord = () => {
   const navigate = useNavigate();
-  // const { register, watch, formState, getValues } = useForm({
-  //   defaultValues: {
-  //     discordHandle: '',
-  //     discordNickname: '',
-  //     code: ''
-  //   },
-  //   mode: 'onChange'
-  // });
-
-  // const postDiscordLinkMutation = useMutation({
-  //   mutationFn: discordApi.POST_DISCORD,
-  //   onSuccess: () => {
-  //     toast('디스코드 연동이 완료되었습니다.');
-  //     navigate(RoutePath.MyPage);
-  //   }
-  // });
-
-  // const handleLinkButtonClick = () => {
-  //   const data = {
-  //     discordUsername: getValues('discordHandle'),
-  //     nickname: getValues('discordNickname'),
-  //     code: Number(getValues('code'))
-  //   } as DiscordLinkRequest;
-
-  //   postDiscordLinkMutation.mutate({ ...data });
-  // };
 
   return (
     <Wrapper direction="column" justify="space-between">
       <Flex direction="column" align="flex-start">
-        <Space height={40} />
         <Text typo="h1">{`지금 바로
 디스코드를 연동하세요.`}</Text>
         <Space height={space.lg} />
@@ -56,8 +30,12 @@ export const JoinDiscord = () => {
           연동하기
         </Button>
         <Space height={space.xs} />
-        <Button>가입은 처음이신가요? </Button>
-        <Space height={28} />
+        <TextButton
+          text="가입은 처음이신가요?"
+          onClick={() => {
+            navigate(RoutePath.DiscordGuide);
+          }}
+        />
       </Flex>
     </Wrapper>
   );
@@ -68,7 +46,8 @@ const Wrapper = styled(Flex)`
   width: ${GlobalSize.width};
   margin: 0px -16px;
   padding: 0px 16px;
-
+  padding-top: 40px;
+  padding-bottom: 28px;
   background-color: ${color.backgroundAlternative};
 
   ${media.mobile} {
