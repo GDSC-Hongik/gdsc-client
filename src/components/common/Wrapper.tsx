@@ -40,16 +40,21 @@ export const Flex = styled.div<{
 
 export const Space = styled.div<{
   height?: number | string;
-  width?: number;
+  width?: number | string;
   css?: ReturnType<typeof css>;
 }>`
   height: ${({ height }) =>
     height && typeof height === 'number'
       ? `${height}px`
-      : height
+      : height && typeof height === 'string'
         ? height
         : ''};
-  width: ${({ width }) => (width ? `${width}px` : '')};
+  width: ${({ width }) =>
+    width && typeof width === 'number'
+      ? `${width}px`
+      : width && typeof width === 'string'
+        ? width
+        : ''};
   ${({ css }) => css}
 `;
 
