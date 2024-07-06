@@ -8,7 +8,7 @@ export const Privacy = ({ basicInfo }: { basicInfo: UserBasicInfo }) => {
 
   return (
     <Flex justify="flex-start" direction="column" align="flex-start" gap="sm">
-      <Text typo="label1" color="black">
+      <Text typo="h2" color="black">
         기본 회원 정보
       </Text>
       {studentId && (

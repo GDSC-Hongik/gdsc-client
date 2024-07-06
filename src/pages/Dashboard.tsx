@@ -1,12 +1,14 @@
 import { Flex, Space, Text } from '@/components/common/Wrapper';
 import { space, color } from 'wowds-tokens';
 import { css } from '@emotion/react';
+import JoinRegularMember from '@/components/myPage/JoinRegularMember';
 import MemberStatusInfoBox from '@/components/myPage/MemberStatusInfoBox';
 import AssociateRequirementCheck from '@/components/myPage/AssociateRequirementCheck';
 import BasicUserInfo from '@/components/myPage/BasicUserInfo';
 import { media } from '@/styles';
 import { useRef, useState } from 'react';
 import styled from '@emotion/styled';
+import { Help } from 'wowds-icons';
 import { Privacy } from '@/components/myPage/Privacy';
 import { useQuery } from '@tanstack/react-query';
 import memberApi from '@/apis/member/memberApi';
@@ -26,7 +28,7 @@ export const Dashboard = () => {
     return <div> 로딩중 ...</div>;
   }
 
-  const { member, currentRecruitment } = data;
+  const { member, currentRecruitment, currentMembership } = data;
 
   return (
     <Wrapper
@@ -45,11 +47,10 @@ export const Dashboard = () => {
           </Text>
           <div
             ref={helpButtonRef}
-            style={{ backgroundColor: 'red' }}
             onClick={() => {
               setOpenInfo(!openInfo);
             }}>
-            아이콘
+            <Help width={24} height={24} fill="sub" stroke="sub" />
           </div>
           {openInfo && (
             <MemberStatusInfoBox
@@ -66,6 +67,11 @@ export const Dashboard = () => {
           currentRecruitment={currentRecruitment}
         />
       </Flex>
+      {currentMembership && (
+        <JoinRegularMember
+          paymentStatus={currentMembership.regularRequirement.paymentStatus}
+        />
+      )}
       <AssociateRequirementCheck
         associateRequirement={member.associateRequirement}
       />

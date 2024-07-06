@@ -15,7 +15,7 @@ const AssociateRequirementCheck = ({
   const navigate = useNavigate();
   return (
     <Flex justify="flex-start" direction="column" align="flex-start" gap="sm">
-      <Text typo="label1" color="black">
+      <Text typo="h2" color="black">
         준회원 가입 조건
       </Text>
       <Box
