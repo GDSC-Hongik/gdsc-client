@@ -4,7 +4,7 @@ const RoutePath = {
   Index: '/',
   Home: '/',
 
-  MyPage: '/mypage',
+  Dashboard: '/dashboard',
   Bevy: '/bevy',
   Discord: '/discord',
 

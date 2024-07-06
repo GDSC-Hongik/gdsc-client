@@ -2,7 +2,8 @@ import { Step1 } from '@/assets/Step1';
 import { Flex, Space, Text } from '@/components/common/Wrapper';
 import { StepInformation } from '@/components/joinDiscord/StepInformation';
 import { StepSection } from '@/components/joinDiscord/StepSection';
-import { media, theme } from '@/styles';
+import { color } from 'wowds-tokens';
+import { media } from '@/styles';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { Step2 } from '@/assets/Step2';
@@ -34,7 +35,7 @@ export const JoinDiscord = () => {
     mutationFn: discordApi.POST_DISCORD,
     onSuccess: () => {
       toast('디스코드 연동이 완료되었습니다.');
-      navigate(RoutePath.MyPage);
+      navigate(RoutePath.Dashboard);
     }
   });
 
@@ -51,11 +52,11 @@ export const JoinDiscord = () => {
   return (
     <Wrapper direction="column" justify="flex-start">
       <Space height={40} />
-      <Text typo="heading3" color="black">
+      <Text typo="h3" color="black">
         디스코드 연동하기
       </Text>
       <Space height={48} />
-      <Flex justify="flex-start" align="flex-start" gap={8}>
+      <Flex justify="flex-start" align="flex-start" gap="xs">
         <StepSection icon={<Step1 />} height={120} />
         <Flex direction="column" align="flex-start" justify="flex-start">
           <StepInformation
@@ -84,7 +85,7 @@ export const JoinDiscord = () => {
         </Flex>
       </Flex>
       <Space height={16} />
-      <Flex justify="flex-start" align="flex-start" gap={8}>
+      <Flex justify="flex-start" align="flex-start" gap="xs">
         <StepSection icon={<Step2 />} height={208} />
         <Flex direction="column" align="flex-start" justify="flex-start">
           <StepInformation
@@ -94,7 +95,7 @@ export const JoinDiscord = () => {
           <Space height={20} />
           <Text
             typo="label1"
-            color="gray4"
+            color="sub"
             onClick={() => {}}
             css={css`
               cursor: pointer;
@@ -115,7 +116,7 @@ export const JoinDiscord = () => {
         </Flex>
       </Flex>
       <Space height={16} />
-      <Flex justify="flex-start" align="flex-start" gap={8}>
+      <Flex justify="flex-start" align="flex-start" gap="xs">
         <StepSection icon={<Step3 />} height={211} />
         <Flex direction="column" align="flex-start" justify="flex-start">
           <StepInformation
@@ -141,7 +142,7 @@ export const JoinDiscord = () => {
         </Flex>
       </Flex>
       <Space height={16} />
-      <Flex justify="flex-start" align="flex-start" gap={8}>
+      <Flex justify="flex-start" align="flex-start" gap="xs">
         <Step4 />
         <Flex direction="column" align="flex-start" justify="flex-start">
           <StepInformation
@@ -181,7 +182,7 @@ const Wrapper = styled(Flex)`
   margin: 0px -16px;
   padding: 0px 16px;
 
-  background-color: ${theme.palette.gray1};
+  background-color: ${color.mono150};
 
   ${media.mobile} {
     width: 100vw;

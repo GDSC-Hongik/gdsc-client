@@ -1,5 +1,5 @@
 import { Flex, Space } from '@/components/common/Wrapper';
-import { theme } from '@/styles';
+import { color } from 'wowds-tokens';
 import { css } from '@emotion/react';
 import { ReactNode } from 'react';
 export const StepSection = ({
@@ -12,7 +12,7 @@ export const StepSection = ({
   return (
     <Flex
       direction="column"
-      gap={4}
+      gap="xxs"
       css={css`
         width: 18px;
       `}>
@@ -22,7 +22,7 @@ export const StepSection = ({
         height={height}
         css={css`
           width: 1.6px;
-          background-color: ${theme.palette.black};
+          background-color: ${color.black};
         `}
       />
     </Flex>

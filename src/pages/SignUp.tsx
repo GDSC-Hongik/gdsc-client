@@ -1,4 +1,5 @@
 import DepartmentSelect from '@/components/auth/DepartmentSelect';
+import type { color as colorType } from 'wowds-tokens';
 import { Button } from '@/components/common/Button';
 import { Checkbox } from '@/components/common/Checkbox';
 import { Input } from '@/components/common/Input';
@@ -6,12 +7,15 @@ import { LoadingForm } from '@/components/common/LoadingForm';
 import { Flex, Text } from '@/components/common/Wrapper';
 import { useSignUp } from '@/hooks/auth';
 import RoutePath from '@/routes/routePath';
-import { KeyOfPalette, theme } from '@/styles';
+import { color as wowColor } from 'wowds-tokens';
+
 import { formatPhoneNumberInProgress } from '@/utils/phone';
 import styled from '@emotion/styled';
 import { Suspense } from 'react';
 import { Controller } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+
+type colorKey = keyof typeof colorType;
 
 /** 가입 신청서 페이지 */
 export const SignUp = () => {
@@ -20,7 +24,7 @@ export const SignUp = () => {
 
   return (
     <Container>
-      <Text typo={'heading3'}>가입 신청서 작성하기</Text>
+      <Text typo="h3">가입 신청서 작성하기</Text>
       <form onSubmit={onSubmit}>
         <Controller
           name="name"
@@ -92,18 +96,18 @@ export const SignUp = () => {
               setIsChecked((prev) => ({ ...prev, terms: !prev.terms }))
             }
             label={
-              <Text typo="label1" color={isChecked.terms ? 'black' : 'gray3'}>
+              <Text typo="label1" color={isChecked.terms ? 'textBlack' : 'sub'}>
                 <GuideLink
                   to={RoutePath.CommunityGuideLink}
                   target="_blank"
-                  color={isChecked.terms ? 'black' : 'gray3'}>
+                  color={isChecked.terms ? 'textBlack' : 'sub'}>
                   커뮤니티 가이드라인
                 </GuideLink>{' '}
                 및{' '}
                 <GuideLink
                   to={RoutePath.TermsLink}
                   target="_blank"
-                  color={isChecked.terms ? 'black' : 'gray3'}>
+                  color={isChecked.terms ? 'textBlack' : 'sub'}>
                   GDSC 회칙
                 </GuideLink>
                 에 동의합니다.
@@ -122,11 +126,11 @@ export const SignUp = () => {
             label={
               <Text
                 typo="body2"
-                color={isChecked.personalPrivacy ? 'black' : 'gray3'}>
+                color={isChecked.personalPrivacy ? 'black' : 'sub'}>
                 <GuideLink
                   to={RoutePath.PersonalPrivacyLink}
                   target="_blank"
-                  color={isChecked.personalPrivacy ? 'black' : 'gray3'}>
+                  color={isChecked.personalPrivacy ? 'textBlack' : 'sub'}>
                   개인정보 수집
                 </GuideLink>
                 에 동의합니다.
@@ -156,16 +160,16 @@ const CheckboxContainer = styled(Flex)`
   margin: 16px 0 40px 0;
 `;
 
-const GuideLink = styled(Link)<{ color?: KeyOfPalette }>`
-  color: ${({ color = 'black' }) => theme.palette[color]};
+const GuideLink = styled(Link)<{ color?: colorKey }>`
+  color: ${({ color = 'black' }) => wowColor[color]};
   text-decoration: underline;
   &:active {
-    color: ${theme.palette.gray4};
+    color: ${wowColor.sub};
   }
   &:hover {
-    color: ${theme.palette.gray4};
+    color: ${wowColor.sub};
   }
   &:visited {
-    color: ${({ color = 'black' }) => theme.palette[color]};
+    color: ${({ color = 'black' }) => wowColor[color]};
   }
 `;

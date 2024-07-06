@@ -2,7 +2,7 @@ import { GitHubButton } from '@/components/auth/GitHubButton';
 import { Text } from '@/components/common/Wrapper';
 import useLandingStatus from '@/hooks/zustand/useLandingStatus';
 import RoutePath from '@/routes/routePath';
-import { theme } from '@/styles';
+import { color } from 'wowds-tokens';
 import { setCookie } from '@/utils/auth';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -16,6 +16,7 @@ export const Auth = () => {
   useEffect(() => {
     clearLandingStatus();
     // 로그인을 위한 oauth-base-uri 쿠키 값 세팅
+    console.log(window.location.origin);
     setCookie({
       key: 'oauth-base-uri',
       value: window.location.origin,
@@ -34,7 +35,7 @@ export const Auth = () => {
     <Container>
       <Box>
         <TextContainer>
-          <Text typo={'heading3'} style={{ marginBottom: '12px' }}>
+          <Text typo="h3" style={{ marginBottom: '12px' }}>
             로그인 및 가입하기
           </Text>
           <Text>GDSC Hongik에서는 더 나은 커뮤니티 운영과</Text>
@@ -68,11 +69,11 @@ const Container = styled.div`
 const Box = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: ${theme.palette.white};
+  background-color: ${color.white};
   align-items: center;
   gap: 24px;
   padding: 80px 24px;
-  border: 1px solid ${theme.palette.gray2};
+  border: 1px solid ${color.mono400};
   border-radius: 8px;
 `;
 
@@ -83,15 +84,15 @@ const TextContainer = styled.div`
 `;
 
 const GithubGuideLink = styled(Link)`
-  color: ${theme.palette.black};
+  color: ${color.textBlack};
   font-weight: 600;
   &:active {
-    color: ${theme.palette.gray4};
+    color: ${color.sub};
   }
   &:hover {
-    color: ${theme.palette.gray4};
+    color: ${color.sub};
   }
   &:visited {
-    color: ${theme.palette.black};
+    color: ${color.black};
   }
 `;
