@@ -1,75 +1,85 @@
-import { useEffect, useRef, useState } from 'react';
-import {
-  PaymentWidgetInstance,
-  loadPaymentWidget
-} from '@tosspayments/payment-widget-sdk';
+import { useEffect, useState } from 'react';
+import { loadTossPayments } from '@tosspayments/tosspayments-sdk';
 import { nanoid } from 'nanoid';
 
 import { useQuery } from '@tanstack/react-query';
 import RoutePath from '@/routes/routePath';
 
 import { media } from '@/styles';
-import { Flex, Space, Text } from '@/components/common/Wrapper';
+import { Flex, Space } from '@/components/common/Wrapper';
 import Button from 'wowds-ui/Button';
 
 import GlobalSize from '@/constants/globalSize';
 import styled from '@emotion/styled';
-import memberApi from '@/apis/member/memberApi';
 import { CLIENT_KEY } from '@/constants/environment';
 import { color } from 'wowds-tokens';
+import meApi from '@/apis/me/meApi';
 
-const selector = '#payment-widget';
+const clientKey = CLIENT_KEY;
 const customerKey = nanoid();
 
 export function PaymentsCheckout() {
-  const { data: paymentWidget } = usePaymentWidget(CLIENT_KEY, customerKey);
   const { data: user } = useQuery({
-    queryKey: ['member'],
-    queryFn: memberApi.GET_MEMBERS_ME
+    queryKey: ['me'],
+    queryFn: meApi.GET_BASIC_INFO
   });
 
-  const paymentMethodsWidgetRef = useRef<ReturnType<
-    PaymentWidgetInstance['renderPaymentMethods']
-  > | null>(null);
-  const [price, setPrice] = useState(20_000);
-  const [paymentMethodsWidgetReady, isPaymentMethodsWidgetReady] =
-    useState(false);
+  const [amount, setAmount] = useState({
+    currency: 'KRW',
+    value: 20000
+  });
+
+  const [ready, setReady] = useState(false);
+  const [widgets, setWidgets] = useState(null);
 
   useEffect(() => {
-    if (paymentWidget == null) {
-      return;
+    async function fetchPaymentWidgets() {
+      try {
+        const tossPayments = await loadTossPayments(clientKey);
+
+        const widgets = tossPayments.widgets({
+          customerKey
+        });
+
+        setWidgets(widgets);
+      } catch (error) {
+        console.error('Error fetching payment widget:', error);
+      }
     }
 
-    const paymentMethodsWidget = paymentWidget.renderPaymentMethods(
-      selector,
-      { value: price },
-      { variantKey: 'DEFAULT' }
-    );
-
-    paymentWidget.renderAgreement('#agreement', { variantKey: 'AGREEMENT' });
-
-    paymentMethodsWidget.on('ready', () => {
-      paymentMethodsWidgetRef.current = paymentMethodsWidget;
-      isPaymentMethodsWidgetReady(true);
-    });
-  }, [paymentWidget]);
+    fetchPaymentWidgets();
+  }, [clientKey, customerKey]);
 
   useEffect(() => {
-    const paymentMethodsWidget = paymentMethodsWidgetRef.current;
-    if (paymentMethodsWidget == null) {
-      return;
+    async function renderPaymentWidgets() {
+      if (widgets == null) {
+        return;
+      }
+      await widgets.setAmount(amount);
+      await widgets.renderPaymentMethods({
+        selector: '#payment-method',
+        variantKey: 'DEFAULT'
+      });
+
+      await widgets.renderAgreement({
+        selector: '#agreement',
+        variantKey: 'AGREEMENT'
+      });
+
+      setReady(true);
     }
-    paymentMethodsWidget.updateAmount(price);
-  }, [price]);
+
+    renderPaymentWidgets();
+  }, [widgets]);
 
   const handleClickOpenPaymentWidget = async () => {
     try {
-      await paymentWidget?.requestPayment({
+      await widgets.requestPayment({
         orderId: nanoid(),
         orderName: '2024년 1학기 정회원 회비',
-        customerName: user?.name,
-        customerEmail: user?.email,
-        customerMobilePhone: user?.phone,
+        customerName: user?.name || '햄',
+        customerEmail: user?.email || 'ham@test.com',
+        customerMobilePhone: user?.phone || '01000000000',
         successUrl: `${window.location.origin}${RoutePath.PaymentsSuccess}`,
         failUrl: `${window.location.origin}${RoutePath.PaymentsFail}`
       });
@@ -81,13 +91,11 @@ export function PaymentsCheckout() {
   return (
     <Wrapper direction="column" justify="space-between">
       <Contents className="box_section">
-        <div id="payment-widget" />
+        <div id="payment-method" />
         <div id="agreement" />
       </Contents>
       <Flex direction="column">
-        <Button
-          disabled={!paymentMethodsWidgetReady}
-          onClick={handleClickOpenPaymentWidget}>
+        <Button disabled={!ready} onClick={handleClickOpenPaymentWidget}>
           결제하기
         </Button>
         <Space height={28} />
@@ -113,12 +121,3 @@ const Wrapper = styled(Flex)`
 const Contents = styled.div`
   width: 100%;
 `;
-
-function usePaymentWidget(clientKey: string, customerKey: string) {
-  return useQuery({
-    queryKey: ['payment-widget', clientKey, customerKey],
-    queryFn: () => {
-      return loadPaymentWidget(clientKey, customerKey);
-    }
-  });
-}
