@@ -58,7 +58,7 @@ const Wrapper = styled(Flex)<{
   border: ${({ paymentStatus }) =>
     paymentStatus === 'PENDING'
       ? `1px solid ${color.error}`
-      : `1px solid ${color.success}`};
+      : `1px solid ${color.primary}`};
 
   cursor: ${({ paymentStatus }) =>
     paymentStatus === 'PENDING' ? 'pointer' : 'default'};
