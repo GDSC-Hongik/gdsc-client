@@ -2,8 +2,9 @@ import apiClient from '@/apis';
 import { OrderRequest } from './ordersType';
 
 const ordersApi = {
-  POST_ORDER: async (): Promise<OrderRequest> => {
-    const response = await apiClient.post(`/onboarding/orders`);
+  POST_ORDER: async (order: OrderRequest) => {
+    const response = await apiClient.post(`/onboarding/orders`, order);
+    // Todo: error 로직 추가하기
     return response.data;
   }
 };

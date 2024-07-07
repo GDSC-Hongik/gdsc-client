@@ -11,21 +11,17 @@ import GlobalSize from '@/constants/globalSize';
 import { useNavigate } from 'react-router-dom';
 
 import RoutePath from '@/routes/routePath';
-// import { useQuery } from '@tanstack/react-query';
-// import memberApi from '@/apis/member/memberApi';
-// import couponApi from '@/apis/coupon/couponApi';
+import { useQuery } from '@tanstack/react-query';
+import couponApi from '@/apis/coupon/couponApi';
+import { CouponResponse } from '@/apis/coupon/couponType';
 
 export const Payments = () => {
   const navigate = useNavigate();
-  // const { data } = useQuery({
-  //   queryKey: ['member'],
-  //   queryFn: memberApi.GET_MEMBERS_ME
-  // });
 
-  // const { data: coupons } = useQuery({
-  //   queryKey: ['coupon'],
-  //   queryFn: couponApi.GET_COUPONS_ME
-  // });
+  const { data: coupons } = useQuery({
+    queryKey: ['coupon'],
+    queryFn: couponApi.GET_COUPONS_ME
+  });
 
   const handleClickRoute = () => {
     navigate(RoutePath.PaymentsCheckout);
@@ -60,8 +56,15 @@ export const Payments = () => {
             할인 쿠폰
           </Text>
           <DropDown style={{ width: '100%' }} placeholder="목록을 입력하세요">
-            <DropDownOption text="option 1" value="option 1" />
-            <DropDownOption text="option 1" value="option 2" />
+            {coupons?.map((coupon: CouponResponse) => {
+              return (
+                <DropDownOption
+                  key={coupon.issuedCouponId}
+                  text={coupon.couponName}
+                  value={coupon.couponName}
+                />
+              );
+            })}
           </DropDown>
         </Flex>
       </Flex>
