@@ -11,8 +11,8 @@ export function getAuthRedirectPath(landingStatus: string | null | undefined) {
       return RoutePath.AuthenticationProcess2_StudentVerification;
     case LandingStatus.Signup:
       return RoutePath.AuthenticationProcess3_Signup;
-    case LandingStatus.MyPage:
-      return RoutePath.MyPage;
+    case LandingStatus.Dashboard:
+      return RoutePath.Dashboard;
     case LandingStatus.OnboardingNotOpened:
       return RoutePath.OnboardingNotOpened;
     case LandingStatus.OnboardingClosed:

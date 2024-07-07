@@ -1,1 +1,1 @@
-export type Status = 'PENDING' | 'VERIFIED';
+export type Status = 'PENDING' | 'SATISFIED';
