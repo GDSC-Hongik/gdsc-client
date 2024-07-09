@@ -23,9 +23,7 @@ export function PaymentsFail() {
         </Flex>
       </Flex>
       <Flex direction="column">
-        <Button onClick={() => navigate(RoutePath.PaymentsCheckout)}>
-          돌아가기
-        </Button>
+        <Button onClick={() => navigate(RoutePath.Payments)}>돌아가기</Button>
         <Space height={28} />
       </Flex>
     </Wrapper>
