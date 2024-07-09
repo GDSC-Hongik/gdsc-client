@@ -1,7 +1,5 @@
 import { Flex, Space, Text } from '@/components/common/Wrapper';
 import { media } from '@/styles';
-import DropDown from 'wowds-ui/DropDown';
-import DropDownOption from 'wowds-ui/DropDownOption';
 import Box from 'wowds-ui/Box';
 import Button from 'wowds-ui/Button';
 import styled from '@emotion/styled';
@@ -11,21 +9,17 @@ import GlobalSize from '@/constants/globalSize';
 import { useNavigate } from 'react-router-dom';
 
 import RoutePath from '@/routes/routePath';
-import { useQuery } from '@tanstack/react-query';
-import couponApi from '@/apis/coupon/couponApi';
-import { CouponResponse } from '@/apis/coupon/couponType';
+import useProduct from '@/hooks/zustand/useProduct';
+import CouponDropDown from '@/components/payments/CouponDropDown';
 
 export const Payments = () => {
   const navigate = useNavigate();
 
-  const { data: coupons } = useQuery({
-    queryKey: ['coupon'],
-    queryFn: couponApi.GET_COUPONS_ME
-  });
-
   const handleClickRoute = () => {
     navigate(RoutePath.PaymentsCheckout);
   };
+
+  const { name, strDiscount, strAmount, strTotalAmount } = useProduct();
 
   return (
     <Wrapper direction="column" justify="space-between">
@@ -41,11 +35,7 @@ export const Payments = () => {
           <Text typo="h2" color="black">
             결제 항목
           </Text>
-          <Box
-            text="2024년 1학기 정회원 회비"
-            subText="금액 20,000원"
-            status="success"
-          />
+          <Box text={name} subText={`금액 ${strAmount}원`} status="success" />
         </Flex>
         <Flex
           justify="flex-start"
@@ -55,17 +45,7 @@ export const Payments = () => {
           <Text typo="h2" color="black">
             할인 쿠폰
           </Text>
-          <DropDown style={{ width: '100%' }} placeholder="목록을 입력하세요">
-            {coupons?.map((coupon: CouponResponse) => {
-              return (
-                <DropDownOption
-                  key={coupon.issuedCouponId}
-                  text={coupon.couponName}
-                  value={coupon.couponName}
-                />
-              );
-            })}
-          </DropDown>
+          <CouponDropDown />
         </Flex>
       </Flex>
       <Flex direction="column" gap="lg">
@@ -78,7 +58,7 @@ export const Payments = () => {
                   총 회비
                 </Text>
                 <Text typo="body1" color="black">
-                  20,000원
+                  {strAmount}원
                 </Text>
               </Flex>
               <Flex justify="space-between">
@@ -86,7 +66,7 @@ export const Payments = () => {
                   총 할인금액
                 </Text>
                 <Text typo="body1" color="black">
-                  0원
+                  {strDiscount}원
                 </Text>
               </Flex>
               <Divider />
@@ -95,7 +75,7 @@ export const Payments = () => {
                   총 결제금액
                 </Text>
                 <Text typo="h2" color="black">
-                  20,000원
+                  {strTotalAmount}원
                 </Text>
               </Flex>
             </Flex>
