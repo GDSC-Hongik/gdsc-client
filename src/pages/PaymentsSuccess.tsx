@@ -10,11 +10,14 @@ import GlobalSize from '@/constants/globalSize';
 import RoutePath from '@/routes/routePath';
 import { color } from 'wowds-tokens';
 import ordersApi from '@/apis/orders/ordersApi';
+import useProduct from '@/hooks/zustand/useProduct';
 
 export function PaymentsSuccess() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+  console.log(searchParams);
   const [responseData, setResponseData] = useState(null);
+  const { amount, discount, totalAmount } = useProduct();
 
   useEffect(() => {
     async function confirm() {
@@ -26,13 +29,12 @@ export function PaymentsSuccess() {
       };
 
       // Todo: requestData 검증
-      // Todo: 클라이언트에서 들고 있을 데이터 어떻게 관리할지 정하기
       const json = ordersApi.POST_ORDER({
         orderNanoId: requestData.orderId || 'hi',
         membershipId: 1,
         issuedCouponId: 1,
-        totalAmount: 20000,
-        discountAmount: 0,
+        totalAmount: amount,
+        discountAmount: discount,
         finalPaymentAmount: requestData.amount ? +requestData.amount : 0
       });
       return json;
