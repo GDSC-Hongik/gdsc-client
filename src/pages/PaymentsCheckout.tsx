@@ -14,6 +14,7 @@ import styled from '@emotion/styled';
 import { CLIENT_KEY } from '@/constants/environment';
 import { color } from 'wowds-tokens';
 import meApi from '@/apis/me/meApi';
+import useProduct from '@/hooks/zustand/useProduct';
 
 const clientKey = CLIENT_KEY;
 const customerKey = nanoid();
@@ -24,10 +25,7 @@ export function PaymentsCheckout() {
     queryFn: meApi.GET_BASIC_INFO
   });
 
-  const [amount, setAmount] = useState({
-    currency: 'KRW',
-    value: 20000
-  });
+  const { totalAmount } = useProduct();
 
   const [ready, setReady] = useState(false);
   const [widgets, setWidgets] = useState(null);
@@ -55,7 +53,7 @@ export function PaymentsCheckout() {
       if (widgets == null) {
         return;
       }
-      await widgets.setAmount(amount);
+      await widgets.setAmount({ currency: 'KRW', value: totalAmount });
       await widgets.renderPaymentMethods({
         selector: '#payment-method',
         variantKey: 'DEFAULT'
