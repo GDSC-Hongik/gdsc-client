@@ -60,7 +60,7 @@ const CouponDropDown = () => {
           return (
             <DropDownOption
               key={coupon.issuedCouponId}
-              text={`${coupon.couponName} (-${coupon.discountAmount.toLocaleString()}원)`}
+              text={`${coupon.couponName}${coupon.discountAmount ? ` (-${coupon.discountAmount.toLocaleString()}원)` : ''}`}
               value={coupon.couponName}
             />
           );
