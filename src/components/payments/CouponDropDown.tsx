@@ -6,7 +6,7 @@ import DropDownOption from 'wowds-ui/DropDownOption';
 
 import couponApi from '@/apis/coupon/couponApi';
 import { CouponResponse } from '@/apis/coupon/couponType';
-import useProduct from '@/hooks/zustand/useProduct';
+import { useProduct } from '@/hooks/zustand/useProduct';
 
 import { Flex, Text } from '../common/Wrapper';
 

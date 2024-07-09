@@ -22,7 +22,7 @@ type ProductStore = {
   setDiscount: (status: number) => void;
 };
 
-const useProductStore = create(
+export const useProductStore = create(
   persist<ProductStore>(
     (set) => ({
       name: '2024년 1학기 정회원 회비',
@@ -38,7 +38,7 @@ const useProductStore = create(
   )
 );
 
-export default function useProduct() {
+export const useProduct = () => {
   const { discount, setDiscount } = useProductStore((state) => ({
     discount: state.discount,
     setDiscount: state.setDiscount
@@ -56,4 +56,4 @@ export default function useProduct() {
     strTotalAmount: totalAmount.toLocaleString(),
     setDiscount
   };
-}
+};

@@ -14,7 +14,7 @@ import styled from '@emotion/styled';
 import { CLIENT_KEY } from '@/constants/environment';
 import { color } from 'wowds-tokens';
 import meApi from '@/apis/me/meApi';
-import useProduct from '@/hooks/zustand/useProduct';
+import { useProduct } from '@/hooks/zustand/useProduct';
 
 const clientKey = CLIENT_KEY;
 const customerKey = nanoid();
