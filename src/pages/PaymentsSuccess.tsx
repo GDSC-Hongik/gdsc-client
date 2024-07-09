@@ -10,7 +10,7 @@ import GlobalSize from '@/constants/globalSize';
 import RoutePath from '@/routes/routePath';
 import { color } from 'wowds-tokens';
 import ordersApi from '@/apis/orders/ordersApi';
-import useProduct from '@/hooks/zustand/useProduct';
+import { useProduct } from '@/hooks/zustand/useProduct';
 
 export function PaymentsSuccess() {
   const navigate = useNavigate();

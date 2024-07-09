@@ -8,8 +8,16 @@ import GlobalSize from '@/constants/globalSize';
 import { media } from '@/styles';
 import { color } from 'wowds-tokens';
 
+import { useProductStore } from '@/hooks/zustand/useProduct';
+
 export function PaymentsFail() {
   const navigate = useNavigate();
+  const clearProductStorage = useProductStore.persist.clearStorage;
+
+  const handleClickBackToPayments = () => {
+    clearProductStorage();
+    navigate(RoutePath.Payments);
+  };
 
   return (
     <Wrapper direction="column" justify="space-between">
@@ -23,7 +31,7 @@ export function PaymentsFail() {
         </Flex>
       </Flex>
       <Flex direction="column">
-        <Button onClick={() => navigate(RoutePath.Payments)}>돌아가기</Button>
+        <Button onClick={handleClickBackToPayments}>돌아가기</Button>
         <Space height={28} />
       </Flex>
     </Wrapper>

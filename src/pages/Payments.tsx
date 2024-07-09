@@ -9,7 +9,7 @@ import GlobalSize from '@/constants/globalSize';
 import { useNavigate } from 'react-router-dom';
 
 import RoutePath from '@/routes/routePath';
-import useProduct from '@/hooks/zustand/useProduct';
+import { useProduct } from '@/hooks/zustand/useProduct';
 import CouponDropDown from '@/components/payments/CouponDropDown';
 
 export const Payments = () => {
