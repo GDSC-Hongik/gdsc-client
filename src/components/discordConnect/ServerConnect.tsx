@@ -4,34 +4,45 @@ import TextButton from 'wowds-ui/TextButton';
 import { color } from 'wowds-tokens';
 import DiscordImage from '/discord/discord-server-connect.png';
 import TextField from 'wowds-ui/TextField';
+import { useController, useFormContext } from 'react-hook-form';
+import discordApi from '@/apis/discord/discordApi';
+import { DiscordLinkRequest } from '@/apis/discord/discordType';
+import { useMutation } from '@tanstack/react-query';
+import { DiscordFormValues } from '@/types/discord';
+import { useState } from 'react';
 
 export const ServerConnect = ({ onNext }: { onNext: () => void }) => {
-  //   const { register, watch, formState, getValues } = useForm({
-  //     defaultValues: {
-  //       discordHandle: '',
-  //       discordNickname: '',
-  //       code: ''
-  //     },
-  //     mode: 'onChange'
-  //   });
+  const { getValues, control } = useFormContext<DiscordFormValues>();
+  const [error, setError] = useState(false);
+  const [count, setCount] = useState(1);
+  const postDiscordLinkMutation = useMutation({
+    mutationFn: discordApi.POST_DISCORD,
+    onSuccess: () => {
+      onNext();
+    },
+    onError: () => {
+      setError(true);
+    }
+  });
 
-  //   const postDiscordLinkMutation = useMutation({
-  //     mutationFn: discordApi.POST_DISCORD,
-  //     onSuccess: () => {
-  //       toast('디스코드 연동이 완료되었습니다.');
-  //       navigate(RoutePath.MyPage);
-  //     }
-  //   });
+  const handleLinkButtonClick = () => {
+    const data = {
+      discordUsername: getValues('discordUsername'),
+      nickname: getValues('discordNickname'),
+      code: Number(getValues('code'))
+    } as DiscordLinkRequest;
 
-  //   const handleLinkButtonClick = () => {
-  //     const data = {
-  //       discordUsername: getValues('discordHandle'),
-  //       nickname: getValues('discordNickname'),
-  //       code: Number(getValues('code'))
-  //     } as DiscordLinkRequest;
+    postDiscordLinkMutation.mutate({ ...data });
+    setCount((prev) => prev + 1);
+  };
 
-  //     postDiscordLinkMutation.mutate({ ...data });
-  //   };
+  const { field } = useController({
+    name: 'code',
+    control,
+    rules: {
+      required: true
+    }
+  });
 
   return (
     <>
@@ -62,18 +73,26 @@ export const ServerConnect = ({ onNext }: { onNext: () => void }) => {
           />
         </Flex>
         <TextField
+          {...field}
           label="인증번호"
           placeholder="내용을 입력해주세요"
           style={{
             backgroundColor: 'white',
             borderStyle: 'solid'
           }}
+          error={error}
+          key={count}
+          {...(error && {
+            helperText: (
+              <li>번호가 올바르지 않아요. 다시 발급받아 진행해주세요.</li>
+            )
+          })}
         />
       </Flex>
       <Flex direction="column">
         <Button
           onClick={() => {
-            onNext();
+            handleLinkButtonClick();
           }}>
           다음으로
         </Button>
