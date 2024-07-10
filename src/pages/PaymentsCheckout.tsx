@@ -28,7 +28,9 @@ export function PaymentsCheckout() {
   const { totalAmount } = useProduct();
 
   const [ready, setReady] = useState(false);
-  const [widgets, setWidgets] = useState(null);
+
+  // eslint-disable-next-line
+  const [widgets, setWidgets] = useState<any>(null);
 
   useEffect(() => {
     async function fetchPaymentWidgets() {
