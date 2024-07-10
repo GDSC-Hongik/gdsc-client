@@ -1,7 +1,4 @@
-// useFunnel.tsx
-
 import { ReactElement, ReactNode, useState } from 'react';
-
 export interface StepProps {
   name: string;
   children: ReactNode;
