@@ -4,13 +4,13 @@ import secureLocalStorage from 'react-secure-storage';
 
 const SecureStorage: StateStorage = {
   getItem: async (name: string): Promise<string | null> => {
-    return (await secureLocalStorage.getItem(name)) || null;
+    return secureLocalStorage.getItem(name) as string | null;
   },
   setItem: async (name: string, value: string): Promise<void> => {
-    await secureLocalStorage.setItem(name, value);
+    return secureLocalStorage.setItem(name, value);
   },
   removeItem: async (name: string): Promise<void> => {
-    await secureLocalStorage.removeItem(name);
+    return secureLocalStorage.removeItem(name);
   }
 };
 
