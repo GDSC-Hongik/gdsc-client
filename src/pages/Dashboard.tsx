@@ -28,7 +28,7 @@ export const Dashboard = () => {
     return <div> 로딩중 ...</div>;
   }
 
-  const { member, currentRecruitment, currentMembership } = data;
+  const { member, currentRecruitmentRound, currentMembership } = data;
 
   return (
     <Wrapper
@@ -64,7 +64,7 @@ export const Dashboard = () => {
         <Space height={24} />
         <ApproveBox
           role={member.role}
-          currentRecruitment={currentRecruitment}
+          currentRecruitment={currentRecruitmentRound}
         />
       </Flex>
       {currentMembership && (

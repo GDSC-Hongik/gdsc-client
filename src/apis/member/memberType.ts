@@ -3,7 +3,7 @@ import { User } from '@/types/user';
 
 export interface MemberInfoResponse {
   member: User;
-  currentRecruitment: CurrentRecruitmentType;
+  currentRecruitmentRound: CurrentRecruitmentType;
   currentMembership: CurrentMembershipType;
 }
 
