@@ -1,7 +1,6 @@
 import { Flex, Space, Text } from '@/components/common/Wrapper';
 import Button from 'wowds-ui/Button';
 import DiscordImage from '/discord/discord-nickname.png';
-import { space } from 'wowds-tokens';
 import TextField from 'wowds-ui/TextField';
 
 export const DiscordNickName = ({ onNext }: { onNext: () => void }) => {
@@ -37,7 +36,7 @@ export const DiscordNickName = ({ onNext }: { onNext: () => void }) => {
       <Flex direction="column" align="flex-start" gap="lg">
         <div>
           <Text typo="h1">별명을 설정하세요.</Text>
-          <Space height={space.sm} />
+          <Space height="sm" />
           <Text typo="body1">
             GDSC Hongik 디스코드 서버에서 사용할 별명을 설정해주세요.
           </Text>
@@ -54,7 +53,7 @@ export const DiscordNickName = ({ onNext }: { onNext: () => void }) => {
           주세요.
         </Text>
       </Flex>
-      <Space height={space.lg} />
+      <Space height="lg" />
       <TextField
         helperText={
           <ul style={{ listStyle: 'disc', paddingLeft: '20px' }}>

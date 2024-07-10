@@ -1,7 +1,7 @@
 import { Flex, Space, Text } from '@/components/common/Wrapper';
 import Button from 'wowds-ui/Button';
 import TextButton from 'wowds-ui/TextButton';
-import { color, space } from 'wowds-tokens';
+import { color } from 'wowds-tokens';
 import { css } from '@emotion/react';
 
 export const JoinServer = ({ onNext }: { onNext: () => void }) => {
@@ -36,7 +36,7 @@ export const JoinServer = ({ onNext }: { onNext: () => void }) => {
     <>
       <Flex direction="column" align="flex-start">
         <Text typo="h1">서버에 합류하세요.</Text>
-        <Space height={space.lg} />
+        <Space height="lg" />
         <Text typo="body1">
           아래 버튼을 통해 GDSC Hongik 디스코드 서버로 이동해서 가입하세요.
           서버에 가입 후 #명령어 채널에서 본인의 디스코드 계정을 연동할 수

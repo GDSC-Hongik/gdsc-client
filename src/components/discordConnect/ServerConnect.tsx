@@ -1,7 +1,7 @@
 import { Flex, Space, Text } from '@/components/common/Wrapper';
 import Button from 'wowds-ui/Button';
 import TextButton from 'wowds-ui/TextButton';
-import { color, space } from 'wowds-tokens';
+import { color } from 'wowds-tokens';
 import DiscordImage from '/discord/discord-server-connect.png';
 import TextField from 'wowds-ui/TextField';
 
@@ -41,7 +41,7 @@ export const ServerConnect = ({ onNext }: { onNext: () => void }) => {
           <Text typo="label1" color="discord">
             /인증코드
           </Text>
-          <Space height={space.sm} />
+          <Space height="sm" />
           <Text typo="body1">
             명령어 채널에서 /인증코드 명령어를 통해 고유한 인증번호를 받을 수
             있어요. 인증코드를 아래에 입력함으로써 연동할 수 있어요.
@@ -54,8 +54,8 @@ export const ServerConnect = ({ onNext }: { onNext: () => void }) => {
             width={325}
             height={157}
           />
-          <Space height={space.lg} />
-          <Space height={space.lg} />
+          <Space height="lg" />
+          <Space height="lg" />
           <TextButton
             text="번호 발급받기↗︎"
             style={{ color: color.discord }}

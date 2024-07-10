@@ -1,6 +1,6 @@
 import { Flex, Space, Text } from '@/components/common/Wrapper';
 import Button from 'wowds-ui/Button';
-import { color, space } from 'wowds-tokens';
+import { color } from 'wowds-tokens';
 import { Discord as DiscordIcon } from '@/assets/Discord';
 
 export const DiscordDescription = ({ onNext }: { onNext: () => void }) => {
@@ -8,11 +8,11 @@ export const DiscordDescription = ({ onNext }: { onNext: () => void }) => {
     <>
       <Flex direction="column" align="flex-start">
         <DiscordIcon />
-        <Space height={space.sm} />
+        <Space height="sm" />
         <Text typo="h1">
           디스코드가 무엇이고, <br />왜 쓰나요?
         </Text>
-        <Space height={space.lg} />
+        <Space height="lg" />
         <Text typo="body1">
           디스코드는 음성, 화상 채팅이 가능한 메신저예요. <br />
           GDSC Hongik에서는
