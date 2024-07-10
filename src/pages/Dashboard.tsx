@@ -96,6 +96,7 @@ const Wrapper = styled(Flex)`
 `;
 
 const Container = styled.div`
+  position: relative;
   width: 100%;
   display: flex;
   gap: ${space.xxs};

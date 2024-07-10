@@ -57,10 +57,12 @@ MemberStatusInfoBox.displayName = 'MemberStatusInfoBox';
 export default MemberStatusInfoBox;
 
 const Wrapper = styled(Flex)`
+  position: absolute;
   background-color: ${color.blackOpacity60};
   border-radius: 8px;
   box-shadow: 0px 4px 8px 0px ${color.shadowMedium};
   backdrop-filter: blur(15px);
   padding: ${space.xl};
   height: fit-content;
+  z-index: 99;
 `;
