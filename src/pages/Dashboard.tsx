@@ -8,17 +8,20 @@ import AssociateRequirementCheck from '@/components/myPage/AssociateRequirementC
 import MemberStatusStepper from '@/components/myPage/MemberStatusStepper';
 import BasicUserInfo from '@/components/myPage/BasicUserInfo';
 import { media } from '@/styles';
-import { useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { Help } from 'wowds-icons';
 import { Privacy } from '@/components/myPage/Privacy';
 import { useQuery } from '@tanstack/react-query';
 import memberApi from '@/apis/member/memberApi';
 import GlobalSize from '@/constants/globalSize';
+import JoinRegularMemberBottomSheet from './bottomsheet/JoinRegularMemberBottomSheet';
 import { ApproveBox } from '@/components/myPage/ApproveBox';
+import { BottomSheetContext } from '@/context/BottomSheetContext';
 
 export const Dashboard = () => {
   const [openInfo, setOpenInfo] = useState(false);
   const helpButtonRef = useRef<HTMLDivElement>(null);
+  const { isOpen } = useContext(BottomSheetContext);
   const { data } = useQuery({
     queryKey: ['member'],
     queryFn: memberApi.GET_DASHBOARD
@@ -32,53 +35,60 @@ export const Dashboard = () => {
   const { member, currentRecruitmentRound, currentMembership } = data;
 
   return (
-    <Wrapper
-      direction="column"
-      justify="flex-start"
-      style={{ gap: '40px' }}
-      css={css`
-        gap: '40px';
-      `}>
-      <Space height={20} />
-      <BasicUserInfo member={member} />
-      <Flex justify="flex-start" direction="column" align="flex-start">
-        <Container>
-          <Text typo="h2" color="textBlack">
-            현재 회원 상태
-          </Text>
-          <div
-            ref={helpButtonRef}
-            onClick={() => {
-              setOpenInfo(!openInfo);
-            }}>
-            <Help width={24} height={24} fill="sub" stroke="sub" />
-          </div>
-          {openInfo && (
-            <MemberStatusInfoBox
-              setOpenInfo={setOpenInfo}
-              exceptRef={helpButtonRef}
-            />
-          )}
-        </Container>
-        <Space height={40} />
-        <MemberStatusStepper member={member} />
+    <>
+      <Wrapper
+        direction="column"
+        justify="flex-start"
+        style={{ gap: '40px' }}
+        css={css`
+          gap: '40px';
+        `}>
         <Space height={20} />
-        <ApproveBox
-          role={member.role}
+        <BasicUserInfo member={member} />
+        <Flex justify="flex-start" direction="column" align="flex-start">
+          <Container>
+            <Text typo="h2" color="textBlack">
+              현재 회원 상태
+            </Text>
+            <div
+              ref={helpButtonRef}
+              onClick={() => {
+                setOpenInfo(!openInfo);
+              }}>
+              <Help width={24} height={24} fill="sub" stroke="sub" />
+            </div>
+            {openInfo && (
+              <MemberStatusInfoBox
+                setOpenInfo={setOpenInfo}
+                exceptRef={helpButtonRef}
+              />
+            )}
+          </Container>
+          <Space height={40} />
+          <MemberStatusStepper member={member} />
+          <Space height={20} />
+          <ApproveBox
+            role={member.role}
+            currentRecruitment={currentRecruitmentRound}
+          />
+        </Flex>
+        {currentMembership && (
+          <JoinRegularMember
+            paymentStatus={currentMembership.regularRequirement.paymentStatus}
+          />
+        )}
+        <AssociateRequirementCheck
+          associateRequirement={member.associateRequirement}
+        />
+        <Privacy basicInfo={member.basicInfo} />
+        <Space height={104} />
+      </Wrapper>
+      {isOpen && (
+        <JoinRegularMemberBottomSheet
           currentRecruitment={currentRecruitmentRound}
         />
-      </Flex>
-      {currentMembership && (
-        <JoinRegularMember
-          paymentStatus={currentMembership.regularRequirement.paymentStatus}
-        />
       )}
-      <AssociateRequirementCheck
-        associateRequirement={member.associateRequirement}
-      />
-      <Privacy basicInfo={member.basicInfo} />
-      <Space height={104} />
-    </Wrapper>
+    </>
   );
 };
 

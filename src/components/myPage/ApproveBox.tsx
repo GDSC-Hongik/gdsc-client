@@ -1,28 +1,16 @@
 import Box from 'wowds-ui/Box';
 import styled from '@emotion/styled';
-import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { BottomSheetContext } from '@/context/BottomSheetContext';
 import { CurrentRecruitmentType } from '@/apis/member/memberType';
-import { formatDate } from '@/utils/mypage/formatDate';
-import RoutePath from '@/routes/routePath';
+import {
+  convertRecruitmentPeriod,
+  convertRecruitmentName
+} from '@/utils/mypage/recruitmentNameFormat';
 
 type MemberRole = 'GUEST' | 'ASSOCIATE' | 'REGULAR' | 'ADMIN';
 type BoxVariantType = 'arrow' | 'checkbox' | 'text' | 'warn';
 type BoxStatusType = 'default' | 'success' | 'error';
-
-const convertRecruitmentName = (name: string) => {
-  const [period, round] = name.split(' ');
-  const [year, semester] = period.split('-');
-  return `${year}년 ${semester}학기 ${round} 정회원 지원하기`;
-};
-
-const convertRecruitmentPeriod = (period: {
-  startDate: string;
-  endDate: string;
-}) => {
-  const startDate = formatDate(period.startDate);
-  const endDate = formatDate(period.endDate);
-  return `지원 기간 : ${startDate} ~ ${endDate}`;
-};
 
 export const ApproveBox = ({
   role,
@@ -31,7 +19,7 @@ export const ApproveBox = ({
   role: MemberRole;
   currentRecruitment: CurrentRecruitmentType;
 }) => {
-  const navigate = useNavigate();
+  const { handleBottomSheet } = useContext(BottomSheetContext);
   const boxContent: Record<
     MemberRole,
     {
@@ -66,16 +54,12 @@ export const ApproveBox = ({
     }
   };
   return (
-    <BoxWrapper
-      onClick={() => {
-        navigate(RoutePath.JoinRegularMember);
-      }}>
+    <BoxWrapper onClick={handleBottomSheet}>
       <Box
         variant={boxContent[role].boxVariant}
         text={boxContent[role].title}
         subText={boxContent[role].description}
         status={boxContent[role].status}
-        //TODO: BottomSheet 보여주는 부분 ~
       />
     </BoxWrapper>
   );

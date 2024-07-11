@@ -6,13 +6,26 @@ import Button from 'wowds-ui/Button';
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import RoutePath from '@/routes/routePath';
+import { CurrentRecruitmentType } from '@/apis/member/memberType';
+import {
+  convertRecruitmentName,
+  convertRecruitmentPeriod
+} from '@/utils/mypage/recruitmentNameFormat';
 
-const JoinRegularMemberBottomSheet = () => {
+const JoinRegularMemberBottomSheet = ({
+  currentRecruitment
+}: {
+  currentRecruitment: CurrentRecruitmentType;
+}) => {
+  const bottomSheetTitle = convertRecruitmentName(currentRecruitment.name);
+  const recruitmentPeriod = convertRecruitmentPeriod(currentRecruitment.period);
   return (
     <BottomSheet>
       <BottomSheetContent>
         <Flex direction="column" gap="lg" align="flex-start">
-          <Text typo="h1">2024년도 2학기 1차 정회원 지원</Text>
+          <Text typo="h1" style={{ width: '100%', textAlign: 'center' }}>
+            {bottomSheetTitle.slice(0, bottomSheetTitle.length - 2)}
+          </Text>
           <Text typo="body1">
             정회원이 되면 아래 혜택을 모두 누릴 수 있어요.
           </Text>
@@ -47,18 +60,20 @@ const JoinRegularMemberBottomSheet = () => {
             }
           />
         </Flex>
-        <Text>회비는 2만원이고, 쿠폰이 있을 경우 할인받을 수 있어요.</Text>
-        <Text>
-          자세한 내용은
-          <TextLink to={RoutePath.GDSCHongikLink} target="_blank">
-            GDSC Hongik 페이지
-          </TextLink>
-          를 참고해주세요.
-        </Text>
+        <div>
+          <Text>회비는 2만원이고, 쿠폰이 있을 경우 할인받을 수 있어요.</Text>
+          <Text>
+            자세한 내용은{' '}
+            <TextLink to={RoutePath.GDSCHongikLink} target="_blank">
+              GDSC Hongik 페이지
+            </TextLink>
+            를 참고해주세요.
+          </Text>
+        </div>
         <Box
           status="success"
-          style={{ textAlign: 'center' }}
-          text={<Text typo="label1">지원 기간: 8월 26일 ~ 8월 30일</Text>}
+          style={{ justifyContent: 'center' }}
+          text={<Text typo="label1">{recruitmentPeriod}</Text>}
         />
         <Button
           onClick={() => {
@@ -78,6 +93,7 @@ const BottomSheetContent = styled.div`
   flex-direction: column;
   gap: ${space.xl};
   align-items: center;
+  overflow-y: scroll;
 `;
 
 const TextLink = styled(Link)`
