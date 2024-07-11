@@ -11,7 +11,7 @@ import {
   convertRecruitmentName,
   convertRecruitmentPeriod
 } from '@/utils/mypage/recruitmentNameFormat';
-import useJoinRegularMember from '@/hooks/mutation/usejoinRegularMember';
+import useJoinRegularMember from '@/hooks/mutation/useJoinRegularMember';
 
 const JoinRegularMemberBottomSheet = ({
   currentRecruitment

@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { color, space } from 'wowds-tokens';
+import { media } from '@/styles';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useContext, ReactNode, useRef, useEffect } from 'react';
 import useClickOutside from '@/hooks/useClickOutSide';
@@ -27,17 +28,19 @@ const BottomSheet = ({ children }: { children: ReactNode }) => {
     <AnimatePresence>
       <Overlay>
         {isOpen && (
-          <Wrapper
-            ref={ref}
-            animate={{ height: '35.43rem' }}
-            initial={{ height: 0 }}
-            transition={{ type: 'spring', duration: 1 }}
-            exit={{ height: 0 }}>
-            <BottomSheetActionArea onClick={handleBottomSheet}>
-              X
-            </BottomSheetActionArea>
-            {children}
-          </Wrapper>
+          <Container>
+            <Wrapper
+              ref={ref}
+              animate={{ height: '35.43rem' }}
+              initial={{ height: 0 }}
+              transition={{ type: 'spring', duration: 1 }}
+              exit={{ height: 0 }}>
+              <BottomSheetActionArea onClick={handleBottomSheet}>
+                X
+              </BottomSheetActionArea>
+              {children}
+            </Wrapper>
+          </Container>
         )}
       </Overlay>
     </AnimatePresence>
@@ -55,12 +58,22 @@ const Overlay = styled.div`
   background-color: ${color.backgroundDimmer};
 `;
 
+const Container = styled.div`
+  width: 100%;
+  display: flex;
+  height: 35.43rem;
+  display: relative;
+  justify-content: center;
+`;
+
 const Wrapper = styled(motion.div)`
   position: absolute;
   bottom: 0;
   left: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
   z-index: 999;
-  width: 100%;
+  width: 600px;
   height: 35.43rem;
   background-color: ${color.backgroundNormal};
   display: flex;
@@ -69,6 +82,9 @@ const Wrapper = styled(motion.div)`
   gap: ${space.lg};
   border-radius: 8px 8px 0px;
   overflow-y: scroll;
+  ${media.mobile} {
+    width: 100vw;
+  }
 `;
 
 const BottomSheetActionArea = styled.div`
