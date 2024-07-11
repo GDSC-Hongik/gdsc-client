@@ -1,13 +1,14 @@
 import { Flex, Space, Text } from '@/components/common/Wrapper';
 import { space, color } from 'wowds-tokens';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import JoinRegularMember from '@/components/myPage/JoinRegularMember';
 import MemberStatusInfoBox from '@/components/myPage/MemberStatusInfoBox';
 import AssociateRequirementCheck from '@/components/myPage/AssociateRequirementCheck';
+import MemberStatusStepper from '@/components/myPage/MemberStatusStepper';
 import BasicUserInfo from '@/components/myPage/BasicUserInfo';
 import { media } from '@/styles';
 import { useRef, useState } from 'react';
-import styled from '@emotion/styled';
 import { Help } from 'wowds-icons';
 import { Privacy } from '@/components/myPage/Privacy';
 import { useQuery } from '@tanstack/react-query';
@@ -28,7 +29,7 @@ export const Dashboard = () => {
     return <div> 로딩중 ...</div>;
   }
 
-  const { member, currentRecruitment, currentMembership } = data;
+  const { member, currentRecruitmentRound, currentMembership } = data;
 
   return (
     <Wrapper
@@ -59,12 +60,12 @@ export const Dashboard = () => {
             />
           )}
         </Container>
+        <Space height={40} />
+        <MemberStatusStepper member={member} />
         <Space height={20} />
-        프로그래스바 자리
-        <Space height={24} />
         <ApproveBox
           role={member.role}
-          currentRecruitment={currentRecruitment}
+          currentRecruitment={currentRecruitmentRound}
         />
       </Flex>
       {currentMembership && (

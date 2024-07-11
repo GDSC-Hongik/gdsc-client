@@ -6,6 +6,7 @@ import { formatDate } from '@/utils/mypage/formatDate';
 type MemberRole = 'GUEST' | 'ASSOCIATE' | 'REGULAR' | 'ADMIN';
 type BoxVariantType = 'arrow' | 'checkbox' | 'text' | 'warn';
 type BoxStatusType = 'default' | 'success' | 'error';
+
 const convertRecruitmentName = (name: string) => {
   const [period, round] = name.split(' ');
   const [year, semester] = period.split('-');
