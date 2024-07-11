@@ -14,6 +14,7 @@ import styled from '@emotion/styled';
 import { CLIENT_KEY } from '@/constants/environment';
 import { color } from 'wowds-tokens';
 import meApi from '@/apis/me/meApi';
+import ordersApi from '@/apis/orders/ordersApi';
 import { useProduct } from '@/hooks/zustand/useProduct';
 
 const clientKey = CLIENT_KEY;
@@ -25,7 +26,7 @@ export function PaymentsCheckout() {
     queryFn: meApi.GET_BASIC_INFO
   });
 
-  const { totalAmount } = useProduct();
+  const { name, amount, discount, totalAmount } = useProduct();
 
   const [ready, setReady] = useState(false);
 
@@ -73,12 +74,24 @@ export function PaymentsCheckout() {
   }, [widgets]);
 
   const handleClickOpenPaymentWidget = async () => {
+    const id = nanoid();
     try {
+      // Todo: 에러 로직 추가. 여기서 실패하면 어떻게 뷰 보여줄까?
+      // Todo: 내 계정 등록 ㅠ.ㅠ
+      // await ordersApi.POST_PREV_ORDER({
+      //   orderNanoId: id,
+      //   membershipId: 0,
+      //   issuedCouponId: 1,
+      //   totalAmount: amount,
+      //   discountAmount: discount,
+      //   finalPaymentAmount: totalAmount
+      // });
+
       await widgets.requestPayment({
-        orderId: nanoid(),
-        orderName: '2024년 1학기 정회원 회비',
-        customerName: user?.name || '햄',
-        customerEmail: user?.email || 'ham@test.com',
+        orderId: id,
+        orderName: name,
+        customerName: user?.name || '이현영',
+        customerEmail: user?.email || 'test@naver.com',
         customerMobilePhone: user?.phone || '01000000000',
         successUrl: `${window.location.origin}${RoutePath.PaymentsSuccess}`,
         failUrl: `${window.location.origin}${RoutePath.PaymentsFail}`

@@ -39,7 +39,9 @@ export const CouponDropDown = () => {
     }
   ];
 
-  const [selectedValue, setSelectedValue] = useState('');
+  const [selectedValue, setSelectedValue] = useState(
+    coupons.length ? coupons[0].couponName : '보유한 쿠폰이 없어요'
+  );
 
   const handleChange = (value: string) => {
     const coupon = coupons.filter((coupon) => coupon.couponName === value)[0];

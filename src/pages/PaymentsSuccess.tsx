@@ -19,34 +19,40 @@ export function PaymentsSuccess() {
   const [responseData, setResponseData] = useState(null);
   const { amount, discount, totalAmount } = useProduct();
 
+  const confirm = async () => {
+    const requestData = {
+      orderId: searchParams.get('orderId'),
+      amount: searchParams.get('amount'),
+      paymentType: searchParams.get('paymentType'),
+      paymentKey: searchParams.get('paymentKey')
+    };
+
+    // Todo: 결제 정보 검증
+    if (!requestData.orderId || !requestData.amount || !requestData.paymentKey)
+      throw new Error('Invalid payment information');
+
+    // Todo: 주문 완료 API
+    const response = await ordersApi.POST_ORDER({
+      orderNanoId: requestData.orderId,
+      membershipId: 1,
+      issuedCouponId: 1,
+      totalAmount: amount,
+      discountAmount: discount,
+      finalPaymentAmount: +requestData.amount
+    });
+    return response;
+  };
+
   useEffect(() => {
-    async function confirm() {
-      const requestData = {
-        orderId: searchParams.get('orderId'),
-        amount: searchParams.get('amount'),
-        paymentType: searchParams.get('paymentType'),
-        paymentKey: searchParams.get('paymentKey')
-      };
-
-      // Todo: requestData 검증
-      const json = ordersApi.POST_ORDER({
-        orderNanoId: requestData.orderId || 'hi',
-        membershipId: 1,
-        issuedCouponId: 1,
-        totalAmount: amount,
-        discountAmount: discount,
-        finalPaymentAmount: requestData.amount ? +requestData.amount : 0
-      });
-      return json;
-    }
-
-    confirm()
-      .then((data) => {
+    const executeConfirm = async () => {
+      try {
+        const data = await confirm();
         setResponseData(data);
-      })
-      .catch(() => {
+      } catch (error) {
         navigate(RoutePath.PaymentsFail);
-      });
+      }
+    };
+    executeConfirm();
   }, [searchParams]);
 
   return (
