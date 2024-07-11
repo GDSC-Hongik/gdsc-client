@@ -54,7 +54,13 @@ export const ApproveBox = ({
     }
   };
   return (
-    <BoxWrapper onClick={handleBottomSheet}>
+    <BoxWrapper
+      onClick={() => {
+        if (role === 'ASSOCIATE') handleBottomSheet();
+        else {
+          return;
+        }
+      }}>
       <Box
         variant={boxContent[role].boxVariant}
         text={boxContent[role].title}
