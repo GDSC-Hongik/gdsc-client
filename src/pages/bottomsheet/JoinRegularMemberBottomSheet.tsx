@@ -11,12 +11,14 @@ import {
   convertRecruitmentName,
   convertRecruitmentPeriod
 } from '@/utils/mypage/recruitmentNameFormat';
+import useJoinRegularMember from '@/hooks/mutation/usejoinRegularMember';
 
 const JoinRegularMemberBottomSheet = ({
   currentRecruitment
 }: {
   currentRecruitment: CurrentRecruitmentType;
 }) => {
+  const { joinRegularMember } = useJoinRegularMember();
   const bottomSheetTitle = convertRecruitmentName(currentRecruitment.name);
   const recruitmentPeriod = convertRecruitmentPeriod(currentRecruitment.period);
   return (
@@ -77,7 +79,7 @@ const JoinRegularMemberBottomSheet = ({
         />
         <Button
           onClick={() => {
-            console.log('지원하러 가기');
+            joinRegularMember(currentRecruitment.recruitmentId);
           }}>
           지원하러 가기
         </Button>
