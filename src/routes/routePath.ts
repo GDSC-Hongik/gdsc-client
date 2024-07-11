@@ -21,7 +21,8 @@ const RoutePath = {
 
   AuthServerRedirect: '/social-login/redirect',
   StudentVerificationServerRedirect: '/onboarding/verify-email',
-
+  JoinRegularMember: '/bottomsheet/join-regular-member',
+  GDSCHongikLink: 'https://www.gdschongik.com',
   GitHubGuideLink: 'https://www.gdschongik.com/guide/github',
   StudentEmailLinkGuideLink: 'https://www.gdschongik.com/guide/student-email',
   CommunityGuideLink:

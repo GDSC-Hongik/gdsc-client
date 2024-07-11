@@ -1,23 +1,38 @@
 import styled from '@emotion/styled';
 import { color, space } from 'wowds-tokens';
 import { motion } from 'framer-motion';
-import { ReactNode, useRef } from 'react';
+import { useContext, ReactNode, useRef } from 'react';
+import { BottomSheetContext } from '@/context/BottomSheetContext';
 
 const BottomSheet = ({ children }: { children: ReactNode }) => {
   const ref = useRef<HTMLDivElement | null>(null);
+  const { isOpen, handleBottomSheet } = useContext(BottomSheetContext);
   return (
-    <Wrapper
-      ref={ref}
-      initial={{ height: 0 }}
-      transition={{ type: 'spring', duration: 0.2 }}
-      exit={{ height: 0 }}>
-      <BottomSheetActionArea>X</BottomSheetActionArea>
-      {children}
-    </Wrapper>
+    <Overlay>
+      {isOpen && (
+        <Wrapper
+          ref={ref}
+          initial={{ height: 0 }}
+          transition={{ type: 'spring', duration: 0.2 }}
+          exit={{ height: 0 }}>
+          <BottomSheetActionArea onClick={handleBottomSheet}>
+            X
+          </BottomSheetActionArea>
+          {children}
+        </Wrapper>
+      )}
+    </Overlay>
   );
 };
 
 export default BottomSheet;
+
+const Overlay = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: ${color.backgroundDimmer};
+`;
 
 const Wrapper = styled(motion.div)`
   position: fixed;

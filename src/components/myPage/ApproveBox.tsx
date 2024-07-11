@@ -1,7 +1,9 @@
 import Box from 'wowds-ui/Box';
-
+import styled from '@emotion/styled';
+import { useNavigate } from 'react-router-dom';
 import { CurrentRecruitmentType } from '@/apis/member/memberType';
 import { formatDate } from '@/utils/mypage/formatDate';
+import RoutePath from '@/routes/routePath';
 
 type MemberRole = 'GUEST' | 'ASSOCIATE' | 'REGULAR' | 'ADMIN';
 type BoxVariantType = 'arrow' | 'checkbox' | 'text' | 'warn';
@@ -29,6 +31,7 @@ export const ApproveBox = ({
   role: MemberRole;
   currentRecruitment: CurrentRecruitmentType;
 }) => {
+  const navigate = useNavigate();
   const boxContent: Record<
     MemberRole,
     {
@@ -63,13 +66,22 @@ export const ApproveBox = ({
     }
   };
   return (
-    <>
+    <BoxWrapper
+      onClick={() => {
+        navigate(RoutePath.JoinRegularMember);
+      }}>
       <Box
         variant={boxContent[role].boxVariant}
         text={boxContent[role].title}
         subText={boxContent[role].description}
         status={boxContent[role].status}
+        //TODO: BottomSheet 보여주는 부분 ~
       />
-    </>
+    </BoxWrapper>
   );
 };
+
+const BoxWrapper = styled.div`
+  width: 100%;
+  cursor: pointer;
+`;
