@@ -10,7 +10,7 @@ import { useProduct } from '@/hooks/zustand/useProduct';
 
 import { Flex, Text } from '../common/Wrapper';
 
-const CouponDropDown = () => {
+export const CouponDropDown = () => {
   // const { data: coupons } = useQuery({
   //   queryKey: ['coupon'],
   //   queryFn: couponApi.GET_COUPONS_ME
@@ -50,7 +50,10 @@ const CouponDropDown = () => {
   const { strDiscount, setDiscount } = useProduct();
 
   return (
-    <>
+    <Flex justify="flex-start" direction="column" align="flex-start" gap="sm">
+      <Text typo="h2" color="black">
+        할인 쿠폰
+      </Text>
       <DropDown
         style={{ width: '100%' }}
         placeholder="목록을 입력하세요"
@@ -74,8 +77,6 @@ const CouponDropDown = () => {
           {strDiscount}원
         </Text>
       </Flex>
-    </>
+    </Flex>
   );
 };
-
-export default CouponDropDown;
