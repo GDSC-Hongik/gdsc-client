@@ -15,6 +15,7 @@ import { CLIENT_KEY } from '@/constants/environment';
 import { color } from 'wowds-tokens';
 import meApi from '@/apis/me/meApi';
 import ordersApi from '@/apis/orders/ordersApi';
+import memberApi from '@/apis/member/memberApi';
 import { useProduct } from '@/hooks/zustand/useProduct';
 
 const clientKey = CLIENT_KEY;
@@ -24,6 +25,11 @@ export function PaymentsCheckout() {
   const { data: user } = useQuery({
     queryKey: ['me'],
     queryFn: meApi.GET_BASIC_INFO
+  });
+
+  const { data: dashboard } = useQuery({
+    queryKey: ['member'],
+    queryFn: memberApi.GET_DASHBOARD
   });
 
   const { name, amount, discount, totalAmount } = useProduct();
@@ -77,9 +83,11 @@ export function PaymentsCheckout() {
     const id = nanoid();
     try {
       // Todo: 에러 로직 추가. 여기서 실패하면 어떻게 뷰 보여줄까?
+      if (!dashboard) throw new Error();
+
       await ordersApi.POST_PREV_ORDER({
         orderNanoId: id,
-        membershipId: 1,
+        membershipId: dashboard.currentMembership.membershipId,
         issuedCouponId: null,
         totalAmount: amount,
         discountAmount: 0,
