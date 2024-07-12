@@ -1,13 +1,13 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { FC, ImgHTMLAttributes } from 'react';
+import { ImgHTMLAttributes } from 'react';
 
 interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   align?: 'left' | 'center' | 'right';
   css?: ReturnType<typeof css>;
 }
 
-export const Image: FC<ImageProps> = ({ align = 'center', css, ...props }) => {
+export const Image = ({ align = 'center', css, ...props }: ImageProps) => {
   return <StyledImg align={align} css={css} {...props} />;
 };
 
