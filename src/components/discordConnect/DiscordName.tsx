@@ -1,7 +1,6 @@
 import { Flex, Space, Text } from '@/components/common/Wrapper';
 import Button from 'wowds-ui/Button';
 import DiscordImage from '/discord/discord-name.png';
-import { space } from 'wowds-tokens';
 import TextField from 'wowds-ui/TextField';
 import TextButton from 'wowds-ui/TextButton';
 import RoutePath from '@/routes/routePath';
@@ -39,7 +38,7 @@ export const DiscordName = ({ onNext }: { onNext: () => void }) => {
       <Flex direction="column" align="flex-start" gap="lg">
         <div>
           <Text typo="h1">사용자명을 알려주세요.</Text>
-          <Space height={space.sm} />
+          <Space height="sm" />
           <Text typo="body1">
             GDSC Hongik 디스코드 서버에서는 사용자명을 통해 멤버를 구분해요.
           </Text>
@@ -49,7 +48,7 @@ export const DiscordName = ({ onNext }: { onNext: () => void }) => {
           본인의 디스코드 사용자명을 아래 규정과 맞게 설정한 후 입력해주세요.
         </Text>
       </Flex>
-      <Space height={space.lg} />
+      <Space height="lg" />
       <TextField
         helperText={
           <ul style={{ listStyle: 'disc', paddingLeft: '20px' }}>
@@ -77,7 +76,7 @@ export const DiscordName = ({ onNext }: { onNext: () => void }) => {
           }}>
           다음으로
         </Button>
-        <Space height={space.xs} />
+        <Space height="xs" />
         <TextButton
           text="디스코드 계정이 없으신가요?"
           as="a"
