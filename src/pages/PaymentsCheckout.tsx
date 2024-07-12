@@ -77,22 +77,21 @@ export function PaymentsCheckout() {
     const id = nanoid();
     try {
       // Todo: 에러 로직 추가. 여기서 실패하면 어떻게 뷰 보여줄까?
-      // Todo: 내 계정 등록 ㅠ.ㅠ
-      // await ordersApi.POST_PREV_ORDER({
-      //   orderNanoId: id,
-      //   membershipId: 0,
-      //   issuedCouponId: 1,
-      //   totalAmount: amount,
-      //   discountAmount: discount,
-      //   finalPaymentAmount: totalAmount
-      // });
+      await ordersApi.POST_PREV_ORDER({
+        orderNanoId: id,
+        membershipId: 1,
+        issuedCouponId: null,
+        totalAmount: amount,
+        discountAmount: 0,
+        finalPaymentAmount: totalAmount
+      });
 
       await widgets.requestPayment({
         orderId: id,
         orderName: name,
-        customerName: user?.name || '이현영',
-        customerEmail: user?.email || 'test@naver.com',
-        customerMobilePhone: user?.phone || '01000000000',
+        customerName: user?.name,
+        customerEmail: user?.email,
+        customerMobilePhone: user?.phone.replaceAll('-', ''),
         successUrl: `${window.location.origin}${RoutePath.PaymentsSuccess}`,
         failUrl: `${window.location.origin}${RoutePath.PaymentsFail}`
       });
