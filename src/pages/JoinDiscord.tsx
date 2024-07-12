@@ -35,7 +35,7 @@ export const JoinDiscord = () => {
     mutationFn: discordApi.POST_DISCORD,
     onSuccess: () => {
       toast('디스코드 연동이 완료되었습니다.');
-      navigate(RoutePath.MyPage);
+      navigate(RoutePath.Dashboard);
     }
   });
 

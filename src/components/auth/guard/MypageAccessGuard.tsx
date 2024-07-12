@@ -6,7 +6,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 export default function MypageAccessGuard() {
   const { landingStatus } = useLandingStatus();
 
-  if (landingStatus !== LandingStatus.MyPage) {
+  if (landingStatus !== LandingStatus.Dashboard) {
     return <Navigate to={getAuthRedirectPath(landingStatus)} />;
   }
 
