@@ -1,5 +1,6 @@
 import { GitHubIcon } from '@/assets/GitHubIcon';
 import { color, typography } from 'wowds-tokens';
+import Button from 'wowds-ui/Button';
 import styled from '@emotion/styled';
 import { ButtonHTMLAttributes } from 'react';
 
@@ -8,26 +9,30 @@ import { ButtonHTMLAttributes } from 'react';
  */
 export const GitHubButton = ({
   children,
-  ...props
+  onClick
 }: ButtonHTMLAttributes<HTMLButtonElement>) => {
   return (
-    <StyledButton {...props}>
-      <GitHubIcon />
-      {children}
-    </StyledButton>
+    <Button
+      onClick={onClick}
+      style={{
+        display: 'flex',
+        backgroundColor: `${color.github}`
+      }}>
+      <StyledButton>
+        <GitHubIcon />
+        {children}
+      </StyledButton>
+    </Button>
   );
 };
 
-const StyledButton = styled.button`
-  padding: 12px 0;
+const StyledButton = styled.div`
   width: 100%;
-  border-radius: 100px;
 
   display: flex;
   justify-content: center;
   gap: 8px;
 
-  background-color: ${color.textBlack};
   color: ${color.white};
 
   ${typography.label1};
