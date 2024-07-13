@@ -1,23 +1,18 @@
-import { Flex, Space, Text } from '@/components/common/Wrapper';
-import { space, color } from 'wowds-tokens';
+import { Flex, Space } from '@/components/common/Wrapper';
+import { color } from 'wowds-tokens';
 import { css } from '@emotion/react';
 import JoinRegularMember from '@/components/myPage/JoinRegularMember';
-import MemberStatusInfoBox from '@/components/myPage/MemberStatusInfoBox';
 import AssociateRequirementCheck from '@/components/myPage/AssociateRequirementCheck';
 import BasicUserInfo from '@/components/myPage/BasicUserInfo';
 import { media } from '@/styles';
-import { useRef, useState } from 'react';
 import styled from '@emotion/styled';
-import { Help } from 'wowds-icons';
 import { Privacy } from '@/components/myPage/Privacy';
 import { useQuery } from '@tanstack/react-query';
 import memberApi from '@/apis/member/memberApi';
 import GlobalSize from '@/constants/globalSize';
-import { ApproveBox } from '@/components/myPage/ApproveBox';
+import JoinStatus from '@/components/myPage/JoinStatus';
 
 export const Dashboard = () => {
-  const [openInfo, setOpenInfo] = useState(false);
-  const helpButtonRef = useRef<HTMLDivElement>(null);
   const { data } = useQuery({
     queryKey: ['member'],
     queryFn: memberApi.GET_DASHBOARD
@@ -40,39 +35,11 @@ export const Dashboard = () => {
       `}>
       <Space height={20} />
       <BasicUserInfo member={member} />
-      <Flex justify="flex-start" direction="column" align="flex-start">
-        <Container>
-          <Text typo="h2" color="textBlack">
-            현재 회원 상태
-          </Text>
-          <div
-            ref={helpButtonRef}
-            onClick={() => {
-              setOpenInfo(!openInfo);
-            }}>
-            <Help
-              width={24}
-              height={24}
-              fill="sub"
-              stroke="sub"
-              style={{ cursor: 'pointer' }}
-            />
-          </div>
-          {openInfo && (
-            <MemberStatusInfoBox
-              setOpenInfo={setOpenInfo}
-              exceptRef={helpButtonRef}
-            />
-          )}
-        </Container>
-        <Space height={20} />
-        프로그래스바 자리
-        <Space height={24} />
-        <ApproveBox
-          role={member.role}
-          currentRecruitment={currentRecruitmentRound}
-        />
-      </Flex>
+      <JoinStatus
+        role={member.role}
+        currentRecruitmentRound={currentRecruitmentRound}
+      />
+
       {currentMembership && (
         <JoinRegularMember
           paymentStatus={currentMembership.regularRequirement.paymentStatus}
@@ -98,13 +65,4 @@ const Wrapper = styled(Flex)`
   ${media.mobile} {
     width: 100vw;
   }
-`;
-
-const Container = styled.div`
-  position: relative;
-  width: 100%;
-  display: flex;
-  gap: ${space.xxs};
-  justify-content: 'flex-start';
-  align-items: 'center';
 `;
