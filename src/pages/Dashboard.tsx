@@ -28,7 +28,7 @@ export const Dashboard = () => {
     return <div> 로딩중 ...</div>;
   }
 
-  const { member, currentRecruitment, currentMembership } = data;
+  const { member, currentRecruitmentRound, currentMembership } = data;
 
   return (
     <Wrapper
@@ -50,7 +50,13 @@ export const Dashboard = () => {
             onClick={() => {
               setOpenInfo(!openInfo);
             }}>
-            <Help width={24} height={24} fill="sub" stroke="sub" />
+            <Help
+              width={24}
+              height={24}
+              fill="sub"
+              stroke="sub"
+              style={{ cursor: 'pointer' }}
+            />
           </div>
           {openInfo && (
             <MemberStatusInfoBox
@@ -64,7 +70,7 @@ export const Dashboard = () => {
         <Space height={24} />
         <ApproveBox
           role={member.role}
-          currentRecruitment={currentRecruitment}
+          currentRecruitment={currentRecruitmentRound}
         />
       </Flex>
       {currentMembership && (

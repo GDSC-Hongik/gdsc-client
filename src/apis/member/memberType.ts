@@ -11,7 +11,7 @@ export interface MemberBasicInfoType {
 
 export interface MemberInfoResponse {
   member: User;
-  currentRecruitment: CurrentRecruitmentType;
+  currentRecruitmentRound: CurrentRecruitmentType;
   currentMembership: CurrentMembershipType;
 }
 
