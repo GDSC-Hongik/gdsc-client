@@ -72,7 +72,12 @@ export const SignUp = () => {
       <Space height={24} />
       <form
         onSubmit={handleSubmit(onSubmit)}
-        style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '24px',
+          width: '100%'
+        }}>
         <Controller
           name="name"
           control={control}
