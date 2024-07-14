@@ -2,10 +2,12 @@ import { GitHubButton } from '@/components/auth/GitHubButton';
 import { Text } from '@/components/common/Wrapper';
 import useLandingStatus from '@/hooks/zustand/useLandingStatus';
 import RoutePath from '@/routes/routePath';
-import { color } from 'wowds-tokens';
+import { color, space } from 'wowds-tokens';
+import { media } from '@/styles';
 import { setCookie } from '@/utils/auth';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import GlobalSize from '@/constants/globalSize';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -16,7 +18,7 @@ export const Auth = () => {
   useEffect(() => {
     clearLandingStatus();
     // 로그인을 위한 oauth-base-uri 쿠키 값 세팅
-    console.log(window.location.origin);
+
     setCookie({
       key: 'oauth-base-uri',
       value: window.location.origin,
@@ -33,54 +35,73 @@ export const Auth = () => {
 
   return (
     <Container>
-      <Box>
+      <div>
+        <Text
+          typo="h1"
+          style={{ marginBottom: '1.25rem', textAlign: 'center' }}>
+          로그인 및 가입하기
+        </Text>
         <TextContainer>
-          <Text typo="h3" style={{ marginBottom: '12px' }}>
-            로그인 및 가입하기
+          <Text typo="body1">
+            GDSC Hongik에서는 더 나은 커뮤니티 운영과 안전한 회원 정보 관리를
+            위해 Github 소셜 로그인을 사용하고 있어요. Github 계정이 없다면,
+            새로 가입해야 해요.
           </Text>
-          <Text>GDSC Hongik에서는 더 나은 커뮤니티 운영과</Text>
-          <Text>안전한 회원 정보 관리를 위해</Text>
-          <Text>Github 소셜 로그인을 사용하고 있어요.</Text>
-          <Text>계정이 없다면, 새로 가입해야 해요.</Text>
         </TextContainer>
+      </div>
+      <ButtonContainer>
         <GitHubButton onClick={handleClick}>
           GitHub 로그인/회원가입
         </GitHubButton>
         <GithubGuideLink to={RoutePath.GitHubGuideLink} target="_blank">
           <Text
-            typo="label1"
-            color="black"
+            typo="label2"
+            color="textBlack"
             css={css`
               text-decoration: underline;
+              padding: ${space.sm};
+              ${space.lg}
             `}>
-            GitHub 가이드라인
+            GitHub 계정을 어떻게 만드나요?
           </Text>
         </GithubGuideLink>
-      </Box>
+      </ButtonContainer>
     </Container>
   );
 };
 
 const Container = styled.div`
+  position: relative;
   width: 100%;
-  padding: 40px 16px;
-`;
-
-const Box = styled.div`
+  padding: 49px 16px 16px;
+  background-color: ${color.mono50};
+  margin: 0px -16px;
+  min-height: calc(100vh - 54px);
+  width: ${GlobalSize.width};
   display: flex;
   flex-direction: column;
-  background-color: ${color.white};
   align-items: center;
-  gap: 24px;
-  padding: 80px 24px;
-  border: 1px solid ${color.mono400};
-  border-radius: 8px;
+  justify-content: space-between;
+  ${media.mobile} {
+    width: 100vw;
+  }
 `;
 
 const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+`;
+
+const ButtonContainer = styled.div`
+  position: absolute;
+  bottom: 1.75rem;
+  padding: 0px 0.75rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: ${space.xs};
 `;
 
 const GithubGuideLink = styled(Link)`
