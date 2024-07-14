@@ -1,5 +1,5 @@
 import { Flex, Space, Text } from '@/components/common/Wrapper';
-import { color, space } from 'wowds-tokens';
+import { color } from 'wowds-tokens';
 import { media } from '@/styles';
 import styled from '@emotion/styled';
 import GlobalSize from '@/constants/globalSize';
@@ -14,9 +14,8 @@ export const JoinDiscord = () => {
   return (
     <Wrapper direction="column" justify="space-between">
       <Flex direction="column" align="flex-start">
-        <Text typo="h1">{`지금 바로
-디스코드를 연동하세요.`}</Text>
-        <Space height={space.lg} />
+        <Text typo="h1">지금 바로 디스코드를 연동하세요.</Text>
+        <Space height="lg" />
         <Text typo="body1">
           현재 GDSC Hongik은 디스코드를 메인 커뮤니케이션 플랫폼으로 사용하고
           있어요. 따라서 반드시 연동 절차를 완료해야만 정상적인 활동이 가능해요.
@@ -29,7 +28,7 @@ export const JoinDiscord = () => {
           }}>
           연동하기
         </Button>
-        <Space height={space.xs} />
+        <Space height="xs" />
         <TextButton
           text="가입은 처음이신가요?"
           onClick={() => {

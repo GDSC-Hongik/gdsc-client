@@ -7,15 +7,25 @@ import { color } from 'wowds-tokens';
 import { DiscordDescription } from '@/components/discordGuide/DiscordDescription';
 import { AccountDescription } from '@/components/discordGuide/AccountDescription';
 import { NameDescription } from '@/components/discordGuide/NameDescription';
+import useCustomBack from '@/hooks/common/useCutomBack';
 
 const steps = ['디스코드 설명', '이름 설명', '계정 생성 설명'];
 
 export const DiscordGuide = () => {
-  const { Funnel, Step, setStep } = useFunnel(steps[0]);
+  const { Funnel, Step, setStep, currentStep } = useFunnel(steps[0]);
 
   const nextClickHandler = (step: string) => {
     setStep(step);
   };
+
+  const handleBack = () => {
+    const currentStepIndex = steps.indexOf(currentStep);
+    if (currentStepIndex === 0) return;
+    setStep(steps[currentStepIndex - 1]);
+  };
+
+  useCustomBack(handleBack);
+
   return (
     <>
       <Wrapper direction="column" justify="space-between">

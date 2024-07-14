@@ -44,13 +44,13 @@ export const Space = styled.div<{
   css?: ReturnType<typeof css>;
 }>`
   height: ${({ height }) =>
-    height && typeof height === 'number'
+    typeof height === 'number'
       ? `${height}px`
       : height && height in wowSpace
         ? wowSpace[height]
         : ''};
   width: ${({ width }) =>
-    width && typeof width === 'number'
+    typeof width === 'number'
       ? `${width}px`
       : width && width in wowSpace
         ? wowSpace[width]

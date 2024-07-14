@@ -7,59 +7,53 @@ import RoutePath from '@/routes/routePath';
 import discordApi from '@/apis/discord/discordApi';
 import { useMutation } from '@tanstack/react-query';
 import { useFormContext, useController, Control } from 'react-hook-form';
-import React, { useState } from 'react';
+import { useState, useCallback, memo } from 'react';
 import { Image } from '../common/Image';
-import { DiscordFormValues } from '@/types/discord';
+import { DiscordFormValues, UserNameType } from '@/types/discord';
 
-type UserNameErrorType = 'Valid' | 'Invalid' | 'Duplicate' | 'Available';
+const hasValidateUserName = (username: string) => {
+  const lengthValid = username.length >= 2 && username.length <= 32;
+  const lowercaseValid = /^[a-z0-9_.]+$/.test(username);
+  const specialCharValid = !/[^a-z0-9_.]/.test(username);
+  const noSequentialSpecialChar = !/(__|\.\.)/.test(username);
+  const noOfficialNames = !/discord|nitro|nelly/.test(username);
+
+  return (
+    lengthValid &&
+    lowercaseValid &&
+    specialCharValid &&
+    noSequentialSpecialChar &&
+    noOfficialNames
+  );
+};
 
 export const DiscordName = ({ onNext }: { onNext: () => void }) => {
   const { watch, getValues, control } = useFormContext<DiscordFormValues>();
-  const [error, setServerError] = useState<UserNameErrorType | ''>('');
+  const [userNameStatus, setUserNameStatus] = useState<UserNameType | ''>('');
   const [count, setCount] = useState(1);
-
-  const validateUsername = (username: string) => {
-    const lengthValid = username.length >= 2 && username.length <= 32;
-    const lowercaseValid = /^[a-z0-9_.]+$/.test(username);
-    const specialCharValid = !/[^a-z0-9_.]/.test(username);
-    const noSequentialSpecialChar = !/(__|\.\.)/.test(username);
-    const noOfficialNames = !/discord|nitro|nelly/.test(username);
-
-    if (
-      lengthValid &&
-      lowercaseValid &&
-      specialCharValid &&
-      noSequentialSpecialChar &&
-      noOfficialNames
-    ) {
-      return true;
-    }
-    return false;
-  };
 
   const { mutate: checkDuplicate } = useMutation({
     mutationFn: () => discordApi.GET_DISCORD_NAME(watch('discordUsername')),
     onSuccess: (data) => {
       if (data.isDuplicate) {
-        setServerError('Duplicate');
+        setUserNameStatus('Duplicate');
       } else {
-        setServerError('Available');
+        setUserNameStatus('Available');
         onNext();
       }
     }
   });
 
-  const handleNextClick = () => {
+  const handleNextClick = useCallback(() => {
     const username = getValues('discordUsername');
-    const validationError = validateUsername(username);
-    if (validationError) {
-      setServerError('Valid');
+    if (hasValidateUserName(username)) {
+      setUserNameStatus('Valid');
       checkDuplicate();
     } else {
-      setServerError('Invalid');
+      setUserNameStatus('Invalid');
     }
     setCount((prev) => prev + 1);
-  };
+  }, [getValues, checkDuplicate]);
 
   return (
     <>
@@ -67,15 +61,14 @@ export const DiscordName = ({ onNext }: { onNext: () => void }) => {
         <TextSection />
       </Flex>
       <Space height="lg" />
-      <NameField control={control} error={error} key={count} />
+      <NameField
+        control={control}
+        userNameStatus={userNameStatus}
+        key={count}
+      />
       <Space height={75} />
       <Flex direction="column">
-        <Button
-          onClick={() => {
-            handleNextClick();
-          }}>
-          다음으로
-        </Button>
+        <Button onClick={handleNextClick}>다음으로</Button>
         <Space height="xs" />
         <TextButton
           text="디스코드 계정이 없으신가요?"
@@ -88,7 +81,7 @@ export const DiscordName = ({ onNext }: { onNext: () => void }) => {
   );
 };
 
-const TextSection = React.memo(() => {
+const TextSection = memo(() => {
   return (
     <>
       <div>
@@ -114,11 +107,10 @@ const TextSection = React.memo(() => {
 
 const NameField = ({
   control,
-  error
+  userNameStatus
 }: {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  control: Control<any>;
-  error: UserNameErrorType | '';
+  control: Control<DiscordFormValues>;
+  userNameStatus: UserNameType | '';
 }) => {
   const { field } = useController({
     name: 'discordUsername',
@@ -133,10 +125,10 @@ const NameField = ({
       {...field}
       helperText={
         <ul style={{ listStyle: 'disc', paddingLeft: '20px' }}>
-          {(error === 'Invalid' || error === 'Duplicate') && (
+          {(userNameStatus === 'Invalid' || userNameStatus === 'Duplicate') && (
             <>
               <li>
-                {error === 'Invalid'
+                {userNameStatus === 'Invalid'
                   ? '하단 규정에 맞춰 작성해주세요'
                   : '이미 가입된 사용자명이에요. 이전에 가입한 적이 있으신 경우, 채널톡으로 문의해주세요.'}
               </li>
@@ -155,10 +147,9 @@ const NameField = ({
       label="디스코드 사용자명"
       placeholder="내용을 입력해주세요"
       style={{
-        backgroundColor: 'white',
         borderStyle: 'solid'
       }}
-      error={error === 'Invalid' || error === 'Duplicate'}
+      error={userNameStatus === 'Invalid' || userNameStatus === 'Duplicate'}
     />
   );
 };
