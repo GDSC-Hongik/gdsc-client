@@ -12,10 +12,17 @@ export default function useStudentVerification() {
   const navigation = useNavigate();
   const { univEmail, updateUnivEmail } = useUnivEmail();
 
-  const { control, handleSubmit } = useForm({
-    defaultValues: { univEmail: univEmail ?? '' },
-    mode: 'onChange'
+  const {
+    control,
+    formState: { isValid },
+    handleSubmit
+  } = useForm({
+    mode: 'onChange',
+    defaultValues: {
+      univEmail: univEmail ?? ''
+    }
   });
+
   const { updateLandingStatue } = useLandingStatus();
   const { sendStudentEmail, ...rest } = useSendStudentEmail();
 
@@ -45,6 +52,7 @@ export default function useStudentVerification() {
     onSubmit: handleSubmit(onSubmit),
     onVerifyStudent,
     control,
+    isValid,
     ...rest
   };
 }
