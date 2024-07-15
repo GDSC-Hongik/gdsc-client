@@ -15,6 +15,7 @@ import { toast } from 'react-toastify';
 /** 재학생 인증 페이지 */
 export const StudentVerification = () => {
   const navigate = useNavigate();
+  //TODO: 추후 pending 상태 백엔드 API 수정하면 반영해둘것.
   const [pending, setPending] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const { onSubmit, control, isValid, onVerifyStudent } =
@@ -90,9 +91,7 @@ export const StudentVerification = () => {
           문의해 주세요.
         </Text>
         <ButtonContainer>
-          <Button variant={pending ? 'outline' : 'solid'} disabled={!isValid}>
-            {pending ? '인증메일 다시 받기' : '인증메일 받기'}
-          </Button>
+          <Button disabled={!isValid}>인증메일 받기</Button>
           <StudentGuideLink
             to={RoutePath.StudentEmailLinkGuideLink}
             target="_blank">
