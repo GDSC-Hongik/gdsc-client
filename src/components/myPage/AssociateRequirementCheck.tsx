@@ -51,6 +51,9 @@ const AssociateRequirementCheck = ({
         }}
       />
       <Box
+        onClick={() => {
+          navigate(RoutePath.AuthenticationProcess2_StudentVerification);
+        }}
         text={
           univStatus === 'PENDING' ? (
             <Flex

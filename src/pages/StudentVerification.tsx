@@ -7,7 +7,7 @@ import styled from '@emotion/styled';
 import { Link, useNavigate } from 'react-router-dom';
 import { useStudentVerification } from '@/hooks/auth';
 import { Controller } from 'react-hook-form';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { media } from '@/styles';
 import GlobalSize from '@/constants/globalSize';
 import { toast } from 'react-toastify';
@@ -15,15 +15,29 @@ import { toast } from 'react-toastify';
 /** 재학생 인증 페이지 */
 export const StudentVerification = () => {
   const navigate = useNavigate();
+  const [pending, setPending] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const { onSubmit, control, isValid, onVerifyStudent } =
     useStudentVerification();
+
+  const IsStudentVerified = async () => {
+    const univStatus = await onVerifyStudent();
+    if (univStatus === 'PENDING') {
+      setPending(true);
+    } else {
+      navigate(RoutePath.Dashboard);
+    }
+  };
+
+  useEffect(() => {
+    IsStudentVerified();
+  }, []);
 
   const handleSubmit = async () => {
     if (isClicked) return;
     setIsClicked(true);
     onSubmit();
-    navigate(RoutePath.AuthenticationProcess2_UpdatedStudentVerification);
+
     toast('메일 전송이 완료되었습니다.');
   };
 
@@ -76,7 +90,9 @@ export const StudentVerification = () => {
           문의해 주세요.
         </Text>
         <ButtonContainer>
-          <Button disabled={!isValid}>인증메일 받기</Button>
+          <Button variant={pending ? 'outline' : 'solid'} disabled={!isValid}>
+            {pending ? '인증메일 다시 받기' : '인증메일 받기'}
+          </Button>
           <StudentGuideLink
             to={RoutePath.StudentEmailLinkGuideLink}
             target="_blank">
