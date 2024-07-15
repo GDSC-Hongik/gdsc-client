@@ -25,7 +25,6 @@ import {
   OnboardingNotOpened,
   OnboardingClosed
 } from '@/pages';
-import JoinRegularMemberBottomSheet from '@/pages/bottomsheet/JoinRegularMemberBottomSheet';
 import { DicordConnect } from '@/pages/DiscordConnect';
 import { DiscordGuide } from '@/pages/DiscordGuide';
 
@@ -105,10 +104,7 @@ const router = createBrowserRouter([
         element: <OnboardingClosedAccessGuard />,
         children: [{ index: true, element: <OnboardingClosed /> }]
       },
-      {
-        path: RoutePath.JoinRegularMember,
-        element: <JoinRegularMemberBottomSheet />
-      },
+
       // Todo: 404 Not found page
       { path: '*', element: <Text>not found page</Text> }
     ]
