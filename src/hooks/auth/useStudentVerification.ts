@@ -1,7 +1,5 @@
 import { verifyStudentApi } from '@/apis/auth';
-import LandingStatus from '@/constants/landingStatus';
 import { useSendStudentEmail } from '@/hooks/mutation';
-import useLandingStatus from '@/hooks/zustand/useLandingStatus';
 import useUnivEmail from '@/hooks/zustand/useUnivEmail';
 import RoutePath from '@/routes/routePath';
 import { useForm, FieldValues } from 'react-hook-form';
@@ -23,7 +21,6 @@ export default function useStudentVerification() {
     }
   });
 
-  const { updateLandingStatue } = useLandingStatus();
   const { sendStudentEmail, ...rest } = useSendStudentEmail();
 
   const onSubmit = async ({ univEmail }: FieldValues) => {
@@ -34,10 +31,10 @@ export default function useStudentVerification() {
 
   const onVerifyStudent = async () => {
     try {
-      const result = await verifyStudentApi();
+      const result = await verifyStudentApi.GET_STUDENT_EMAIL_IS_VERIFIED();
 
       if (result.univStatus === 'VERIFIED') {
-        updateLandingStatue(LandingStatus.Signup);
+        // updateLandingStatue(LandingStatus.Signup);
         navigation(RoutePath.AuthenticationProcess3_Signup);
       } else {
         // 인증 실패 또는 다른 상태 처리
