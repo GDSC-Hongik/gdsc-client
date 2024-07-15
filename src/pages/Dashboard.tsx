@@ -1,9 +1,7 @@
 import { Flex, Space } from '@/components/common/Wrapper';
 import { color } from 'wowds-tokens';
 import { css } from '@emotion/react';
-import { useContext } from 'react';
 import JoinRegularMemberBottomSheet from './bottomsheet/JoinRegularMemberBottomSheet';
-import { BottomSheetContext } from '@/context/BottomSheetContext';
 import JoinRegularMember from '@/components/myPage/JoinRegularMember';
 import AssociateRequirementCheck from '@/components/myPage/AssociateRequirementCheck';
 import BasicUserInfo from '@/components/myPage/BasicUserInfo';
@@ -14,9 +12,10 @@ import { useQuery } from '@tanstack/react-query';
 import memberApi from '@/apis/member/memberApi';
 import GlobalSize from '@/constants/globalSize';
 import JoinStatus from '@/components/myPage/JoinStatus';
+import useBottomSheet from '@/hooks/common/useBottomSheet';
 
 export const Dashboard = () => {
-  const { isOpen } = useContext(BottomSheetContext);
+  const { isOpen } = useBottomSheet();
   const { data } = useQuery({
     queryKey: ['member'],
     queryFn: memberApi.GET_DASHBOARD

@@ -2,13 +2,13 @@ import styled from '@emotion/styled';
 import { color, space } from 'wowds-tokens';
 import { media } from '@/styles';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useContext, ReactNode, useRef, useEffect } from 'react';
+import { ReactNode, useRef, useEffect } from 'react';
 import useClickOutside from '@/hooks/useClickOutSide';
-import { BottomSheetContext } from '@/context/BottomSheetContext';
+import useBottomSheet from '@/hooks/common/useBottomSheet';
 
 const BottomSheet = ({ children }: { children: ReactNode }) => {
   const ref = useRef<HTMLDivElement | null>(null);
-  const { isOpen, handleBottomSheet } = useContext(BottomSheetContext);
+  const { isOpen, handleBottomSheet } = useBottomSheet();
 
   useClickOutside(ref, handleBottomSheet);
 

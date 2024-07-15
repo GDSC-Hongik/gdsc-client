@@ -1,12 +1,11 @@
 import Box from 'wowds-ui/Box';
 import styled from '@emotion/styled';
-import { useContext } from 'react';
-import { BottomSheetContext } from '@/context/BottomSheetContext';
 import { CurrentRecruitmentType } from '@/apis/member/memberType';
 import {
   convertRecruitmentPeriod,
   convertRecruitmentName
 } from '@/utils/mypage/recruitmentNameFormat';
+import useBottomSheet from '@/hooks/common/useBottomSheet';
 
 type MemberRole = 'GUEST' | 'ASSOCIATE' | 'REGULAR' | 'ADMIN';
 type BoxVariantType = 'arrow' | 'checkbox' | 'text' | 'warn';
@@ -19,7 +18,7 @@ export const ApproveBox = ({
   role: MemberRole;
   currentRecruitment: CurrentRecruitmentType;
 }) => {
-  const { handleBottomSheet } = useContext(BottomSheetContext);
+  const { handleBottomSheet } = useBottomSheet();
   const boxContent: Record<
     MemberRole,
     {
