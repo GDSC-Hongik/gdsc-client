@@ -13,6 +13,7 @@ const AssociateRequirementCheck = ({
   const { infoStatus, discordStatus, bevyStatus, univStatus } =
     associateRequirement;
   const navigate = useNavigate();
+
   return (
     <Flex justify="flex-start" direction="column" align="flex-start" gap="sm">
       <Text typo="h2" color="black">
