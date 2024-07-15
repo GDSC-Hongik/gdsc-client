@@ -18,7 +18,7 @@ import {
   Auth,
   StudentVerification,
   SignUp,
-  MyPage,
+  Dashboard,
   JoinDiscord,
   UpdatedStudentVerification,
   Bevy,
@@ -73,8 +73,8 @@ const router = createBrowserRouter([
         element: <MypageAccessGuard />,
         children: [
           {
-            path: RoutePath.MyPage,
-            element: <MyPage />
+            path: RoutePath.Dashboard,
+            element: <Dashboard />
           },
           {
             path: RoutePath.Discord,

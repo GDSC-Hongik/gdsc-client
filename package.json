@@ -27,7 +27,8 @@
     "react-toastify": "^10.0.4",
     "zustand": "^4.5.0",
     "wowds-tokens": "^0.0.9",
-    "wowds-ui": "^0.1.3"
+    "wowds-ui": "^0.1.3",
+    "wowds-icons": "^0.0.4"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.6.14",

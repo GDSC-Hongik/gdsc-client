@@ -20,7 +20,7 @@ export const Bevy = () => {
     mutationFn: bevyApi.POST_LINK_BEVY,
     onSuccess: () => {
       toast('bevy 연동이 완료되었습니다.');
-      navigate(RoutePath.MyPage);
+      navigate(RoutePath.Dashboard);
     }
   });
 
@@ -55,7 +55,8 @@ export const Bevy = () => {
             `}>
             <a
               href="https://gdsc.community.dev/hongik-university/"
-              target="_blank">
+              target="_blank"
+              rel="noreferrer">
               가입하러 가기&#8599;
             </a>
           </Text>

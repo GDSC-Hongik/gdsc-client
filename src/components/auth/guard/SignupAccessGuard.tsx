@@ -1,14 +1,11 @@
-import LandingStatus from '@/constants/landingStatus';
-import { Navigate, Outlet } from 'react-router-dom';
-import useLandingStatus from '@/hooks/zustand/useLandingStatus';
-import { getAuthRedirectPath } from '@/utils/auth';
+import { Outlet } from 'react-router-dom';
 
+//deprecated: 추후 삭제 필요한 파일임
 export default function SignupAccessGuard() {
-  const { landingStatus } = useLandingStatus();
-
-  if (landingStatus !== LandingStatus.Signup) {
-    return <Navigate to={getAuthRedirectPath(landingStatus)} />;
-  }
+  //TODO: 추후 보안 정책에 따라 수정 필요
+  // if (landingStatus !== LandingStatus.Signup) {
+  //   return <Navigate to={getAuthRedirectPath(landingStatus)} />;
+  // }
 
   return <Outlet />;
 }
