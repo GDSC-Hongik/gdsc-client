@@ -1,4 +1,3 @@
-// import { Button } from '@/components/common/Button';
 import TextField from 'wowds-ui/TextField';
 import Button from 'wowds-ui/Button';
 import { Flex, Space, Text } from '@/components/common/Wrapper';
@@ -17,7 +16,8 @@ import { toast } from 'react-toastify';
 export const StudentVerification = () => {
   const navigate = useNavigate();
   const [isClicked, setIsClicked] = useState(false);
-  const { onSubmit, control, isValid } = useStudentVerification();
+  const { onSubmit, control, isValid, onVerifyStudent } =
+    useStudentVerification();
 
   const handleSubmit = async () => {
     if (isClicked) return;

@@ -23,9 +23,3 @@ const verifyStudentApi = {
 };
 
 export default verifyStudentApi;
-
-// export default async function verifyStudentApi(): Promise<{
-//   univStatus: Status;
-// }> {
-//   return (await apiClient.get(`/onboarding/members/me/univ-verification`)).data;
-// }
