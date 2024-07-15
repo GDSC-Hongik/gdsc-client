@@ -1,26 +1,18 @@
 import DepartmentSelect from '@/components/auth/DepartmentSelect';
-import {
-  useForm,
-  FieldValues,
-  Controller,
-  useFormState
-} from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import type { color as colorType } from 'wowds-tokens';
-// import { Button } from '@/components/common/Button';
 import GlobalSize from '@/constants/globalSize';
 import { color, color as wowColor, space } from 'wowds-tokens';
 import { css } from '@emotion/react';
-// import { Checkbox } from '@/components/common/Checkbox';
 import { media } from '@/styles';
 import { Space, Flex, Text } from '@/components/common/Wrapper';
+import useCreateUserBasicInfo from '@/hooks/mutation/useCreateUserBasicInfo';
 import Button from 'wowds-ui/Button';
-import { Input } from '@/components/common/Input';
 import Checkbox from 'wowds-ui/Checkbox';
 import TextField from 'wowds-ui/TextField';
 import DropDownOption from 'wowds-ui/DropDownOption';
 import DropDown from 'wowds-ui/DropDown';
 import { LoadingForm } from '@/components/common/LoadingForm';
-import { useSignUp } from '@/hooks/auth';
 import RoutePath from '@/routes/routePath';
 
 import { formatPhoneNumberInProgress } from '@/utils/phone';
@@ -28,18 +20,27 @@ import styled from '@emotion/styled';
 import { Suspense } from 'react';
 import { Link } from 'react-router-dom';
 
+export type FormStateType = {
+  name: string;
+  studentId: string;
+  phone: string;
+  department: string;
+  email: string;
+  emailDomain: string;
+  terms: boolean;
+  personalPrivacy: boolean;
+};
+
 type colorKey = keyof typeof colorType;
 
 /** 가입 신청서 페이지 */
 export const SignUp = () => {
-  const { isChecked, setIsChecked, disabledSubmitButton } = useSignUp();
-
+  const { createBasicInfo } = useCreateUserBasicInfo();
   const {
     control,
-    watch,
-
-    formState: { error, isValid },
-    handleSubmit
+    formState: { isValid },
+    handleSubmit,
+    register
   } = useForm({
     mode: 'onChange',
     defaultValues: {
@@ -48,17 +49,22 @@ export const SignUp = () => {
       phone: '',
       department: '',
       email: '',
+      emailDomain: 'gmail.com',
       terms: false,
       personalPrivacy: false
     }
   });
 
-  const onSubmit = (data) => {};
-
-  // console.log(watch('phone'));
-  console.log(watch(['phone', 'name', 'studentId']));
-
-  // console.log(errors);
+  const onSubmit = async (data: FormStateType) => {
+    const { name, email, department, phone, studentId, emailDomain } = data;
+    createBasicInfo({
+      name,
+      studentId,
+      phone,
+      department,
+      email: `${email}@${emailDomain}`
+    });
+  };
 
   return (
     <Container>
@@ -66,13 +72,21 @@ export const SignUp = () => {
       <Space height={24} />
       <form
         onSubmit={handleSubmit(onSubmit)}
-        // onSubmit={onSubmit}
-        style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '24px',
+          width: '100%'
+        }}>
         <Controller
           name="name"
           control={control}
           defaultValue=""
           rules={{
+            required: {
+              value: true,
+              message: '* 정보를 입력해주세요.'
+            },
             minLength: {
               value: 2,
               message: '* 두 글자 이상 입력해주세요.'
@@ -95,122 +109,184 @@ export const SignUp = () => {
           name="studentId"
           control={control}
           defaultValue=""
-          rules={{ required: true, pattern: /[AaBbCc][0-9]{6}/ }}
-          render={({ field }) => (
-            <TextField
-              label="학번"
-              {...field}
-              placeholder="내용을 입력하세요"
-              helperText="* C000000 형식으로 입력해주세요."
-            />
-          )}
+          rules={{
+            required: {
+              value: true,
+              message: '* 정보를 입력해주세요.'
+            },
+            pattern: {
+              value: /^[A-C]{1}[0-9]{6}$/,
+              message: '* C000000 형식으로 입력해주세요.'
+            }
+          }}
+          render={({ field, fieldState }) => {
+            return (
+              <TextField
+                label="학번"
+                error={fieldState.invalid}
+                ref={field.ref}
+                value={field.value}
+                onChange={field.onChange}
+                onBlur={field.onBlur}
+                helperText={fieldState.error?.message}
+                placeholder="내용을 입력하세요"
+              />
+            );
+          }}
         />
         <Controller
           name="phone"
           control={control}
           defaultValue=""
           rules={{
-            required: true,
-            pattern: /[0-9]{3}-[0-9]{4}-[0-9]{4}/,
-            maxLength: 13
+            required: {
+              value: true,
+              message: '* 정보를 입력해주세요.'
+            },
+            pattern: {
+              value: /^010[0-9]{8}$/,
+              message: '* 01000000000 형식으로 입력해주세요.'
+            },
+            maxLength: {
+              value: 13,
+              message: '* 13자 이하로 입력해주세요.'
+            }
           }}
-          render={({ field }) => (
+          render={({ field, fieldState }) => (
             <TextField
               label="전화번호"
-              {...field}
-              placeholder="내용을 입력하세요"
-              // error={field.value}
+              error={fieldState.invalid}
+              ref={field.ref}
+              onChange={field.onChange}
+              onBlur={field.onBlur}
               value={formatPhoneNumberInProgress(field.value)}
-              helperText="* 01000000000 형식으로 입력해주세요."
+              helperText={fieldState.error?.message}
+              placeholder="내용을 입력하세요"
             />
           )}
         />
         <Suspense fallback={<LoadingForm label="학과" />}>
           <DepartmentSelect control={control} />
         </Suspense>
-        <Controller
-          name="email"
-          control={control}
-          defaultValue=""
-          render={({ field }) => (
-            <TextFieldWrapper>
-              <TextField
-                label="이메일 주소"
-                {...field}
-                placeholder="내용을 입력하세요"
-                helperText="* 추후 학회 활동에 대한 내용을 전달하는 데 사용될 예정입니다."
-              />
-              <DropDown placeholder="선택하세요">
+        <EmailFieldWrapper>
+          <Controller
+            name="email"
+            control={control}
+            defaultValue=""
+            rules={{
+              required: {
+                value: true,
+                message: '* 정보를 입력해주세요.'
+              }
+            }}
+            render={({ field, fieldState }) => (
+              <TextFieldWrapper>
+                <TextField
+                  label="이메일 주소"
+                  error={fieldState.invalid}
+                  ref={field.ref}
+                  onChange={field.onChange}
+                  onBlur={field.onBlur}
+                  value={formatPhoneNumberInProgress(field.value)}
+                  placeholder="내용을 입력하세요"
+                  helperText={fieldState.error ? fieldState.error?.message : ''}
+                />
+              </TextFieldWrapper>
+            )}
+          />
+          <Controller
+            name="emailDomain"
+            control={control}
+            defaultValue="gmail.com"
+            render={({ field }) => (
+              <DropDown
+                placeholder="선택하세요"
+                onChange={field.onChange}
+                defaultValue="gmail.com"
+                value={field.value}
+                style={{ marginTop: '15px', flex: 1, width: '10rem' }}>
                 <DropDownOption text="gmail.com" value="gmail.com" />
                 <DropDownOption text="naver.com" value="naver.com" />
                 <DropDownOption text="g.hongik.ac.kr" value="g.hongik.ac.kr" />
                 <DropDownOption text="daum.net" value="daum.net" />
               </DropDown>
-            </TextFieldWrapper>
-          )}
-        />
+            )}
+          />
+        </EmailFieldWrapper>
         <Flex
           direction="column"
           gap="lg"
           justify="center"
           align="center"
           css={css`
-            margin-top: 10px;
+            margin-top: 16px;
           `}>
           <CheckboxContainer>
-            <Checkbox
-              // name="community"
-              checked={isChecked.terms}
-              onClick={() =>
-                setIsChecked((prev) => ({ ...prev, terms: !prev.terms }))
-              }
-              label={
-                <Text
-                  typo="body1"
-                  color={isChecked.terms ? 'textBlack' : 'sub'}>
-                  <GuideLink
-                    to={RoutePath.CommunityGuideLink}
-                    target="_blank"
-                    color={isChecked.terms ? 'textBlack' : 'sub'}>
-                    커뮤니티 가이드라인
-                  </GuideLink>{' '}
-                  및{' '}
-                  <GuideLink
-                    to={RoutePath.TermsLink}
-                    target="_blank"
-                    color={isChecked.terms ? 'textBlack' : 'sub'}>
-                    GDSC 회칙
-                  </GuideLink>
-                  에 동의합니다.
-                </Text>
-              }
+            <Controller
+              control={control}
+              defaultValue={false}
+              rules={{
+                value: true,
+                required: true
+              }}
+              {...register('terms')}
+              render={({ field }) => (
+                <Checkbox
+                  checked={field.value}
+                  onClick={() => field.onChange(!field.value)}
+                  label={
+                    <Text
+                      typo="body1"
+                      color={field.value ? 'textBlack' : 'sub'}>
+                      <GuideLink
+                        to={RoutePath.CommunityGuideLink}
+                        target="_blank"
+                        color={field.value ? 'textBlack' : 'sub'}>
+                        커뮤니티 가이드라인
+                      </GuideLink>{' '}
+                      및{' '}
+                      <GuideLink
+                        to={RoutePath.TermsLink}
+                        target="_blank"
+                        color={field.value ? 'textBlack' : 'sub'}>
+                        GDSC 회칙
+                      </GuideLink>
+                      에 동의합니다.
+                    </Text>
+                  }
+                />
+              )}
             />
-
-            <Checkbox
-              // name="privacy"
-              checked={isChecked.personalPrivacy}
-              onClick={() =>
-                setIsChecked((prev) => ({
-                  ...prev,
-                  personalPrivacy: !prev.personalPrivacy
-                }))
-              }
-              label={
-                <Text
-                  typo="body1"
-                  color={isChecked.personalPrivacy ? 'black' : 'sub'}>
-                  <GuideLink
-                    to={RoutePath.PersonalPrivacyLink}
-                    target="_blank"
-                    color={isChecked.personalPrivacy ? 'textBlack' : 'sub'}>
-                    개인정보 수집
-                  </GuideLink>
-                  에 동의합니다.
-                </Text>
-              }
+            <Controller
+              control={control}
+              defaultValue={false}
+              rules={{
+                value: true,
+                required: true
+              }}
+              {...register('personalPrivacy')}
+              render={({ field }) => (
+                <Checkbox
+                  checked={field.value}
+                  onClick={() => field.onChange(!field.value)}
+                  label={
+                    <Text typo="body1" color={field.value ? 'black' : 'sub'}>
+                      <GuideLink
+                        to={RoutePath.PersonalPrivacyLink}
+                        target="_blank"
+                        color={field.value ? 'textBlack' : 'sub'}>
+                        개인정보 수집
+                      </GuideLink>
+                      에 동의합니다.
+                    </Text>
+                  }
+                />
+              )}
             />
           </CheckboxContainer>
-          <Button disabled={disabledSubmitButton}>가입 신청하기</Button>
+          <Button type="submit" role="button" disabled={!isValid}>
+            가입 신청하기
+          </Button>
         </Flex>
       </form>
     </Container>
@@ -218,6 +294,7 @@ export const SignUp = () => {
 };
 
 const Container = styled(Flex)`
+  position: relative;
   flex-direction: column;
   min-height: 100vh;
   justify-content: flex-start;
@@ -250,7 +327,15 @@ const GuideLink = styled(Link)<{ color?: colorKey }>`
 `;
 
 const TextFieldWrapper = styled.div`
+  flex: 1;
+  width: 50%;
+`;
+
+const EmailFieldWrapper = styled.div`
+  position: relative;
+  width: 100%;
   display: flex;
   gap: ${space.sm};
   align-items: center;
+  justify-content: space-between;
 `;

@@ -16,14 +16,19 @@ type DepartmentSelectProps = {
   }>;
 };
 
-export default function DepartmentSelect({ control }: DepartmentSelectProps) {
+const DepartmentSelect = ({ control }: DepartmentSelectProps) => {
   const { departmentList } = useGetDepartmentList();
-
   return (
     <Controller
       name="department"
       control={control}
       defaultValue=""
+      rules={{
+        required: {
+          value: true,
+          message: '* 정보를 입력해주세요.'
+        }
+      }}
       render={({ field }) => (
         <DropDown {...field} label="학과" placeholder="선택하세요">
           {' '}
@@ -50,4 +55,6 @@ export default function DepartmentSelect({ control }: DepartmentSelectProps) {
       )}
     />
   );
-}
+};
+
+export default DepartmentSelect;
