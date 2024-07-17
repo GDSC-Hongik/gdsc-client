@@ -5,6 +5,7 @@ import Button from 'wowds-ui/Button';
 import GlobalSize from '@/constants/globalSize';
 import { media } from '@/styles';
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { PulseLoader } from 'react-spinners';
 import RoutePath from '@/routes/routePath';
@@ -22,7 +23,12 @@ export const StudentVerificationServerRedirect = () => {
         <PulseLoader loading={isPending} />
       ) : (
         <Container direction="column">
-          <Text typo="h1" style={{ marginBottom: '20px', marginTop: '40px' }}>
+          <Text
+            typo="h1"
+            css={css`
+              margin-bottom: 20px;
+              margin-top: 40px;
+            `}>
             {isSuccess ? '재학생 인증 성공' : '재학생 인증 실패'}
           </Text>
           <TextContainer>

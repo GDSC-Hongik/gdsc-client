@@ -18,7 +18,7 @@ export const StudentVerification = () => {
   //TODO: 추후 pending 상태 백엔드 API 수정하면 반영해둘것.
   const [pending, setPending] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
-  const { onSubmit, control, isValid, onVerifyStudent } =
+  const { onSubmit, control, isValid, onVerifyStudent, loading } =
     useStudentVerification();
 
   const IsStudentVerified = async () => {
@@ -41,6 +41,10 @@ export const StudentVerification = () => {
 
     toast('메일 전송이 완료되었습니다.');
   };
+
+  if (loading) {
+    return <div>로딩중입니다...</div>;
+  }
 
   return (
     <Wrapper direction="column" justify="flex-start" gap="lg">
