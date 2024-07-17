@@ -4,6 +4,7 @@ import { media } from '@/styles';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ReactNode, useRef, useEffect } from 'react';
 import useClickOutside from '@/hooks/useClickOutSide';
+import { Close } from 'wowds-icons';
 import useBottomSheet from '@/hooks/common/useBottomSheet';
 
 const BottomSheet = ({ children }: { children: ReactNode }) => {
@@ -36,7 +37,7 @@ const BottomSheet = ({ children }: { children: ReactNode }) => {
               transition={{ type: 'spring', duration: 1 }}
               exit={{ height: 0 }}>
               <BottomSheetActionArea onClick={handleBottomSheet}>
-                X
+                <Close width={24} height={24} stroke="outline" />
               </BottomSheetActionArea>
               {children}
             </Wrapper>
@@ -54,7 +55,7 @@ const Overlay = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: ${color.backgroundDimmer};
 `;
 

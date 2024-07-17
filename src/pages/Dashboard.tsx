@@ -29,7 +29,7 @@ export const Dashboard = () => {
   const { member, currentRecruitmentRound, currentMembership } = data;
 
   return (
-    <>
+    <div style={{ height: '100%' }}>
       <Wrapper
         direction="column"
         justify="flex-start"
@@ -62,7 +62,7 @@ export const Dashboard = () => {
           currentRecruitment={currentRecruitmentRound}
         />
       )}
-    </>
+    </div>
   );
 };
 

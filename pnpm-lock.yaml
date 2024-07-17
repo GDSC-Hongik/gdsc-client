@@ -45,8 +45,8 @@ dependencies:
     specifier: ^10.0.4
     version: 10.0.4(react-dom@18.2.0)(react@18.2.0)
   wowds-icons:
-    specifier: ^0.0.4
-    version: 0.0.4
+    specifier: ^0.1.0
+    version: 0.1.0
   wowds-tokens:
     specifier: ^0.0.9
     version: 0.0.9
@@ -9972,10 +9972,6 @@ packages:
   /wordwrap@1.0.0:
     resolution: {integrity: sha512-gvVzJFlPycKc5dZN4yPkP8w7Dc37BtP1yczEneOb4uq34pXZcvrtRTmWV8W+Ume+XCxKgbjM+nevkyFPMybd4Q==}
     dev: true
-
-  /wowds-icons@0.0.4:
-    resolution: {integrity: sha512-/3E+Wgavc8Bvx+ktgiGe/P4OkxWrfZ4Afx2WNKlpGXU3U34ZCyYkdKVZkbVRziaxwrTEQhqY8Y7RKCwl0gNkwQ==}
-    dev: false
 
   /wowds-icons@0.1.0:
     resolution: {integrity: sha512-gb8Op3qS8OpXlvZCw8ZpDkSt1SUkBa5eb9s0C8WpgX2XlajpxXTm8daNpMvsPYnR/v+yGNu2MCFqBE2HhrBpjQ==}

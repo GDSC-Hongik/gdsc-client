@@ -52,7 +52,10 @@ const JoinStatus = ({
       <Space height={40} />
       <MemberStatusStepper member={member} />
       <Space height={20} />
-      <ApproveBox role={role} currentRecruitment={currentRecruitmentRound} />
+      <ApproveBox
+        role="ASSOCIATE"
+        currentRecruitment={currentRecruitmentRound}
+      />
     </Flex>
   );
 };
