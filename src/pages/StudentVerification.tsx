@@ -10,7 +10,6 @@ import { Controller } from 'react-hook-form';
 import { useEffect, useState } from 'react';
 import { media } from '@/styles';
 import GlobalSize from '@/constants/globalSize';
-import { toast } from 'react-toastify';
 
 /** 재학생 인증 페이지 */
 export const StudentVerification = () => {
@@ -38,8 +37,6 @@ export const StudentVerification = () => {
     if (isClicked) return;
     setIsClicked(true);
     onSubmit();
-
-    toast('메일 전송이 완료되었습니다.');
   };
 
   if (loading) {
