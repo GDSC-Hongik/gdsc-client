@@ -1,6 +1,5 @@
 import { Flex, Space } from '@/components/common/Wrapper';
 import { color } from 'wowds-tokens';
-import { css } from '@emotion/react';
 import JoinRegularMemberBottomSheet from '../components/bottomsheet/JoinRegularMemberBottomSheet';
 import JoinRegularMember from '@/components/myPage/JoinRegularMember';
 import AssociateRequirementCheck from '@/components/myPage/AssociateRequirementCheck';
@@ -30,12 +29,7 @@ export const Dashboard = () => {
 
   return (
     <div style={{ height: '100%' }}>
-      <Wrapper
-        direction="column"
-        justify="flex-start"
-        css={css`
-          gap: '40px';
-        `}>
+      <Wrapper direction="column" justify="flex-start">
         <Space height={20} />
         <Flex justify="flex-start" direction="column" align="flex-start">
           <BasicUserInfo member={member} />
@@ -70,7 +64,7 @@ const Wrapper = styled(Flex)`
   width: ${GlobalSize.width};
   margin: 0px -16px;
   padding: 0px 16px;
-
+  gap: 40px;
   background-color: ${color.mono50};
 
   ${media.mobile} {
