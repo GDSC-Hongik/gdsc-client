@@ -1,7 +1,7 @@
 import { Flex, Space } from '@/components/common/Wrapper';
 import { color } from 'wowds-tokens';
 import { css } from '@emotion/react';
-import JoinRegularMemberBottomSheet from './bottomsheet/JoinRegularMemberBottomSheet';
+import JoinRegularMemberBottomSheet from '../components/bottomsheet/JoinRegularMemberBottomSheet';
 import JoinRegularMember from '@/components/myPage/JoinRegularMember';
 import AssociateRequirementCheck from '@/components/myPage/AssociateRequirementCheck';
 import BasicUserInfo from '@/components/myPage/BasicUserInfo';
@@ -33,7 +33,6 @@ export const Dashboard = () => {
       <Wrapper
         direction="column"
         justify="flex-start"
-        style={{ gap: '40px' }}
         css={css`
           gap: '40px';
         `}>
