@@ -55,11 +55,7 @@ export const GlobalStyle = css`
   }
 
   strong {
-    color: ${color.discord};
-    background-color: ${color.white};
-    border: 1px solid ${color.discord};
-    border-radius: 4px;
-    padding: 0px 4px;
+    font-weight: 700;
   }
 
   input:-webkit-autofill {
