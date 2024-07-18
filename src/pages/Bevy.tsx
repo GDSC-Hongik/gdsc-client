@@ -1,4 +1,3 @@
-import bevyApi from '@/apis/bevy/bevyApi';
 import Button from 'wowds-ui/Button';
 import { Flex, Space, Text } from '@/components/common/Wrapper';
 import { DownArrow } from 'wowds-icons';
@@ -9,28 +8,17 @@ import GlobalSize from '@/constants/globalSize';
 import { media } from '@/styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { useMutation } from '@tanstack/react-query';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import RoutePath from '@/routes/routePath';
+import usePostBevyLink from '@/hooks/mutation/usePostBevyLink';
 
 export const Bevy = () => {
-  const navigate = useNavigate();
+  const { postBevyLink } = usePostBevyLink();
   const [accordionState, setAccordionState] = useState({
     bevyInfo: false,
     bevyDetail: false
   });
 
-  const postBevyLinkMutation = useMutation({
-    mutationFn: bevyApi.POST_LINK_BEVY,
-    onSuccess: () => {
-      toast('bevy 연동이 완료되었습니다.');
-      navigate(RoutePath.Dashboard);
-    }
-  });
-
   const handleLinkButtonClick = () => {
-    postBevyLinkMutation.mutate();
+    postBevyLink();
   };
 
   return (
