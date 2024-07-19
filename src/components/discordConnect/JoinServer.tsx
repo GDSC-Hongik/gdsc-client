@@ -34,7 +34,7 @@ export const JoinServer = ({ onNext }: { onNext: () => void }) => {
           onClick={() => {
             onNext();
           }}
-          disabled={data?.isJoined}>
+          disabled={!data?.isJoined}>
           합류가 확인되면 넘어갈 수 있어요.
         </Button>
 

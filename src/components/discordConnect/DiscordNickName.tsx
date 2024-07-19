@@ -16,24 +16,24 @@ const hasValidateNickname = (username: string) => {
 };
 
 export const DiscordNickName = ({ onNext }: { onNext: () => void }) => {
-  const { watch, getValues, control } = useFormContext<DiscordFormValues>();
+  const { getValues, control } = useFormContext<DiscordFormValues>();
   const [userNameStatus, setUserNameStatus] = useState<UserNameType | ''>('');
   const [count, setCount] = useState(1);
 
   const { checkDuplicate, data, isSuccess } = usePostDiscordNickname(
-    watch('discordNickname')
+    getValues('discordNickname')
   );
 
   useEffect(() => {
     if (isSuccess) {
-      if (data.isDuplicate) {
+      if (data?.isDuplicate) {
         setUserNameStatus('Duplicate');
       } else {
         setUserNameStatus('Available');
         onNext();
       }
     }
-  }, [data.isDuplicate, isSuccess, onNext]);
+  }, [data?.isDuplicate, isSuccess, onNext]);
 
   const handleNextClick = useCallback(() => {
     const username = getValues('discordNickname');
@@ -66,18 +66,20 @@ export const DiscordNickName = ({ onNext }: { onNext: () => void }) => {
 };
 
 const TextSection = memo(() => (
-  <div>
-    <Text typo="h1">별명을 설정하세요.</Text>
-    <Space height="sm" />
-    <Text typo="body1">
-      GDSC Hongik 디스코드 서버에서 사용할 별명을 설정해주세요.
-    </Text>
+  <>
+    <div>
+      <Text typo="h1">별명을 설정하세요.</Text>
+      <Space height="sm" />
+      <Text typo="body1">
+        GDSC Hongik 디스코드 서버에서 사용할 별명을 설정해주세요.
+      </Text>
+    </div>
     <Image src={DiscordImage} alt="discord-nickname" width={325} height={157} />
     <Text typo="body1">
       가입이 완료되면 가입 신청서에 제출하신 별명으로 자동으로 수정될 거예요.
       추후 별명을 수정하고 싶다면 채널톡으로 코어멤버에게 연락 주세요.
     </Text>
-  </div>
+  </>
 ));
 
 const NameField = ({

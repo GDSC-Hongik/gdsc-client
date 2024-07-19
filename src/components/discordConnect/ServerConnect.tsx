@@ -19,10 +19,11 @@ export const ServerConnect = ({ onNext }: { onNext: () => void }) => {
   useEffect(() => {
     if (isSuccess) {
       onNext();
-    } else {
+    } else if (isError) {
       setError(true);
     }
   }, [isSuccess, isError, onNext]);
+
   const handleLinkButtonClick = () => {
     const data = {
       discordUsername: getValues('discordUsername'),

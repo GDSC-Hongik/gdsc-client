@@ -27,24 +27,24 @@ const hasValidateUserName = (username: string) => {
 };
 
 export const DiscordName = ({ onNext }: { onNext: () => void }) => {
-  const { watch, getValues, control } = useFormContext<DiscordFormValues>();
+  const { getValues, control } = useFormContext<DiscordFormValues>();
   const [userNameStatus, setUserNameStatus] = useState<UserNameType | ''>('');
   const [count, setCount] = useState(1);
 
   const { checkDuplicate, data, isSuccess } = usePostDiscordName(
-    watch('discordUsername')
+    getValues('discordUsername')
   );
 
   useEffect(() => {
     if (isSuccess) {
-      if (data.isDuplicate) {
+      if (data?.isDuplicate) {
         setUserNameStatus('Duplicate');
       } else {
         setUserNameStatus('Available');
         onNext();
       }
     }
-  }, [data.isDuplicate, isSuccess, onNext]);
+  }, [data?.isDuplicate, isSuccess, onNext]);
 
   const handleNextClick = useCallback(() => {
     const username = getValues('discordUsername');
@@ -55,7 +55,7 @@ export const DiscordName = ({ onNext }: { onNext: () => void }) => {
       setUserNameStatus('Invalid');
     }
     setCount((prev) => prev + 1);
-  }, [getValues, checkDuplicate]);
+  }, [checkDuplicate, getValues]);
 
   return (
     <>
