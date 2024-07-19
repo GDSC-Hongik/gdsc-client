@@ -5,26 +5,24 @@ import { color } from 'wowds-tokens';
 import DiscordImage from '/discord/discord-server-connect.png';
 import TextField from 'wowds-ui/TextField';
 import { useController, useFormContext } from 'react-hook-form';
-import discordApi from '@/apis/discord/discordApi';
 import { DiscordLinkRequest } from '@/apis/discord/discordType';
-import { useMutation } from '@tanstack/react-query';
 import { DiscordFormValues } from '@/types/discord';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { usePostDiscordLink } from '@/hooks/mutation/usePostDiscordLink';
 
 export const ServerConnect = ({ onNext }: { onNext: () => void }) => {
   const { getValues, control } = useFormContext<DiscordFormValues>();
   const [error, setError] = useState(false);
   const [count, setCount] = useState(1);
-  const postDiscordLinkMutation = useMutation({
-    mutationFn: discordApi.POST_DISCORD,
-    onSuccess: () => {
+  const { postDiscordLink, isSuccess, isError } = usePostDiscordLink();
+
+  useEffect(() => {
+    if (isSuccess) {
       onNext();
-    },
-    onError: () => {
+    } else {
       setError(true);
     }
-  });
-
+  }, [isSuccess, isError, onNext]);
   const handleLinkButtonClick = () => {
     const data = {
       discordUsername: getValues('discordUsername'),
@@ -32,7 +30,7 @@ export const ServerConnect = ({ onNext }: { onNext: () => void }) => {
       code: Number(getValues('code'))
     } as DiscordLinkRequest;
 
-    postDiscordLinkMutation.mutate({ ...data });
+    postDiscordLink({ ...data });
     setCount((prev) => prev + 1);
   };
 

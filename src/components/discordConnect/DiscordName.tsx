@@ -4,12 +4,11 @@ import DiscordImage from '/discord/discord-name.png';
 import TextField from 'wowds-ui/TextField';
 import TextButton from 'wowds-ui/TextButton';
 import RoutePath from '@/routes/routePath';
-import discordApi from '@/apis/discord/discordApi';
-import { useMutation } from '@tanstack/react-query';
 import { useFormContext, useController, Control } from 'react-hook-form';
-import { useState, useCallback, memo } from 'react';
+import { useState, useCallback, memo, useEffect } from 'react';
 import { Image } from '../common/Image';
 import { DiscordFormValues, UserNameType } from '@/types/discord';
+import { usePostDiscordName } from '@/hooks/mutation/usePostDiscordName';
 
 const hasValidateUserName = (username: string) => {
   const lengthValid = username.length >= 2 && username.length <= 32;
@@ -32,9 +31,12 @@ export const DiscordName = ({ onNext }: { onNext: () => void }) => {
   const [userNameStatus, setUserNameStatus] = useState<UserNameType | ''>('');
   const [count, setCount] = useState(1);
 
-  const { mutate: checkDuplicate } = useMutation({
-    mutationFn: () => discordApi.GET_DISCORD_NAME(watch('discordUsername')),
-    onSuccess: (data) => {
+  const { checkDuplicate, data, isSuccess } = usePostDiscordName(
+    watch('discordUsername')
+  );
+
+  useEffect(() => {
+    if (isSuccess) {
       if (data.isDuplicate) {
         setUserNameStatus('Duplicate');
       } else {
@@ -42,7 +44,7 @@ export const DiscordName = ({ onNext }: { onNext: () => void }) => {
         onNext();
       }
     }
-  });
+  }, [data.isDuplicate, isSuccess, onNext]);
 
   const handleNextClick = useCallback(() => {
     const username = getValues('discordUsername');

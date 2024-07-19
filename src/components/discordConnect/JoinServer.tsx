@@ -3,17 +3,13 @@ import Button from 'wowds-ui/Button';
 import TextButton from 'wowds-ui/TextButton';
 import { color } from 'wowds-tokens';
 import { css } from '@emotion/react';
-import { useQuery } from '@tanstack/react-query';
-import discordApi from '@/apis/discord/discordApi';
 import { useFormContext } from 'react-hook-form';
+import useGetDiscordJoined from '@/hooks/query/useGetDiscordJoined';
+import { DiscordFormValues } from '@/types/discord';
 
 export const JoinServer = ({ onNext }: { onNext: () => void }) => {
-  const { getValues } = useFormContext();
-  const { data } = useQuery({
-    queryKey: ['discordJoin'],
-    queryFn: () => discordApi.GET_DISCORD_JOIN(getValues('discordUsername'))
-  });
-
+  const { getValues } = useFormContext<DiscordFormValues>();
+  const { data } = useGetDiscordJoined(getValues('discordUsername'));
   return (
     <>
       <Flex direction="column" align="flex-start">
