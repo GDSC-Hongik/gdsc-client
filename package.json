@@ -19,6 +19,7 @@
     "@tanstack/react-query-devtools": "^5.20.1",
     "axios": "^1.6.7",
     "emotion-reset": "^3.0.1",
+    "framer-motion": "^11.2.13",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.50.1",
