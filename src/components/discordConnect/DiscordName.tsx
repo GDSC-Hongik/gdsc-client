@@ -7,28 +7,12 @@ import RoutePath from '@/routes/routePath';
 import { useFormContext, useController, Control } from 'react-hook-form';
 import { useState, useCallback, memo, useEffect } from 'react';
 import { Image } from '../common/Image';
-import { DiscordFormValues, UserNameType } from '@/types/discord';
+import { DiscordFormValues } from '@/types/discord';
 import { usePostDiscordName } from '@/hooks/mutation/usePostDiscordName';
 
-const hasValidateUserName = (username: string) => {
-  const lengthValid = username.length >= 2 && username.length <= 32;
-  const lowercaseValid = /^[a-z0-9_.]+$/.test(username);
-  const specialCharValid = !/[^a-z0-9_.]/.test(username);
-  const noSequentialSpecialChar = !/(__|\.\.)/.test(username);
-  const noOfficialNames = !/discord|nitro|nelly/.test(username);
-
-  return (
-    lengthValid &&
-    lowercaseValid &&
-    specialCharValid &&
-    noSequentialSpecialChar &&
-    noOfficialNames
-  );
-};
-
 export const DiscordName = ({ onNext }: { onNext: () => void }) => {
-  const { getValues, control } = useFormContext<DiscordFormValues>();
-  const [userNameStatus, setUserNameStatus] = useState<UserNameType | ''>('');
+  const { getValues, control, trigger, setError } =
+    useFormContext<DiscordFormValues>();
   const [count, setCount] = useState(1);
 
   const { checkDuplicate, data, isSuccess } = usePostDiscordName(
@@ -38,24 +22,29 @@ export const DiscordName = ({ onNext }: { onNext: () => void }) => {
   useEffect(() => {
     if (isSuccess) {
       if (data?.isDuplicate) {
-        setUserNameStatus('Duplicate');
+        setError('discordUsername', {
+          type: 'manual',
+          message:
+            '이미 가입된 사용자명이에요. 이전에 가입한 적이 있으신 경우, 채널톡으로 문의해주세요.'
+        });
       } else {
-        setUserNameStatus('Available');
         onNext();
       }
     }
-  }, [data?.isDuplicate, isSuccess, onNext]);
+  }, [data?.isDuplicate, isSuccess, onNext, setError]);
 
-  const handleNextClick = useCallback(() => {
-    const username = getValues('discordUsername');
-    if (hasValidateUserName(username)) {
-      setUserNameStatus('Valid');
+  const handleNextClick = useCallback(async () => {
+    const isValid = await trigger('discordUsername');
+    if (isValid) {
       checkDuplicate();
     } else {
-      setUserNameStatus('Invalid');
+      setError('discordUsername', {
+        type: 'manual',
+        message: '하단 규정에 맞춰 작성해주세요.'
+      });
     }
     setCount((prev) => prev + 1);
-  }, [checkDuplicate, getValues]);
+  }, [checkDuplicate, setError, trigger]);
 
   return (
     <>
@@ -63,11 +52,7 @@ export const DiscordName = ({ onNext }: { onNext: () => void }) => {
         <TextSection />
       </Flex>
       <Space height="lg" />
-      <NameField
-        control={control}
-        userNameStatus={userNameStatus}
-        key={count}
-      />
+      <NameField control={control} key={count} />
       <Space height={75} />
       <Flex direction="column">
         <Button onClick={handleNextClick}>다음으로</Button>
@@ -107,18 +92,22 @@ const TextSection = memo(() => {
   );
 });
 
-const NameField = ({
-  control,
-  userNameStatus
-}: {
-  control: Control<DiscordFormValues>;
-  userNameStatus: UserNameType | '';
-}) => {
-  const { field } = useController({
+const NameField = ({ control }: { control: Control<DiscordFormValues> }) => {
+  const { field, fieldState } = useController({
     name: 'discordUsername',
     control,
     rules: {
-      required: true
+      required: '사용자명을 입력해주세요.',
+      pattern: {
+        value: /^[a-z0-9_.]{2,32}$/,
+        message: '하단 규정에 맞춰 작성해주세요.'
+      },
+      validate: {
+        noSequentialSpecialChar: (value) =>
+          !/(__|\.\.)/.test(value) || '하단 규정에 맞춰 작성해주세요.',
+        noOfficialNames: (value) =>
+          !/discord|nitro|nelly/.test(value) || '하단 규정에 맞춰 작성해주세요.'
+      }
     }
   });
 
@@ -127,13 +116,9 @@ const NameField = ({
       {...field}
       helperText={
         <ul style={{ listStyle: 'disc', paddingLeft: '20px' }}>
-          {(userNameStatus === 'Invalid' || userNameStatus === 'Duplicate') && (
+          {fieldState.error?.message && (
             <>
-              <li>
-                {userNameStatus === 'Invalid'
-                  ? '하단 규정에 맞춰 작성해주세요'
-                  : '이미 가입된 사용자명이에요. 이전에 가입한 적이 있으신 경우, 채널톡으로 문의해주세요.'}
-              </li>
+              <li>{fieldState.error.message}</li>
               <br />
             </>
           )}
@@ -151,7 +136,7 @@ const NameField = ({
       style={{
         borderStyle: 'solid'
       }}
-      error={userNameStatus === 'Invalid' || userNameStatus === 'Duplicate'}
+      error={!!fieldState.error}
     />
   );
 };
