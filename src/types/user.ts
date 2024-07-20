@@ -1,20 +1,32 @@
 import { Status } from '@/types/status';
 
 export type User = {
-  studentId: string; // C000000 (학번)
-  name: string;
-  phone: string; // 01012345678
-  department: string; // D001(학과 code)
-  email: string;
-
-  discordUsername: string;
-  nickname: string;
-  univEmail: string;
-  discordStatus: Status;
-  emailStatus: Status;
+  memberId: string; // C000000 (학번)
+  role: UserRoleType;
+  basicInfo: UserBasicInfo;
+  associateRequirement: {
+    univStatus: Status;
+    discordStatus: Status;
+    bevyStatus: Status;
+    infoStatus: Status;
+  };
 };
 
-export type GuestUser = Pick<
-  User,
-  'name' | 'studentId' | 'phone' | 'department' | 'email'
->;
+export type UserRoleType = 'GUEST' | 'ASSOCIATE' | 'REGULAR' | 'ADMIN';
+
+export type AssociateRequirement = {
+  univStatus: Status;
+  discordStatus: Status;
+  bevyStatus: Status;
+  infoStatus: Status;
+};
+
+export type UserBasicInfo = {
+  name: string;
+  studentId: string;
+  email: string;
+  department: string;
+  phone: string;
+  discordUsername: string;
+  nickname: string;
+};
