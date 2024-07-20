@@ -3,35 +3,13 @@ import Button from 'wowds-ui/Button';
 import TextButton from 'wowds-ui/TextButton';
 import { color } from 'wowds-tokens';
 import { css } from '@emotion/react';
+import { useFormContext } from 'react-hook-form';
+import useGetDiscordJoined from '@/hooks/query/useGetDiscordJoined';
+import { DiscordFormValues } from '@/types/discord';
 
 export const JoinServer = ({ onNext }: { onNext: () => void }) => {
-  //   const { register, watch, formState, getValues } = useForm({
-  //     defaultValues: {
-  //       discordHandle: '',
-  //       discordNickname: '',
-  //       code: ''
-  //     },
-  //     mode: 'onChange'
-  //   });
-
-  //   const postDiscordLinkMutation = useMutation({
-  //     mutationFn: discordApi.POST_DISCORD,
-  //     onSuccess: () => {
-  //       toast('디스코드 연동이 완료되었습니다.');
-  //       navigate(RoutePath.MyPage);
-  //     }
-  //   });
-
-  //   const handleLinkButtonClick = () => {
-  //     const data = {
-  //       discordUsername: getValues('discordHandle'),
-  //       nickname: getValues('discordNickname'),
-  //       code: Number(getValues('code'))
-  //     } as DiscordLinkRequest;
-
-  //     postDiscordLinkMutation.mutate({ ...data });
-  //   };
-
+  const { getValues } = useFormContext<DiscordFormValues>();
+  const { data } = useGetDiscordJoined(getValues('discordUsername'));
   return (
     <>
       <Flex direction="column" align="flex-start">
@@ -55,7 +33,9 @@ export const JoinServer = ({ onNext }: { onNext: () => void }) => {
         <Button
           onClick={() => {
             onNext();
-          }}>
+          }}
+          disabled={!data?.isJoined}
+          style={{ maxWidth: '100%' }}>
           합류가 확인되면 넘어갈 수 있어요.
         </Button>
 

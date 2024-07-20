@@ -1,34 +1,10 @@
 import { Flex, Space, Text } from '@/components/common/Wrapper';
+import RoutePath from '@/routes/routePath';
+import { useNavigate } from 'react-router-dom';
 import Button from 'wowds-ui/Button';
 
 export const CompleteDiscordConnect = () => {
-  //   const { register, watch, formState, getValues } = useForm({
-  //     defaultValues: {
-  //       discordHandle: '',
-  //       discordNickname: '',
-  //       code: ''
-  //     },
-  //     mode: 'onChange'
-  //   });
-
-  //   const postDiscordLinkMutation = useMutation({
-  //     mutationFn: discordApi.POST_DISCORD,
-  //     onSuccess: () => {
-  //       toast('디스코드 연동이 완료되었습니다.');
-  //       navigate(RoutePath.MyPage);
-  //     }
-  //   });
-
-  //   const handleLinkButtonClick = () => {
-  //     const data = {
-  //       discordUsername: getValues('discordHandle'),
-  //       nickname: getValues('discordNickname'),
-  //       code: Number(getValues('code'))
-  //     } as DiscordLinkRequest;
-
-  //     postDiscordLinkMutation.mutate({ ...data });
-  //   };
-
+  const navigate = useNavigate();
   return (
     <>
       <Flex direction="column" align="flex-start">
@@ -39,7 +15,13 @@ export const CompleteDiscordConnect = () => {
           예정이에요!
         </Text>
       </Flex>
-      <Button>완료하기</Button>
+      <Button
+        onClick={() => {
+          navigate(RoutePath.Dashboard);
+        }}
+        style={{ maxWidth: '100%' }}>
+        완료하기
+      </Button>
     </>
   );
 };

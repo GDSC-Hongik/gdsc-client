@@ -10,13 +10,15 @@ import { color } from 'wowds-tokens';
 import { ServerConnect } from '@/components/discordConnect/ServerConnect';
 import { CompleteDiscordConnect } from '@/components/discordConnect/CompleteDiscordConnect';
 import { useForm, FormProvider } from 'react-hook-form';
+import { DiscordFormValues } from '@/types/discord';
+import useCustomBack from '@/hooks/common/useCutomBack';
 
 const steps = ['이름 설정', '별명 설정', '서버 합류', '서버 연동', '연동 완료'];
 
 export const DicordConnect = () => {
-  const { Funnel, Step, setStep } = useFunnel(steps[0]);
+  const { Funnel, Step, setStep, currentStep } = useFunnel(steps[0]);
 
-  const methods = useForm({
+  const methods = useForm<DiscordFormValues>({
     defaultValues: {
       discordUsername: '',
       discordNickname: '',
@@ -26,6 +28,14 @@ export const DicordConnect = () => {
   const nextClickHandler = (step: string) => {
     setStep(step);
   };
+
+  const handleBack = () => {
+    const currentStepIndex = steps.indexOf(currentStep);
+    if (currentStepIndex === 0) return;
+    setStep(steps[currentStepIndex - 1]);
+  };
+
+  useCustomBack(handleBack);
   return (
     <>
       <Wrapper direction="column" justify="space-between">

@@ -17,6 +17,15 @@ type colorKey = keyof typeof colorType;
 type typoKey = keyof typeof typographyType;
 type spaceKey = keyof typeof spaceType;
 
+const getSpace = (space?: number | spaceKey) => {
+  if (typeof space === 'number') {
+    return `${space}px`;
+  } else if (space && space in wowSpace) {
+    return wowSpace[space];
+  }
+  return '';
+};
+
 export const Flex = styled.div<{
   direction?: string;
   justify?: string;
@@ -43,18 +52,8 @@ export const Space = styled.div<{
   width?: number | spaceKey;
   css?: ReturnType<typeof css>;
 }>`
-  height: ${({ height }) =>
-    height && typeof height === 'number'
-      ? `${height}px`
-      : height && height in wowSpace
-        ? wowSpace[height]
-        : ''};
-  width: ${({ width }) =>
-    width && typeof width === 'number'
-      ? `${width}px`
-      : width && width in wowSpace
-        ? wowSpace[width]
-        : ''};
+  height: ${({ height }) => getSpace(height)};
+  width: ${({ width }) => getSpace(width)};
   ${({ css }) => css}
 `;
 

@@ -25,6 +25,7 @@ module.exports = {
       { allowConstantExport: true }
     ],
     'react/react-in-jsx-scope': 'off',
+    'react/display-name': 'off',
     'import/no-unresolved': 'off',
     'prettier/prettier': [
       'error',

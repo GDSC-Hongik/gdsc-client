@@ -4,76 +4,60 @@ import DiscordImage from '/discord/discord-name.png';
 import TextField from 'wowds-ui/TextField';
 import TextButton from 'wowds-ui/TextButton';
 import RoutePath from '@/routes/routePath';
+import { useFormContext, useController, Control } from 'react-hook-form';
+import { useState, useCallback, memo, useEffect } from 'react';
+import { Image } from '../common/Image';
+import { DiscordFormValues } from '@/types/discord';
+import { usePostDiscordName } from '@/hooks/mutation/usePostDiscordName';
 
 export const DiscordName = ({ onNext }: { onNext: () => void }) => {
-  //   const { register, watch, formState, getValues } = useForm({
-  //     defaultValues: {
-  //       discordHandle: '',
-  //       discordNickname: '',
-  //       code: ''
-  //     },
-  //     mode: 'onChange'
-  //   });
+  const { getValues, control, trigger, setError } =
+    useFormContext<DiscordFormValues>();
+  const [count, setCount] = useState(1);
 
-  //   const postDiscordLinkMutation = useMutation({
-  //     mutationFn: discordApi.POST_DISCORD,
-  //     onSuccess: () => {
-  //       toast('디스코드 연동이 완료되었습니다.');
-  //       navigate(RoutePath.MyPage);
-  //     }
-  //   });
+  const { checkDuplicate, data, isSuccess } = usePostDiscordName(
+    getValues('discordUsername')
+  );
 
-  //   const handleLinkButtonClick = () => {
-  //     const data = {
-  //       discordUsername: getValues('discordHandle'),
-  //       nickname: getValues('discordNickname'),
-  //       code: Number(getValues('code'))
-  //     } as DiscordLinkRequest;
+  useEffect(() => {
+    if (isSuccess) {
+      if (data?.isDuplicate) {
+        setError('discordUsername', {
+          type: 'manual',
+          message:
+            '이미 가입된 사용자명이에요. 이전에 가입한 적이 있으신 경우, 채널톡으로 문의해주세요.'
+        });
+      } else {
+        onNext();
+      }
+    }
+  }, [data?.isDuplicate, isSuccess, onNext, setError]);
 
-  //     postDiscordLinkMutation.mutate({ ...data });
-  //   };
+  const handleNextClick = useCallback(async () => {
+    const isValid = await trigger('discordUsername');
+    if (isValid) {
+      checkDuplicate();
+    } else {
+      setError('discordUsername', {
+        type: 'manual',
+        message: '하단 규정에 맞춰 작성해주세요.'
+      });
+    }
+    setCount((prev) => prev + 1);
+  }, [checkDuplicate, setError, trigger]);
 
   return (
     <>
       <Flex direction="column" align="flex-start" gap="lg">
-        <div>
-          <Text typo="h1">사용자명을 알려주세요.</Text>
-          <Space height="sm" />
-          <Text typo="body1">
-            GDSC Hongik 디스코드 서버에서는 사용자명을 통해 멤버를 구분해요.
-          </Text>
-        </div>
-        <img src={DiscordImage} alt="discord-name" width={325} height={157} />
-        <Text typo="body1">
-          본인의 디스코드 사용자명을 아래 규정과 맞게 설정한 후 입력해주세요.
-        </Text>
+        <TextSection />
       </Flex>
       <Space height="lg" />
-      <TextField
-        helperText={
-          <ul style={{ listStyle: 'disc', paddingLeft: '20px' }}>
-            <li>최소 2자, 최대 32자까지만 작성 가능</li>
-            <li>대문자가 아닌 소문자로만 작성 가능</li>
-            <li>밑줄(_)과 마침표(.)가 아닌 특수 문자 사용 불가능</li>
-            <li>
-              연속적인 밑줄(a__b)과 마침표(a..b)로 이루어진 경우 사용 불가능
-            </li>
-            <li>discord, nitro, nelly와 같은 디스코드 공식 이름 사용 불가능</li>
-          </ul>
-        }
-        label="디스코드 사용자명"
-        placeholder="내용을 입력해주세요"
-        style={{
-          backgroundColor: 'white',
-          borderStyle: 'solid'
-        }}
-      />
+      <div style={{ width: '100%' }}>
+        <NameField control={control} key={count} />
+      </div>
       <Space height={75} />
       <Flex direction="column">
-        <Button
-          onClick={() => {
-            onNext();
-          }}>
+        <Button onClick={handleNextClick} style={{ maxWidth: '100%' }}>
           다음으로
         </Button>
         <Space height="xs" />
@@ -85,5 +69,78 @@ export const DiscordName = ({ onNext }: { onNext: () => void }) => {
         />
       </Flex>
     </>
+  );
+};
+
+const TextSection = memo(() => {
+  return (
+    <>
+      <div>
+        <Text typo="h1">사용자명을 알려주세요.</Text>
+        <Space height="sm" />
+        <Text typo="body1">
+          GDSC Hongik 디스코드 서버에서는 사용자명을 통해 멤버를 구분해요.
+        </Text>
+      </div>
+      <Image
+        src={DiscordImage}
+        alt="discord-name"
+        width={325}
+        height={157}
+        align="center"
+      />
+      <Text typo="body1">
+        본인의 디스코드 사용자명을 아래 규정과 맞게 설정한 후 입력해주세요.
+      </Text>
+    </>
+  );
+});
+
+const NameField = ({ control }: { control: Control<DiscordFormValues> }) => {
+  const { field, fieldState } = useController({
+    name: 'discordUsername',
+    control,
+    rules: {
+      required: '사용자명을 입력해주세요.',
+      pattern: {
+        value: /^[a-z0-9_.]{2,32}$/,
+        message: '하단 규정에 맞춰 작성해주세요.'
+      },
+      validate: {
+        noSequentialSpecialChar: (value) =>
+          !/(__|\.\.)/.test(value) || '하단 규정에 맞춰 작성해주세요.',
+        noOfficialNames: (value) =>
+          !/discord|nitro|nelly/.test(value) || '하단 규정에 맞춰 작성해주세요.'
+      }
+    }
+  });
+
+  return (
+    <TextField
+      {...field}
+      helperText={
+        <ul style={{ listStyle: 'disc', paddingLeft: '20px' }}>
+          {fieldState.error?.message && (
+            <>
+              <li>{fieldState.error.message}</li>
+              <br />
+            </>
+          )}
+          <li>최소 2자, 최대 32자까지만 작성 가능</li>
+          <li>대문자가 아닌 소문자로만 작성 가능</li>
+          <li>밑줄(_)과 마침표(.)가 아닌 특수 문자 사용 불가능</li>
+          <li>
+            연속적인 밑줄(a__b)과 마침표(a..b)로 이루어진 경우 사용 불가능
+          </li>
+          <li>discord, nitro, nelly와 같은 디스코드 공식 이름 사용 불가능</li>
+        </ul>
+      }
+      label="디스코드 사용자명"
+      placeholder="내용을 입력해주세요"
+      style={{
+        borderStyle: 'solid'
+      }}
+      error={!!fieldState.error}
+    />
   );
 };
