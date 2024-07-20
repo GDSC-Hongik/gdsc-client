@@ -23,7 +23,7 @@ const RoutePath = {
 
   AuthServerRedirect: '/social-login/redirect',
   StudentVerificationServerRedirect: '/onboarding/verify-email',
-
+  GDSCHongikLink: 'https://www.gdschongik.com',
   GitHubGuideLink: 'https://www.gdschongik.com/guide/github',
   StudentEmailLinkGuideLink: 'https://www.gdschongik.com/guide/student-email',
   CommunityGuideLink:

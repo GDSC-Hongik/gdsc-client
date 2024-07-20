@@ -104,6 +104,7 @@ const router = createBrowserRouter([
         element: <OnboardingClosedAccessGuard />,
         children: [{ index: true, element: <OnboardingClosed /> }]
       },
+
       // Todo: 404 Not found page
       { path: '*', element: <Text>not found page</Text> }
     ]

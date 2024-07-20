@@ -4,6 +4,12 @@ import emotionReset from 'emotion-reset';
 
 export const GlobalStyle = css`
   ${emotionReset}
+  * {
+    scrollbar-width: none;
+  }
+  *::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge, Opera */
+  }
   body {
     min-height: 100vh;
     @supports (-webkit-appearance: none) and (stroke-color: transparent) {
