@@ -92,7 +92,9 @@ export const StudentVerification = () => {
           문의해 주세요.
         </Text>
         <ButtonContainer>
-          <Button disabled={!isValid}>인증메일 받기</Button>
+          <Button disabled={!isValid} style={{ maxWidth: '100%' }}>
+            인증메일 받기
+          </Button>
           <StudentGuideLink
             to={RoutePath.StudentEmailLinkGuideLink}
             target="_blank">
