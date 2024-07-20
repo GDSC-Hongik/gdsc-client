@@ -1,9 +1,10 @@
 import { Flex, Space, Text } from '@/components/common/Wrapper';
+import RoutePath from '@/routes/routePath';
+import { useNavigate } from 'react-router-dom';
 import Button from 'wowds-ui/Button';
 
 export const CompleteDiscordConnect = () => {
-  //TODO: 완료하기 버튼에 대시페이지 navigate 하기
-
+  const navigate = useNavigate();
   return (
     <>
       <Flex direction="column" align="flex-start">
@@ -14,7 +15,12 @@ export const CompleteDiscordConnect = () => {
           예정이에요!
         </Text>
       </Flex>
-      <Button>완료하기</Button>
+      <Button
+        onClick={() => {
+          navigate(RoutePath.Dashboard);
+        }}>
+        완료하기
+      </Button>
     </>
   );
 };
