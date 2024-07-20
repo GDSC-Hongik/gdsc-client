@@ -25,7 +25,8 @@ export const JoinDiscord = () => {
         <Button
           onClick={() => {
             navigate(RoutePath.DiscordConnect);
-          }}>
+          }}
+          style={{ maxWidth: '100%' }}>
           연동하기
         </Button>
         <Space height="xs" />

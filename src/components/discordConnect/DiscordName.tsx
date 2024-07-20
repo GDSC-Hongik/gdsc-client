@@ -52,10 +52,14 @@ export const DiscordName = ({ onNext }: { onNext: () => void }) => {
         <TextSection />
       </Flex>
       <Space height="lg" />
-      <NameField control={control} key={count} />
+      <div style={{ width: '100%' }}>
+        <NameField control={control} key={count} />
+      </div>
       <Space height={75} />
       <Flex direction="column">
-        <Button onClick={handleNextClick}>다음으로</Button>
+        <Button onClick={handleNextClick} style={{ maxWidth: '100%' }}>
+          다음으로
+        </Button>
         <Space height="xs" />
         <TextButton
           text="디스코드 계정이 없으신가요?"

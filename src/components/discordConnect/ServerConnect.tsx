@@ -91,7 +91,8 @@ export const ServerConnect = ({ onNext }: { onNext: () => void }) => {
         <Button
           onClick={() => {
             handleLinkButtonClick();
-          }}>
+          }}
+          style={{ maxWidth: '100%' }}>
           다음으로
         </Button>
       </Flex>

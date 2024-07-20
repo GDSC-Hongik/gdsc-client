@@ -18,7 +18,8 @@ export const CompleteDiscordConnect = () => {
       <Button
         onClick={() => {
           navigate(RoutePath.Dashboard);
-        }}>
+        }}
+        style={{ maxWidth: '100%' }}>
         완료하기
       </Button>
     </>

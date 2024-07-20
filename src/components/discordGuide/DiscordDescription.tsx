@@ -25,7 +25,8 @@ export const DiscordDescription = ({ onNext }: { onNext: () => void }) => {
       <Button
         onClick={() => {
           onNext();
-        }}>
+        }}
+        style={{ maxWidth: '100%' }}>
         다음으로
       </Button>
     </>
