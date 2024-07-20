@@ -6,20 +6,25 @@ import MemberStatusInfoBox from '@/components/myPage/MemberStatusInfoBox';
 import { ApproveBox } from './ApproveBox';
 import { Text, Flex, Space } from '../common/Wrapper';
 import { CurrentRecruitmentType } from '@/apis/member/memberType';
+import MemberStatusStepper from './MemberStatusStepper';
+import { User } from '@/types/user';
 
 type MemberRole = 'GUEST' | 'ASSOCIATE' | 'REGULAR' | 'ADMIN';
 
 const JoinStatus = ({
   role,
-  currentRecruitmentRound
+  currentRecruitmentRound,
+  member
 }: {
   role: MemberRole;
   currentRecruitmentRound: CurrentRecruitmentType;
+  member: User;
 }) => {
   const [openInfo, setOpenInfo] = useState(false);
   const helpButtonRef = useRef<HTMLDivElement>(null);
   return (
     <Flex justify="flex-start" direction="column" align="flex-start">
+      <Space height={40} />
       <Container>
         <Text typo="h2" color="textBlack">
           현재 회원 상태
@@ -44,9 +49,9 @@ const JoinStatus = ({
           />
         )}
       </Container>
+      <Space height={40} />
+      <MemberStatusStepper member={member} />
       <Space height={20} />
-      프로그래스바 자리
-      <Space height={24} />
       <ApproveBox role={role} currentRecruitment={currentRecruitmentRound} />
     </Flex>
   );

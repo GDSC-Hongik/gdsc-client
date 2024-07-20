@@ -1,25 +1,15 @@
 import Box from 'wowds-ui/Box';
-
+import styled from '@emotion/styled';
 import { CurrentRecruitmentType } from '@/apis/member/memberType';
-import { formatDate } from '@/utils/mypage/formatDate';
+import {
+  convertRecruitmentPeriod,
+  convertRecruitmentName
+} from '@/utils/mypage/recruitmentNameFormat';
+import useBottomSheet from '@/hooks/common/useBottomSheet';
 
 type MemberRole = 'GUEST' | 'ASSOCIATE' | 'REGULAR' | 'ADMIN';
 type BoxVariantType = 'arrow' | 'checkbox' | 'text' | 'warn';
 type BoxStatusType = 'default' | 'success' | 'error';
-const convertRecruitmentName = (name: string) => {
-  const [period, round] = name.split(' ');
-  const [year, semester] = period.split('-');
-  return `${year}년 ${semester}학기 ${round} 정회원 지원하기`;
-};
-
-const convertRecruitmentPeriod = (period: {
-  startDate: string;
-  endDate: string;
-}) => {
-  const startDate = formatDate(period.startDate);
-  const endDate = formatDate(period.endDate);
-  return `지원 기간 : ${startDate} ~ ${endDate}`;
-};
 
 export const ApproveBox = ({
   role,
@@ -28,6 +18,7 @@ export const ApproveBox = ({
   role: MemberRole;
   currentRecruitment: CurrentRecruitmentType;
 }) => {
+  const { handleBottomSheet } = useBottomSheet();
   const boxContent: Record<
     MemberRole,
     {
@@ -62,13 +53,24 @@ export const ApproveBox = ({
     }
   };
   return (
-    <>
+    <BoxWrapper
+      onClick={() => {
+        if (role === 'ASSOCIATE') handleBottomSheet();
+        else {
+          return;
+        }
+      }}>
       <Box
         variant={boxContent[role].boxVariant}
         text={boxContent[role].title}
         subText={boxContent[role].description}
         status={boxContent[role].status}
       />
-    </>
+    </BoxWrapper>
   );
 };
+
+const BoxWrapper = styled.div`
+  width: 100%;
+  cursor: pointer;
+`;

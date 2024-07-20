@@ -4,6 +4,12 @@ import emotionReset from 'emotion-reset';
 
 export const GlobalStyle = css`
   ${emotionReset}
+  * {
+    scrollbar-width: none;
+  }
+  *::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge, Opera */
+  }
   body {
     min-height: 100vh;
     @supports (-webkit-appearance: none) and (stroke-color: transparent) {
@@ -55,11 +61,7 @@ export const GlobalStyle = css`
   }
 
   strong {
-    color: ${color.discord};
-    background-color: ${color.white};
-    border: 1px solid ${color.discord};
-    border-radius: 4px;
-    padding: 0px 4px;
+    font-weight: 700;
   }
 
   input:-webkit-autofill {

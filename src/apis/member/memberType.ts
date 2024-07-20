@@ -1,14 +1,6 @@
 import { Status } from '@/types/status';
 import { User } from '@/types/user';
 
-export interface MemberBasicInfoType {
-  studentId: string;
-  name: string;
-  phone: string;
-  department: string;
-  email: string;
-}
-
 export interface MemberInfoResponse {
   member: User;
   currentRecruitmentRound: CurrentRecruitmentType;
