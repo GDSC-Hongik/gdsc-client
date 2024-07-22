@@ -8,14 +8,10 @@ import GlobalSize from '@/constants/globalSize';
 import { media } from '@/styles';
 import { color } from 'wowds-tokens';
 
-import { useProductStore } from '@/hooks/zustand/useProduct';
-
 export function PaymentsFail() {
   const navigate = useNavigate();
-  const clearProductStorage = useProductStore.persist.clearStorage;
 
   const handleClickBackToPayments = () => {
-    clearProductStorage();
     navigate(RoutePath.PaymentsCheckout);
   };
 
