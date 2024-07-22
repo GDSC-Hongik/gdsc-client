@@ -25,11 +25,9 @@ export function PaymentsSuccess() {
       paymentKey: searchParams.get('paymentKey')
     };
 
-    // Todo: 결제 정보 검증
     if (!requestData.orderId || !requestData.amount || !requestData.paymentKey)
       throw new Error('Invalid payment information');
 
-    // Todo: 주문 완료 API
     const response = await ordersApi.POST_ORDER({
       paymentKey: requestData.paymentKey,
       orderNanoId: requestData.orderId,

@@ -32,10 +32,11 @@ export function PaymentsCheckout() {
     queryFn: memberApi.GET_DASHBOARD
   });
 
-  const { name, amount, discount, totalAmount } = useProduct();
+  const { name, amount, discount, issuedCouponId, totalAmount } = useProduct();
 
   const [ready, setReady] = useState(false);
 
+  // 토스페이먼츠에서 타입을 제공해주지 않아 임시로 타입을 any로 설정합니다.
   // eslint-disable-next-line
   const [widgets, setWidgets] = useState<any>(null);
 
@@ -43,7 +44,6 @@ export function PaymentsCheckout() {
     async function fetchPaymentWidgets() {
       try {
         const tossPayments = await loadTossPayments(clientKey);
-
         const widgets = tossPayments.widgets({
           customerKey
         });
@@ -82,15 +82,14 @@ export function PaymentsCheckout() {
   const handleClickOpenPaymentWidget = async () => {
     const id = nanoid();
     try {
-      // Todo: 에러 로직 추가. 여기서 실패하면 어떻게 뷰 보여줄까?
       if (!dashboard) throw new Error();
 
       await ordersApi.POST_PREV_ORDER({
         orderNanoId: id,
         membershipId: dashboard.currentMembership.membershipId,
-        issuedCouponId: null,
+        issuedCouponId: issuedCouponId,
         totalAmount: amount,
-        discountAmount: 0,
+        discountAmount: discount,
         finalPaymentAmount: totalAmount
       });
 

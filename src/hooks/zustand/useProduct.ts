@@ -19,7 +19,8 @@ type ProductStore = {
   amount: number;
   totalAmount: number;
   discount: number;
-  setDiscount: (status: number) => void;
+  issuedCouponId: number | null;
+  setDiscount: (discount: number, couponId: number) => void;
 };
 
 export const useProductStore = create(
@@ -29,7 +30,9 @@ export const useProductStore = create(
       amount: 20000,
       totalAmount: 20000,
       discount: 0,
-      setDiscount: (newDiscount) => set({ discount: newDiscount })
+      issuedCouponId: null,
+      setDiscount: (newDiscount, couponId) =>
+        set({ discount: newDiscount, issuedCouponId: couponId })
     }),
     {
       name: 'productStorage',
@@ -39,10 +42,13 @@ export const useProductStore = create(
 );
 
 export const useProduct = () => {
-  const { discount, setDiscount } = useProductStore((state) => ({
-    discount: state.discount,
-    setDiscount: state.setDiscount
-  }));
+  const { discount, issuedCouponId, setDiscount } = useProductStore(
+    (state) => ({
+      discount: state.discount,
+      issuedCouponId: state.issuedCouponId,
+      setDiscount: state.setDiscount
+    })
+  );
 
   const totalAmount = useProductStore.getState().amount - discount;
 
@@ -51,6 +57,7 @@ export const useProduct = () => {
     amount: useProductStore.getState().amount,
     totalAmount,
     discount,
+    issuedCouponId,
     strAmount: useProductStore.getState().amount.toLocaleString(),
     strDiscount: discount.toLocaleString(),
     strTotalAmount: totalAmount.toLocaleString(),

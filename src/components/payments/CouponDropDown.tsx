@@ -16,29 +16,6 @@ export const CouponDropDown = () => {
     queryFn: couponApi.GET_COUPONS_ME
   });
 
-  // const coupons: CouponResponse[] = [
-  //   {
-  //     issuedCouponId: 0,
-  //     couponName: '선택안함',
-  //     member: {},
-  //     discountAmount: 0,
-  //     usedAt: '',
-  //     issuedAt: '',
-  //     isUsed: false,
-  //     isRevoked: false
-  //   },
-  //   {
-  //     issuedCouponId: 1,
-  //     couponName: '테스트 쿠폰',
-  //     member: {},
-  //     discountAmount: 5000,
-  //     usedAt: '',
-  //     issuedAt: '',
-  //     isUsed: false,
-  //     isRevoked: false
-  //   }
-  // ];
-
   const [selectedValue, setSelectedValue] = useState(
     coupons && coupons.length ? coupons[0].couponName : '보유한 쿠폰이 없어요'
   );
@@ -47,7 +24,7 @@ export const CouponDropDown = () => {
     if (coupons) {
       const coupon = coupons.filter((coupon) => coupon.couponName === value)[0];
       setSelectedValue(value);
-      setDiscount(coupon.discountAmount);
+      setDiscount(coupon.discountAmount, coupon.issuedCouponId);
     }
   };
 
