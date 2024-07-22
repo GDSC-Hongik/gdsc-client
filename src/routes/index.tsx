@@ -24,7 +24,6 @@ import {
   Bevy,
   OnboardingNotOpened,
   OnboardingClosed,
-  Payments,
   PaymentsSuccess,
   PaymentsFail,
   PaymentsCheckout
@@ -117,10 +116,6 @@ const router = createBrowserRouter([
         path: RoutePath.OnboardingClosed,
         element: <OnboardingClosedAccessGuard />,
         children: [{ index: true, element: <OnboardingClosed /> }]
-      },
-      {
-        path: RoutePath.Payments,
-        element: <Payments />
       },
       {
         path: RoutePath.PaymentsCheckout,

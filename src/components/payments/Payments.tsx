@@ -6,21 +6,12 @@ import styled from '@emotion/styled';
 import { color } from 'wowds-tokens';
 
 import GlobalSize from '@/constants/globalSize';
-import { useNavigate } from 'react-router-dom';
-
-import RoutePath from '@/routes/routePath';
 import { useProduct } from '@/hooks/zustand/useProduct';
 import { CouponDropDown } from '@/components/payments/CouponDropDown';
 import { CalculateBox } from '@/components/payments/CalculateBox';
 import { PaymentItemBox } from '@/components/payments/PaymentItemBox';
 
-export const Payments = () => {
-  const navigate = useNavigate();
-
-  const handleClickRoute = () => {
-    navigate(RoutePath.PaymentsCheckout);
-  };
-
+export const Payments = ({ onNext }: { onNext: () => void }) => {
   const { name, strDiscount, strAmount, strTotalAmount } = useProduct();
 
   return (
@@ -39,7 +30,7 @@ export const Payments = () => {
           total={strTotalAmount}
         />
         <Space height={20} />
-        <Button onClick={handleClickRoute}>결제하기</Button>
+        <Button onClick={onNext}>결제하기</Button>
         <Space height={28} />
       </Flex>
     </Wrapper>
