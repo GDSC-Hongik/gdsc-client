@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate, useSearchParams, Link } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Flex, Text } from '@/components/common/Wrapper';
 import { media } from '@/styles';
 import styled from '@emotion/styled';
@@ -10,14 +10,12 @@ import GlobalSize from '@/constants/globalSize';
 import RoutePath from '@/routes/routePath';
 import { color } from 'wowds-tokens';
 import ordersApi from '@/apis/orders/ordersApi';
-import { useProduct } from '@/hooks/zustand/useProduct';
 
 export function PaymentsSuccess() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   console.log(searchParams);
   const [responseData, setResponseData] = useState(null);
-  const { amount, discount, totalAmount } = useProduct();
 
   const confirm = async () => {
     const requestData = {
@@ -33,12 +31,9 @@ export function PaymentsSuccess() {
 
     // Todo: 주문 완료 API
     const response = await ordersApi.POST_ORDER({
+      paymentKey: requestData.paymentKey,
       orderNanoId: requestData.orderId,
-      membershipId: 1,
-      issuedCouponId: 1,
-      totalAmount: amount,
-      discountAmount: discount,
-      finalPaymentAmount: +requestData.amount
+      amount: +requestData.amount
     });
     return response;
   };
@@ -66,7 +61,7 @@ export function PaymentsSuccess() {
           <Text>이제 GDSC 정회원으로 이번 학기에 활동하실 수 있어요!</Text>
         </Flex>
       </Flex>
-      <Button onClick={() => navigate(RoutePath.MyPage)}>완료하기</Button>
+      <Button onClick={() => navigate(RoutePath.Dashboard)}>완료하기</Button>
     </Wrapper>
   );
 }

@@ -6,3 +6,9 @@ export interface OrderRequest {
   discountAmount: number;
   finalPaymentAmount: number;
 }
+
+export interface OrderCompleteRequest {
+  paymentKey: string;
+  orderNanoId: string;
+  amount: number;
+}
