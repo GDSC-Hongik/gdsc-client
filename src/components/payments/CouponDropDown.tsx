@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 import DropDown from 'wowds-ui/DropDown';
@@ -16,19 +16,24 @@ export const CouponDropDown = () => {
     queryFn: couponApi.GET_COUPONS_ME
   });
 
-  const [selectedValue, setSelectedValue] = useState(
-    coupons && coupons.length ? coupons[0].couponName : '보유한 쿠폰이 없어요'
+  const { strDiscount, setDiscount } = useProduct();
+
+  const [selectedCoupon, setSelectedCoupon] = useState<CouponResponse | null>(
+    coupons && coupons.length ? coupons[0] : null
   );
+
+  useEffect(() => {
+    if (selectedCoupon) {
+      setDiscount(selectedCoupon.discountAmount, selectedCoupon.issuedCouponId);
+    }
+  }, [selectedCoupon, setDiscount]);
 
   const handleChange = (value: string) => {
     if (coupons) {
       const coupon = coupons.filter((coupon) => coupon.couponName === value)[0];
-      setSelectedValue(value);
-      setDiscount(coupon.discountAmount, coupon.issuedCouponId);
+      setSelectedCoupon(coupon);
     }
   };
-
-  const { strDiscount, setDiscount } = useProduct();
 
   return (
     <Flex justify="flex-start" direction="column" align="flex-start" gap="sm">
@@ -38,7 +43,9 @@ export const CouponDropDown = () => {
       <DropDown
         style={{ width: '100%' }}
         placeholder="목록을 입력하세요"
-        value={selectedValue}
+        value={
+          selectedCoupon ? selectedCoupon.couponName : '보유한 쿠폰이 없어요'
+        }
         onChange={handleChange}>
         {coupons?.map((coupon: CouponResponse) => {
           return (

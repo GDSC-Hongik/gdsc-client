@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { useShallow } from 'zustand/react/shallow';
 
 type ProductStore = {
   name: string;
@@ -16,27 +17,48 @@ export const useProductStore = create<ProductStore>((set) => ({
   discount: 0,
   issuedCouponId: null,
   setDiscount: (newDiscount, couponId) =>
-    set({ discount: newDiscount, issuedCouponId: couponId })
+    set((state) => ({
+      discount: newDiscount,
+      totalAmount: state.amount - newDiscount,
+      issuedCouponId: couponId
+    }))
 }));
 
-export const useProduct = () => {
-  const { discount, issuedCouponId, setDiscount } = useProductStore(
-    (state) => ({
-      discount: state.discount,
-      issuedCouponId: state.issuedCouponId,
-      setDiscount: state.setDiscount
-    })
+export const useProductBase = () => {
+  const { name, amount } = useProductStore(
+    useShallow((state) => ({
+      name: state.name,
+      amount: state.amount
+    }))
   );
 
-  const totalAmount = useProductStore.getState().amount - discount;
+  return {
+    name,
+    amount,
+    strAmount: amount.toLocaleString()
+  };
+};
+
+export const useProduct = () => {
+  const { name, amount, discount, totalAmount, issuedCouponId, setDiscount } =
+    useProductStore(
+      useShallow((state) => ({
+        name: state.name,
+        amount: state.amount,
+        discount: state.discount,
+        totalAmount: state.totalAmount,
+        issuedCouponId: state.issuedCouponId,
+        setDiscount: state.setDiscount
+      }))
+    );
 
   return {
-    name: useProductStore.getState().name,
-    amount: useProductStore.getState().amount,
+    name,
+    amount,
     totalAmount,
     discount,
     issuedCouponId,
-    strAmount: useProductStore.getState().amount.toLocaleString(),
+    strAmount: amount.toLocaleString(),
     strDiscount: discount.toLocaleString(),
     strTotalAmount: totalAmount.toLocaleString(),
     setDiscount

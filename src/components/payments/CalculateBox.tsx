@@ -2,14 +2,10 @@ import { Flex, Text } from '@/components/common/Wrapper';
 import Box from 'wowds-ui/Box';
 import styled from '@emotion/styled';
 import { color } from 'wowds-tokens';
+import { useProduct } from '@/hooks/zustand/useProduct';
 
-interface CalculateBoxProp {
-  amount: string;
-  discount: string;
-  total: string;
-}
-
-export const CalculateBox = ({ amount, discount, total }: CalculateBoxProp) => {
+export const CalculateBox = () => {
+  const { strAmount, strDiscount, strTotalAmount } = useProduct();
   return (
     <Box
       status="success"
@@ -20,7 +16,7 @@ export const CalculateBox = ({ amount, discount, total }: CalculateBoxProp) => {
               총 회비
             </Text>
             <Text typo="body1" color="black">
-              {amount}원
+              {strAmount}원
             </Text>
           </Flex>
           <Flex justify="space-between">
@@ -28,7 +24,7 @@ export const CalculateBox = ({ amount, discount, total }: CalculateBoxProp) => {
               총 할인금액
             </Text>
             <Text typo="body1" color="black">
-              {discount}원
+              {strDiscount}원
             </Text>
           </Flex>
           <Divider />
@@ -37,7 +33,7 @@ export const CalculateBox = ({ amount, discount, total }: CalculateBoxProp) => {
               총 결제금액
             </Text>
             <Text typo="h2" color="black">
-              {total}원
+              {strTotalAmount}원
             </Text>
           </Flex>
         </Flex>
