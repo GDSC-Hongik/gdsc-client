@@ -16,7 +16,7 @@ export function PaymentsFail() {
 
   const handleClickBackToPayments = () => {
     clearProductStorage();
-    navigate(RoutePath.Payments);
+    navigate(RoutePath.PaymentsCheckout);
   };
 
   return (
