@@ -32,12 +32,13 @@ export const Payments = () => {
         <PaymentItemBox name={name} amount={strAmount} />
         <CouponDropDown />
       </Flex>
-      <Flex direction="column" gap="lg">
+      <Flex direction="column">
         <CalculateBox
           amount={strAmount}
           discount={strDiscount}
           total={strTotalAmount}
         />
+        <Space height={20} />
         <Button onClick={handleClickRoute}>결제하기</Button>
         <Space height={28} />
       </Flex>
