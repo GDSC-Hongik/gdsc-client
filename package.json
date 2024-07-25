@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "HTTPS=true SSL_CRT_FILE=localhost.pem SSL_KEY_FILE=localhost-key.pem vite",
+    "dev": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
@@ -19,14 +19,17 @@
     "@tanstack/react-query-devtools": "^5.20.1",
     "axios": "^1.6.7",
     "emotion-reset": "^3.0.1",
+    "framer-motion": "^11.2.13",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.50.1",
     "react-router-dom": "^6.22.1",
     "react-spinners": "^0.13.8",
     "react-toastify": "^10.0.4",
-    "vite-plugin-mkcert": "^1.17.3",
-    "zustand": "^4.5.0"
+    "zustand": "^4.5.0",
+    "wowds-tokens": "^0.0.9",
+    "wowds-ui": "^0.1.4",
+    "wowds-icons": "^0.1.0"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.6.14",
@@ -45,16 +48,20 @@
     "@vitejs/plugin-react-swc": "^3.5.0",
     "chromatic": "^10.9.3",
     "eslint": "^8.56.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "eslint-plugin-storybook": "^0.6.15",
-    "prettier": "^3.2.5",
+    "prettier": "^3.3.2",
     "sass": "^1.71.1",
     "storybook": "^7.6.14",
     "typescript": "^5.2.2",
     "vite": "^5.1.0",
     "vite-tsconfig-paths": "^4.3.1"
   },
-  "packageManager": "yarn@4.1.0"
+  "packageManager": "pnpm@8.9.0"
 }

@@ -7,7 +7,6 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:react/recommended',
     'plugin:import/recommended',
-    'plugin:jsx-a11y/recommended',
     'eslint-config-prettier',
     'plugin:prettier/recommended'
   ],
@@ -26,6 +25,7 @@ module.exports = {
       { allowConstantExport: true }
     ],
     'react/react-in-jsx-scope': 'off',
+    'react/display-name': 'off',
     'import/no-unresolved': 'off',
     'prettier/prettier': [
       'error',

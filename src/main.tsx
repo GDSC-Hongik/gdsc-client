@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import BottomSheetProvider from './components/provider/BottomSheetProvider';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Routers } from '@/routes';
 import { GlobalStyle } from '@/styles';
@@ -21,10 +22,12 @@ const queryClient = new QueryClient({
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <Global styles={GlobalStyle} />
-      <Chatbot />
-      <Routers />
-      <ReactQueryDevtools />
+      <BottomSheetProvider>
+        <Global styles={GlobalStyle} />
+        <Chatbot />
+        <Routers />
+        <ReactQueryDevtools />
+      </BottomSheetProvider>
     </QueryClientProvider>
     <ToastContainer
       limit={1}

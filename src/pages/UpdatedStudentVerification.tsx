@@ -3,8 +3,10 @@ import { Input } from '@/components/common/Input';
 import { Flex, Text } from '@/components/common/Wrapper';
 import { useStudentVerification } from '@/hooks/auth';
 import RoutePath from '@/routes/routePath';
-import { theme } from '@/styles';
+import { color, typography } from 'wowds-tokens';
 import styled from '@emotion/styled';
+import GlobalSize from '@/constants/globalSize';
+import { media } from '@/styles';
 import { Controller } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
@@ -12,72 +14,75 @@ export default function UpdatedStudentVerification() {
   const { onSubmit, control, onVerifyStudent } = useStudentVerification();
 
   return (
-    <Container>
-      <Box>
-        <TextContainer>
-          <Text typo={'heading3'} style={{ marginBottom: '12px' }}>
-            재학생 인증하기
-          </Text>
-          <Text>전송된 이메일에서 재학생 인증을 완료했다면</Text>
-          <Text>인증 완료 버튼을 눌러주세요.</Text>
-        </TextContainer>
-        <form onSubmit={onSubmit}>
-          <Controller
-            name="univEmail"
-            control={control}
-            render={({ field }) => (
-              <Input
-                {...field}
-                placeholder="아이디@g.hongik.ac.kr"
-                label="학교 이메일"
-                type="email"
-                required
-              />
-            )}
-          />
-          <ButtonContainer>
-            <Button type="button" width="146px" onClick={onVerifyStudent}>
-              인증 완료
-            </Button>
-            <Button type="submit" width={'146px'}>
-              메일 재전송
-            </Button>
-          </ButtonContainer>
-        </form>
-        <Text color="red100">
-          * 인증이 완료되지 않았어요! <br />
-          {'    '}메일함을 확인해주세요.
+    <Wrapper direction="column" justify="flex-start" gap="lg">
+      <TextContainer>
+        <Text typo="h1" style={{ marginBottom: '12px' }}>
+          재학생 인증하기
         </Text>
-        <StudentGuideLink
-          to={RoutePath.StudentEmailLinkGuideLink}
-          target="_blank">
-          학교 이메일이 무엇인가요?
-        </StudentGuideLink>
-      </Box>
-    </Container>
+        <div>
+          <Text>
+            재학생 인증 과정이 필요해요. 본인의 학교 이메일을 통해 재학생 인증을
+            마무리해주세요!
+          </Text>
+        </div>
+      </TextContainer>
+      <form onSubmit={onSubmit}>
+        <Controller
+          name="univEmail"
+          control={control}
+          render={({ field }) => (
+            <Input
+              {...field}
+              placeholder="아이디@g.hongik.ac.kr"
+              label="학교 이메일"
+              type="email"
+              required
+            />
+          )}
+        />
+        <ButtonContainer>
+          <Button type="button" width="146px" onClick={onVerifyStudent}>
+            인증 완료
+          </Button>
+          <Button type="submit" width={'146px'}>
+            메일 재전송
+          </Button>
+        </ButtonContainer>
+      </form>
+      <Text color="red100">
+        * 인증이 완료되지 않았어요! <br />
+        {'    '}메일함을 확인해주세요.
+      </Text>
+      <StudentGuideLink
+        to={RoutePath.StudentEmailLinkGuideLink}
+        target="_blank">
+        학교 이메일이 무엇인가요?
+      </StudentGuideLink>
+    </Wrapper>
   );
 }
 
-const Container = styled.div`
-  width: 100%;
-  padding: 40px 16px;
+const Wrapper = styled(Flex)`
+  position: relative;
+  min-height: calc(100vh - 54px);
+  width: ${GlobalSize.width};
+  margin: 0px -16px;
+  padding: 40px 16px 0px;
+  background-color: ${color.mono50};
+  ${media.mobile} {
+    width: 100vw;
+  }
 `;
-
-const Box = styled.div`
-  display: flex;
-  flex-direction: column;
-  background-color: ${theme.palette.white};
-  align-items: center;
-  gap: 24px;
-  padding: 80px 24px;
-  border: 1px solid ${theme.palette.gray2};
-  border-radius: 8px;
-`;
-
 const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  & > div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 const ButtonContainer = styled(Flex)`
@@ -85,18 +90,18 @@ const ButtonContainer = styled(Flex)`
 `;
 
 const StudentGuideLink = styled(Link)`
-  color: ${theme.palette.black};
+  color: ${color.textBlack};
   text-decoration: underline;
   font-weight: 600;
   &:active {
-    color: ${theme.palette.gray4};
+    color: ${color.sub};
   }
   &:hover {
-    color: ${theme.palette.gray4};
+    color: ${color.sub};
   }
   &:visited {
-    color: ${theme.palette.black};
+    color: ${color.textBlack};
   }
 
-  ${theme.typo.label1};
+  ${typography.label1};
 `;

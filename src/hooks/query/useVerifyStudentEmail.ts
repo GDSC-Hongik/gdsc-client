@@ -1,4 +1,4 @@
-import { verifyStudentEmailApi } from '@/apis/auth';
+import { verifyStudentApi } from '@/apis/auth';
 import QueryKeys from '@/constants/queryKey';
 import { useQuery } from '@tanstack/react-query';
 
@@ -10,7 +10,7 @@ export default function useVerifyStudentEmail(token: string | null) {
         return Promise.reject('empty token');
       }
 
-      return verifyStudentEmailApi(token);
+      return verifyStudentApi.VERIFY_STUDENT_EMAIL(token);
     }
   });
 

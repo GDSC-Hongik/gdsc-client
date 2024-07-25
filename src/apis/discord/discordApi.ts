@@ -8,6 +8,30 @@ const discordApi = {
       payload
     );
     return response.data;
+  },
+  GET_DISCORD_NAME: async (name: string) => {
+    const response = await apiClient.get('/onboarding/check-discord-username', {
+      params: {
+        username: name
+      }
+    });
+    return response.data;
+  },
+  GET_DISCORD_NICKNAME: async (name: string) => {
+    const response = await apiClient.get('/onboarding/check-discord-nickname', {
+      params: {
+        nickname: name
+      }
+    });
+    return response.data;
+  },
+  GET_DISCORD_JOIN: async (name: string) => {
+    const response = await apiClient.get('/onboarding/check-discord-join', {
+      params: {
+        username: name
+      }
+    });
+    return response.data;
   }
 };
 

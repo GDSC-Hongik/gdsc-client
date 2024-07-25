@@ -8,7 +8,8 @@ import {
   AuthAccessGuard,
   SignupAccessGuard,
   StudentVerificationAccessGuard,
-  OnboardingNotOpenedAccessGuard
+  OnboardingNotOpenedAccessGuard,
+  OnboardingClosedAccessGuard
 } from '@/components/auth/guard';
 import { Text } from '@/components/common/Wrapper';
 import {
@@ -17,12 +18,16 @@ import {
   Auth,
   StudentVerification,
   SignUp,
-  MyPage,
+  Dashboard,
   JoinDiscord,
   UpdatedStudentVerification,
   Bevy,
-  OnboardingNotOpened
+  OnboardingNotOpened,
+  OnboardingClosed
 } from '@/pages';
+import { DicordConnect } from '@/pages/DiscordConnect';
+import { DiscordGuide } from '@/pages/DiscordGuide';
+import { Suspense } from 'react';
 
 export const Routers = () => {
   return <RouterProvider router={router} />;
@@ -52,7 +57,16 @@ const router = createBrowserRouter([
       {
         path: RoutePath.AuthenticationProcess2_StudentVerification,
         element: <StudentVerificationAccessGuard />,
-        children: [{ index: true, element: <StudentVerification /> }]
+        children: [
+          {
+            index: true,
+            element: (
+              <Suspense fallback="..loading">
+                <StudentVerification />
+              </Suspense>
+            )
+          }
+        ]
       },
       {
         path: RoutePath.AuthenticationProcess2_UpdatedStudentVerification,
@@ -69,12 +83,20 @@ const router = createBrowserRouter([
         element: <MypageAccessGuard />,
         children: [
           {
-            path: RoutePath.MyPage,
-            element: <MyPage />
+            path: RoutePath.Dashboard,
+            element: <Dashboard />
           },
           {
             path: RoutePath.Discord,
             element: <JoinDiscord />
+          },
+          {
+            path: RoutePath.DiscordConnect,
+            element: <DicordConnect />
+          },
+          {
+            path: RoutePath.DiscordGuide,
+            element: <DiscordGuide />
           },
           {
             path: RoutePath.Bevy,
@@ -87,6 +109,12 @@ const router = createBrowserRouter([
         element: <OnboardingNotOpenedAccessGuard />,
         children: [{ index: true, element: <OnboardingNotOpened /> }]
       },
+      {
+        path: RoutePath.OnboardingClosed,
+        element: <OnboardingClosedAccessGuard />,
+        children: [{ index: true, element: <OnboardingClosed /> }]
+      },
+
       // Todo: 404 Not found page
       { path: '*', element: <Text>not found page</Text> }
     ]
