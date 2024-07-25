@@ -27,6 +27,7 @@ import {
 } from '@/pages';
 import { DicordConnect } from '@/pages/DiscordConnect';
 import { DiscordGuide } from '@/pages/DiscordGuide';
+import { Suspense } from 'react';
 
 export const Routers = () => {
   return <RouterProvider router={router} />;
@@ -56,7 +57,16 @@ const router = createBrowserRouter([
       {
         path: RoutePath.AuthenticationProcess2_StudentVerification,
         element: <StudentVerificationAccessGuard />,
-        children: [{ index: true, element: <StudentVerification /> }]
+        children: [
+          {
+            index: true,
+            element: (
+              <Suspense fallback="..loading">
+                <StudentVerification />
+              </Suspense>
+            )
+          }
+        ]
       },
       {
         path: RoutePath.AuthenticationProcess2_UpdatedStudentVerification,

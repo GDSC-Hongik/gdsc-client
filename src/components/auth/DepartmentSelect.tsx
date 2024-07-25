@@ -37,7 +37,7 @@ const DepartmentSelect = ({ control }: DepartmentSelectProps) => {
                 <DropDownOption
                   key={`${index}-dropdownOption`}
                   text={department.name}
-                  value={department.name}
+                  value={department.code}
                 />
               );
             })}

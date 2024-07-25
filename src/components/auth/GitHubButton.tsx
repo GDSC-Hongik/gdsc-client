@@ -16,7 +16,8 @@ export const GitHubButton = ({
       onClick={onClick}
       style={{
         display: 'flex',
-        backgroundColor: `${color.github}`
+        backgroundColor: `${color.github}`,
+        maxWidth: '100%'
       }}>
       <StyledButton>
         <GitHubIcon />
@@ -28,7 +29,6 @@ export const GitHubButton = ({
 
 const StyledButton = styled.div`
   width: 100%;
-
   display: flex;
   justify-content: center;
   gap: 8px;

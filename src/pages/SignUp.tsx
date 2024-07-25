@@ -220,6 +220,11 @@ export const SignUp = () => {
           align="center"
           css={css`
             margin-top: 16px;
+            position: absolute;
+            bottom: 1.75rem;
+            width: 100%;
+            padding: 0px 0.75rem;
+            left: 0;
           `}>
           <CheckboxContainer>
             <Controller
@@ -284,7 +289,11 @@ export const SignUp = () => {
               )}
             />
           </CheckboxContainer>
-          <Button type="submit" role="button" disabled={!isValid}>
+          <Button
+            type="submit"
+            role="button"
+            disabled={!isValid}
+            style={{ maxWidth: '100%' }}>
             가입 신청하기
           </Button>
         </Flex>
@@ -296,7 +305,7 @@ export const SignUp = () => {
 const Container = styled(Flex)`
   position: relative;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: calc(100vh - 54px);
   justify-content: flex-start;
   background-color: ${color.mono50};
   width: ${GlobalSize.width};

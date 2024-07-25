@@ -159,7 +159,9 @@ export const Bevy = () => {
             가입하러 가기&#8599;
           </a>
         </Text>
-        <Button onClick={handleLinkButtonClick}>가입 완료하기</Button>
+        <Button style={{ maxWidth: '100%' }} onClick={handleLinkButtonClick}>
+          가입 완료하기
+        </Button>
       </ButtonContainer>
     </Wrapper>
   );
@@ -171,14 +173,14 @@ const Wrapper = styled(Flex)`
   padding: 0px 16px;
   min-height: calc(100vh - 54px);
   background-color: ${color.mono50};
-
+  position: relative;
   ${media.mobile} {
     width: 100vw;
   }
 `;
 
 const ButtonContainer = styled.div`
-  position: fixed;
+  position: absolute;
   bottom: 1.75rem;
   padding: 0px 0.75rem;
   width: 100%;
