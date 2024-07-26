@@ -14,7 +14,6 @@ import ordersApi from '@/apis/orders/ordersApi';
 export function PaymentsSuccess() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  console.log(searchParams);
   const [responseData, setResponseData] = useState(null);
 
   const confirm = async () => {
