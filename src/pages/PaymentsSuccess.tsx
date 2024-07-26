@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Flex, Text } from '@/components/common/Wrapper';
 import { media } from '@/styles';
@@ -9,12 +9,13 @@ import Button from 'wowds-ui/Button';
 import GlobalSize from '@/constants/globalSize';
 import RoutePath from '@/routes/routePath';
 import { color } from 'wowds-tokens';
-import ordersApi from '@/apis/orders/ordersApi';
+import usePostOrder from '@/hooks/mutation/usePostOrder';
 
 export function PaymentsSuccess() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const [responseData, setResponseData] = useState(null);
+
+  const { postOrder } = usePostOrder();
 
   const confirm = async () => {
     const requestData = {
@@ -27,19 +28,17 @@ export function PaymentsSuccess() {
     if (!requestData.orderId || !requestData.amount || !requestData.paymentKey)
       throw new Error('Invalid payment information');
 
-    const response = await ordersApi.POST_ORDER({
+    postOrder({
       paymentKey: requestData.paymentKey,
       orderNanoId: requestData.orderId,
       amount: +requestData.amount
     });
-    return response;
   };
 
   useEffect(() => {
     const executeConfirm = async () => {
       try {
-        const data = await confirm();
-        setResponseData(data);
+        await confirm();
       } catch (error) {
         navigate(RoutePath.PaymentsFail);
       }
