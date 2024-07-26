@@ -14,9 +14,9 @@ import styled from '@emotion/styled';
 import { CLIENT_KEY } from '@/constants/environment';
 import { color } from 'wowds-tokens';
 import meApi from '@/apis/me/meApi';
-import ordersApi from '@/apis/orders/ordersApi';
 import memberApi from '@/apis/member/memberApi';
 import { useProduct } from '@/hooks/zustand/useProduct';
+import usePostPrevOrder from '@/hooks/mutation/usePostPrevOrder';
 
 const clientKey = CLIENT_KEY;
 const customerKey = nanoid();
@@ -33,6 +33,8 @@ export function PaymentsWidget() {
   });
 
   const { name, amount, discount, issuedCouponId, totalAmount } = useProduct();
+
+  const { postPrevOrder } = usePostPrevOrder(amount);
 
   const [ready, setReady] = useState(false);
 
@@ -81,10 +83,11 @@ export function PaymentsWidget() {
 
   const handleClickOpenPaymentWidget = async () => {
     const id = nanoid();
+
     try {
       if (!dashboard) throw new Error();
 
-      await ordersApi.POST_PREV_ORDER({
+      postPrevOrder({
         orderNanoId: id,
         membershipId: dashboard.currentMembership.membershipId,
         issuedCouponId: issuedCouponId,
