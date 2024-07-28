@@ -1,4 +1,6 @@
 import { Text, Flex } from '@/components/common/Wrapper';
+import RoutePath from '@/routes/routePath';
+import { useNavigate } from 'react-router-dom';
 import Box from 'wowds-ui/Box';
 
 const JoinRegularMember = ({
@@ -6,8 +8,21 @@ const JoinRegularMember = ({
 }: {
   paymentStatus: 'PENDING' | 'SATISFIED';
 }) => {
+  const navigate = useNavigate();
+
+  const handleClickRoute = () => {
+    if (paymentStatus !== 'PENDING') {
+      return;
+    }
+    navigate(RoutePath.PaymentsCheckout);
+  };
   return (
-    <Flex gap="sm" justify="flex-start" direction="column" align="flex-start">
+    <Flex
+      gap="sm"
+      justify="flex-start"
+      direction="column"
+      align="flex-start"
+      onClick={handleClickRoute}>
       <Text typo="h2" color="textBlack">
         정회원 가입 조건
       </Text>
