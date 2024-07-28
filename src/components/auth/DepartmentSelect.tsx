@@ -4,15 +4,18 @@ import { Control, Controller } from 'react-hook-form';
 import DropDown from 'wowds-ui/DropDown';
 import DropDownOption from 'wowds-ui/DropDownOption';
 type DepartmentSelectProps = {
-  control: Control<{
-    name: '';
-    studentId: '';
-    phone: '';
-    department: '';
-    email: '';
-    terms: false;
-    personalPrivacy: false;
-  }>;
+  control:
+    | Control<{
+        name: string;
+        studentId: string;
+        phone: string;
+        department: string;
+        email: string;
+        emailDomain: string;
+        terms: boolean;
+        personalPrivacy: boolean;
+      }>
+    | undefined;
 };
 
 const DepartmentSelect = ({ control }: DepartmentSelectProps) => {

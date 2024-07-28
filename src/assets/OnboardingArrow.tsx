@@ -3,7 +3,7 @@ export const OnboardingArrow = () => {
     <>
       <style>
         {`
-      @keyframes bounce {
+        @keyframes bounce {
         0%, 100% { transform: translateY(0); }
         50% { transform: translateY(-5px); }
       }

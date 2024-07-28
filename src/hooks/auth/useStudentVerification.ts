@@ -22,7 +22,7 @@ export default function useStudentVerification() {
   const { sendStudentEmail, ...rest } = useSendStudentEmail();
 
   const onSubmit = async ({ univEmail }: FieldValues) => {
-    event.preventDefault();
+    event?.preventDefault();
     updateUnivEmail(univEmail);
     sendStudentEmail(univEmail);
   };
