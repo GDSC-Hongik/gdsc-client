@@ -32,7 +32,11 @@ const RoutePath = {
   PersonalPrivacyLink: 'https://www.gdschongik.com/privacy-policy',
 
   InstagramLink: 'https://www.instagram.com/gdsc.hongik/',
-  DiscordRegisterLink: 'https://discord.com/register'
+  DiscordRegisterLink: 'https://discord.com/register',
+
+  PaymentsCheckout: '/payments/checkout',
+  PaymentsSuccess: '/payments/success',
+  PaymentsFail: '/payments/fail'
 } as const;
 
 export default RoutePath;

@@ -10,3 +10,6 @@ export { default as OnboardingNotOpened } from './OnboardingNotOpened';
 export { default as OnboardingClosed } from './OnboardingClosed';
 export * from './redirect/AuthServerRedirectNavigate';
 export * from './redirect/StudentVerificationServerRedirect';
+export * from './PaymentsCheckout';
+export * from './PaymentsFail';
+export * from './PaymentsSuccess';
