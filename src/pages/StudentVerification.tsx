@@ -15,7 +15,7 @@ import GlobalSize from '@/constants/globalSize';
 export const StudentVerification = () => {
   const navigate = useNavigate();
   //TODO: 추후 pending 상태 백엔드 API 수정하면 반영해둘것.
-  const [pending, setPending] = useState(false);
+  const [, setPending] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const { onSubmit, control, isValid, onVerifyStudent, loading } =
     useStudentVerification();

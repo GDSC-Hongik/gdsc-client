@@ -5,7 +5,6 @@ import RoutePath from '@/routes/routePath';
 import styled from '@emotion/styled';
 
 import { useNavigate } from 'react-router-dom';
-import { MouseEvent } from 'react';
 
 export type PaymentStatusType = 'PENDING' | 'VERIFIED';
 
@@ -15,16 +14,16 @@ interface PaymentStatusProps {
 }
 
 export const PaymentStatus = ({
-  paymentStatus,
-  depositorName
+  paymentStatus
+  //depositorName
 }: PaymentStatusProps) => {
   const navigate = useNavigate();
 
-  const handleClickRoute = (e: MouseEvent<HTMLDivElement>) => {
+  const handleClickRoute = () => {
     if (paymentStatus !== 'PENDING') {
       return;
     }
-    navigate(RoutePath.Payments);
+    navigate(RoutePath.PaymentsCheckout);
   };
 
   return (
