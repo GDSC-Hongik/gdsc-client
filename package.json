@@ -30,7 +30,7 @@
     "react-toastify": "^10.0.4",
     "zustand": "^4.5.0",
     "wowds-tokens": "^0.0.9",
-    "wowds-ui": "^0.1.4",
+    "wowds-ui": "^0.1.7",
     "wowds-icons": "^0.1.0"
   },
   "devDependencies": {
