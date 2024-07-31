@@ -1,5 +1,5 @@
 import { Text, Flex } from '@/components/common/Wrapper';
-import { useVerifyStudentEmail } from '@/hooks/query';
+import { useVerifyStudentEmail } from '@/hooks/mutation';
 import { color } from 'wowds-tokens';
 import Button from 'wowds-ui/Button';
 import GlobalSize from '@/constants/globalSize';
@@ -9,12 +9,18 @@ import { css } from '@emotion/react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { PulseLoader } from 'react-spinners';
 import RoutePath from '@/routes/routePath';
+import { useLayoutEffect } from 'react';
 
 export const StudentVerificationServerRedirect = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const token = searchParams.get('token');
-  const { isSuccess, isPending } = useVerifyStudentEmail(token);
+  const { isSuccess, isPending, verifyStudentMail } = useVerifyStudentEmail();
+
+  useLayoutEffect(() => {
+    if (token) verifyStudentMail(token);
+  }, [token, verifyStudentMail]);
+  console.log(isSuccess);
 
   //TODO: 추후 로딩 스피너 추가 필요
   return (
