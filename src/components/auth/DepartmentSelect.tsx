@@ -32,9 +32,14 @@ const DepartmentSelect = ({ control }: DepartmentSelectProps) => {
         }
       }}
       render={({ field }) => (
-        <DropDown {...field} label="학과" placeholder="선택하세요">
-          {' '}
-          <React.Fragment key=".0">
+        <DropDown
+          {...field}
+          label="학과"
+          placeholder="선택하세요"
+          onChange={({ selectedValue }) => {
+            field.onChange(selectedValue);
+          }}>
+          <React.Fragment key={`${field}-option`}>
             {departmentList.map((department, index) => {
               return (
                 <DropDownOption

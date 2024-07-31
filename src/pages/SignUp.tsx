@@ -49,7 +49,7 @@ export const SignUp = () => {
       phone: '',
       department: '',
       email: '',
-      emailDomain: 'gmail.com',
+      emailDomain: '',
       terms: false,
       personalPrivacy: false
     }
@@ -62,7 +62,7 @@ export const SignUp = () => {
       studentId,
       phone,
       department,
-      email: `${email}@${emailDomain}`
+      email: `${email}${emailDomain}`
     });
   };
 
@@ -197,18 +197,29 @@ export const SignUp = () => {
           <Controller
             name="emailDomain"
             control={control}
-            defaultValue="gmail.com"
+            defaultValue=""
+            rules={{
+              required: {
+                value: true,
+                message: '* 도메인을 선택해주세요.'
+              }
+            }}
             render={({ field }) => (
               <DropDown
                 placeholder="선택하세요"
-                onChange={field.onChange}
-                defaultValue="gmail.com"
+                onChange={({ selectedValue }) => {
+                  field.onChange(selectedValue);
+                }}
+                defaultValue=""
                 value={field.value}
                 style={{ marginTop: '15px', flex: 1, width: '10rem' }}>
-                <DropDownOption text="gmail.com" value="gmail.com" />
-                <DropDownOption text="naver.com" value="naver.com" />
-                <DropDownOption text="g.hongik.ac.kr" value="g.hongik.ac.kr" />
-                <DropDownOption text="daum.net" value="daum.net" />
+                <DropDownOption text="@gmail.com" value="@gmail.com" />
+                <DropDownOption text="@naver.com" value="@naver.com" />
+                <DropDownOption
+                  text="@g.hongik.ac.kr"
+                  value="@g.hongik.ac.kr"
+                />
+                <DropDownOption text="@daum.net" value="@daum.net" />
               </DropDown>
             )}
           />
