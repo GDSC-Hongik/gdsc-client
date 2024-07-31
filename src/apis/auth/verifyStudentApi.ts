@@ -15,7 +15,7 @@ const verifyStudentApi = {
     return response.data;
   },
   VERIFY_STUDENT_EMAIL: async (token: string) => {
-    const response = await apiClient.get(
+    const response = await apiClient.patch(
       `/onboarding/verify-email?token=${token}`
     );
     return response.data;
