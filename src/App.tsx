@@ -15,7 +15,6 @@ import { useNavigate } from 'react-router-dom';
 import { getAuthRedirectPath } from '@/utils/auth';
 import 'react-toastify/dist/ReactToastify.css';
 import useLandingStatus from '@/hooks/zustand/useLandingStatus';
-import { Image } from './components/common/Image';
 
 const IMG_SRC = [
   '/onboarding/1.png',
@@ -194,8 +193,6 @@ function App() {
         />
       </Flex>
       <Space height={59} />
-      <Image src={IMG_SRC[7]} height={40} />
-      <Space height={26} />
     </Wrapper>
   );
 }

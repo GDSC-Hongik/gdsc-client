@@ -25,7 +25,7 @@ export const DiscordName = ({ onNext }: { onNext: () => void }) => {
         setError('discordUsername', {
           type: 'manual',
           message:
-            '이미 가입된 사용자명이에요. 이전에 가입한 적이 있으신 경우, 채널톡으로 문의해주세요.'
+            '이미 가입된 사용자명이에요. 이전에 가입한 적이 있으신 경우, 카카오톡 채널로 문의해주세요.'
         });
       } else {
         onNext();

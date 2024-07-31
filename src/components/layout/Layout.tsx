@@ -3,6 +3,8 @@ import { Flex } from '../common/Wrapper';
 import { media } from '@/styles';
 import { color } from 'wowds-tokens';
 import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+
 import { Outlet } from 'react-router-dom';
 import GlobalSize from '@/constants/globalSize';
 import ApiErrorBoundary from '@/components/ApiErrorBoundary';
@@ -14,6 +16,7 @@ const Layout = () => {
         <Header />
         <Wrapper>
           <Outlet />
+          <Footer />
         </Wrapper>
       </Container>
     </ApiErrorBoundary>
@@ -33,6 +36,10 @@ const Wrapper = styled(Flex)`
   min-height: calc(100vh - ${GlobalSize.header});
   align-items: flex-start;
   overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   ${media.mobile} {
     width: 100vw;
