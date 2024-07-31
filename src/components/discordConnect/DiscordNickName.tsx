@@ -111,9 +111,6 @@ const NameField = ({ control }: { control: Control<DiscordFormValues> }) => {
       }
       label="디스코드 별명"
       placeholder="내용을 입력해주세요"
-      style={{
-        borderStyle: 'solid'
-      }}
       error={!!fieldState.error}
     />
   );

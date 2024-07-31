@@ -80,7 +80,7 @@ export const ServerConnect = ({ onNext }: { onNext: () => void }) => {
           label="인증번호"
           placeholder="내용을 입력해주세요"
           style={{
-            borderStyle: 'solid'
+            width: '100%'
           }}
           error={error}
           {...(error && {
