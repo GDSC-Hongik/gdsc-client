@@ -6,6 +6,7 @@ import { css } from '@emotion/react';
 import { useFormContext } from 'react-hook-form';
 import useGetDiscordJoined from '@/hooks/query/useGetDiscordJoined';
 import { DiscordFormValues } from '@/types/discord';
+import RoutePath from '@/routes/routePath';
 
 export const JoinServer = ({ onNext }: { onNext: () => void }) => {
   const { getValues } = useFormContext<DiscordFormValues>();
@@ -28,6 +29,7 @@ export const JoinServer = ({ onNext }: { onNext: () => void }) => {
         <TextButton
           text=" GDSC Hongik 공식 디스코드 서버↗︎"
           style={{ color: color.discord }}
+          onClick={() => window.open(RoutePath.GDSCHongikDiscord, '_blank')}
         />
 
         <Button
@@ -46,7 +48,7 @@ export const JoinServer = ({ onNext }: { onNext: () => void }) => {
             text-align: center;
           `}>
           합류가 확인되지 않을 경우 <br />
-          채널톡을 통해 코어멤버에게 문의해주세요!
+          카카오톡 채널을 통해 코어멤버에게 문의해주세요!
         </Text>
       </Flex>
     </>
