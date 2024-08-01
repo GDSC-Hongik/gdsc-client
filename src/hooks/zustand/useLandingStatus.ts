@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
+//TODO: 추후 삭제 필요
 export default function useLandingStatus() {
   return {
     landingStatus: useLandingStatusStore.getState().landingStatus,

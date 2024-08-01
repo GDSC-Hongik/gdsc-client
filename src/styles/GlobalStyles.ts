@@ -1,16 +1,22 @@
-import { theme } from '@/styles';
+import { color } from 'wowds-tokens';
 import { css } from '@emotion/react';
 import emotionReset from 'emotion-reset';
 
 export const GlobalStyle = css`
   ${emotionReset}
+  * {
+    scrollbar-width: none;
+  }
+  *::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge, Opera */
+  }
   body {
     min-height: 100vh;
     @supports (-webkit-appearance: none) and (stroke-color: transparent) {
       min-height: -webkit-fill-available;
       scroll: smooth;
     }
-    font-family: 'Pretendard';
+    font-family: 'SUIT', 'Apple SD Gothic Neo';
 
     background-color: #f8f8f8;
   }
@@ -45,7 +51,7 @@ export const GlobalStyle = css`
     margin: 0;
 
     *:required {
-      background-color: ${theme.palette.white};
+      background-color: ${color.white};
     }
   }
   a {
@@ -55,11 +61,7 @@ export const GlobalStyle = css`
   }
 
   strong {
-    color: ${theme.palette.discord};
-    background-color: ${theme.palette.white};
-    border: 1px solid ${theme.palette.discord};
-    border-radius: 4px;
-    padding: 0px 4px;
+    font-weight: 700;
   }
 
   input:-webkit-autofill {

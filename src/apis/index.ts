@@ -1,4 +1,4 @@
-import { BASE_URL } from '@/constants/environment';
+import { BASE_URL, DEV_AUTH_TOKEN } from '@/constants/environment';
 import useAuthToken from '@/hooks/auth/useAuthToken';
 import axios from 'axios';
 
@@ -8,7 +8,8 @@ const apiClient = axios.create({
   withCredentials: true
 });
 
-apiClient.defaults.headers.common['Authorization'] =
-  `Bearer ${useAuthToken().accessToken}`;
+apiClient.defaults.headers.common['Authorization'] = DEV_AUTH_TOKEN
+  ? `${DEV_AUTH_TOKEN}`
+  : `Bearer ${useAuthToken().accessToken}`;
 
 export default apiClient;

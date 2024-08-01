@@ -1,8 +1,8 @@
 import { Flex, Space, Text } from '@/components/common/Wrapper';
-import { theme } from '@/styles';
+
+import { color } from 'wowds-tokens';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-
 export const InformationBox = ({
   title,
   description,
@@ -15,7 +15,7 @@ export const InformationBox = ({
   return (
     <Wrapper direction="column" align="flex-start" justify="flex-start">
       <Text
-        typo="heading5"
+        typo="h3"
         color="black"
         css={css`
           word-break: keep-all;
@@ -50,8 +50,8 @@ export const InformationBox = ({
 const Wrapper = styled(Flex)`
   box-sizing: border-box;
   padding: 20px 24px;
-  background-color: ${theme.palette.white};
-
+  background-color: ${color.white};
+  bottom: 10px;
   border-radius: 8px;
   border: 1px solid #d9d9d9;
 

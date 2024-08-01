@@ -4,9 +4,11 @@ const RoutePath = {
   Index: '/',
   Home: '/',
 
-  MyPage: '/mypage',
+  Dashboard: '/dashboard',
   Bevy: '/bevy',
   Discord: '/discord',
+  DiscordConnect: '/discord/connect',
+  DiscordGuide: '/discord/guide',
 
   OnboardingNotOpened: '/not-opened',
   OnboardingClosed: '/closed',
@@ -21,7 +23,8 @@ const RoutePath = {
 
   AuthServerRedirect: '/social-login/redirect',
   StudentVerificationServerRedirect: '/onboarding/verify-email',
-
+  GDSCHongikLink: 'https://www.gdschongik.com',
+  GDSCHongikDiscord: 'https://discord.gg/dSV6vSEuGU',
   GitHubGuideLink: 'https://www.gdschongik.com/guide/github',
   StudentEmailLinkGuideLink: 'https://www.gdschongik.com/guide/student-email',
   CommunityGuideLink:
@@ -29,7 +32,13 @@ const RoutePath = {
   TermsLink: 'https://www.gdschongik.com/onboarding/community-rule',
   PersonalPrivacyLink: 'https://www.gdschongik.com/privacy-policy',
 
-  InstagramLink: 'https://www.instagram.com/gdsc.hongik/'
+  InstagramLink: 'https://www.instagram.com/gdsc.hongik/',
+  DiscordRegisterLink: 'https://discord.com/register',
+  DiscordCodeLink: 'https://discord.gg/BrEjs3NW',
+
+  PaymentsCheckout: '/payments/checkout',
+  PaymentsSuccess: '/payments/success',
+  PaymentsFail: '/payments/fail'
 } as const;
 
 export default RoutePath;

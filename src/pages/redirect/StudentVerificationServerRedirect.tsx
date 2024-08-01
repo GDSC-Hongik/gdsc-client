@@ -1,68 +1,102 @@
-import { Text } from '@/components/common/Wrapper';
-import { useVerifyStudentEmail } from '@/hooks/query';
-import { theme } from '@/styles';
+import { Text, Flex } from '@/components/common/Wrapper';
+import { useVerifyStudentEmail } from '@/hooks/mutation';
+import { color } from 'wowds-tokens';
+import Button from 'wowds-ui/Button';
+import GlobalSize from '@/constants/globalSize';
+import { media } from '@/styles';
 import styled from '@emotion/styled';
-import { useSearchParams } from 'react-router-dom';
+import { css } from '@emotion/react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { PulseLoader } from 'react-spinners';
+import RoutePath from '@/routes/routePath';
+import { useLayoutEffect } from 'react';
 
 export const StudentVerificationServerRedirect = () => {
   const [searchParams] = useSearchParams();
-
+  const navigate = useNavigate();
   const token = searchParams.get('token');
-  const { isSuccess, isPending } = useVerifyStudentEmail(token);
+  const { isSuccess, isPending, verifyStudentMail } = useVerifyStudentEmail();
 
+  useLayoutEffect(() => {
+    if (token) verifyStudentMail(token);
+  }, [token, verifyStudentMail]);
+  console.log(isSuccess);
+
+  //TODO: 추후 로딩 스피너 추가 필요
   return (
-    <Container>
-      <Box>
-        {isPending ? (
-          <PulseLoader loading={isPending} />
-        ) : (
+    <Wrapper direction="column">
+      {isPending ? (
+        <PulseLoader loading={isPending} />
+      ) : (
+        <Container direction="column">
+          <Text
+            typo="h1"
+            css={css`
+              margin-bottom: 20px;
+              margin-top: 40px;
+            `}>
+            {isSuccess ? '재학생 인증 성공' : '재학생 인증 실패'}
+          </Text>
           <TextContainer>
-            <Text typo={'heading3'} style={{ marginBottom: '12px' }}>
-              {isSuccess ? '재학생 인증 완료' : '인증에 실패했어요'}
-            </Text>
             {isSuccess ? (
-              <>
-                <Text>원래 페이지로 돌아가</Text>
-                <Text>
-                  <span style={{ fontWeight: 700 }}>인증하기</span> 버튼을
-                  눌러주세요.
-                </Text>
-              </>
+              <Text typo="body1">홍익대학교 재학생 인증에 성공했어요.</Text>
             ) : (
-              <>
-                <Text>유효하지 않거나 만료된 인증코드예요.</Text>
-                <Text>원래 페이지로 돌아가서</Text>
-                <Text>
-                  <span style={{ fontWeight: 700 }}>메일 재전송</span> 버튼을
-                  눌러주세요.
-                </Text>
-              </>
+              <Text typo="body1">
+                유효하지 않거나 만료된 인증코드예요. 원래 페이지로 돌아가서 메일
+                재전송 버튼을 눌러주세요.
+              </Text>
             )}
           </TextContainer>
-        )}
-      </Box>
-    </Container>
+          <ButtonContainer>
+            <Button
+              type="submit"
+              role="button"
+              onClick={() => {
+                navigate(RoutePath.Dashboard);
+              }}>
+              대시보드로 바로가기
+            </Button>
+          </ButtonContainer>
+        </Container>
+      )}
+    </Wrapper>
   );
 };
 
-const Container = styled.div`
-  width: 100%;
-  padding: 40px 16px;
+const Wrapper = styled(Flex)`
+  min-height: calc(100vh - 54px);
+  width: ${GlobalSize.width};
+  margin: 0px -16px;
+  padding: 0px 16px;
+  direction: column;
+  justify-content: flex-start;
+  gap: '40px';
+  align-items: flex-start;
+  background-color: ${color.mono50};
+
+  ${media.mobile} {
+    width: 100vw;
+  }
 `;
 
-const Box = styled.div`
-  display: flex;
-  flex-direction: column;
-  background-color: ${theme.palette.white};
-  align-items: center;
-  gap: 24px;
-  padding: 80px 24px;
-  border: 1px solid ${theme.palette.gray2};
-  border-radius: 8px;
+const Container = styled(Flex)`
+  position: relative;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: calc(100vh - 54px);
 `;
 
 const TextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const ButtonContainer = styled.div`
+  position: absolute;
+  bottom: 1.75rem;
+  padding: 0px 0.75rem;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

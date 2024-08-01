@@ -5,7 +5,8 @@ import { JoinButton } from '@/components/layout/JoinButton';
 import GlobalSize from '@/constants/globalSize';
 import useLandingStatus from '@/hooks/zustand/useLandingStatus';
 import RoutePath from '@/routes/routePath';
-import { media, theme } from '@/styles';
+import { color } from 'wowds-tokens';
+import { media } from '@/styles';
 import { getAuthRedirectPath } from '@/utils/auth';
 import styled from '@emotion/styled';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -23,7 +24,7 @@ export default function Header() {
     <Container>
       <HeaderContainter>
         <LogoContainer onClick={() => navigation(RoutePath.Home)}>
-          <Flex direction="row" align="center" justify="flex-start" gap={6}>
+          <Flex direction="row" align="center" justify="flex-start" gap="xs">
             <Logo />
             <HeaderLogo />
           </Flex>
@@ -44,8 +45,8 @@ const Container = styled(Flex)`
   width: 100%;
   height: ${GlobalSize.header};
   gap: 16px;
-  background-color: ${theme.palette.white};
-  border-bottom: 1px solid ${theme.palette.gray2};
+  background-color: ${color.white};
+  border-bottom: 1px solid ${color.mono400};
   position: fixed;
   top: 0;
   z-index: 99;

@@ -6,7 +6,8 @@ import {
 } from '@/assets/Onboarding';
 import { Flex, Space, Text } from '@/components/common/Wrapper';
 import { InformationBox } from '@/components/onboarding/InformationBox';
-import { media, theme } from '@/styles';
+import { color, typography } from 'wowds-tokens';
+import { media } from '@/styles';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import GlobalSize from '@/constants/globalSize';
@@ -55,7 +56,7 @@ function App() {
       </BlueSection>
       <Space height={40} />
       <Introduction direction="column">
-        <Text typo="heading3" color="blue100">
+        <Text typo="h1" color="primary">
           GDSC?
         </Text>
         <Space height={8} />
@@ -76,13 +77,13 @@ function App() {
         </Text>
       </Introduction>
       <Space height={80} />
-      <Text typo="heading3" color="black">
+      <Text typo="h1" color="textBlack">
         GDSC Hongik
       </Text>
       <Space height={24} />
       <Img src={IMG_SRC[0]} height={200} />
       <Space height={16} />
-      <Flex gap={16}>
+      <Flex gap="md">
         <Img src={IMG_SRC[1]} width={'auto'} height={120} />
         <Img src={IMG_SRC[2]} width={'auto'} height={120} />
       </Flex>
@@ -103,7 +104,7 @@ function App() {
         있는 네트워킹 플랫폼을 제공하고 있습니다.
       </Text>
       <Space height={80} />
-      <Text typo="heading3" color="black">
+      <Text typo="h1" color="black">
         지금 바로 함께해요
       </Text>
       <Space height={24} />
@@ -119,7 +120,7 @@ function App() {
         것입니다.
       </Text>
       <Space height={24} />
-      <Flex direction="column" gap={16}>
+      <Flex direction="column" gap="md">
         <Img src={IMG_SRC[4]} width={'auto'} height={184} />
         <Img src={IMG_SRC[5]} width={'auto'} height={184} />
         <Img src={IMG_SRC[6]} width={'auto'} height={184} />
@@ -138,7 +139,7 @@ function App() {
         있습니다.
       </Text>
       <Space height={48} />
-      <Flex direction="column" gap={12}>
+      <Flex direction="column" gap="sm">
         <InformationBox
           title="모집 기간"
           description="1차 지원 기간: 2월 27일 ~ 3월 1일"
@@ -171,11 +172,11 @@ function App() {
         <Space height={40} />
       </BlueSection>
       <Space height={48} />
-      <Text typo="heading3" color="black">
+      <Text typo="h1" color="black">
         자주 묻는 질문
       </Text>
       <Space height={24} />
-      <Flex direction="column" gap={12}>
+      <Flex direction="column" gap="sm">
         <InformationBox
           title="Q. 서류, 면접 전형이 있나요?"
           description="A. 없습니다! 홍익대학교 학생이라면 누구나 본 사이트의 '가입하기' 를 통해 지원할 수 있어요."
@@ -192,8 +193,6 @@ function App() {
         />
       </Flex>
       <Space height={59} />
-      <img src={IMG_SRC[7]} height={40} />
-      <Space height={26} />
     </Wrapper>
   );
 }
@@ -216,7 +215,7 @@ const Wrapper = styled(Flex)`
 const BlueSection = styled(Flex)`
   height: calc(100vh - ${GlobalSize.header});
   width: ${GlobalSize.width};
-  background-color: ${theme.palette.blue100};
+  background-color: ${color.primary};
 
   box-sizing: border-box;
 
@@ -246,14 +245,14 @@ const ApplyButton = styled.button`
   width: calc(100% - 32px);
   border-radius: 100px;
 
-  background-color: ${theme.palette.white};
-  color: ${theme.palette.blue100};
-  ${theme.typo.heading4};
+  background-color: ${color.white};
+  color: ${color.primary};
+  ${typography.h2};
 
   flex-shrink: 0;
 
   :disabled {
-    background-color: ${theme.palette.gray2};
-    color: ${theme.palette.gray1};
+    background-color: ${color.mono400};
+    color: ${color.mono100};
   }
 `;
