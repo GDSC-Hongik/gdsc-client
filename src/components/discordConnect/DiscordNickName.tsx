@@ -2,16 +2,16 @@ import { Flex, Space, Text } from '@/components/common/Wrapper';
 import Button from 'wowds-ui/Button';
 import DiscordImage from '/discord/discord-nickname.png';
 import TextField from 'wowds-ui/TextField';
-import { useState, useCallback, memo, useEffect } from 'react';
+import { useCallback, memo, useEffect } from 'react';
 import { Control, useController, useFormContext } from 'react-hook-form';
 import { DiscordFormValues } from '@/types/discord';
 import { Image } from '../common/Image';
 import { usePostDiscordNickname } from '@/hooks/mutation/usePostDiscordNickname';
+import Divider from 'wowds-ui/Divider';
 
 export const DiscordNickName = ({ onNext }: { onNext: () => void }) => {
   const { getValues, control, setError, clearErrors, trigger } =
     useFormContext<DiscordFormValues>();
-  const [count, setCount] = useState(1);
   const { checkDuplicate, data, isSuccess } = usePostDiscordNickname(
     getValues('discordNickname')
   );
@@ -40,7 +40,6 @@ export const DiscordNickName = ({ onNext }: { onNext: () => void }) => {
         message: '하단 규정에 맞춰 작성해주세요.'
       });
     }
-    setCount((prev) => prev + 1);
   }, [checkDuplicate, setError, trigger]);
 
   return (
@@ -50,7 +49,7 @@ export const DiscordNickName = ({ onNext }: { onNext: () => void }) => {
       </Flex>
       <Space height="lg" />
       <div style={{ width: '100%' }}>
-        <NameField control={control} key={count} />
+        <NameField control={control} />
       </div>
       <Space height={146} />
       <Flex direction="column">
@@ -76,6 +75,7 @@ const TextSection = memo(() => (
       가입이 완료되면 가입 신청서에 제출하신 별명으로 자동으로 수정될 거예요.
       추후 별명을 수정하고 싶다면 카카오톡 채널로 코어멤버에게 연락 주세요.
     </Text>
+    <Divider />
   </>
 ));
 
@@ -111,9 +111,6 @@ const NameField = ({ control }: { control: Control<DiscordFormValues> }) => {
       }
       label="디스코드 별명"
       placeholder="내용을 입력해주세요"
-      style={{
-        borderStyle: 'solid'
-      }}
       error={!!fieldState.error}
     />
   );

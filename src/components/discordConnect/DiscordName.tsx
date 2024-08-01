@@ -5,15 +5,15 @@ import TextField from 'wowds-ui/TextField';
 import TextButton from 'wowds-ui/TextButton';
 import RoutePath from '@/routes/routePath';
 import { useFormContext, useController, Control } from 'react-hook-form';
-import { useState, useCallback, memo, useEffect } from 'react';
+import { useCallback, memo, useEffect } from 'react';
 import { Image } from '../common/Image';
 import { DiscordFormValues } from '@/types/discord';
 import { usePostDiscordName } from '@/hooks/mutation/usePostDiscordName';
+import Divider from 'wowds-ui/Divider';
 
 export const DiscordName = ({ onNext }: { onNext: () => void }) => {
   const { getValues, control, trigger, setError } =
     useFormContext<DiscordFormValues>();
-  const [count, setCount] = useState(1);
 
   const { checkDuplicate, data, isSuccess } = usePostDiscordName(
     getValues('discordUsername')
@@ -43,7 +43,6 @@ export const DiscordName = ({ onNext }: { onNext: () => void }) => {
         message: '하단 규정에 맞춰 작성해주세요.'
       });
     }
-    setCount((prev) => prev + 1);
   }, [checkDuplicate, setError, trigger]);
 
   return (
@@ -53,7 +52,7 @@ export const DiscordName = ({ onNext }: { onNext: () => void }) => {
       </Flex>
       <Space height="lg" />
       <div style={{ width: '100%' }}>
-        <NameField control={control} key={count} />
+        <NameField control={control} />
       </div>
       <Space height={75} />
       <Flex direction="column">
@@ -92,6 +91,7 @@ const TextSection = memo(() => {
       <Text typo="body1">
         본인의 디스코드 사용자명을 아래 규정과 맞게 설정한 후 입력해주세요.
       </Text>
+      <Divider />
     </>
   );
 });
@@ -137,9 +137,6 @@ const NameField = ({ control }: { control: Control<DiscordFormValues> }) => {
       }
       label="디스코드 사용자명"
       placeholder="내용을 입력해주세요"
-      style={{
-        borderStyle: 'solid'
-      }}
       error={!!fieldState.error}
     />
   );

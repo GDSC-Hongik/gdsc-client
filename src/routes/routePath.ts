@@ -34,6 +34,7 @@ const RoutePath = {
 
   InstagramLink: 'https://www.instagram.com/gdsc.hongik/',
   DiscordRegisterLink: 'https://discord.com/register',
+  DiscordCodeLink: 'https://discord.gg/BrEjs3NW',
 
   PaymentsCheckout: '/payments/checkout',
   PaymentsSuccess: '/payments/success',

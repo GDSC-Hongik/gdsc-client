@@ -9,11 +9,12 @@ import { DiscordLinkRequest } from '@/apis/discord/discordType';
 import { DiscordFormValues } from '@/types/discord';
 import { useEffect, useState } from 'react';
 import { usePostDiscordLink } from '@/hooks/mutation/usePostDiscordLink';
+import Divider from 'wowds-ui/Divider';
+import RoutePath from '@/routes/routePath';
 
 export const ServerConnect = ({ onNext }: { onNext: () => void }) => {
   const { getValues, control } = useFormContext<DiscordFormValues>();
   const [error, setError] = useState(false);
-  const [count, setCount] = useState(1);
   const { postDiscordLink, isSuccess, isError } = usePostDiscordLink();
 
   useEffect(() => {
@@ -32,7 +33,6 @@ export const ServerConnect = ({ onNext }: { onNext: () => void }) => {
     } as DiscordLinkRequest;
 
     postDiscordLink({ ...data });
-    setCount((prev) => prev + 1);
   };
 
   const { field } = useController({
@@ -65,10 +65,14 @@ export const ServerConnect = ({ onNext }: { onNext: () => void }) => {
             height={157}
           />
           <Space height="lg" />
+          <Divider />
           <Space height="lg" />
           <TextButton
             text="번호 발급받기↗︎"
             style={{ color: color.discord }}
+            as="a"
+            href={RoutePath.DiscordCodeLink}
+            target="_blank"
           />
         </Flex>
         <TextField
@@ -76,10 +80,9 @@ export const ServerConnect = ({ onNext }: { onNext: () => void }) => {
           label="인증번호"
           placeholder="내용을 입력해주세요"
           style={{
-            borderStyle: 'solid'
+            width: '100%'
           }}
           error={error}
-          key={count}
           {...(error && {
             helperText: (
               <li>번호가 올바르지 않아요. 다시 발급받아 진행해주세요.</li>
@@ -87,6 +90,7 @@ export const ServerConnect = ({ onNext }: { onNext: () => void }) => {
           })}
         />
       </Flex>
+      <Space height={200} />
       <Flex direction="column">
         <Button
           onClick={() => {
