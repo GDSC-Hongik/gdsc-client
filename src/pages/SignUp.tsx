@@ -232,9 +232,10 @@ export const SignUp = () => {
           css={css`
             margin-top: 16px;
             @media (max-height: 750px) {
+              bottom: 0rem;
             }
             position: absolute;
-            bottom: 0rem;
+            bottom: 1.75rem;
             width: 100%;
             padding: 0px 0.75rem;
             left: 0;
