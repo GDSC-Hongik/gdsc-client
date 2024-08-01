@@ -90,6 +90,7 @@ export const StudentVerification = () => {
           * 메일 전송이 최대 30분 가량 늦어질 수 있어요.
           <br />* 메일 전송이 되지 않을 경우 카카오톡 채널을 통해 코어 멤버에게
           문의해 주세요.
+          <br />* 인증메일이 스팸메일함에 전송될 수 있으니 확인해주세요.
         </Text>
         <ButtonContainer>
           <Button disabled={!isValid} style={{ maxWidth: '100%' }}>
