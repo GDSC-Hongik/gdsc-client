@@ -231,8 +231,10 @@ export const SignUp = () => {
           align="center"
           css={css`
             margin-top: 16px;
+            @media (max-height: 750px) {
+            }
             position: absolute;
-            bottom: 1.75rem;
+            bottom: 0rem;
             width: 100%;
             padding: 0px 0.75rem;
             left: 0;
@@ -316,6 +318,9 @@ export const SignUp = () => {
 const Container = styled(Flex)`
   position: relative;
   flex-direction: column;
+  @media (max-height: 700px) {
+    min-height: 100vh;
+  }
   min-height: calc(100vh - 54px);
   justify-content: flex-start;
   background-color: ${color.mono50};
