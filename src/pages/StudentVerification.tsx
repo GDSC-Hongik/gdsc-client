@@ -17,7 +17,7 @@ export const StudentVerification = () => {
   //TODO: 추후 pending 상태 백엔드 API 수정하면 반영해둘것.
   const [, setPending] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
-  const { onSubmit, control, isValid, onVerifyStudent, loading } =
+  const { onSubmit, control, isValid, onVerifyStudent, isPending } =
     useStudentVerification();
 
   const IsStudentVerified = async () => {
@@ -39,7 +39,7 @@ export const StudentVerification = () => {
     onSubmit();
   };
 
-  if (loading) {
+  if (isPending) {
     return <div>로딩중입니다...</div>;
   }
 
@@ -96,6 +96,7 @@ export const StudentVerification = () => {
             인증메일 받기
           </Button>
           <StudentGuideLink
+            color={color.sub}
             to={RoutePath.StudentEmailLinkGuideLink}
             target="_blank">
             학교 이메일이 무엇인가요?
@@ -130,7 +131,7 @@ const StudentGuideLink = styled(Link)`
     color: ${color.sub};
   }
   &:visited {
-    color: ${color.textBlack};
+    color: ${color.sub};
   }
   ${typography.label2};
 `;
