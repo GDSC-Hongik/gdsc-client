@@ -27,7 +27,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <QueryClientProvider client={queryClient}>
         <BottomSheetProvider>
           <Global styles={GlobalStyle} />
-          <Chatbot />
           <Routers />
           <ReactQueryDevtools />
         </BottomSheetProvider>
