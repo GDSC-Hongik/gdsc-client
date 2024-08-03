@@ -17,7 +17,7 @@ export const StudentVerification = () => {
   //TODO: 추후 pending 상태 백엔드 API 수정하면 반영해둘것.
   const [, setPending] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
-  const { onSubmit, control, isValid, onVerifyStudent, loading } =
+  const { onSubmit, control, isValid, onVerifyStudent, isPending } =
     useStudentVerification();
 
   const IsStudentVerified = async () => {
@@ -39,7 +39,7 @@ export const StudentVerification = () => {
     onSubmit();
   };
 
-  if (loading) {
+  if (isPending) {
     return <div>로딩중입니다...</div>;
   }
 
@@ -90,12 +90,14 @@ export const StudentVerification = () => {
           * 메일 전송이 최대 30분 가량 늦어질 수 있어요.
           <br />* 메일 전송이 되지 않을 경우 카카오톡 채널을 통해 코어 멤버에게
           문의해 주세요.
+          <br />* 인증메일이 스팸메일함에 전송될 수 있으니 확인해주세요.
         </Text>
         <ButtonContainer>
           <Button disabled={!isValid} style={{ maxWidth: '100%' }}>
             인증메일 받기
           </Button>
           <StudentGuideLink
+            color={color.sub}
             to={RoutePath.StudentEmailLinkGuideLink}
             target="_blank">
             학교 이메일이 무엇인가요?
@@ -130,7 +132,7 @@ const StudentGuideLink = styled(Link)`
     color: ${color.sub};
   }
   &:visited {
-    color: ${color.textBlack};
+    color: ${color.sub};
   }
   ${typography.label2};
 `;
