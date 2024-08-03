@@ -25,7 +25,9 @@ Sentry.init({
   tracesSampleRate: 1.0,
   tracePropagationTargets: [
     /^https:\/\/onboarding.gdschongik.com\/?.*$/,
-    /^https:\/\/api\.gdschongik\.com\/?.*$/
+    /^https:\/\/api\.gdschongik\.com\/?.*$/,
+    /^https:\/\/dev-onboarding.gdschongik.com\/?.*$/,
+    /^https:\/\/dev-api\.gdschongik\.com\/?.*$/
   ],
   replaysSessionSampleRate: 0.1,
   replaysOnErrorSampleRate: 1.0

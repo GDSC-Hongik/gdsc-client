@@ -1,5 +1,5 @@
 import App from '@/App';
-
+import * as Sentry from '@sentry/react';
 import RoutePath from '@/routes/routePath';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
@@ -32,12 +32,15 @@ import { DicordConnect } from '@/pages/DiscordConnect';
 import { DiscordGuide } from '@/pages/DiscordGuide';
 import { Suspense } from 'react';
 
+const sentryCreateBrowserRouter =
+  Sentry.wrapCreateBrowserRouter(createBrowserRouter);
+
 export const Routers = () => {
   return <RouterProvider router={router} />;
 };
 
 // TODO: error page, meta tag
-const router = createBrowserRouter([
+const router = sentryCreateBrowserRouter([
   {
     path: RoutePath.Index,
     element: <Layout />,
