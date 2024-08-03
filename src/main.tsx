@@ -10,7 +10,6 @@ import { GlobalStyle } from '@/styles';
 import { Global } from '@emotion/react';
 import { ToastContainer } from 'react-toastify';
 import './styles/styles.scss';
-import Chatbot from '@/components/chatbot/Chatbot';
 
 const queryClient = new QueryClient({
   defaultOptions: {

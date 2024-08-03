@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from '@emotion/styled';
 import { useGetDepartmentList } from '@/hooks/query';
 import { Control, Controller } from 'react-hook-form';
 import DropDown from 'wowds-ui/DropDown';
@@ -32,28 +33,35 @@ const DepartmentSelect = ({ control }: DepartmentSelectProps) => {
         }
       }}
       render={({ field }) => (
-        <DropDown
-          {...field}
-          label="학과"
-          placeholder="선택하세요"
-          onChange={({ selectedValue }) => {
-            field.onChange(selectedValue);
-          }}>
-          <React.Fragment key={`${field}-option`}>
-            {departmentList.map((department, index) => {
-              return (
-                <DropDownOption
-                  key={`${index}-dropdownOption`}
-                  text={department.name}
-                  value={department.code}
-                />
-              );
-            })}
-          </React.Fragment>
-        </DropDown>
+        <InputFormWrapper>
+          <DropDown
+            {...field}
+            label="학과"
+            placeholder="선택하세요"
+            onChange={({ selectedValue }) => {
+              field.onChange(selectedValue);
+            }}>
+            <React.Fragment key={`${field}-option`}>
+              {departmentList.map((department, index) => {
+                return (
+                  <DropDownOption
+                    key={`${index}-dropdownOption`}
+                    text={department.name}
+                    value={department.code}
+                  />
+                );
+              })}
+            </React.Fragment>
+          </DropDown>
+        </InputFormWrapper>
       )}
     />
   );
 };
 
 export default DepartmentSelect;
+
+const InputFormWrapper = styled.div`
+  height: 84.8px;
+  width: 100%;
+`;
