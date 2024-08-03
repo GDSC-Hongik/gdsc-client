@@ -75,7 +75,7 @@ export const SignUp = () => {
         style={{
           display: 'flex',
           flexDirection: 'column',
-          gap: '24px',
+          gap: '10px',
           width: '100%'
         }}>
         <Controller
@@ -93,16 +93,18 @@ export const SignUp = () => {
             }
           }}
           render={({ field, fieldState }) => (
-            <TextField
-              label="이름"
-              error={fieldState.invalid}
-              ref={field.ref}
-              value={field.value}
-              onChange={field.onChange}
-              onBlur={field.onBlur}
-              helperText={fieldState.error?.message}
-              placeholder="내용을 입력하세요"
-            />
+            <InputFormWrapper>
+              <TextField
+                label="이름"
+                error={fieldState.invalid}
+                ref={field.ref}
+                value={field.value}
+                onChange={field.onChange}
+                onBlur={field.onBlur}
+                helperText={fieldState.error?.message}
+                placeholder="내용을 입력하세요"
+              />
+            </InputFormWrapper>
           )}
         />
         <Controller
@@ -121,16 +123,18 @@ export const SignUp = () => {
           }}
           render={({ field, fieldState }) => {
             return (
-              <TextField
-                label="학번"
-                error={fieldState.invalid}
-                ref={field.ref}
-                value={field.value}
-                onChange={field.onChange}
-                onBlur={field.onBlur}
-                helperText={fieldState.error?.message}
-                placeholder="내용을 입력하세요"
-              />
+              <InputFormWrapper>
+                <TextField
+                  label="학번"
+                  error={fieldState.invalid}
+                  ref={field.ref}
+                  value={field.value}
+                  onChange={field.onChange}
+                  onBlur={field.onBlur}
+                  helperText={fieldState.error?.message}
+                  placeholder="내용을 입력하세요"
+                />
+              </InputFormWrapper>
             );
           }}
         />
@@ -153,16 +157,18 @@ export const SignUp = () => {
             }
           }}
           render={({ field, fieldState }) => (
-            <TextField
-              label="전화번호"
-              error={fieldState.invalid}
-              ref={field.ref}
-              onChange={field.onChange}
-              onBlur={field.onBlur}
-              value={formatPhoneNumberInProgress(field.value)}
-              helperText={fieldState.error?.message}
-              placeholder="내용을 입력하세요"
-            />
+            <InputFormWrapper>
+              <TextField
+                label="전화번호"
+                error={fieldState.invalid}
+                ref={field.ref}
+                onChange={field.onChange}
+                onBlur={field.onBlur}
+                value={formatPhoneNumberInProgress(field.value)}
+                helperText={fieldState.error?.message}
+                placeholder="내용을 입력하세요"
+              />
+            </InputFormWrapper>
           )}
         />
         <Suspense fallback={<LoadingForm label="학과" />}>
@@ -205,22 +211,36 @@ export const SignUp = () => {
               }
             }}
             render={({ field }) => (
-              <DropDown
-                placeholder="선택하세요"
-                onChange={({ selectedValue }) => {
-                  field.onChange(selectedValue);
-                }}
-                defaultValue=""
-                value={field.value}
-                style={{ marginTop: '15px', flex: 1, width: '10rem' }}>
-                <DropDownOption text="@gmail.com" value="@gmail.com" />
-                <DropDownOption text="@naver.com" value="@naver.com" />
-                <DropDownOption
-                  text="@g.hongik.ac.kr"
-                  value="@g.hongik.ac.kr"
-                />
-                <DropDownOption text="@daum.net" value="@daum.net" />
-              </DropDown>
+              <TextFieldWrapper>
+                <DropDown
+                  placeholder="선택하세요"
+                  {...field}
+                  onChange={({ selectedValue }) => {
+                    field.onChange(selectedValue);
+                  }}
+                  style={{ marginTop: '22px', flex: 1, width: '100%' }}>
+                  <DropDownOption
+                    key="gmail"
+                    text="@gmail.com"
+                    value="@gmail.com"
+                  />
+                  <DropDownOption
+                    key="naver"
+                    text="@naver.com"
+                    value="@naver.com"
+                  />
+                  <DropDownOption
+                    key="hongik"
+                    text="@g.hongik.ac.kr"
+                    value="@g.hongik.ac.kr"
+                  />
+                  <DropDownOption
+                    key="daum"
+                    text="@daum.net"
+                    value="@daum.net"
+                  />
+                </DropDown>
+              </TextFieldWrapper>
             )}
           />
         </EmailFieldWrapper>
@@ -231,6 +251,9 @@ export const SignUp = () => {
           align="center"
           css={css`
             margin-top: 16px;
+            @media (max-height: 750px) {
+              bottom: 0rem;
+            }
             position: absolute;
             bottom: 1.75rem;
             width: 100%;
@@ -316,6 +339,9 @@ export const SignUp = () => {
 const Container = styled(Flex)`
   position: relative;
   flex-direction: column;
+  @media (max-height: 765px) {
+    min-height: 105vh;
+  }
   min-height: calc(100vh - 54px);
   justify-content: flex-start;
   background-color: ${color.mono50};
@@ -346,8 +372,14 @@ const GuideLink = styled(Link)<{ color?: colorKey }>`
   }
 `;
 
+const InputFormWrapper = styled.div`
+  height: 84.8px;
+  width: 100%;
+`;
+
 const TextFieldWrapper = styled.div`
   flex: 1;
+  height: 84.8px;
   width: 50%;
 `;
 
