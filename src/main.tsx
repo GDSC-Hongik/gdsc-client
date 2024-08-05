@@ -1,4 +1,4 @@
-import '@utils/sentry';
+import sentry from '@utils/sentry';
 import * as Sentry from '@sentry/react';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -10,6 +10,12 @@ import { GlobalStyle } from '@/styles';
 import { Global } from '@emotion/react';
 import { ToastContainer } from 'react-toastify';
 import './styles/styles.scss';
+
+try {
+  sentry.initSentry();
+} catch (error: unknown) {
+  console.log('Sentry init failed');
+}
 
 const queryClient = new QueryClient({
   defaultOptions: {
