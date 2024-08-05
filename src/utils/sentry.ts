@@ -8,8 +8,6 @@ import {
 } from 'react-router-dom';
 import { SENTRY_DSN_KEY } from '@/constants/environment';
 
-process.env.NODE_ENV === 'development';
-
 const setSentry = () => {
   function initSentry() {
     if (process.env.NODE_ENV !== 'production') return;
