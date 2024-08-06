@@ -10,6 +10,7 @@ import { Controller } from 'react-hook-form';
 import { useEffect, useState } from 'react';
 import { media } from '@/styles';
 import GlobalSize from '@/constants/globalSize';
+import LoadingSpinner from '@/components/common/LoadingSpinner';
 
 /** 재학생 인증 페이지 */
 export const StudentVerification = () => {
@@ -39,12 +40,9 @@ export const StudentVerification = () => {
     onSubmit();
   };
 
-  if (isPending) {
-    return <div>로딩중입니다...</div>;
-  }
-
   return (
     <Wrapper direction="column" justify="flex-start" gap="lg">
+      {isPending && <LoadingSpinner />}
       <TextContainer>
         <Text typo="h1" style={{ marginBottom: '12px' }}>
           재학생 인증하기

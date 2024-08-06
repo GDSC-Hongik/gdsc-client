@@ -12,6 +12,7 @@ import memberApi from '@/apis/member/memberApi';
 import GlobalSize from '@/constants/globalSize';
 import JoinStatus from '@/components/myPage/JoinStatus';
 import useBottomSheet from '@/hooks/common/useBottomSheet';
+import LoadingSpinner from '@/components/common/LoadingSpinner';
 
 export const Dashboard = () => {
   const { isOpen } = useBottomSheet();
@@ -20,9 +21,12 @@ export const Dashboard = () => {
     queryFn: memberApi.GET_DASHBOARD
   });
 
-  //TODO: 추후 로딩 스피너 삽입할 것
   if (!data) {
-    return <div> 로딩중 ...</div>;
+    return (
+      <Wrapper direction="column" justify="flex-start">
+        <LoadingSpinner />
+      </Wrapper>
+    );
   }
 
   const { member, currentRecruitmentRound, currentMembership } = data;
