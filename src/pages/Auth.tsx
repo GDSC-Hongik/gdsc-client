@@ -1,6 +1,5 @@
 import { GitHubButton } from '@/components/auth/GitHubButton';
 import { Text } from '@/components/common/Wrapper';
-import useLandingStatus from '@/hooks/zustand/useLandingStatus';
 import RoutePath from '@/routes/routePath';
 import { color, space } from 'wowds-tokens';
 import { media } from '@/styles';
@@ -13,15 +12,11 @@ import { Link } from 'react-router-dom';
 
 /** 깃허브 로그인 및 가입하기 */
 export const Auth = () => {
-  const { clearLandingStatus } = useLandingStatus();
-
   useEffect(() => {
-    clearLandingStatus();
     // 로그인을 위한 oauth-base-uri 쿠키 값 세팅
-
     setCookie({
       key: 'oauth-base-uri',
-      value: window.location.origin,
+      value: '.gdschongik.com',
       encoding: false
     });
   }, []);
