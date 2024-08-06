@@ -12,7 +12,7 @@ export type User = {
   };
 };
 
-export type UserRoleType = 'GUEST' | 'ASSOCIATE' | 'REGULAR' | 'ADMIN';
+export type UserRoleType = 'GUEST' | 'ASSOCIATE' | 'REGULAR';
 
 export type AssociateRequirement = {
   univStatus: Status;

@@ -7,7 +7,7 @@ import {
 } from '@/utils/mypage/recruitmentNameFormat';
 import useBottomSheet from '@/hooks/common/useBottomSheet';
 
-type MemberRole = 'GUEST' | 'ASSOCIATE' | 'REGULAR' | 'ADMIN';
+type MemberRole = 'GUEST' | 'ASSOCIATE' | 'REGULAR';
 type BoxVariantType = 'arrow' | 'checkbox' | 'text' | 'warn';
 type BoxStatusType = 'default' | 'success' | 'error';
 
@@ -44,29 +44,34 @@ export const ApproveBox = ({
       title: '모든 가입 절차를 완료했어요.',
       boxVariant: 'text',
       status: 'success'
-    },
-    //TODO: 어드민 가입 상태 논의하기
-    ADMIN: {
-      title: '모든 가입 절차를 완료했어요.',
-      boxVariant: 'text',
-      status: 'success'
     }
   };
   return (
-    <BoxWrapper
-      onClick={() => {
-        if (role === 'ASSOCIATE') handleBottomSheet();
-        else {
-          return;
-        }
-      }}>
-      <Box
-        variant={boxContent[role].boxVariant}
-        text={boxContent[role].title}
-        subText={boxContent[role].description}
-        status={boxContent[role].status}
-      />
-    </BoxWrapper>
+    <>
+      {currentRecruitment.period.open ? (
+        <BoxWrapper
+          onClick={() => {
+            if (role === 'ASSOCIATE') handleBottomSheet();
+            else {
+              return;
+            }
+          }}>
+          <Box
+            variant={boxContent[role].boxVariant}
+            text={boxContent[role].title}
+            subText={boxContent[role].description}
+            status={boxContent[role].status}
+          />
+        </BoxWrapper>
+      ) : (
+        <Box
+          variant="warn"
+          text="학회원 모집이 마감되었어요"
+          subText="2학기 모집 소식을 받고 싶으시다면 @gdsc.hongik 을 팔로우 해주세요."
+          status="error"
+        />
+      )}
+    </>
   );
 };
 

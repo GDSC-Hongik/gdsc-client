@@ -9,7 +9,7 @@ import { CurrentRecruitmentType } from '@/apis/member/memberType';
 import MemberStatusStepper from './MemberStatusStepper';
 import { User } from '@/types/user';
 
-type MemberRole = 'GUEST' | 'ASSOCIATE' | 'REGULAR' | 'ADMIN';
+type MemberRole = 'GUEST' | 'ASSOCIATE' | 'REGULAR';
 
 const JoinStatus = ({
   role,
