@@ -10,8 +10,9 @@ import { SENTRY_DSN_KEY } from '@/constants/environment';
 
 const setSentry = () => {
   function initSentry() {
-    if (process.env.NODE_ENV !== 'production') return;
+    if (process.env.NODE_ENV === 'development') return;
 
+    console.log(`VERCEL ENV : ${process.env.VERCEL_ENV}`);
     Sentry.init({
       environment: process.env.VERCEL_ENV,
       dsn: SENTRY_DSN_KEY,
