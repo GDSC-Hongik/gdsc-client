@@ -20,7 +20,6 @@ import {
   SignUp,
   Dashboard,
   JoinDiscord,
-  UpdatedStudentVerification,
   Bevy,
   OnboardingNotOpened,
   OnboardingClosed,
@@ -73,11 +72,6 @@ const router = sentryCreateBrowserRouter([
             )
           }
         ]
-      },
-      {
-        path: RoutePath.AuthenticationProcess2_UpdatedStudentVerification,
-        element: <StudentVerificationAccessGuard />,
-        children: [{ index: true, element: <UpdatedStudentVerification /> }]
       },
       {
         path: RoutePath.AuthenticationProcess3_Signup,

@@ -7,17 +7,17 @@ import useLandingStatus from '@/hooks/zustand/useLandingStatus';
 import RoutePath from '@/routes/routePath';
 import { color } from 'wowds-tokens';
 import { media } from '@/styles';
-import { getAuthRedirectPath } from '@/utils/auth';
 import styled from '@emotion/styled';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+//TODO: 백엔드 로그인 로직 수정 이후 반영 필요
 export default function Header() {
   const navigation = useNavigate();
   const { pathname } = useLocation();
   const { landingStatus } = useLandingStatus();
 
   const handleClick = () => {
-    navigation(getAuthRedirectPath(landingStatus));
+    navigation(RoutePath.Dashboard);
   };
 
   return (

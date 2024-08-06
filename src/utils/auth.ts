@@ -1,26 +1,4 @@
-import LandingStatus from '@/constants/landingStatus';
 import useAuthToken from '@/hooks/auth/useAuthToken';
-import RoutePath from '@/routes/routePath';
-
-/**
- * 깃허브 로그인 성공 시 header에서 추출한 landing status 통해 이동할 페이지 반환
- */
-export function getAuthRedirectPath(landingStatus: string | null | undefined) {
-  switch (landingStatus) {
-    case LandingStatus.StudentAuthentication:
-      return RoutePath.AuthenticationProcess2_StudentVerification;
-    case LandingStatus.Signup:
-      return RoutePath.AuthenticationProcess3_Signup;
-    case LandingStatus.Dashboard:
-      return RoutePath.Dashboard;
-    case LandingStatus.OnboardingNotOpened:
-      return RoutePath.OnboardingNotOpened;
-    case LandingStatus.OnboardingClosed:
-      return RoutePath.OnboardingClosed;
-    default:
-      return RoutePath.AuthenticationProcess1_GithubSignin;
-  }
-}
 
 /**
  * 쿠키 이름을 기반으로 쿠키 값을 가져옴

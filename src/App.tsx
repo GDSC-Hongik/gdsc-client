@@ -4,6 +4,8 @@ import {
   OnboardingLogo1,
   OnboardingLogo2
 } from '@/assets/Onboarding';
+import { useQuery } from '@tanstack/react-query';
+import memberApi from './apis/member/memberApi';
 import { Flex, Space, Text } from '@/components/common/Wrapper';
 import { InformationBox } from '@/components/onboarding/InformationBox';
 import { color, typography } from 'wowds-tokens';
@@ -12,9 +14,8 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import GlobalSize from '@/constants/globalSize';
 import { useNavigate } from 'react-router-dom';
-import { getAuthRedirectPath } from '@/utils/auth';
 import 'react-toastify/dist/ReactToastify.css';
-import useLandingStatus from '@/hooks/zustand/useLandingStatus';
+import RoutePath from './routes/routePath';
 
 const IMG_SRC = [
   '/onboarding/1.png',
@@ -29,7 +30,16 @@ const IMG_SRC = [
 
 function App() {
   const navigate = useNavigate();
-  const { landingStatus } = useLandingStatus();
+  const { data } = useQuery({
+    queryKey: ['member'],
+    queryFn: memberApi.GET_DASHBOARD
+  });
+
+  if (!data) {
+    return <div>로딩중...</div>;
+  }
+
+  const { currentRecruitmentRound } = data;
 
   return (
     <Wrapper direction="column">
@@ -163,11 +173,11 @@ function App() {
         <OnboardingLogo2 />
         <Space height={25} />
         <ApplyButton
-          disabled={landingStatus === 'ONBOARDING_CLOSED'}
-          onClick={() => navigate(getAuthRedirectPath(landingStatus))}>
-          {landingStatus === 'ONBOARDING_CLOSED'
-            ? '지금은 지원 기간이 아니에요'
-            : '가입하기'}
+          disabled={!currentRecruitmentRound.period.open}
+          onClick={() => navigate(RoutePath.Dashboard)}>
+          {currentRecruitmentRound.period.open
+            ? '가입하기'
+            : '지금은 지원 기간이 아니에요'}
         </ApplyButton>
         <Space height={40} />
       </BlueSection>

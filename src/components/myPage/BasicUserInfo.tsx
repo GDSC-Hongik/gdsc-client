@@ -1,6 +1,5 @@
 import { Flex, Text } from '@/components/common/Wrapper';
 import { User } from '@/types/user';
-import useLandingStatus from '@/hooks/zustand/useLandingStatus';
 import { logout } from '@/utils/auth';
 import { typography, color } from 'wowds-tokens';
 
@@ -8,10 +7,8 @@ import { useNavigate } from 'react-router-dom';
 
 const BasicUserInfo = ({ member }: { member: User }) => {
   const navigate = useNavigate();
-  const { clearLandingStatus } = useLandingStatus();
 
   const handleLogoutClick = () => {
-    clearLandingStatus();
     logout();
 
     navigate('/');

@@ -15,8 +15,6 @@ const RoutePath = {
 
   AuthenticationProcess1_GithubSignin: '/auth',
   AuthenticationProcess2_StudentVerification: '/student-verification',
-  AuthenticationProcess2_UpdatedStudentVerification:
-    '/updated-student-verification',
   AuthenticationProcess3_Signup: '/signup',
 
   AuthGithubLoginRedirect: `${BASE_URL}/oauth2/authorization/github`,
