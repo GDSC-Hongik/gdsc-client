@@ -13,7 +13,10 @@ const PaymentAccessGuard = () => {
   if (!data) {
     return <div>로딩중..</div>;
   }
-  if (data.member.role !== 'ASSOCIATE') {
+  if (
+    data.member.role !== 'ASSOCIATE' ||
+    !data.currentRecruitmentRound.period.open
+  ) {
     navigate(RoutePath.Dashboard);
   }
 };
