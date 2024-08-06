@@ -31,6 +31,7 @@ import {
 import { DicordConnect } from '@/pages/DiscordConnect';
 import { DiscordGuide } from '@/pages/DiscordGuide';
 import { Suspense } from 'react';
+import PaymentAccessGuard from '@/components/auth/guard/PaymentAccessGuard';
 
 const sentryCreateBrowserRouter =
   Sentry.wrapCreateBrowserRouter(createBrowserRouter);
@@ -122,11 +123,12 @@ const router = sentryCreateBrowserRouter([
       },
       {
         path: RoutePath.PaymentsCheckout,
-        element: <PaymentsCheckout />
+        element: <PaymentAccessGuard />,
+        children: [{ index: true, element: <PaymentsCheckout /> }]
       },
       {
         path: RoutePath.PaymentsFail,
-        element: <PaymentsFail />
+        children: [{ index: true, element: <PaymentsFail /> }]
       },
       {
         path: RoutePath.PaymentsSuccess,
