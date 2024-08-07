@@ -8,13 +8,17 @@ import { color } from 'wowds-tokens';
 import { media } from '@/styles';
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
+import { isAuthenticated } from '@/utils/auth';
 
 //TODO: 백엔드 로그인 로직 수정 이후 반영 필요
 export default function Header() {
   const navigation = useNavigate();
 
   const handleClick = () => {
-    navigation(RoutePath.Dashboard);
+    if (isAuthenticated()) navigation(RoutePath.Dashboard);
+    else {
+      navigation(RoutePath.GithubSignin);
+    }
   };
 
   return (
@@ -26,9 +30,11 @@ export default function Header() {
             <HeaderLogo />
           </Flex>
         </LogoContainer>
-        <JoinButton onClick={handleClick}>내 정보</JoinButton>
-
-        <JoinButton onClick={handleClick}>로그인/가입하기</JoinButton>
+        {isAuthenticated() ? (
+          <JoinButton onClick={handleClick}>내 정보</JoinButton>
+        ) : (
+          <JoinButton onClick={handleClick}>로그인/가입하기</JoinButton>
+        )}
       </HeaderContainter>
     </Container>
   );

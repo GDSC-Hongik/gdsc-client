@@ -1,4 +1,5 @@
 import useAuthToken from '@/hooks/auth/useAuthToken';
+import { CookieKeys } from './storage/key';
 
 /**
  * 쿠키 이름을 기반으로 쿠키 값을 가져옴
@@ -7,6 +8,7 @@ import useAuthToken from '@/hooks/auth/useAuthToken';
  */
 export function getCookie(name: string): string {
   const cookieString: string = document.cookie;
+  console.log('쿠키스트링', cookieString);
   const cookies: string[] = cookieString.split(';');
 
   for (const cookie of cookies) {
@@ -20,8 +22,10 @@ export function getCookie(name: string): string {
 }
 
 export const isAuthenticated = () => {
-  const token = getCookie('accessToken');
-  return !!token;
+  const isLogin = sessionStorage.getItem('isLogin');
+
+  if (isLogin === 'true') return true;
+  else return false;
 };
 
 export function deleteCookie(name: string) {
@@ -30,7 +34,5 @@ export function deleteCookie(name: string) {
 
 //TODO: 서버에서 로그아웃 로직 생성할 예정
 export function logout() {
-  useAuthToken().clearToken();
   sessionStorage.clear();
-  location.reload();
 }

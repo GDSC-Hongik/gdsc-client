@@ -47,7 +47,6 @@ const router = sentryCreateBrowserRouter([
       },
       {
         path: RoutePath.GithubSignin,
-        element: <AuthAccessGuard />,
         children: [{ index: true, element: <Auth /> }]
       },
       {
