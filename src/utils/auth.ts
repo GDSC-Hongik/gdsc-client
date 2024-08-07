@@ -19,10 +19,16 @@ export function getCookie(name: string): string {
   return '';
 }
 
+export const isAuthenticated = () => {
+  const token = getCookie('accessToken');
+  return !!token;
+};
+
 export function deleteCookie(name: string) {
   document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 
+//TODO: 서버에서 로그아웃 로직 생성할 예정
 export function logout() {
   useAuthToken().clearToken();
   sessionStorage.clear();

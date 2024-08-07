@@ -1,6 +1,7 @@
 import { BASE_URL, DEV_AUTH_TOKEN } from '@/constants/environment';
-import useAuthToken from '@/hooks/auth/useAuthToken';
+import { getCookie } from '@/utils/auth';
 import axios from 'axios';
+import { CookieKeys } from '@/utils/storage/key';
 
 const apiClient = axios.create({
   baseURL: BASE_URL,
@@ -8,8 +9,18 @@ const apiClient = axios.create({
   withCredentials: true
 });
 
-apiClient.defaults.headers.common['Authorization'] = DEV_AUTH_TOKEN
-  ? `${DEV_AUTH_TOKEN}`
-  : `Bearer ${useAuthToken().accessToken}`;
+export function setAuthHeader() {
+  const accessToken = getCookie(CookieKeys.AccessToken);
+
+  if (DEV_AUTH_TOKEN) {
+    apiClient.defaults.headers.common['Authorization'] = DEV_AUTH_TOKEN;
+  } else {
+    apiClient.defaults.headers.common['Authorization'] = accessToken
+      ? `Bearer ${accessToken}`
+      : '';
+  }
+}
+
+setAuthHeader();
 
 export default apiClient;
