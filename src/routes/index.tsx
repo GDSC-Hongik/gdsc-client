@@ -2,6 +2,7 @@ import App from '@/App';
 import * as Sentry from '@sentry/react';
 import RoutePath from '@/routes/routePath';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import PaymentSuccessAccessGuard from '@/components/auth/guard/PaymentSuccessAccessGuard';
 import Layout from '@/components/layout/Layout';
 import {
   MypageAccessGuard,
@@ -128,11 +129,13 @@ const router = sentryCreateBrowserRouter([
       },
       {
         path: RoutePath.PaymentsFail,
+        element: <AuthAccessGuard />,
         children: [{ index: true, element: <PaymentsFail /> }]
       },
       {
         path: RoutePath.PaymentsSuccess,
-        element: <PaymentsSuccess />
+        element: <PaymentSuccessAccessGuard />,
+        children: [{ index: true, element: <PaymentsSuccess /> }]
       },
       // Todo: 404 Not found page
       { path: '*', element: <Text>not found page</Text> }
