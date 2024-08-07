@@ -2,7 +2,6 @@ import App from '@/App';
 import * as Sentry from '@sentry/react';
 import RoutePath from '@/routes/routePath';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import PaymentSuccessAccessGuard from '@/components/auth/guard/PaymentSuccessAccessGuard';
 import Layout from '@/components/layout/Layout';
 import AuthAccessGuard from '@/components/auth/guard/AuthAccessGuard';
 import { Text } from '@/components/common/Wrapper';
