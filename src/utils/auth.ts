@@ -19,41 +19,6 @@ export function getCookie(name: string): string {
   return '';
 }
 
-export function setCookie({
-  key,
-  value,
-  days = 1,
-  encoding = true
-}: {
-  key: string;
-  value: string;
-  days?: number;
-  encoding?: boolean;
-}) {
-  const expirationDate = new Date();
-  expirationDate.setDate(expirationDate.getDate() + days);
-
-  const encodedKey = encodeURIComponent(key);
-  const processedValue = encoding ? encodeURIComponent(value) : value;
-
-  const isBaseUriCookie = key === 'oauth-base-uri';
-  const domain = window.location.origin.includes('localhost')
-    ? 'localhost'
-    : '.gdschongik.com';
-  const baseUriCookieValue = '; samesite=none; secure; domain=' + domain;
-
-  const cookieValue =
-    encodedKey +
-    '=' +
-    processedValue +
-    '; expires=' +
-    expirationDate.toUTCString() +
-    '; path=/' +
-    (isBaseUriCookie ? baseUriCookieValue : '');
-
-  document.cookie = cookieValue;
-}
-
 export function deleteCookie(name: string) {
   document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
