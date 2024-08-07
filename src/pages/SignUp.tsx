@@ -188,6 +188,7 @@ export const SignUp = () => {
             render={({ field, fieldState }) => (
               <TextFieldWrapper>
                 <TextField
+                  style={{ minWidth: '100%' }}
                   label="이메일 주소"
                   error={fieldState.invalid}
                   ref={field.ref}
