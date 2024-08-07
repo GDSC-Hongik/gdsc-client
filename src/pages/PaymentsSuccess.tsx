@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { Flex, Text } from '@/components/common/Wrapper';
+import { Flex, Text, Space } from '@/components/common/Wrapper';
 import { media } from '@/styles';
 import styled from '@emotion/styled';
 
@@ -47,8 +47,8 @@ export function PaymentsSuccess() {
   }, [searchParams]);
 
   return (
-    <Wrapper direction="column" gap="lg" justify="start">
-      <Flex direction="column" justify="space-between">
+    <Wrapper direction="column" justify="space-between">
+      <Flex direction="column" gap="lg">
         <Heading typo="h1" color="black">
           회비 결제 완료
         </Heading>
@@ -57,7 +57,10 @@ export function PaymentsSuccess() {
           <Text>이제 GDSC 정회원으로 이번 학기에 활동하실 수 있어요!</Text>
         </Flex>
       </Flex>
-      <Button onClick={() => navigate(RoutePath.Dashboard)}>완료하기</Button>
+      <Flex direction="column">
+        <Button onClick={() => navigate(RoutePath.Dashboard)}>완료하기</Button>
+        <Space height={28} />
+      </Flex>
     </Wrapper>
   );
 }
