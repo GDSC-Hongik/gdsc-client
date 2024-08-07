@@ -4,11 +4,12 @@ import { useState, useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import RoutePath from '@/routes/routePath';
 import { toast } from 'react-toastify';
+import LoadingSpinner from '@/components/common/LoadingSpinner';
 
 const PaymentAccessGuard = () => {
   const [redirect, setRedirect] = useState(false);
   const navigate = useNavigate();
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ['member'],
     queryFn: memberApi.GET_DASHBOARD
   });
@@ -37,6 +38,10 @@ const PaymentAccessGuard = () => {
       navigate(RoutePath.Dashboard);
     }
   }, [redirect, navigate]);
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
 
   if (!data) return;
 
