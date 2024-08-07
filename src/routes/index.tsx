@@ -108,8 +108,7 @@ const router = sentryCreateBrowserRouter([
       },
       {
         path: RoutePath.PaymentsSuccess,
-        element: <PaymentSuccessAccessGuard />,
-        children: [{ index: true, element: <PaymentsSuccess /> }]
+        element: <PaymentsSuccess />
       },
       // Todo: 404 Not found page
       { path: '*', element: <Text>not found page</Text> }
