@@ -4,12 +4,18 @@ import { media } from '@/styles';
 import { color } from 'wowds-tokens';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-
-import { Outlet } from 'react-router-dom';
+import { useLayoutEffect } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
 import GlobalSize from '@/constants/globalSize';
 import ApiErrorBoundary from '@/components/ApiErrorBoundary';
 
 const Layout = () => {
+  const location = useLocation();
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   return (
     <ApiErrorBoundary>
       <Container>

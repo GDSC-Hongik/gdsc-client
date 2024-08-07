@@ -1,21 +1,21 @@
-import { Status } from '@/types/status';
+import { Status, UnivEmailStatus } from '@/types/status';
 
 export type User = {
   memberId: string; // C000000 (학번)
   role: UserRoleType;
   basicInfo: UserBasicInfo;
   associateRequirement: {
-    univStatus: Status;
+    univStatus: UnivEmailStatus;
     discordStatus: Status;
     bevyStatus: Status;
     infoStatus: Status;
   };
 };
 
-export type UserRoleType = 'GUEST' | 'ASSOCIATE' | 'REGULAR' | 'ADMIN';
+export type UserRoleType = 'GUEST' | 'ASSOCIATE' | 'REGULAR';
 
 export type AssociateRequirement = {
-  univStatus: Status;
+  univStatus: UnivEmailStatus;
   discordStatus: Status;
   bevyStatus: Status;
   infoStatus: Status;

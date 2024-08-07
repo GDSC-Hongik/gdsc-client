@@ -7,16 +7,14 @@ import { ApproveBox } from './ApproveBox';
 import { Text, Flex, Space } from '../common/Wrapper';
 import { CurrentRecruitmentType } from '@/apis/member/memberType';
 import MemberStatusStepper from './MemberStatusStepper';
-import { User } from '@/types/user';
-
-type MemberRole = 'GUEST' | 'ASSOCIATE' | 'REGULAR' | 'ADMIN';
+import { User, UserRoleType } from '@/types/user';
 
 const JoinStatus = ({
   role,
   currentRecruitmentRound,
   member
 }: {
-  role: MemberRole;
+  role: UserRoleType;
   currentRecruitmentRound: CurrentRecruitmentType;
   member: User;
 }) => {

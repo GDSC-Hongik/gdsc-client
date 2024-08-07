@@ -2,6 +2,7 @@ import App from '@/App';
 import * as Sentry from '@sentry/react';
 import RoutePath from '@/routes/routePath';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import PaymentSuccessAccessGuard from '@/components/auth/guard/PaymentSuccessAccessGuard';
 import Layout from '@/components/layout/Layout';
 import AuthAccessGuard from '@/components/auth/guard/AuthAccessGuard';
 import { Text } from '@/components/common/Wrapper';
@@ -21,6 +22,7 @@ import {
 import { DicordConnect } from '@/pages/DiscordConnect';
 import { DiscordGuide } from '@/pages/DiscordGuide';
 import { Suspense } from 'react';
+import PaymentAccessGuard from '@/components/auth/guard/PaymentAccessGuard';
 
 const sentryCreateBrowserRouter =
   Sentry.wrapCreateBrowserRouter(createBrowserRouter);
@@ -96,15 +98,18 @@ const router = sentryCreateBrowserRouter([
       },
       {
         path: RoutePath.PaymentsCheckout,
-        element: <PaymentsCheckout />
+        element: <PaymentAccessGuard />,
+        children: [{ index: true, element: <PaymentsCheckout /> }]
       },
       {
         path: RoutePath.PaymentsFail,
-        element: <PaymentsFail />
+        element: <AuthAccessGuard />,
+        children: [{ index: true, element: <PaymentsFail /> }]
       },
       {
         path: RoutePath.PaymentsSuccess,
-        element: <PaymentsSuccess />
+        element: <PaymentSuccessAccessGuard />,
+        children: [{ index: true, element: <PaymentsSuccess /> }]
       },
       // Todo: 404 Not found page
       { path: '*', element: <Text>not found page</Text> }

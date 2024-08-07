@@ -7,9 +7,9 @@ import { media } from '@/styles';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { PulseLoader } from 'react-spinners';
 import RoutePath from '@/routes/routePath';
 import { useLayoutEffect } from 'react';
+import LoadingSpinner from '@/components/common/LoadingSpinner';
 
 export const StudentVerificationServerRedirect = () => {
   const [searchParams] = useSearchParams();
@@ -25,7 +25,7 @@ export const StudentVerificationServerRedirect = () => {
   return (
     <Wrapper direction="column">
       {isPending ? (
-        <PulseLoader loading={isPending} />
+        <LoadingSpinner />
       ) : (
         <Container direction="column">
           <Text
