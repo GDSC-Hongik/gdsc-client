@@ -31,7 +31,8 @@ export default function ApiErrorBoundary({ children }: PropsWithChildren) {
       case 401:
       case 403:
         toast.error(message);
-        redirect(RoutePath.Index);
+        sessionStorage.setItem('isLogin', 'false');
+        redirect(RoutePath.Home);
         break;
       default:
         toast.error(message);
