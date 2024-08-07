@@ -10,7 +10,6 @@ const BasicUserInfo = ({ member }: { member: User }) => {
 
   const handleLogoutClick = () => {
     logout();
-
     navigate('/');
   };
 
