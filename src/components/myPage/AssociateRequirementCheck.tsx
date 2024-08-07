@@ -26,8 +26,7 @@ const AssociateRequirementCheck = ({
             : '기본 회원 정보를 모두 입력했어요.'
         }
         onClick={() => {
-          if (infoStatus === 'PENDING')
-            navigate(RoutePath.AuthenticationProcess3_Signup);
+          if (infoStatus === 'PENDING') navigate(RoutePath.Signup);
         }}
         status={infoStatus === 'PENDING' ? 'error' : 'success'}
         variant={infoStatus === 'PENDING' ? 'arrow' : 'text'}
@@ -53,7 +52,7 @@ const AssociateRequirementCheck = ({
       />
       <Box
         onClick={() => {
-          navigate(RoutePath.AuthenticationProcess2_StudentVerification);
+          navigate(RoutePath.StudentVerification);
         }}
         text={
           univStatus === 'PENDING' ? (
