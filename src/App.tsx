@@ -4,8 +4,6 @@ import {
   OnboardingLogo1,
   OnboardingLogo2
 } from '@/assets/Onboarding';
-import { useQuery } from '@tanstack/react-query';
-import memberApi from './apis/member/memberApi';
 import { Flex, Space, Text } from '@/components/common/Wrapper';
 import { InformationBox } from '@/components/onboarding/InformationBox';
 import { color, typography } from 'wowds-tokens';
@@ -30,16 +28,6 @@ const IMG_SRC = [
 
 function App() {
   const navigate = useNavigate();
-  const { data } = useQuery({
-    queryKey: ['member'],
-    queryFn: memberApi.GET_DASHBOARD
-  });
-
-  if (!data) {
-    return <div>로딩중...</div>;
-  }
-
-  const { currentRecruitmentRound } = data;
 
   return (
     <Wrapper direction="column">
@@ -172,12 +160,8 @@ function App() {
         <JoinText />
         <OnboardingLogo2 />
         <Space height={25} />
-        <ApplyButton
-          disabled={!currentRecruitmentRound.period.open}
-          onClick={() => navigate(RoutePath.Dashboard)}>
-          {currentRecruitmentRound.period.open
-            ? '가입하기'
-            : '지금은 지원 기간이 아니에요'}
+        <ApplyButton onClick={() => navigate(RoutePath.Dashboard)}>
+          가입하기
         </ApplyButton>
         <Space height={40} />
       </BlueSection>

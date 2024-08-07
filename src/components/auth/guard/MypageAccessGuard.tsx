@@ -1,13 +1,13 @@
 import LandingStatus from '@/constants/landingStatus';
 import useLandingStatus from '@/hooks/zustand/useLandingStatus';
-import { getAuthRedirectPath } from '@/utils/auth';
-import { Navigate, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 export default function MypageAccessGuard() {
   const { landingStatus } = useLandingStatus();
 
   if (landingStatus !== LandingStatus.Dashboard) {
-    return <Navigate to={getAuthRedirectPath(landingStatus)} />;
+    return {};
+    // return <Navigate to={getAuthRedirectPath(landingStatus)} />;
   }
 
   return <Outlet />;
