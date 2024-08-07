@@ -6,7 +6,7 @@ export default function OnboardingClosedAccessGuard() {
   const { landingStatus } = useLandingStatus();
 
   if (landingStatus !== LandingStatus.OnboardingClosed) {
-    return {};
+    return <></>;
     // return <Navigate to={getAuthRedirectPath(landingStatus)} />;
   }
 

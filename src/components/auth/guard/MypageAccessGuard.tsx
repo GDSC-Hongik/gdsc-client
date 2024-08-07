@@ -6,7 +6,7 @@ export default function MypageAccessGuard() {
   const { landingStatus } = useLandingStatus();
 
   if (landingStatus !== LandingStatus.Dashboard) {
-    return {};
+    return <></>;
     // return <Navigate to={getAuthRedirectPath(landingStatus)} />;
   }
 

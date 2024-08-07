@@ -3,24 +3,13 @@ import { Text } from '@/components/common/Wrapper';
 import RoutePath from '@/routes/routePath';
 import { color, space } from 'wowds-tokens';
 import { media } from '@/styles';
-import { setCookie } from '@/utils/auth';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import GlobalSize from '@/constants/globalSize';
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 /** 깃허브 로그인 및 가입하기 */
 export const Auth = () => {
-  useEffect(() => {
-    // 로그인을 위한 oauth-base-uri 쿠키 값 세팅
-    setCookie({
-      key: 'oauth-base-uri',
-      value: '.gdschongik.com',
-      encoding: false
-    });
-  }, []);
-
   const handleClick = () => {
     // GitHub 로그인 페이지로 직접 리다이렉트
     setTimeout(function () {
