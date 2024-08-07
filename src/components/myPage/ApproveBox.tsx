@@ -6,8 +6,8 @@ import {
   convertRecruitmentName
 } from '@/utils/mypage/recruitmentNameFormat';
 import useBottomSheet from '@/hooks/common/useBottomSheet';
+import { UserRoleType } from '@/types/user';
 
-type MemberRole = 'GUEST' | 'ASSOCIATE' | 'REGULAR';
 type BoxVariantType = 'arrow' | 'checkbox' | 'text' | 'warn';
 type BoxStatusType = 'default' | 'success' | 'error';
 
@@ -15,12 +15,12 @@ export const ApproveBox = ({
   role,
   currentRecruitment
 }: {
-  role: MemberRole;
+  role: UserRoleType;
   currentRecruitment: CurrentRecruitmentType;
 }) => {
   const { handleBottomSheet } = useBottomSheet();
   const boxContent: Record<
-    MemberRole,
+    UserRoleType,
     {
       title: string;
       description?: string;
