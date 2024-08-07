@@ -48,7 +48,7 @@ export const ApproveBox = ({
   };
   return (
     <>
-      {currentRecruitment.period.open ? (
+      {currentRecruitment ? (
         <BoxWrapper
           onClick={() => {
             if (role === 'ASSOCIATE') handleBottomSheet();
@@ -66,8 +66,8 @@ export const ApproveBox = ({
       ) : (
         <Box
           variant="warn"
-          text="학회원 모집이 마감되었어요"
-          subText="2학기 모집 소식을 받고 싶으시다면 @gdsc.hongik 을 팔로우 해주세요."
+          text="지금은 모집 기간이 아니에요."
+          subText="모집 기간에 다시 확인해주세요!"
           status="error"
         />
       )}

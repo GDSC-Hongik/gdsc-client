@@ -20,7 +20,6 @@ export const StudentVerificationServerRedirect = () => {
   useLayoutEffect(() => {
     if (token) verifyStudentMail(token);
   }, [token, verifyStudentMail]);
-  console.log(isSuccess);
 
   //TODO: 추후 로딩 스피너 추가 필요
   return (

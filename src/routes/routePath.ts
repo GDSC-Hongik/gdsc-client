@@ -10,14 +10,9 @@ const RoutePath = {
   DiscordConnect: '/discord/connect',
   DiscordGuide: '/discord/guide',
 
-  OnboardingNotOpened: '/not-opened',
-  OnboardingClosed: '/closed',
-
-  AuthenticationProcess1_GithubSignin: '/auth',
-  AuthenticationProcess2_StudentVerification: '/student-verification',
-  AuthenticationProcess2_UpdatedStudentVerification:
-    '/updated-student-verification',
-  AuthenticationProcess3_Signup: '/signup',
+  GithubSignin: '/auth',
+  StudentVerification: '/student-verification',
+  Signup: '/signup',
 
   AuthGithubLoginRedirect: `${BASE_URL}/oauth2/authorization/github`,
 

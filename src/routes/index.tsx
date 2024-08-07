@@ -4,14 +4,7 @@ import RoutePath from '@/routes/routePath';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import PaymentSuccessAccessGuard from '@/components/auth/guard/PaymentSuccessAccessGuard';
 import Layout from '@/components/layout/Layout';
-import {
-  MypageAccessGuard,
-  AuthAccessGuard,
-  SignupAccessGuard,
-  StudentVerificationAccessGuard,
-  OnboardingNotOpenedAccessGuard,
-  OnboardingClosedAccessGuard
-} from '@/components/auth/guard';
+import AuthAccessGuard from '@/components/auth/guard/AuthAccessGuard';
 import { Text } from '@/components/common/Wrapper';
 import {
   AuthServerRedirectNavigate,
@@ -21,10 +14,7 @@ import {
   SignUp,
   Dashboard,
   JoinDiscord,
-  UpdatedStudentVerification,
   Bevy,
-  OnboardingNotOpened,
-  OnboardingClosed,
   PaymentsSuccess,
   PaymentsFail,
   PaymentsCheckout
@@ -58,13 +48,12 @@ const router = sentryCreateBrowserRouter([
         element: <StudentVerificationServerRedirect />
       },
       {
-        path: RoutePath.AuthenticationProcess1_GithubSignin,
-        element: <AuthAccessGuard />,
+        path: RoutePath.GithubSignin,
         children: [{ index: true, element: <Auth /> }]
       },
       {
-        path: RoutePath.AuthenticationProcess2_StudentVerification,
-        element: <StudentVerificationAccessGuard />,
+        path: RoutePath.StudentVerification,
+        element: <AuthAccessGuard />,
         children: [
           {
             index: true,
@@ -77,18 +66,13 @@ const router = sentryCreateBrowserRouter([
         ]
       },
       {
-        path: RoutePath.AuthenticationProcess2_UpdatedStudentVerification,
-        element: <StudentVerificationAccessGuard />,
-        children: [{ index: true, element: <UpdatedStudentVerification /> }]
-      },
-      {
-        path: RoutePath.AuthenticationProcess3_Signup,
-        element: <SignupAccessGuard />,
+        path: RoutePath.Signup,
+        element: <AuthAccessGuard />,
         children: [{ index: true, element: <SignUp /> }]
       },
       {
-        path: RoutePath.Index,
-        element: <MypageAccessGuard />,
+        path: RoutePath.Home,
+        element: <AuthAccessGuard />,
         children: [
           {
             path: RoutePath.Dashboard,
@@ -111,16 +95,6 @@ const router = sentryCreateBrowserRouter([
             element: <Bevy />
           }
         ]
-      },
-      {
-        path: RoutePath.OnboardingNotOpened,
-        element: <OnboardingNotOpenedAccessGuard />,
-        children: [{ index: true, element: <OnboardingNotOpened /> }]
-      },
-      {
-        path: RoutePath.OnboardingClosed,
-        element: <OnboardingClosedAccessGuard />,
-        children: [{ index: true, element: <OnboardingClosed /> }]
       },
       {
         path: RoutePath.PaymentsCheckout,

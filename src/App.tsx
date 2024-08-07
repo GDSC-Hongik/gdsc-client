@@ -12,9 +12,8 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import GlobalSize from '@/constants/globalSize';
 import { useNavigate } from 'react-router-dom';
-import { getAuthRedirectPath } from '@/utils/auth';
 import 'react-toastify/dist/ReactToastify.css';
-import useLandingStatus from '@/hooks/zustand/useLandingStatus';
+import RoutePath from './routes/routePath';
 
 const IMG_SRC = [
   '/onboarding/1.png',
@@ -29,7 +28,6 @@ const IMG_SRC = [
 
 function App() {
   const navigate = useNavigate();
-  const { landingStatus } = useLandingStatus();
 
   return (
     <Wrapper direction="column">
@@ -162,12 +160,8 @@ function App() {
         <JoinText />
         <OnboardingLogo2 />
         <Space height={25} />
-        <ApplyButton
-          disabled={landingStatus === 'ONBOARDING_CLOSED'}
-          onClick={() => navigate(getAuthRedirectPath(landingStatus))}>
-          {landingStatus === 'ONBOARDING_CLOSED'
-            ? '지금은 지원 기간이 아니에요'
-            : '가입하기'}
+        <ApplyButton onClick={() => navigate(RoutePath.Dashboard)}>
+          가입하기
         </ApplyButton>
         <Space height={40} />
       </BlueSection>
