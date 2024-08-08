@@ -1,17 +1,12 @@
 import { Flex, Text } from '@/components/common/Wrapper';
 import { User } from '@/types/user';
-import { logout } from '@/utils/auth';
+import { useLogout } from '@/hooks/mutation';
 import { typography, color } from 'wowds-tokens';
 
-import { useNavigate } from 'react-router-dom';
-
 const BasicUserInfo = ({ member }: { member: User }) => {
-  const navigate = useNavigate();
-
+  const { mutate } = useLogout();
   const handleLogoutClick = () => {
-    logout();
-    navigate('/');
-    location.reload();
+    mutate();
   };
 
   return (
