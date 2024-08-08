@@ -19,6 +19,17 @@ export const ApproveBox = ({
   currentRecruitment: CurrentRecruitmentType;
 }) => {
   const { handleBottomSheet } = useBottomSheet();
+
+  if (!currentRecruitment) {
+    return (
+      <Box
+        variant="warn"
+        text="지금은 모집 기간이 아니에요."
+        subText="모집 기간에 다시 확인해주세요!"
+        status="error"
+      />
+    );
+  }
   const boxContent: Record<
     UserRoleType,
     {
@@ -47,31 +58,20 @@ export const ApproveBox = ({
     }
   };
   return (
-    <>
-      {currentRecruitment ? (
-        <BoxWrapper
-          onClick={() => {
-            if (role === 'ASSOCIATE') handleBottomSheet();
-            else {
-              return;
-            }
-          }}>
-          <Box
-            variant={boxContent[role].boxVariant}
-            text={boxContent[role].title}
-            subText={boxContent[role].description}
-            status={boxContent[role].status}
-          />
-        </BoxWrapper>
-      ) : (
-        <Box
-          variant="warn"
-          text="지금은 모집 기간이 아니에요."
-          subText="모집 기간에 다시 확인해주세요!"
-          status="error"
-        />
-      )}
-    </>
+    <BoxWrapper
+      onClick={() => {
+        if (role === 'ASSOCIATE') handleBottomSheet();
+        else {
+          return;
+        }
+      }}>
+      <Box
+        variant={boxContent[role].boxVariant}
+        text={boxContent[role].title}
+        subText={boxContent[role].description}
+        status={boxContent[role].status}
+      />
+    </BoxWrapper>
   );
 };
 
