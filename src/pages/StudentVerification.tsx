@@ -66,24 +66,37 @@ export const StudentVerification = () => {
               message: '* 이메일을 입력해주세요.'
             },
             pattern: {
-              value: /^[a-zA-Z0-9._%+-]+@g\.hongik\.ac\.kr$/,
-              message: '* 홍익대학교 이메일 형식을 지켜주세요.'
+              value: /^[a-zA-Z0-9._%+-]/,
+              message: '* 이메일 형식을 지켜주세요.'
             }
           }}
           render={({ field, fieldState }) => (
-            <TextField
-              ref={field.ref}
-              onChange={field.onChange}
-              onBlur={field.onBlur}
-              value={field.value}
-              error={fieldState.invalid}
-              placeholder="아이디@g.hongik.ac.kr"
-              label="학교 이메일"
-              helperText={fieldState.error?.message}
-            />
+            <EmailContainer>
+              <TextFieldWrapper>
+                <TextField
+                  ref={field.ref}
+                  onChange={field.onChange}
+                  onBlur={field.onBlur}
+                  value={field.value}
+                  error={fieldState.invalid}
+                  placeholder="로컬파트 작성"
+                  label="학교 이메일"
+                  helperText={fieldState.error?.message}
+                />
+              </TextFieldWrapper>
+              <Text
+                typo="body1"
+                style={{
+                  height: '84.8px',
+                  display: 'flex',
+                  alignItems: 'center'
+                }}>
+                @g.hongik.ac.kr
+              </Text>
+            </EmailContainer>
           )}
         />
-        <span>@.hongik.ac.kr</span>
+
         <Space height="xs" />
         <Text typo="body3" color="sub">
           * 메일 전송이 최대 30분 가량 늦어질 수 있어요.
@@ -158,4 +171,17 @@ const ButtonContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: ${space.xs};
+`;
+
+const EmailContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: ${space.xs};
+`;
+
+const TextFieldWrapper = styled.div`
+  flex: 1;
+  height: 84.8px;
+  width: 50%;
 `;

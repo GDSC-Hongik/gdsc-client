@@ -29,13 +29,13 @@ export const ApproveBox = ({
     }
   > = {
     GUEST: {
-      title: `${convertRecruitmentName(currentRecruitment.name)}`,
+      title: `${convertRecruitmentName(currentRecruitment.name, currentRecruitment.roundTypeValue)}`,
       description: '하단의 준회원 가입 조건을 완료해주세요.',
       boxVariant: 'warn',
       status: 'error'
     },
     ASSOCIATE: {
-      title: `${convertRecruitmentName(currentRecruitment.name)}`,
+      title: `${convertRecruitmentName(currentRecruitment.name, currentRecruitment.roundTypeValue)}`,
       description: `${convertRecruitmentPeriod(currentRecruitment.period)}`,
       boxVariant: 'arrow',
       status: 'error'
