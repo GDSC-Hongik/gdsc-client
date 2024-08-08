@@ -83,6 +83,7 @@ export const StudentVerification = () => {
             />
           )}
         />
+        <span>@.hongik.ac.kr</span>
         <Space height="xs" />
         <Text typo="body3" color="sub">
           * 메일 전송이 최대 30분 가량 늦어질 수 있어요.
