@@ -15,7 +15,7 @@ import useCustomBack from '@/hooks/common/useCutomBack';
 
 const steps = ['이름 설정', '별명 설정', '서버 합류', '서버 연동', '연동 완료'];
 
-export const DicordConnect = () => {
+export const DiscordConnect = () => {
   const { Funnel, Step, setStep, currentStep } = useFunnel(steps[0]);
 
   const methods = useForm<DiscordFormValues>({

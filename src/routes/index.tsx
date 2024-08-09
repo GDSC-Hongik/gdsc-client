@@ -18,10 +18,11 @@ import {
   PaymentsFail,
   PaymentsCheckout
 } from '@/pages';
-import { DicordConnect } from '@/pages/DiscordConnect';
+import { DiscordConnect } from '@/pages/DiscordConnect';
 import { DiscordGuide } from '@/pages/DiscordGuide';
 import { Suspense } from 'react';
 import PaymentAccessGuard from '@/components/auth/guard/PaymentAccessGuard';
+import VerificationGuard from '@/components/auth/guard/VerificationGuard';
 
 const sentryCreateBrowserRouter =
   Sentry.wrapCreateBrowserRouter(createBrowserRouter);
@@ -57,9 +58,11 @@ const router = sentryCreateBrowserRouter([
           {
             index: true,
             element: (
-              <Suspense fallback="..loading">
-                <StudentVerification />
-              </Suspense>
+              <VerificationGuard guardType="StudentVerification">
+                <Suspense fallback="..loading">
+                  <StudentVerification />
+                </Suspense>
+              </VerificationGuard>
             )
           }
         ]
@@ -67,7 +70,16 @@ const router = sentryCreateBrowserRouter([
       {
         path: RoutePath.Signup,
         element: <AuthAccessGuard />,
-        children: [{ index: true, element: <SignUp /> }]
+        children: [
+          {
+            index: true,
+            element: (
+              <VerificationGuard guardType="SignUp">
+                <SignUp />
+              </VerificationGuard>
+            )
+          }
+        ]
       },
       {
         path: RoutePath.Home,
@@ -79,11 +91,29 @@ const router = sentryCreateBrowserRouter([
           },
           {
             path: RoutePath.Discord,
-            element: <JoinDiscord />
+            children: [
+              {
+                index: true,
+                element: (
+                  <VerificationGuard guardType="Discord">
+                    <JoinDiscord />
+                  </VerificationGuard>
+                )
+              }
+            ]
           },
           {
             path: RoutePath.DiscordConnect,
-            element: <DicordConnect />
+            children: [
+              {
+                index: true,
+                element: (
+                  <VerificationGuard guardType="Discord">
+                    <DiscordConnect />
+                  </VerificationGuard>
+                )
+              }
+            ]
           },
           {
             path: RoutePath.DiscordGuide,
@@ -91,7 +121,16 @@ const router = sentryCreateBrowserRouter([
           },
           {
             path: RoutePath.Bevy,
-            element: <Bevy />
+            children: [
+              {
+                index: true,
+                element: (
+                  <VerificationGuard guardType="Bevy">
+                    <Bevy />
+                  </VerificationGuard>
+                )
+              }
+            ]
           }
         ]
       },

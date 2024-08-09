@@ -12,9 +12,7 @@ import Divider from 'wowds-ui/Divider';
 export const DiscordNickName = ({ onNext }: { onNext: () => void }) => {
   const { getValues, control, setError, clearErrors, trigger } =
     useFormContext<DiscordFormValues>();
-  const { checkDuplicate, data, isSuccess } = usePostDiscordNickname(
-    getValues('discordNickname')
-  );
+  const { checkDuplicate, data, isSuccess } = usePostDiscordNickname();
 
   useEffect(() => {
     if (isSuccess) {
@@ -33,14 +31,14 @@ export const DiscordNickName = ({ onNext }: { onNext: () => void }) => {
   const handleNextClick = useCallback(async () => {
     const isValid = await trigger('discordNickname');
     if (isValid) {
-      checkDuplicate();
+      checkDuplicate(getValues('discordNickname'));
     } else {
       setError('discordNickname', {
         type: 'manual',
         message: '하단 규정에 맞춰 작성해주세요.'
       });
     }
-  }, [checkDuplicate, setError, trigger]);
+  }, [checkDuplicate, getValues, setError, trigger]);
 
   return (
     <>
