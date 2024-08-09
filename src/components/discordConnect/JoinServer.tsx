@@ -7,10 +7,32 @@ import { useFormContext } from 'react-hook-form';
 import useGetDiscordJoined from '@/hooks/query/useGetDiscordJoined';
 import { DiscordFormValues } from '@/types/discord';
 import RoutePath from '@/routes/routePath';
+import { useState, useEffect } from 'react';
+
+const FETCH_INTERVAL = 5000;
 
 export const JoinServer = ({ onNext }: { onNext: () => void }) => {
   const { getValues } = useFormContext<DiscordFormValues>();
-  const { data } = useGetDiscordJoined(getValues('discordUsername'));
+  const [isEnabled, setIsEnabled] = useState(false);
+
+  //NOTE: 처음 렌더링 되었을 때에 바로 fetch 하지 않고 5초 기다린 후에 fetch 합니다.
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsEnabled(true);
+    }, FETCH_INTERVAL);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const { data } = useGetDiscordJoined(getValues('discordUsername'), isEnabled);
+
+  //NOTE : 합류여부가 true 일 경우에는 더 이상 fetch 하지 않습니다.
+  useEffect(() => {
+    if (data?.isJoined) {
+      setIsEnabled(false);
+    }
+  }, [data]);
+
   return (
     <>
       <Flex direction="column" align="flex-start">
@@ -38,7 +60,11 @@ export const JoinServer = ({ onNext }: { onNext: () => void }) => {
           }}
           disabled={!data?.isJoined}
           style={{ maxWidth: '100%' }}>
-          합류가 확인되면 넘어갈 수 있어요.
+          {!isEnabled
+            ? '잠시만 기다려주세요.'
+            : data?.isJoined
+              ? '합류가 확인되었어요.'
+              : '합류가 확인되지 않았어요.'}
         </Button>
 
         <Text
