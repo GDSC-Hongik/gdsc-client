@@ -30,7 +30,7 @@
     "wowds-icons": "^0.1.0",
     "wowds-tokens": "^0.0.9",
     "zustand": "^4.5.0",
-    "wowds-ui": "^0.1.8"
+    "wowds-ui": "^0.1.9"
   },
   "devDependencies": {
     "@sentry/react": "^8.22.0",

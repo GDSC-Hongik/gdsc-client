@@ -11,9 +11,6 @@ import { Link } from 'react-router-dom';
 /** 깃허브 로그인 및 가입하기 */
 export const Auth = () => {
   const handleClick = () => {
-    //TODO: QA용으로 임시로 설정
-    sessionStorage.setItem('isLogin', 'true');
-
     // GitHub 로그인 페이지로 직접 리다이렉트
     setTimeout(function () {
       document.location.href = RoutePath.AuthGithubLoginRedirect;
