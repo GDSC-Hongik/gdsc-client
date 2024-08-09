@@ -13,25 +13,37 @@ const FETCH_INTERVAL = 5000;
 
 export const JoinServer = ({ onNext }: { onNext: () => void }) => {
   const { getValues } = useFormContext<DiscordFormValues>();
-  const [isEnabled, setIsEnabled] = useState(false);
+  const [callQuery, setCallQuery] = useState(false);
 
-  //NOTE: 처음 렌더링 되었을 때에 바로 fetch 하지 않고 5초 기다린 후에 fetch 합니다.
+  // 초기에 5초 후에 isEnabled를 true로 설정
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsEnabled(true);
+      setCallQuery(true);
     }, FETCH_INTERVAL);
 
     return () => clearTimeout(timer);
   }, []);
 
-  const { data } = useGetDiscordJoined(getValues('discordUsername'), isEnabled);
+  const { data, refetch } = useGetDiscordJoined(
+    getValues('discordUsername'),
+    callQuery
+  );
 
-  //NOTE : 합류여부가 true 일 경우에는 더 이상 fetch 하지 않습니다.
+  // data가 변경될 때마다 refetch를 호출하여 최신 상태를 가져옴
   useEffect(() => {
-    if (data?.isJoined) {
-      setIsEnabled(false);
+    if (callQuery) {
+      refetch();
+    }
+  }, [callQuery, refetch]);
+
+  // data가 변경될 때마다 버튼 상태를 업데이트
+  useEffect(() => {
+    if (data) {
+      if (data.isJoined) setCallQuery(false); // 합류가 확인되면 더 이상 fetch하지 않음
     }
   }, [data]);
+
+  console.log(callQuery);
 
   return (
     <>
@@ -49,7 +61,7 @@ export const JoinServer = ({ onNext }: { onNext: () => void }) => {
       </Flex>
       <Flex direction="column" gap="xs">
         <TextButton
-          text=" GDSC Hongik 공식 디스코드 서버↗︎"
+          text="GDSC Hongik 공식 디스코드 서버↗︎"
           style={{ color: color.discord }}
           onClick={() => window.open(RoutePath.GDSCHongikDiscord, '_blank')}
         />
@@ -60,8 +72,8 @@ export const JoinServer = ({ onNext }: { onNext: () => void }) => {
           }}
           disabled={!data?.isJoined}
           style={{ maxWidth: '100%' }}>
-          {!isEnabled
-            ? '잠시만 기다려주세요.'
+          {callQuery
+            ? '합류 여부를 확인 중이에요.'
             : data?.isJoined
               ? '합류가 확인되었어요.'
               : '합류가 확인되지 않았어요.'}

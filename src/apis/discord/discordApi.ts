@@ -25,7 +25,7 @@ const discordApi = {
     });
     return response.data;
   },
-  GET_DISCORD_JOIN: async (name: string) => {
+  GET_DISCORD_JOIN: async (name: string): Promise<{ isJoined: boolean }> => {
     const response = await apiClient.get('/onboarding/check-discord-join', {
       params: {
         username: name
