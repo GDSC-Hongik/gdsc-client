@@ -22,6 +22,7 @@ import { DicordConnect } from '@/pages/DiscordConnect';
 import { DiscordGuide } from '@/pages/DiscordGuide';
 import { Suspense } from 'react';
 import PaymentAccessGuard from '@/components/auth/guard/PaymentAccessGuard';
+import VerificationGuard from '@/components/auth/guard/VerificationGuard';
 
 const sentryCreateBrowserRouter =
   Sentry.wrapCreateBrowserRouter(createBrowserRouter);
@@ -58,7 +59,9 @@ const router = sentryCreateBrowserRouter([
             index: true,
             element: (
               <Suspense fallback="..loading">
-                <StudentVerification />
+                <VerificationGuard guardType="StudentVerification">
+                  <StudentVerification />
+                </VerificationGuard>
               </Suspense>
             )
           }
@@ -67,7 +70,16 @@ const router = sentryCreateBrowserRouter([
       {
         path: RoutePath.Signup,
         element: <AuthAccessGuard />,
-        children: [{ index: true, element: <SignUp /> }]
+        children: [
+          {
+            index: true,
+            element: (
+              <VerificationGuard guardType="SignUp">
+                <SignUp />
+              </VerificationGuard>
+            )
+          }
+        ]
       },
       {
         path: RoutePath.Home,
@@ -79,11 +91,13 @@ const router = sentryCreateBrowserRouter([
           },
           {
             path: RoutePath.Discord,
-            element: <JoinDiscord />
+            element: <VerificationGuard guardType="Discord" />,
+            children: [{ index: true, element: <JoinDiscord /> }]
           },
           {
             path: RoutePath.DiscordConnect,
-            element: <DicordConnect />
+            element: <VerificationGuard guardType="Discord" />,
+            children: [{ index: true, element: <DicordConnect /> }]
           },
           {
             path: RoutePath.DiscordGuide,
