@@ -24,7 +24,7 @@ export default function useStudentVerification() {
   const onSubmit = async ({ univEmail }: FieldValues) => {
     event?.preventDefault();
     updateUnivEmail(univEmail);
-    sendStudentEmail(univEmail);
+    sendStudentEmail(`${univEmail}@g.hongik.ac.kr`);
   };
 
   const onVerifyStudent = () => {

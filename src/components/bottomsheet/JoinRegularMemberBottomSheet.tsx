@@ -19,7 +19,10 @@ const JoinRegularMemberBottomSheet = ({
   currentRecruitment: CurrentRecruitmentType;
 }) => {
   const { joinRegularMember } = useJoinRegularMember();
-  const bottomSheetTitle = convertRecruitmentName(currentRecruitment.name);
+  const bottomSheetTitle = convertRecruitmentName(
+    currentRecruitment.name,
+    currentRecruitment.roundTypeValue
+  );
   const recruitmentPeriod = convertRecruitmentPeriod(currentRecruitment.period);
   return (
     <BottomSheet>
