@@ -18,7 +18,7 @@ import {
   PaymentsFail,
   PaymentsCheckout
 } from '@/pages';
-import { DicordConnect } from '@/pages/DiscordConnect';
+import { DiscordConnect } from '@/pages/DiscordConnect';
 import { DiscordGuide } from '@/pages/DiscordGuide';
 import { Suspense } from 'react';
 import PaymentAccessGuard from '@/components/auth/guard/PaymentAccessGuard';
@@ -58,11 +58,11 @@ const router = sentryCreateBrowserRouter([
           {
             index: true,
             element: (
-              <Suspense fallback="..loading">
-                <VerificationGuard guardType="StudentVerification">
+              <VerificationGuard guardType="StudentVerification">
+                <Suspense fallback="..loading">
                   <StudentVerification />
-                </VerificationGuard>
-              </Suspense>
+                </Suspense>
+              </VerificationGuard>
             )
           }
         ]
@@ -91,13 +91,29 @@ const router = sentryCreateBrowserRouter([
           },
           {
             path: RoutePath.Discord,
-            element: <VerificationGuard guardType="Discord" />,
-            children: [{ index: true, element: <JoinDiscord /> }]
+            children: [
+              {
+                index: true,
+                element: (
+                  <VerificationGuard guardType="Discord">
+                    <JoinDiscord />
+                  </VerificationGuard>
+                )
+              }
+            ]
           },
           {
             path: RoutePath.DiscordConnect,
-            element: <VerificationGuard guardType="Discord" />,
-            children: [{ index: true, element: <DicordConnect /> }]
+            children: [
+              {
+                index: true,
+                element: (
+                  <VerificationGuard guardType="Discord">
+                    <DiscordConnect />
+                  </VerificationGuard>
+                )
+              }
+            ]
           },
           {
             path: RoutePath.DiscordGuide,
@@ -105,7 +121,16 @@ const router = sentryCreateBrowserRouter([
           },
           {
             path: RoutePath.Bevy,
-            element: <Bevy />
+            children: [
+              {
+                index: true,
+                element: (
+                  <VerificationGuard guardType="Bevy">
+                    <Bevy />
+                  </VerificationGuard>
+                )
+              }
+            ]
           }
         ]
       },

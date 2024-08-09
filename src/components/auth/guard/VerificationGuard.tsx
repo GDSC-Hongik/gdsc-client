@@ -1,12 +1,11 @@
 import RoutePath from '@/routes/routePath';
-import { isAuthenticated } from '@/utils/auth';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { PropsWithChildren, useEffect } from 'react';
 import memberApi from '@/apis/member/memberApi';
 import { useQuery } from '@tanstack/react-query';
 
-type GuardType = 'StudentVerification' | 'Discord' | 'SignUp';
+type GuardType = 'StudentVerification' | 'Discord' | 'SignUp' | 'Bevy';
 
 interface VerificationGuardProps extends PropsWithChildren {
   guardType: GuardType;
@@ -18,40 +17,47 @@ export default function VerificationGuard({
   children
 }: VerificationGuardProps) {
   const navigate = useNavigate();
+  const { data } = useQuery({
+    queryKey: ['member'],
+    queryFn: memberApi.GET_DASHBOARD
+  });
 
   useEffect(() => {
-    if (isAuthenticated()) {
-      // eslint-disable-next-line react-hooks/rules-of-hooks
-      const { data } = useQuery({
-        queryKey: ['member'],
-        queryFn: memberApi.GET_DASHBOARD
-      });
-      if (!data) return;
+    if (!data) return;
 
-      if (
-        guardType === 'SignUp' &&
-        data.member.associateRequirement.infoStatus === 'SATISFIED'
-      ) {
-        toast.error('기본 정보를 이미 입력했습니다.');
-        navigate(RoutePath.Dashboard);
-        return;
-      } else if (
-        guardType === 'Discord' &&
-        data.member.associateRequirement.discordStatus === 'SATISFIED'
-      ) {
-        toast.error('디스코드 연동을 이미 완료했습니다.');
-        navigate(RoutePath.Dashboard);
-        return;
-      } else if (
-        guardType === 'StudentVerification' &&
-        data.member.associateRequirement.univStatus === 'SATISFIED'
-      ) {
-        toast.error('재학생 인증을 이미 완료했습니다.');
-        navigate(RoutePath.Dashboard);
-        return;
-      }
+    if (
+      guardType === 'SignUp' &&
+      data.member.associateRequirement.infoStatus === 'SATISFIED'
+    ) {
+      toast.error('기본 정보를 이미 입력했습니다.');
+      navigate(RoutePath.Dashboard);
+      return;
     }
-  }, [guardType, navigate]);
+    if (
+      guardType === 'Discord' &&
+      data.member.associateRequirement.discordStatus === 'SATISFIED'
+    ) {
+      toast.error('디스코드 연동을 이미 완료했습니다.');
+      navigate(RoutePath.Dashboard);
+      return;
+    }
+    if (
+      guardType === 'StudentVerification' &&
+      data.member.associateRequirement.univStatus === 'SATISFIED'
+    ) {
+      toast.error('재학생 인증을 이미 완료했습니다.');
+      navigate(RoutePath.Dashboard);
+      return;
+    }
+    if (
+      guardType === 'Bevy' &&
+      data.member.associateRequirement.bevyStatus === 'SATISFIED'
+    ) {
+      toast.error('bevy 가입을 이미 완료했습니다.');
+      navigate(RoutePath.Dashboard);
+      return;
+    }
+  }, [data, guardType, navigate]);
 
   return children;
 }

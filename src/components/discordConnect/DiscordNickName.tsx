@@ -31,7 +31,7 @@ export const DiscordNickName = ({ onNext }: { onNext: () => void }) => {
   const handleNextClick = useCallback(async () => {
     const isValid = await trigger('discordNickname');
     if (isValid) {
-      checkDuplicate(getValues('discordUsername'));
+      checkDuplicate(getValues('discordNickname'));
     } else {
       setError('discordNickname', {
         type: 'manual',
