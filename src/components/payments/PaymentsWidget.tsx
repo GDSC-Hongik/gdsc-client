@@ -34,7 +34,7 @@ export function PaymentsWidget() {
 
   const { name, amount, discount, issuedCouponId, totalAmount } = useProduct();
 
-  const { postPrevOrder } = usePostPrevOrder(amount);
+  const { postPrevOrder } = usePostPrevOrder(totalAmount);
 
   const [ready, setReady] = useState(false);
 

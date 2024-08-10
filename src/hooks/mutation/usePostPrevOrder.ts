@@ -1,11 +1,18 @@
 import { useMutation } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
+
 import ordersApi from '@/apis/orders/ordersApi';
+import RoutePath from '@/routes/routePath';
 
 const usePostPrevOrder = (amount: number) => {
+  const navigate = useNavigate();
+
   const { mutate: postPrevOrder, ...rest } = useMutation({
-    mutationFn: amount
-      ? ordersApi.POST_PREV_ORDER
-      : ordersApi.POST_PREV_FREE_ORDER
+    onMutate: () => {
+      if (amount) throw new Error('결제 실패');
+    },
+    mutationFn: ordersApi.POST_PREV_ORDER,
+    onError: () => navigate(RoutePath.PaymentsCheckout)
   });
 
   return { postPrevOrder, ...rest };
