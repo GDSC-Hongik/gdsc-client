@@ -7,14 +7,14 @@ import { Payments } from '@/components/payments/Payments';
 import { PaymentsWidget } from '@/components/payments/PaymentsWidget';
 import useCustomBack from '@/hooks/common/useCutomBack';
 import { useProduct } from '@/hooks/zustand/useProduct';
-import usePostPrevOrder from '@/hooks/mutation/usePostPrevOrder';
+import usePostFreeOrder from '@/hooks/mutation/usePostFreeOrder';
 
 const steps = ['회비 납부', '결제 위젯'];
 
 export const PaymentsCheckout = () => {
   const { Funnel, Step, setStep, currentStep } = useFunnel(steps[0]);
   const { amount, discount, totalAmount, issuedCouponId } = useProduct();
-  const { postPrevOrder } = usePostPrevOrder(totalAmount);
+  const { postFreeOrder } = usePostFreeOrder(totalAmount);
   const { data: dashboard } = useQuery({
     queryKey: ['member'],
     queryFn: memberApi.GET_DASHBOARD
@@ -23,7 +23,7 @@ export const PaymentsCheckout = () => {
   const nextClickHandler = (step: string) => {
     if (!totalAmount && dashboard) {
       const id = nanoid();
-      postPrevOrder({
+      postFreeOrder({
         orderNanoId: id,
         membershipId: dashboard.currentMembership.membershipId,
         issuedCouponId: issuedCouponId,

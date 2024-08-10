@@ -3,13 +3,14 @@ import { useNavigate } from 'react-router-dom';
 
 import ordersApi from '@/apis/orders/ordersApi';
 import RoutePath from '@/routes/routePath';
+import { toast } from 'react-toastify';
 
 const usePostPrevOrder = (amount: number) => {
   const navigate = useNavigate();
 
   const { mutate: postPrevOrder, ...rest } = useMutation({
     onMutate: () => {
-      if (amount) throw new Error('결제 실패');
+      if (!amount) toast('결제 실패');
     },
     mutationFn: ordersApi.POST_PREV_ORDER,
     onError: () => navigate(RoutePath.PaymentsCheckout)
