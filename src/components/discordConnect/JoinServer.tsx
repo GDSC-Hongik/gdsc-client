@@ -43,8 +43,6 @@ export const JoinServer = ({ onNext }: { onNext: () => void }) => {
     }
   }, [data]);
 
-  console.log(callQuery);
-
   return (
     <>
       <Flex direction="column" align="flex-start">
