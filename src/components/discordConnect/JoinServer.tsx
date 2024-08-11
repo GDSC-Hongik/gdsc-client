@@ -24,26 +24,12 @@ export const JoinServer = ({ onNext }: { onNext: () => void }) => {
     return () => clearTimeout(timer);
   }, []);
 
-  const { data, refetch } = useGetDiscordJoined(
-    getValues('discordUsername'),
-    callQuery
-  );
-
-  // data가 변경될 때마다 refetch를 호출하여 최신 상태를 가져옴
-  useEffect(() => {
-    if (callQuery) {
-      refetch();
-    }
-  }, [callQuery, refetch]);
+  const { data } = useGetDiscordJoined(getValues('discordUsername'), callQuery);
 
   // data가 변경될 때마다 버튼 상태를 업데이트
   useEffect(() => {
-    if (data) {
-      if (data.isJoined) setCallQuery(false); // 합류가 확인되면 더 이상 fetch하지 않음
-    }
+    setCallQuery(false);
   }, [data]);
-
-  console.log(callQuery);
 
   return (
     <>
