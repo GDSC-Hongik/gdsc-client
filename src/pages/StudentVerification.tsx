@@ -23,7 +23,7 @@ export const StudentVerification = () => {
 
   const IsStudentVerified = async () => {
     const univStatus = await onVerifyStudent();
-    if (univStatus === 'PENDING') {
+    if (univStatus === 'UNSATISFIED') {
       setPending(true);
     } else {
       navigate(RoutePath.Dashboard);
