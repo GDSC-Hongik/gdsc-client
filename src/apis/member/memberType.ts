@@ -1,6 +1,5 @@
-import { PaymentStatus } from '@/types/status';
 import { User } from '@/types/user';
-
+import { Status } from '@/types/status';
 export interface MemberInfoResponse {
   member: User;
   currentRecruitmentRound: CurrentRecruitmentType;
@@ -25,7 +24,7 @@ export interface CurrentMembershipType {
   memberId: number;
   recruitmentId: number;
   regularRequirement: {
-    paymentStatus: PaymentStatus;
+    paymentStatus: Status;
     allSatisfied: boolean;
     paymentSatisfied: boolean;
   };
