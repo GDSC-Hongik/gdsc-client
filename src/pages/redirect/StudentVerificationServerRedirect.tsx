@@ -1,19 +1,16 @@
 import { Text, Flex } from '@/components/common/Wrapper';
 import { useVerifyStudentEmail } from '@/hooks/mutation';
 import { color } from 'wowds-tokens';
-import Button from 'wowds-ui/Button';
 import GlobalSize from '@/constants/globalSize';
 import { media } from '@/styles';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import RoutePath from '@/routes/routePath';
+import { useSearchParams } from 'react-router-dom';
 import { useLayoutEffect } from 'react';
 import LoadingSpinner from '@/components/common/LoadingSpinner';
 
 export const StudentVerificationServerRedirect = () => {
   const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
   const token = searchParams.get('token');
   const { isSuccess, isPending, verifyStudentMail } = useVerifyStudentEmail();
 
@@ -21,7 +18,6 @@ export const StudentVerificationServerRedirect = () => {
     if (token) verifyStudentMail(token);
   }, [token, verifyStudentMail]);
 
-  //TODO: 추후 로딩 스피너 추가 필요
   return (
     <Wrapper direction="column">
       {isPending ? (
@@ -46,16 +42,6 @@ export const StudentVerificationServerRedirect = () => {
               </Text>
             )}
           </TextContainer>
-          <ButtonContainer>
-            <Button
-              type="submit"
-              role="button"
-              onClick={() => {
-                navigate(RoutePath.Dashboard);
-              }}>
-              대시보드로 바로가기
-            </Button>
-          </ButtonContainer>
         </Container>
       )}
     </Wrapper>
@@ -86,16 +72,6 @@ const Container = styled(Flex)`
 `;
 
 const TextContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const ButtonContainer = styled.div`
-  position: absolute;
-  bottom: 1.75rem;
-  padding: 0px 0.75rem;
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

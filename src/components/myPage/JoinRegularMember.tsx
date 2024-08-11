@@ -33,7 +33,7 @@ const JoinRegularMember = ({ paymentStatus }: { paymentStatus: Status }) => {
         status={paymentStatus === 'UNSATISFIED' ? 'error' : 'success'}
         subText={
           paymentStatus === 'UNSATISFIED'
-            ? '이제 카드·계좌이체 등 여러 결제수단을 지원해요.'
+            ? '카드·계좌이체 등 여러 결제수단을 지원해요.'
             : undefined
         }
       />

@@ -4,6 +4,7 @@ import {
   OnboardingLogo1,
   OnboardingLogo2
 } from '@/assets/Onboarding';
+import { isAuthenticated } from '@/utils/auth';
 import { Flex, Space, Text } from '@/components/common/Wrapper';
 import { InformationBox } from '@/components/onboarding/InformationBox';
 import { color, typography } from 'wowds-tokens';
@@ -160,7 +161,11 @@ function App() {
         <JoinText />
         <OnboardingLogo2 />
         <Space height={25} />
-        <ApplyButton onClick={() => navigate(RoutePath.Dashboard)}>
+        <ApplyButton
+          onClick={() => {
+            if (isAuthenticated()) navigate(RoutePath.Dashboard);
+            else navigate(RoutePath.GithubSignin);
+          }}>
           가입하기
         </ApplyButton>
         <Space height={40} />
