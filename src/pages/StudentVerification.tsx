@@ -40,10 +40,6 @@ export const StudentVerification = () => {
     onSubmit();
   };
 
-  if (loading) {
-    return <div>로딩중입니다...</div>;
-  }
-
   return (
     <Wrapper direction="column" justify="flex-start" gap="lg">
       {isPending && <LoadingSpinner />}
