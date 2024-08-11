@@ -74,12 +74,13 @@ export const StudentVerification = () => {
             <EmailContainer>
               <TextFieldWrapper>
                 <TextField
+                  style={{ minWidth: '100%' }}
                   ref={field.ref}
                   onChange={field.onChange}
                   onBlur={field.onBlur}
                   value={field.value}
                   error={fieldState.invalid}
-                  placeholder="로컬파트 작성"
+                  placeholder="이메일 작성"
                   label="학교 이메일"
                   helperText={fieldState.error?.message}
                 />
@@ -176,6 +177,7 @@ const ButtonContainer = styled.div`
 const EmailContainer = styled.div`
   display: flex;
   flex-direction: row;
+  max-width: 260px;
   align-items: center;
   gap: ${space.xs};
 `;
@@ -183,5 +185,4 @@ const EmailContainer = styled.div`
 const TextFieldWrapper = styled.div`
   flex: 1;
   height: 84.8px;
-  width: 50%;
 `;
