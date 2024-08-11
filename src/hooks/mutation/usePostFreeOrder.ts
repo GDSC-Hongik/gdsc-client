@@ -9,7 +9,7 @@ const usePostFreeOrder = (amount: number) => {
 
   const { mutate: postFreeOrder, ...rest } = useMutation({
     onMutate: () => {
-      if (amount) toast('결제 실패');
+      if (amount) toast('결제를 실패했어요. 문제가 지속되면 문의해주세요.');
     },
     mutationFn: ordersApi.POST_PREV_FREE_ORDER,
     onError: () => navigate(RoutePath.PaymentsCheckout),
