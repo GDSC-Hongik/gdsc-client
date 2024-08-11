@@ -18,7 +18,6 @@ export const StudentVerificationServerRedirect = () => {
     if (token) verifyStudentMail(token);
   }, [token, verifyStudentMail]);
 
-  //TODO: 추후 로딩 스피너 추가 필요
   return (
     <Wrapper direction="column">
       {isPending ? (
