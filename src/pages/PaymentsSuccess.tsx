@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Flex, Text, Space } from '@/components/common/Wrapper';
 import { media } from '@/styles';
+import { useQueryClient } from '@tanstack/react-query';
 import styled from '@emotion/styled';
 
 import Button from 'wowds-ui/Button';
@@ -13,6 +14,7 @@ import usePostOrder from '@/hooks/mutation/usePostOrder';
 
 export function PaymentsSuccess() {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const [searchParams] = useSearchParams();
 
   const { postOrder } = usePostOrder();
@@ -58,7 +60,13 @@ export function PaymentsSuccess() {
         </Flex>
       </Flex>
       <Flex direction="column">
-        <Button onClick={() => navigate(RoutePath.Dashboard)}>완료하기</Button>
+        <Button
+          onClick={() => {
+            navigate(RoutePath.Dashboard);
+            queryClient.invalidateQueries({ queryKey: ['member'] });
+          }}>
+          완료하기
+        </Button>
         <Space height={28} />
       </Flex>
     </Wrapper>
