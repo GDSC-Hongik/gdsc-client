@@ -26,7 +26,6 @@ export const JoinServer = ({ onNext }: { onNext: () => void }) => {
 
   const { data } = useGetDiscordJoined(getValues('discordUsername'), callQuery);
 
-  // data가 변경될 때마다 버튼 상태를 업데이트
   useEffect(() => {
     setCallQuery(false);
   }, [data]);
