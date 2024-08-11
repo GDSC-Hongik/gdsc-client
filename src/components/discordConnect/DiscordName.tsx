@@ -15,9 +15,7 @@ export const DiscordName = ({ onNext }: { onNext: () => void }) => {
   const { getValues, control, trigger, setError } =
     useFormContext<DiscordFormValues>();
 
-  const { checkDuplicate, data, isSuccess } = usePostDiscordName(
-    getValues('discordUsername')
-  );
+  const { checkDuplicate, data, isSuccess } = usePostDiscordName();
 
   useEffect(() => {
     if (isSuccess) {
@@ -36,14 +34,14 @@ export const DiscordName = ({ onNext }: { onNext: () => void }) => {
   const handleNextClick = useCallback(async () => {
     const isValid = await trigger('discordUsername');
     if (isValid) {
-      checkDuplicate();
+      checkDuplicate(getValues('discordUsername'));
     } else {
       setError('discordUsername', {
         type: 'manual',
         message: '하단 규정에 맞춰 작성해주세요.'
       });
     }
-  }, [checkDuplicate, setError, trigger]);
+  }, [checkDuplicate, getValues, setError, trigger]);
 
   return (
     <>
