@@ -27,7 +27,7 @@ export const JoinServer = ({ onNext }: { onNext: () => void }) => {
   const { data } = useGetDiscordJoined(getValues('discordUsername'), callQuery);
 
   useEffect(() => {
-    setCallQuery(false);
+    if (data?.isJoined) setCallQuery(false);
   }, [data]);
 
   return (
