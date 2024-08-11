@@ -1,4 +1,4 @@
-import { Status } from '@/types/status';
+import { PaymentStatus } from '@/types/status';
 import { User } from '@/types/user';
 
 export interface MemberInfoResponse {
@@ -25,7 +25,7 @@ export interface CurrentMembershipType {
   memberId: number;
   recruitmentId: number;
   regularRequirement: {
-    paymentStatus: Status;
+    paymentStatus: PaymentStatus;
     allSatisfied: boolean;
     paymentSatisfied: boolean;
   };

@@ -16,7 +16,7 @@ const AssociateRequirementCheck = ({
   const navigate = useNavigate();
 
   const univStatusContent = (univStatus: UnivEmailStatus) => {
-    if (univStatus === 'PENDING')
+    if (univStatus === 'UNSATISFIED')
       return (
         <Flex
           direction="column"
@@ -58,29 +58,29 @@ const AssociateRequirementCheck = ({
       </Text>
       <Box
         text={
-          infoStatus === 'PENDING'
+          infoStatus === 'UNSATISFIED'
             ? '기본 회원 정보를 입력해주세요.'
             : '기본 회원 정보를 모두 입력했어요.'
         }
         onClick={() => {
-          if (infoStatus === 'PENDING') navigate(RoutePath.Signup);
+          if (infoStatus === 'UNSATISFIED') navigate(RoutePath.Signup);
         }}
-        status={infoStatus === 'PENDING' ? 'error' : 'success'}
-        variant={infoStatus === 'PENDING' ? 'arrow' : 'text'}
+        status={infoStatus === 'UNSATISFIED' ? 'error' : 'success'}
+        variant={infoStatus === 'UNSATISFIED' ? 'arrow' : 'text'}
       />
       <Box
         text={'GDSC Hongik Discord'}
         textColor="discord"
         subText={
-          discordStatus === 'PENDING'
+          discordStatus === 'UNSATISFIED'
             ? '디스코드 연동이 필요해요.'
             : '디스코드 연동을 완료했어요.'
         }
         leftElement={<Discord />}
-        variant={discordStatus === 'PENDING' ? 'arrow' : 'text'}
-        status={discordStatus === 'PENDING' ? 'error' : 'success'}
+        variant={discordStatus === 'UNSATISFIED' ? 'arrow' : 'text'}
+        status={discordStatus === 'UNSATISFIED' ? 'error' : 'success'}
         onClick={() => {
-          if (discordStatus === 'PENDING') {
+          if (discordStatus === 'UNSATISFIED') {
             navigate(RoutePath.Discord);
           } else {
             window.open('https://discord.gg/dSV6vSEuGU');
@@ -97,7 +97,7 @@ const AssociateRequirementCheck = ({
       />
       <Box
         text={
-          bevyStatus === 'PENDING' ? (
+          bevyStatus === 'UNSATISFIED' ? (
             <Flex
               direction="column"
               gap="xs"
@@ -130,9 +130,9 @@ const AssociateRequirementCheck = ({
           )
         }
         variant="arrow"
-        status={bevyStatus === 'PENDING' ? 'error' : 'success'}
+        status={bevyStatus === 'UNSATISFIED' ? 'error' : 'success'}
         onClick={() => {
-          if (bevyStatus === 'PENDING') {
+          if (bevyStatus === 'UNSATISFIED') {
             navigate(RoutePath.Bevy);
           } else {
             window.open(

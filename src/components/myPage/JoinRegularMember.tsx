@@ -1,12 +1,13 @@
 import { Text, Flex } from '@/components/common/Wrapper';
 import RoutePath from '@/routes/routePath';
+import { PaymentStatus } from '@/types/status';
 import { useNavigate } from 'react-router-dom';
 import Box from 'wowds-ui/Box';
 
 const JoinRegularMember = ({
   paymentStatus
 }: {
-  paymentStatus: 'PENDING' | 'SATISFIED';
+  paymentStatus: PaymentStatus;
 }) => {
   const navigate = useNavigate();
 
