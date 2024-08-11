@@ -3,21 +3,22 @@ import { Logo } from '@/assets/LogoIcon';
 import { Flex } from '@/components/common/Wrapper';
 import { JoinButton } from '@/components/layout/JoinButton';
 import GlobalSize from '@/constants/globalSize';
-import useLandingStatus from '@/hooks/zustand/useLandingStatus';
 import RoutePath from '@/routes/routePath';
 import { color } from 'wowds-tokens';
 import { media } from '@/styles';
-import { getAuthRedirectPath } from '@/utils/auth';
 import styled from '@emotion/styled';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { isAuthenticated } from '@/utils/auth';
 
+//TODO: 백엔드 로그인 로직 수정 이후 반영 필요
 export default function Header() {
   const navigation = useNavigate();
-  const { pathname } = useLocation();
-  const { landingStatus } = useLandingStatus();
 
   const handleClick = () => {
-    navigation(getAuthRedirectPath(landingStatus));
+    if (isAuthenticated()) navigation(RoutePath.Dashboard);
+    else {
+      navigation(RoutePath.GithubSignin);
+    }
   };
 
   return (
@@ -29,11 +30,9 @@ export default function Header() {
             <HeaderLogo />
           </Flex>
         </LogoContainer>
-
-        {landingStatus === 'TO_DASHBOARD' && (
+        {isAuthenticated() ? (
           <JoinButton onClick={handleClick}>내 정보</JoinButton>
-        )}
-        {pathname === '/' && landingStatus !== 'TO_DASHBOARD' && (
+        ) : (
           <JoinButton onClick={handleClick}>로그인/가입하기</JoinButton>
         )}
       </HeaderContainter>

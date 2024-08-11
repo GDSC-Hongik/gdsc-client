@@ -7,9 +7,9 @@ import { media } from '@/styles';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { PulseLoader } from 'react-spinners';
 import RoutePath from '@/routes/routePath';
 import { useLayoutEffect } from 'react';
+import LoadingSpinner from '@/components/common/LoadingSpinner';
 
 export const StudentVerificationServerRedirect = () => {
   const [searchParams] = useSearchParams();
@@ -20,13 +20,12 @@ export const StudentVerificationServerRedirect = () => {
   useLayoutEffect(() => {
     if (token) verifyStudentMail(token);
   }, [token, verifyStudentMail]);
-  console.log(isSuccess);
 
   //TODO: 추후 로딩 스피너 추가 필요
   return (
     <Wrapper direction="column">
       {isPending ? (
-        <PulseLoader loading={isPending} />
+        <LoadingSpinner />
       ) : (
         <Container direction="column">
           <Text

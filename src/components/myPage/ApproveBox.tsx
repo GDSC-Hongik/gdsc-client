@@ -6,8 +6,8 @@ import {
   convertRecruitmentName
 } from '@/utils/mypage/recruitmentNameFormat';
 import useBottomSheet from '@/hooks/common/useBottomSheet';
+import { UserRoleType } from '@/types/user';
 
-type MemberRole = 'GUEST' | 'ASSOCIATE' | 'REGULAR' | 'ADMIN';
 type BoxVariantType = 'arrow' | 'checkbox' | 'text' | 'warn';
 type BoxStatusType = 'default' | 'success' | 'error';
 
@@ -15,12 +15,23 @@ export const ApproveBox = ({
   role,
   currentRecruitment
 }: {
-  role: MemberRole;
+  role: UserRoleType;
   currentRecruitment: CurrentRecruitmentType;
 }) => {
   const { handleBottomSheet } = useBottomSheet();
+
+  if (!currentRecruitment) {
+    return (
+      <Box
+        variant="warn"
+        text="지금은 모집 기간이 아니에요."
+        subText="모집 기간에 다시 확인해주세요!"
+        status="error"
+      />
+    );
+  }
   const boxContent: Record<
-    MemberRole,
+    UserRoleType,
     {
       title: string;
       description?: string;
@@ -29,24 +40,18 @@ export const ApproveBox = ({
     }
   > = {
     GUEST: {
-      title: `${convertRecruitmentName(currentRecruitment.name)}`,
+      title: `${convertRecruitmentName(currentRecruitment.name, currentRecruitment.roundTypeValue)}`,
       description: '하단의 준회원 가입 조건을 완료해주세요.',
       boxVariant: 'warn',
       status: 'error'
     },
     ASSOCIATE: {
-      title: `${convertRecruitmentName(currentRecruitment.name)}`,
+      title: `${convertRecruitmentName(currentRecruitment.name, currentRecruitment.roundTypeValue)}`,
       description: `${convertRecruitmentPeriod(currentRecruitment.period)}`,
       boxVariant: 'arrow',
       status: 'error'
     },
     REGULAR: {
-      title: '모든 가입 절차를 완료했어요.',
-      boxVariant: 'text',
-      status: 'success'
-    },
-    //TODO: 어드민 가입 상태 논의하기
-    ADMIN: {
       title: '모든 가입 절차를 완료했어요.',
       boxVariant: 'text',
       status: 'success'

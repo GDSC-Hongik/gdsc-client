@@ -10,6 +10,7 @@ import { Controller } from 'react-hook-form';
 import { useEffect, useState } from 'react';
 import { media } from '@/styles';
 import GlobalSize from '@/constants/globalSize';
+import LoadingSpinner from '@/components/common/LoadingSpinner';
 
 /** 재학생 인증 페이지 */
 export const StudentVerification = () => {
@@ -17,12 +18,12 @@ export const StudentVerification = () => {
   //TODO: 추후 pending 상태 백엔드 API 수정하면 반영해둘것.
   const [, setPending] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
-  const { onSubmit, control, isValid, onVerifyStudent, loading } =
+  const { onSubmit, control, isValid, onVerifyStudent, isPending } =
     useStudentVerification();
 
   const IsStudentVerified = async () => {
     const univStatus = await onVerifyStudent();
-    if (univStatus === 'PENDING') {
+    if (univStatus === 'UNSATISFIED') {
       setPending(true);
     } else {
       navigate(RoutePath.Dashboard);
@@ -39,12 +40,9 @@ export const StudentVerification = () => {
     onSubmit();
   };
 
-  if (loading) {
-    return <div>로딩중입니다...</div>;
-  }
-
   return (
     <Wrapper direction="column" justify="flex-start" gap="lg">
+      {isPending && <LoadingSpinner />}
       <TextContainer>
         <Text typo="h1" style={{ marginBottom: '12px' }}>
           재학생 인증하기
@@ -68,34 +66,50 @@ export const StudentVerification = () => {
               message: '* 이메일을 입력해주세요.'
             },
             pattern: {
-              value: /^[a-zA-Z0-9._%+-]+@g\.hongik\.ac\.kr$/,
-              message: '* 홍익대학교 이메일 형식을 지켜주세요.'
+              value: /^[a-zA-Z0-9._%+-]/,
+              message: '* 이메일 형식을 지켜주세요.'
             }
           }}
           render={({ field, fieldState }) => (
-            <TextField
-              ref={field.ref}
-              onChange={field.onChange}
-              onBlur={field.onBlur}
-              value={field.value}
-              error={fieldState.invalid}
-              placeholder="아이디@g.hongik.ac.kr"
-              label="학교 이메일"
-              helperText={fieldState.error?.message}
-            />
+            <EmailContainer>
+              <TextFieldWrapper>
+                <TextField
+                  ref={field.ref}
+                  onChange={field.onChange}
+                  onBlur={field.onBlur}
+                  value={field.value}
+                  error={fieldState.invalid}
+                  placeholder="로컬파트 작성"
+                  label="학교 이메일"
+                  helperText={fieldState.error?.message}
+                />
+              </TextFieldWrapper>
+              <Text
+                typo="body1"
+                style={{
+                  height: '84.8px',
+                  display: 'flex',
+                  alignItems: 'center'
+                }}>
+                @g.hongik.ac.kr
+              </Text>
+            </EmailContainer>
           )}
         />
+
         <Space height="xs" />
         <Text typo="body3" color="sub">
           * 메일 전송이 최대 30분 가량 늦어질 수 있어요.
           <br />* 메일 전송이 되지 않을 경우 카카오톡 채널을 통해 코어 멤버에게
           문의해 주세요.
+          <br />* 인증메일이 스팸메일함에 전송될 수 있으니 확인해주세요.
         </Text>
         <ButtonContainer>
           <Button disabled={!isValid} style={{ maxWidth: '100%' }}>
             인증메일 받기
           </Button>
           <StudentGuideLink
+            color={color.sub}
             to={RoutePath.StudentEmailLinkGuideLink}
             target="_blank">
             학교 이메일이 무엇인가요?
@@ -130,7 +144,7 @@ const StudentGuideLink = styled(Link)`
     color: ${color.sub};
   }
   &:visited {
-    color: ${color.textBlack};
+    color: ${color.sub};
   }
   ${typography.label2};
 `;
@@ -157,4 +171,17 @@ const ButtonContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: ${space.xs};
+`;
+
+const EmailContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: ${space.xs};
+`;
+
+const TextFieldWrapper = styled.div`
+  flex: 1;
+  height: 84.8px;
+  width: 50%;
 `;

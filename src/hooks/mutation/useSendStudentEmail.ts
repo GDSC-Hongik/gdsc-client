@@ -11,9 +11,6 @@ export default function useSendStudentEmail() {
     onSuccess: () => {
       toast('메일 전송이 완료되었습니다.');
       navigation(RoutePath.Dashboard);
-    },
-    onError: (error) => {
-      toast(error.message);
     }
   });
 

@@ -1,4 +1,4 @@
-import DepartmentSelect from '@/components/auth/DepartmentSelect';
+import DepartmentSelect from '@/components/signup/DepartmentSelect';
 import { useForm, Controller } from 'react-hook-form';
 import type { color as colorType } from 'wowds-tokens';
 import GlobalSize from '@/constants/globalSize';
@@ -10,15 +10,14 @@ import useCreateUserBasicInfo from '@/hooks/mutation/useCreateUserBasicInfo';
 import Button from 'wowds-ui/Button';
 import Checkbox from 'wowds-ui/Checkbox';
 import TextField from 'wowds-ui/TextField';
-import DropDownOption from 'wowds-ui/DropDownOption';
-import DropDown from 'wowds-ui/DropDown';
 import { LoadingForm } from '@/components/common/LoadingForm';
 import RoutePath from '@/routes/routePath';
+import { Suspense } from 'react';
 
 import { formatPhoneNumberInProgress } from '@/utils/phone';
 import styled from '@emotion/styled';
-import { Suspense } from 'react';
 import { Link } from 'react-router-dom';
+import EmailInputField from '@/components/signup/EmailInputField';
 
 export type FormStateType = {
   name: string;
@@ -75,7 +74,7 @@ export const SignUp = () => {
         style={{
           display: 'flex',
           flexDirection: 'column',
-          gap: '24px',
+          gap: '10px',
           width: '100%'
         }}>
         <Controller
@@ -93,16 +92,18 @@ export const SignUp = () => {
             }
           }}
           render={({ field, fieldState }) => (
-            <TextField
-              label="이름"
-              error={fieldState.invalid}
-              ref={field.ref}
-              value={field.value}
-              onChange={field.onChange}
-              onBlur={field.onBlur}
-              helperText={fieldState.error?.message}
-              placeholder="내용을 입력하세요"
-            />
+            <InputFormWrapper>
+              <TextField
+                label="이름"
+                error={fieldState.invalid}
+                ref={field.ref}
+                value={field.value}
+                onChange={field.onChange}
+                onBlur={field.onBlur}
+                helperText={fieldState.error?.message}
+                placeholder="내용을 입력하세요"
+              />
+            </InputFormWrapper>
           )}
         />
         <Controller
@@ -121,16 +122,18 @@ export const SignUp = () => {
           }}
           render={({ field, fieldState }) => {
             return (
-              <TextField
-                label="학번"
-                error={fieldState.invalid}
-                ref={field.ref}
-                value={field.value}
-                onChange={field.onChange}
-                onBlur={field.onBlur}
-                helperText={fieldState.error?.message}
-                placeholder="내용을 입력하세요"
-              />
+              <InputFormWrapper>
+                <TextField
+                  label="학번"
+                  error={fieldState.invalid}
+                  ref={field.ref}
+                  value={field.value}
+                  onChange={field.onChange}
+                  onBlur={field.onBlur}
+                  helperText={fieldState.error?.message}
+                  placeholder="내용을 입력하세요"
+                />
+              </InputFormWrapper>
             );
           }}
         />
@@ -153,77 +156,24 @@ export const SignUp = () => {
             }
           }}
           render={({ field, fieldState }) => (
-            <TextField
-              label="전화번호"
-              error={fieldState.invalid}
-              ref={field.ref}
-              onChange={field.onChange}
-              onBlur={field.onBlur}
-              value={formatPhoneNumberInProgress(field.value)}
-              helperText={fieldState.error?.message}
-              placeholder="내용을 입력하세요"
-            />
+            <InputFormWrapper>
+              <TextField
+                label="전화번호"
+                error={fieldState.invalid}
+                ref={field.ref}
+                onChange={field.onChange}
+                onBlur={field.onBlur}
+                value={formatPhoneNumberInProgress(field.value)}
+                helperText={fieldState.error?.message}
+                placeholder="내용을 입력하세요"
+              />
+            </InputFormWrapper>
           )}
         />
         <Suspense fallback={<LoadingForm label="학과" />}>
           <DepartmentSelect control={control} />
         </Suspense>
-        <EmailFieldWrapper>
-          <Controller
-            name="email"
-            control={control}
-            defaultValue=""
-            rules={{
-              required: {
-                value: true,
-                message: '* 정보를 입력해주세요.'
-              }
-            }}
-            render={({ field, fieldState }) => (
-              <TextFieldWrapper>
-                <TextField
-                  label="이메일 주소"
-                  error={fieldState.invalid}
-                  ref={field.ref}
-                  onChange={field.onChange}
-                  onBlur={field.onBlur}
-                  value={formatPhoneNumberInProgress(field.value)}
-                  placeholder="내용을 입력하세요"
-                  helperText={fieldState.error ? fieldState.error?.message : ''}
-                />
-              </TextFieldWrapper>
-            )}
-          />
-          <Controller
-            name="emailDomain"
-            control={control}
-            defaultValue=""
-            rules={{
-              required: {
-                value: true,
-                message: '* 도메인을 선택해주세요.'
-              }
-            }}
-            render={({ field }) => (
-              <DropDown
-                placeholder="선택하세요"
-                onChange={({ selectedValue }) => {
-                  field.onChange(selectedValue);
-                }}
-                defaultValue=""
-                value={field.value}
-                style={{ marginTop: '15px', flex: 1, width: '10rem' }}>
-                <DropDownOption text="@gmail.com" value="@gmail.com" />
-                <DropDownOption text="@naver.com" value="@naver.com" />
-                <DropDownOption
-                  text="@g.hongik.ac.kr"
-                  value="@g.hongik.ac.kr"
-                />
-                <DropDownOption text="@daum.net" value="@daum.net" />
-              </DropDown>
-            )}
-          />
-        </EmailFieldWrapper>
+        <EmailInputField control={control} />
         <Flex
           direction="column"
           gap="lg"
@@ -231,6 +181,9 @@ export const SignUp = () => {
           align="center"
           css={css`
             margin-top: 16px;
+            @media (max-height: 750px) {
+              bottom: 0rem;
+            }
             position: absolute;
             bottom: 1.75rem;
             width: 100%;
@@ -305,7 +258,7 @@ export const SignUp = () => {
             role="button"
             disabled={!isValid}
             style={{ maxWidth: '100%' }}>
-            가입 신청하기
+            입력 완료하기
           </Button>
         </Flex>
       </form>
@@ -316,6 +269,9 @@ export const SignUp = () => {
 const Container = styled(Flex)`
   position: relative;
   flex-direction: column;
+  @media (max-height: 765px) {
+    min-height: 105vh;
+  }
   min-height: calc(100vh - 54px);
   justify-content: flex-start;
   background-color: ${color.mono50};
@@ -346,16 +302,7 @@ const GuideLink = styled(Link)<{ color?: colorKey }>`
   }
 `;
 
-const TextFieldWrapper = styled.div`
-  flex: 1;
-  width: 50%;
-`;
-
-const EmailFieldWrapper = styled.div`
-  position: relative;
+const InputFormWrapper = styled.div`
+  height: 84.8px;
   width: 100%;
-  display: flex;
-  gap: ${space.sm};
-  align-items: center;
-  justify-content: space-between;
 `;

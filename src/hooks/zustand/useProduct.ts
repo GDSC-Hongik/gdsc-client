@@ -19,7 +19,8 @@ export const useProductStore = create<ProductStore>((set) => ({
   setDiscount: (newDiscount, couponId) =>
     set((state) => ({
       discount: newDiscount,
-      totalAmount: state.amount - newDiscount,
+      totalAmount:
+        state.amount - newDiscount < 0 ? 0 : state.amount - newDiscount,
       issuedCouponId: couponId
     }))
 }));

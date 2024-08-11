@@ -1,6 +1,5 @@
-import { Status } from '@/types/status';
 import { User } from '@/types/user';
-
+import { Status } from '@/types/status';
 export interface MemberInfoResponse {
   member: User;
   currentRecruitmentRound: CurrentRecruitmentType;
