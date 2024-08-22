@@ -1,4 +1,5 @@
 import { Flex, Space, Text } from '@/components/common/Wrapper';
+import * as Sentry from '@sentry/react';
 import GlobalSize from '@/constants/globalSize';
 import { media } from '@/styles';
 import styled from '@emotion/styled';
@@ -8,6 +9,14 @@ import Button from 'wowds-ui/Button';
 
 const NotFoundPage = () => {
   const navigate = useNavigate();
+  if (process.env.NODE_ENV === 'production') {
+    // eslint-disable-next-line import/namespace
+    Sentry.captureMessage('404 Page Not Found', {
+      extra: {
+        pathname: location.pathname
+      }
+    });
+  }
   return (
     <NotfoundWrapper>
       <Space height={100} />
