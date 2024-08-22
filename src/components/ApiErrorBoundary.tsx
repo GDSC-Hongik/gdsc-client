@@ -52,12 +52,5 @@ export default function ApiErrorBoundary({
     }
   }
 
-  return (
-    <ErrorBoundary
-      {...rest}
-      onError={(error) => handleError(error as AxiosError)}
-      fallbackRender={() => <NotFoundPage />}>
-      {children}
-    </ErrorBoundary>
-  );
+  return <>{children}</>;
 }
