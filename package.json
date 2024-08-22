@@ -24,13 +24,14 @@
     "nanoid": "^5.0.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-error-boundary": "^4.0.13",
     "react-hook-form": "^7.50.1",
     "react-router-dom": "^6.22.1",
     "react-toastify": "^10.0.4",
     "wowds-icons": "^0.1.0",
     "wowds-tokens": "^0.0.9",
-    "zustand": "^4.5.0",
-    "wowds-ui": "^0.1.9"
+    "wowds-ui": "^0.1.9",
+    "zustand": "^4.5.0"
   },
   "devDependencies": {
     "@sentry/react": "^8.22.0",
