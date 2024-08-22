@@ -4,7 +4,6 @@ import RoutePath from '@/routes/routePath';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import AuthAccessGuard from '@/components/auth/guard/AuthAccessGuard';
-import { Text } from '@/components/common/Wrapper';
 import NotFoundPage from '@/pages/NotFound';
 import {
   AuthServerRedirectNavigate,
