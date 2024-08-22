@@ -28,7 +28,10 @@ export default function ApiErrorBoundary({
 
   function handleError(axiosError: AxiosError) {
     const errorResponse = axiosError.response?.data as ErrorResponseType;
-
+    if (errorResponse) {
+      // eslint-disable-next-line import/namespace
+      Sentry.captureException(errorResponse, {});
+    }
     const message = errorResponse.errorMessage;
 
     switch (axiosError.response?.status) {
@@ -41,11 +44,6 @@ export default function ApiErrorBoundary({
       default:
         toast.error(message);
         break;
-    }
-
-    if (errorResponse) {
-      // eslint-disable-next-line import/namespace
-      Sentry.captureException(errorResponse, {});
     }
   }
 
