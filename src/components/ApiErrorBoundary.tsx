@@ -45,7 +45,19 @@ export default function ApiErrorBoundary({
         toast.error(message);
         break;
     }
+
+    if (errorResponse) {
+      // eslint-disable-next-line import/namespace
+      Sentry.captureException(errorResponse, {});
+    }
   }
 
-  return <>{children}</>;
+  return (
+    <ErrorBoundary
+      {...rest}
+      onError={(error) => handleError(error as AxiosError)}
+      fallbackRender={() => <NotFoundPage />}>
+      {children}
+    </ErrorBoundary>
+  );
 }
