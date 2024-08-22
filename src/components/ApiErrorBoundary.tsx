@@ -1,26 +1,21 @@
-import { PropsWithChildren, PropsWithRef } from 'react';
 import * as Sentry from '@sentry/react';
-import { ErrorBoundary } from 'react-error-boundary';
 import { useQueryClient } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import { redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import RoutePath from '@/routes/routePath';
-import NotFoundPage from '@/pages/NotFound';
+import { ReactNode } from 'react';
 
 type ErrorResponseType = {
   errorCodeName: string;
   errorMessage: string;
 };
 
-export type ApiErrorBoundaryProps = PropsWithRef<
-  PropsWithChildren<ErrorBoundary>
->;
-
 export default function ApiErrorBoundary({
-  children,
-  ...rest
-}: ApiErrorBoundaryProps) {
+  children
+}: {
+  children: ReactNode;
+}) {
   const queryClient = useQueryClient();
 
   queryClient.getQueryCache().config = {
@@ -54,12 +49,5 @@ export default function ApiErrorBoundary({
     }
   }
 
-  return (
-    <ErrorBoundary
-      {...rest}
-      onError={(error) => handleError(error as AxiosError)}
-      fallbackRender={() => <NotFoundPage />}>
-      {children}
-    </ErrorBoundary>
-  );
+  return <>{children}</>;
 }
