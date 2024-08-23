@@ -11,3 +11,4 @@ export * from './redirect/StudentVerificationServerRedirect';
 export * from './PaymentsCheckout';
 export * from './PaymentsFail';
 export * from './PaymentsSuccess';
+export * from './NotFound';

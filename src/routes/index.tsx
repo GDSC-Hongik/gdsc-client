@@ -4,7 +4,7 @@ import RoutePath from '@/routes/routePath';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import AuthAccessGuard from '@/components/auth/guard/AuthAccessGuard';
-import { Text } from '@/components/common/Wrapper';
+import NotFoundPage from '@/pages/NotFound';
 import {
   AuthServerRedirectNavigate,
   StudentVerificationServerRedirect,
@@ -148,8 +148,10 @@ const router = sentryCreateBrowserRouter([
         path: RoutePath.PaymentsSuccess,
         element: <PaymentsSuccess />
       },
-      // Todo: 404 Not found page
-      { path: '*', element: <Text>not found page</Text> }
+      {
+        path: '*',
+        element: <NotFoundPage />
+      }
     ]
   }
 ]);
