@@ -27,6 +27,11 @@ const Footer = () => {
             GDSC Hongik 가이드라인{' '}
           </Text>
         </Link>
+        <Link to={'https://www.gdschongik.com/term-of-use'}>
+          <Text typo="label2" style={{ textDecoration: 'underline' }}>
+            와우온보딩 이용약관
+          </Text>
+        </Link>
       </Flex>
 
       <Flex direction="column" align="start">
