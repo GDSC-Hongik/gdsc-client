@@ -15,7 +15,7 @@ const setSentry = () => {
 
     Sentry.init({
       environment: process.env.NODE_ENV,
-      dsn: VITE_SENTRY_DSN_KEY,
+      dsn: VITE_SENTRY_DSN_KEY || process.env.VITE_SENTRY_DSN_KEY,
       tracesSampleRate: 1.0,
       tracePropagationTargets: [
         'localhost',
