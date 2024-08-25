@@ -10,6 +10,7 @@ import {
 import { VITE_SENTRY_DSN_KEY } from '@/constants/environment';
 
 console.log(VITE_SENTRY_DSN_KEY);
+console.log(process.env.VITE_SENTRY_DSN_KEY);
 
 const setSentry = () => {
   function initSentry() {
