@@ -1,3 +1,4 @@
+/* eslint-disable import/namespace */
 import { useEffect } from 'react';
 import * as Sentry from '@sentry/react';
 import {
@@ -6,17 +7,21 @@ import {
   useLocation,
   useNavigationType
 } from 'react-router-dom';
-import { SENTRY_DSN_KEY } from '@/constants/environment';
+import { VITE_SENTRY_DSN_KEY } from '@/constants/environment';
 
 const setSentry = () => {
   function initSentry() {
-    if (process.env.NODE_ENV === 'development') return;
-
     Sentry.init({
-      environment: process.env.VERCEL_ENV,
-      dsn: SENTRY_DSN_KEY,
+      environment: process.env.NODE_ENV,
+      dsn: VITE_SENTRY_DSN_KEY,
       tracesSampleRate: 1.0,
+      tracePropagationTargets: [
+        'localhost',
+        /^https:\/\/(?:dev-|local-)?onboarding\.gdschongik\.com(?:\/.*)/,
+        /^https:\/\/(?:dev-)?api\.gdschongik\.com(?:\/.*)/
+      ],
       integrations: [
+        Sentry.browserTracingIntegration(),
         Sentry.reactRouterV6BrowserTracingIntegration({
           useEffect,
           useLocation,
@@ -24,16 +29,9 @@ const setSentry = () => {
           createRoutesFromChildren,
           matchRoutes
         }),
-        // eslint-disable-next-line import/namespace
         Sentry.replayIntegration()
       ],
 
-      tracePropagationTargets: [
-        /^https:\/\/onboarding.gdschongik.com\/?.*$/,
-        /^https:\/\/api\.gdschongik\.com\/?.*$/,
-        /^https:\/\/dev-onboarding.gdschongik.com\/?.*$/,
-        /^https:\/\/dev-api\.gdschongik\.com\/?.*$/
-      ],
       replaysSessionSampleRate: 0.1,
       replaysOnErrorSampleRate: 1.0
     });
