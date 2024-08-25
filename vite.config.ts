@@ -6,19 +6,18 @@ import { sentryVitePlugin } from '@sentry/vite-plugin';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    tsconfigPaths(),
-    sentryVitePlugin({
-      org: process.env.SENTRY_ORG_NAME,
-      project: process.env.SENTRY_PROJECT_NAME,
-      authToken: process.env.SENTRY_AUTH_TOKEN,
-      sourcemaps: {
-        assets: './dist/**',
-        filesToDeleteAfterUpload: '**/*.map'
-      }
-    })
-  ],
+  plugins: [react(), tsconfigPaths(), sentryVitePlugin({
+    org: process.env.SENTRY_ORG_NAME,
+    project: process.env.SENTRY_PROJECT_NAME,
+    authToken: process.env.SENTRY_AUTH_TOKEN,
+    sourcemaps: {
+      assets: './dist/**',
+      filesToDeleteAfterUpload: '**/*.map'
+    }
+  }), sentryVitePlugin({
+    org: "gdsc-hongik",
+    project: "wow-onboarding"
+  })],
   build: {
     sourcemap: true
   }
