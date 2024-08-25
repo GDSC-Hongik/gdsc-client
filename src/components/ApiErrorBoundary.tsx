@@ -38,7 +38,7 @@ export default function ApiErrorBoundary({
       case 401:
       case 403:
         toast.error(message);
-        sessionStorage.setItem('isLogin', 'false');
+        localStorage.setItem('isLogin', 'false');
         redirect(RoutePath.Home);
         break;
       default:

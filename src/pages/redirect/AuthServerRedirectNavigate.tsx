@@ -6,7 +6,7 @@ export const AuthServerRedirectNavigate = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    sessionStorage.setItem('isLogin', 'true');
+    localStorage.setItem('isLogin', 'true');
     navigate(RoutePath.Dashboard);
   }, [navigate]);
 
