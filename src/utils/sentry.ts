@@ -9,10 +9,10 @@ import {
 } from 'react-router-dom';
 import { VITE_SENTRY_DSN_KEY } from '@/constants/environment';
 
+console.log(VITE_SENTRY_DSN_KEY);
+
 const setSentry = () => {
   function initSentry() {
-    if (process.env.NODE_ENV === 'development') return;
-
     Sentry.init({
       environment: process.env.NODE_ENV,
       dsn: VITE_SENTRY_DSN_KEY || process.env.VITE_SENTRY_DSN_KEY,
