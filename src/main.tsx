@@ -1,8 +1,10 @@
-import sentry from '@utils/sentry';
+/* eslint-disable import/namespace */
 import * as Sentry from '@sentry/react';
+import sentry from './utils/sentry';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 import BottomSheetProvider from './components/provider/BottomSheetProvider';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Routers } from '@/routes';
@@ -10,7 +12,6 @@ import { GlobalStyle } from '@/styles';
 import { Global } from '@emotion/react';
 import { ToastContainer } from 'react-toastify';
 import './styles/styles.scss';
-
 try {
   sentry.initSentry();
 } catch (error: unknown) {
