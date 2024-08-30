@@ -14,6 +14,7 @@ export interface CurrentRecruitmentType {
     endDate: string;
     open: boolean;
   };
+  feeName: string;
   fee: number;
   roundType: 'FIRST' | 'SECOND';
   roundTypeValue: string;
