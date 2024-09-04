@@ -5,18 +5,23 @@ import styled from '@emotion/styled';
 import MemberStatusInfoBox from '@/components/myPage/MemberStatusInfoBox';
 import { ApproveBox } from './ApproveBox';
 import { Text, Flex, Space } from '../common/Wrapper';
-import { CurrentRecruitmentType } from '@/apis/member/memberType';
+import {
+  CurrentMembershipType,
+  CurrentRecruitmentType
+} from '@/apis/member/memberType';
 import MemberStatusStepper from './MemberStatusStepper';
 import { User, UserRoleType } from '@/types/user';
 
 const JoinStatus = ({
   role,
   currentRecruitmentRound,
-  member
+  member,
+  currentMembership
 }: {
   role: UserRoleType;
   currentRecruitmentRound: CurrentRecruitmentType;
   member: User;
+  currentMembership?: CurrentMembershipType;
 }) => {
   const [openInfo, setOpenInfo] = useState(false);
   const helpButtonRef = useRef<HTMLDivElement>(null);
@@ -50,7 +55,11 @@ const JoinStatus = ({
       <Space height={40} />
       <MemberStatusStepper member={member} />
       <Space height={20} />
-      <ApproveBox role={role} currentRecruitment={currentRecruitmentRound} />
+      <ApproveBox
+        role={role}
+        currentRecruitment={currentRecruitmentRound}
+        currentMembership={currentMembership}
+      />
     </Flex>
   );
 };

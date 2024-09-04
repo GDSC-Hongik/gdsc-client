@@ -42,6 +42,7 @@ export const Dashboard = () => {
           <JoinStatus
             role={member.role}
             currentRecruitmentRound={currentRecruitmentRound}
+            currentMembership={currentMembership}
             member={member}
           />
         </Flex>
