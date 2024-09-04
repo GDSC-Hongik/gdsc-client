@@ -81,10 +81,13 @@ const JoinRegularMemberBottomSheet = ({
           text={<Text typo="label1">{recruitmentPeriod}</Text>}
         />
         <Button
+          disabled={currentRecruitment ? true : false}
           onClick={() => {
             joinRegularMember(currentRecruitment.recruitmentId);
           }}>
-          지원하러 가기
+          {currentRecruitment
+            ? '정회원 가입 조건을 완료해주세요'
+            : '지원하러 가기'}
         </Button>
       </BottomSheetContent>
     </BottomSheet>
