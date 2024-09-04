@@ -52,16 +52,21 @@ export const ApproveBox = ({
       status: 'error'
     },
     REGULAR: {
-      title: '모든 가입 절차를 완료했어요.',
-      boxVariant: 'text',
+      title: 'WOW CLASS',
+      description:
+        'GDSC Hongik의 스터디 서비스인 WOW CLASS를 이용할 수 있어요.',
+      boxVariant: 'arrow',
       status: 'success'
     }
   };
+
   return (
     <BoxWrapper
       onClick={() => {
         if (role === 'ASSOCIATE') handleBottomSheet();
-        else {
+        else if (role === 'REGULAR') {
+          window.location.href = 'https://study.gdschongik.com/';
+        } else {
           return;
         }
       }}>
