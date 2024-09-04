@@ -31,8 +31,6 @@ export const Dashboard = () => {
 
   const { member, currentRecruitmentRound, currentMembership } = data;
 
-  console.log(data);
-
   return (
     <div style={{ height: '100%' }}>
       <Wrapper direction="column" justify="flex-start">
