@@ -1,6 +1,9 @@
 import Box from 'wowds-ui/Box';
 import styled from '@emotion/styled';
-import { CurrentRecruitmentType } from '@/apis/member/memberType';
+import {
+  CurrentMembershipType,
+  CurrentRecruitmentType
+} from '@/apis/member/memberType';
 import {
   convertRecruitmentPeriod,
   convertRecruitmentName
@@ -13,14 +16,16 @@ type BoxStatusType = 'default' | 'success' | 'error';
 
 export const ApproveBox = ({
   role,
-  currentRecruitment
+  currentRecruitment,
+  currentMembership
 }: {
   role: UserRoleType;
   currentRecruitment: CurrentRecruitmentType;
+  currentMembership?: CurrentMembershipType;
 }) => {
   const { handleBottomSheet } = useBottomSheet();
 
-  if (!currentRecruitment) {
+  if (!currentRecruitment && role !== 'REGULAR') {
     return (
       <Box
         variant="warn"
@@ -48,20 +53,25 @@ export const ApproveBox = ({
     ASSOCIATE: {
       title: `${convertRecruitmentName(currentRecruitment.name, currentRecruitment.roundTypeValue)}`,
       description: `${convertRecruitmentPeriod(currentRecruitment.period)}`,
-      boxVariant: 'arrow',
+      boxVariant: currentMembership ? 'text' : 'arrow',
       status: 'error'
     },
     REGULAR: {
-      title: '모든 가입 절차를 완료했어요.',
-      boxVariant: 'text',
+      title: 'WOW CLASS',
+      description:
+        'GDSC Hongik의 스터디 서비스인 WOW CLASS를 이용할 수 있어요.',
+      boxVariant: 'arrow',
       status: 'success'
     }
   };
+
   return (
     <BoxWrapper
       onClick={() => {
-        if (role === 'ASSOCIATE') handleBottomSheet();
-        else {
+        if (role === 'ASSOCIATE' && !currentMembership) handleBottomSheet();
+        else if (role === 'REGULAR') {
+          window.location.href = 'https://study.gdschongik.com/';
+        } else {
           return;
         }
       }}>

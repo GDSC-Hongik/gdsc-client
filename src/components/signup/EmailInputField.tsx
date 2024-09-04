@@ -38,7 +38,7 @@ const EmailInputField = ({ control }: DepartmentSelectProps) => {
         render={({ field, fieldState }) => (
           <TextFieldWrapper>
             <TextField
-              style={{ minWidth: '100%' }}
+              style={{ minWidth: '100%', flex: 1, maxWidth: '150px' }}
               label="이메일"
               error={fieldState.invalid}
               ref={field.ref}
@@ -69,7 +69,7 @@ const EmailInputField = ({ control }: DepartmentSelectProps) => {
             {customEmail ? (
               <TextFieldWrapper>
                 <TextField
-                  style={{ minWidth: '100%' }}
+                  style={{ minWidth: '100%', flex: 1, maxWidth: '150px' }}
                   label="도메인"
                   error={fieldState.invalid}
                   ref={field.ref}

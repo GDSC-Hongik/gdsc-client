@@ -1,5 +1,5 @@
 export const isAuthenticated = () => {
-  const isLogin = sessionStorage.getItem('isLogin');
+  const isLogin = localStorage.getItem('isLogin');
 
   return isLogin === 'true';
 };

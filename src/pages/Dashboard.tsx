@@ -31,6 +31,8 @@ export const Dashboard = () => {
 
   const { member, currentRecruitmentRound, currentMembership } = data;
 
+  console.log(data);
+
   return (
     <div style={{ height: '100%' }}>
       <Wrapper direction="column" justify="flex-start">
@@ -40,12 +42,14 @@ export const Dashboard = () => {
           <JoinStatus
             role={member.role}
             currentRecruitmentRound={currentRecruitmentRound}
+            currentMembership={currentMembership}
             member={member}
           />
         </Flex>
-        {currentMembership && (
+        {(currentMembership || member.role === 'REGULAR') && (
           <JoinRegularMember
-            paymentStatus={currentMembership.regularRequirement.paymentStatus}
+            member={member}
+            paymentStatus={currentMembership?.regularRequirement.paymentStatus}
           />
         )}
         <AssociateRequirementCheck

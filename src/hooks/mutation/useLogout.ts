@@ -10,7 +10,7 @@ export default function useLogout() {
   const mutation = useMutation({
     mutationFn: authApi.LOGOUT,
     onSuccess: () => {
-      sessionStorage.clear();
+      localStorage.clear();
       navigate(RoutePath.Home);
       location.reload();
     },

@@ -1,7 +1,7 @@
 import * as Sentry from '@sentry/react';
 import { useQueryClient } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
-import { redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import RoutePath from '@/routes/routePath';
 import { ReactNode } from 'react';
@@ -17,6 +17,7 @@ export default function ApiErrorBoundary({
   children: ReactNode;
 }) {
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
 
   queryClient.getQueryCache().config = {
     onError: (error) => handleError(error as AxiosError)
@@ -38,8 +39,8 @@ export default function ApiErrorBoundary({
       case 401:
       case 403:
         toast.error(message);
-        sessionStorage.setItem('isLogin', 'false');
-        redirect(RoutePath.Home);
+        localStorage.setItem('isLogin', 'false');
+        navigate(RoutePath.Home);
         break;
       default:
         toast.error(message);
