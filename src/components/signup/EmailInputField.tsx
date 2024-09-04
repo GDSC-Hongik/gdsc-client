@@ -137,9 +137,3 @@ const EmailFieldWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
-
-const TextFieldStyle = {
-  minWidth: '100%',
-  flex: 1,
-  maxWidth: '100%'
-};
