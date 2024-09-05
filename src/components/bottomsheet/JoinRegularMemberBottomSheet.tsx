@@ -6,7 +6,10 @@ import Button from 'wowds-ui/Button';
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import RoutePath from '@/routes/routePath';
-import { CurrentRecruitmentType } from '@/apis/member/memberType';
+import {
+  CurrentMembershipType,
+  CurrentRecruitmentType
+} from '@/apis/member/memberType';
 import {
   convertRecruitmentName,
   convertRecruitmentPeriod
@@ -14,9 +17,11 @@ import {
 import useJoinRegularMember from '@/hooks/mutation/useJoinRegularMember';
 
 const JoinRegularMemberBottomSheet = ({
-  currentRecruitment
+  currentRecruitment,
+  currentMembership
 }: {
   currentRecruitment: CurrentRecruitmentType;
+  currentMembership: CurrentMembershipType;
 }) => {
   const { joinRegularMember } = useJoinRegularMember();
   const bottomSheetTitle = convertRecruitmentName(
@@ -81,11 +86,11 @@ const JoinRegularMemberBottomSheet = ({
           text={<Text typo="label1">{recruitmentPeriod}</Text>}
         />
         <Button
-          disabled={currentRecruitment ? true : false}
+          disabled={currentMembership ? true : false}
           onClick={() => {
             joinRegularMember(currentRecruitment.recruitmentId);
           }}>
-          {currentRecruitment
+          {currentMembership
             ? '정회원 가입 조건을 완료해주세요'
             : '지원하러 가기'}
         </Button>
