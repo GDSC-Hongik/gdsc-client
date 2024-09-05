@@ -60,6 +60,7 @@ export const Dashboard = () => {
       </Wrapper>
       {isOpen && (
         <JoinRegularMemberBottomSheet
+          currentMembership={currentMembership}
           currentRecruitment={currentRecruitmentRound}
         />
       )}
