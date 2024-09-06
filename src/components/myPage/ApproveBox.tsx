@@ -25,18 +25,33 @@ export const ApproveBox = ({
 }) => {
   const { handleBottomSheet } = useBottomSheet();
 
-  if (!currentRecruitment && role !== 'REGULAR') {
+  if (role === 'REGULAR') {
+    return (
+      <Box
+        variant="arrow"
+        text="WOW CLASS"
+        subText="GDSC Hongik의 스터디 서비스인 WOW CLASS를 이용할 수 있어요."
+        status="success"
+        onClick={() => {
+          window.location.href = 'https://study.gdschongik.com/';
+        }}
+      />
+    );
+  }
+
+  if (!currentRecruitment) {
     return (
       <Box
         variant="warn"
-        text="지금은 모집 기간이 아니에요."
+        text="지금은 지원 기간이 아니에요."
         subText="모집 기간에 다시 확인해주세요!"
         status="error"
       />
     );
   }
+
   const boxContent: Record<
-    UserRoleType,
+    Exclude<UserRoleType, 'REGULAR'>,
     {
       title: string;
       description?: string;
@@ -55,13 +70,6 @@ export const ApproveBox = ({
       description: `${convertRecruitmentPeriod(currentRecruitment.period)}`,
       boxVariant: currentMembership ? 'text' : 'arrow',
       status: 'error'
-    },
-    REGULAR: {
-      title: 'WOW CLASS',
-      description:
-        'GDSC Hongik의 스터디 서비스인 WOW CLASS를 이용할 수 있어요.',
-      boxVariant: 'arrow',
-      status: 'success'
     }
   };
 
@@ -69,11 +77,7 @@ export const ApproveBox = ({
     <BoxWrapper
       onClick={() => {
         if (role === 'ASSOCIATE' && !currentMembership) handleBottomSheet();
-        else if (role === 'REGULAR') {
-          window.location.href = 'https://study.gdschongik.com/';
-        } else {
-          return;
-        }
+        else return;
       }}>
       <Box
         variant={boxContent[role].boxVariant}
