@@ -1,5 +1,4 @@
 export * from './Auth';
-export * from './Bevy';
 export * from './JoinDiscord';
 export * from './Dashboard';
 export * from './MyPageEdit';
