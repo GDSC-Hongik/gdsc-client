@@ -29,7 +29,7 @@ export const ApproveBox = ({
     return (
       <Box
         variant="arrow"
-        text="WOW CLASS"
+        text="정회원 가입 완료"
         subText="GDSC Hongik의 스터디 서비스인 WOW CLASS를 이용할 수 있어요."
         status="success"
         onClick={() => {
