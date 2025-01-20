@@ -5,7 +5,7 @@ const RoutePath = {
   Home: '/',
 
   Dashboard: '/dashboard',
-  Bevy: '/bevy',
+  // Bevy: '/bevy',
   Discord: '/discord',
   DiscordConnect: '/discord/connect',
   DiscordGuide: '/discord/guide',
