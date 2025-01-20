@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { useRef, type ReactNode, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 import DropDown from 'wowds-ui/DropDown';
@@ -9,6 +9,10 @@ import { CouponResponse } from '@/apis/coupon/couponType';
 import { useProduct } from '@/hooks/zustand/useProduct';
 
 import { Flex, Text } from '../common/Wrapper';
+import { space } from 'wowds-tokens';
+import styled from '@emotion/styled';
+import { Help } from 'wowds-icons';
+import CouponInfoBox from './CouponInfoBox';
 
 export const CouponDropDown = () => {
   const { data: coupons } = useQuery({
@@ -17,6 +21,8 @@ export const CouponDropDown = () => {
   });
 
   const { issuedCouponId, strDiscount, setDiscount } = useProduct();
+  const helpButtonRef = useRef<HTMLDivElement>(null);
+  const [openInfo, setOpenInfo] = useState(false);
 
   const handleChange = (value: {
     selectedValue: string;
@@ -32,9 +38,27 @@ export const CouponDropDown = () => {
 
   return (
     <Flex justify="flex-start" direction="column" align="flex-start" gap="sm">
-      <Text typo="h2" color="black">
-        할인 쿠폰
-      </Text>
+      <Container>
+        <Text typo="h2" color="black">
+          할인 쿠폰
+        </Text>
+        <div
+          ref={helpButtonRef}
+          onClick={() => {
+            setOpenInfo(!openInfo);
+          }}>
+          <Help
+            width={24}
+            height={24}
+            fill="sub"
+            stroke="sub"
+            style={{ cursor: 'pointer' }}
+          />
+        </div>
+        {openInfo && (
+          <CouponInfoBox setOpenInfo={setOpenInfo} expectRef={helpButtonRef} />
+        )}
+      </Container>
       <DropDown
         style={{ width: '100%' }}
         placeholder="목록을 눌러 선택하세요"
@@ -63,3 +87,12 @@ export const CouponDropDown = () => {
     </Flex>
   );
 };
+
+const Container = styled.div`
+  position: relative;
+  width: 100%;
+  display: flex;
+  gap: ${space.xxs};
+  justify-content: 'flex-start';
+  align-items: 'center';
+`;
