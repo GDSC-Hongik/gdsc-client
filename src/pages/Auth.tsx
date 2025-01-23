@@ -168,9 +168,7 @@ const TextContainer = styled.div`
 `;
 
 const ButtonContainer = styled.div`
-  position: absolute;
-  bottom: 1.75rem;
-  padding: 0px 0.75rem;
+  padding-top: 1rem;
   width: 100%;
   display: flex;
   flex-direction: column;
