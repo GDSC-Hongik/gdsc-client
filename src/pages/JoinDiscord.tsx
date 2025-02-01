@@ -14,7 +14,10 @@ export const JoinDiscord = () => {
   return (
     <Wrapper direction="column" justify="space-between">
       <Flex direction="column" align="flex-start">
-        <Text typo="h1">지금 바로 디스코드를 연동하세요.</Text>
+        <Text typo="h1">
+          지금 바로 <br />
+          디스코드를 연동하세요.
+        </Text>
         <Space height="lg" />
         <Text typo="body1">
           현재 GDGoC Hongik은 디스코드를 <br />

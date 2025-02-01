@@ -60,8 +60,8 @@ export const JoinServer = ({ onNext }: { onNext: () => void }) => {
           {callQuery
             ? '합류 여부를 확인 중이에요.'
             : data?.isJoined
-              ? '합류가 확인되었어요.'
-              : '합류가 확인되지 않았어요.'}
+              ? '서버 합류가 확인되었어요.'
+              : '합류가 확인되면 넘어갈 수 있어요.'}
         </Button>
 
         <Text

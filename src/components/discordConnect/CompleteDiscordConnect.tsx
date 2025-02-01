@@ -11,8 +11,9 @@ export const CompleteDiscordConnect = () => {
         <Text typo="h1">디스코드 연동이 완료되었어요!</Text>
         <Space height="lg" />
         <Text typo="body1">
-          회비 납부, Bevy 가입 등 모든 절차가 완료되면 자동으로 승인될
-          예정이에요!
+          재학생 인증 및 회비 납부과 완료되면
+          <br />
+          커뮤니티 멤버로 디스코드에서 활동할 수 있어요.
         </Text>
       </Flex>
       <Button
