@@ -119,19 +119,6 @@ const router = sentryCreateBrowserRouter([
             path: RoutePath.DiscordGuide,
             element: <DiscordGuide />
           }
-          // {
-          //   path: RoutePath.Bevy,
-          //   children: [
-          //     {
-          //       index: true,
-          //       element: (
-          //         <VerificationGuard guardType="Bevy">
-          //           <Bevy />
-          //         </VerificationGuard>
-          //       )
-          //     }
-          //   ]
-          // }
         ]
       },
       {
