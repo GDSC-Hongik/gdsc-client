@@ -60,7 +60,7 @@ export const DiscordName = ({ onNext }: { onNext: () => void }) => {
         <Space height="xs" />
         <TextButton
           text="디스코드 계정이 없으신가요?"
-          as="a"
+          asProp="a"
           target="_blank"
           href={RoutePath.DiscordRegisterLink}
         />

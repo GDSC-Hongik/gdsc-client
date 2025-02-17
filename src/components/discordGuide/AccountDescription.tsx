@@ -24,7 +24,7 @@ export const AccountDescription = () => {
       </Flex>
       <Flex gap="sm">
         <Button
-          as="a"
+          asProp="a"
           href={RoutePath.DiscordRegisterLink}
           target="_blank"
           variant="outline">
