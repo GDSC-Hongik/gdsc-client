@@ -13,7 +13,6 @@ import {
   SignUp,
   Dashboard,
   JoinDiscord,
-  // Bevy,
   PaymentsSuccess,
   PaymentsFail,
   PaymentsCheckout

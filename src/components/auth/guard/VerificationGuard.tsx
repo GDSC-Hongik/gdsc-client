@@ -5,7 +5,7 @@ import { PropsWithChildren, useEffect } from 'react';
 import memberApi from '@/apis/member/memberApi';
 import { useQuery } from '@tanstack/react-query';
 
-type GuardType = 'StudentVerification' | 'Discord' | 'SignUp' | 'Bevy';
+type GuardType = 'StudentVerification' | 'Discord' | 'SignUp';
 
 interface VerificationGuardProps extends PropsWithChildren {
   guardType: GuardType;
@@ -46,14 +46,6 @@ export default function VerificationGuard({
       data.member.associateRequirement.univStatus === 'SATISFIED'
     ) {
       toast.error('재학생 인증을 이미 완료했습니다.');
-      navigate(RoutePath.Dashboard);
-      return;
-    }
-    if (
-      guardType === 'Bevy' &&
-      data.member.associateRequirement.bevyStatus === 'SATISFIED'
-    ) {
-      toast.error('bevy 가입을 이미 완료했습니다.');
       navigate(RoutePath.Dashboard);
       return;
     }

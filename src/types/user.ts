@@ -7,7 +7,6 @@ export type User = {
   associateRequirement: {
     univStatus: UnivEmailStatus;
     discordStatus: Status;
-    bevyStatus: Status;
     infoStatus: Status;
   };
 };
@@ -17,7 +16,6 @@ export type UserRoleType = 'GUEST' | 'ASSOCIATE' | 'REGULAR';
 export type AssociateRequirement = {
   univStatus: UnivEmailStatus;
   discordStatus: Status;
-  bevyStatus: Status;
   infoStatus: Status;
 };
 
