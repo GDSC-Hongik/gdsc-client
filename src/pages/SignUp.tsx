@@ -258,7 +258,7 @@ export const SignUp = () => {
             role="button"
             disabled={!isValid}
             style={{ maxWidth: '100%' }}>
-            입력 완료하기
+            가입 신청하기
           </Button>
         </Flex>
       </form>

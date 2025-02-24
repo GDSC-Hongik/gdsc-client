@@ -1,4 +1,4 @@
-import Box from 'wowds-ui/Box';
+import Box, { BoxProps } from 'wowds-ui/Box';
 import styled from '@emotion/styled';
 import {
   CurrentMembershipType,
@@ -12,7 +12,6 @@ import useBottomSheet from '@/hooks/common/useBottomSheet';
 import { UserRoleType } from '@/types/user';
 
 type BoxVariantType = 'arrow' | 'checkbox' | 'text' | 'warn';
-type BoxStatusType = 'default' | 'success' | 'error';
 
 export const ApproveBox = ({
   role,
@@ -29,7 +28,7 @@ export const ApproveBox = ({
     return (
       <Box
         variant="arrow"
-        text="WOW CLASS"
+        text="정회원 가입 완료"
         subText="GDSC Hongik의 스터디 서비스인 WOW CLASS를 이용할 수 있어요."
         status="success"
         onClick={() => {
@@ -52,24 +51,23 @@ export const ApproveBox = ({
 
   const boxContent: Record<
     Exclude<UserRoleType, 'REGULAR'>,
-    {
-      title: string;
-      description?: string;
-      boxVariant: BoxVariantType;
-      status: BoxStatusType;
-    }
+    BoxProps<BoxVariantType>
   > = {
     GUEST: {
-      title: `${convertRecruitmentName(currentRecruitment.name, currentRecruitment.roundTypeValue)}`,
-      description: '하단의 준회원 가입 조건을 완료해주세요.',
-      boxVariant: 'warn',
-      status: 'error'
+      text: `${convertRecruitmentName(currentRecruitment.name, currentRecruitment.roundTypeValue)}`,
+      subText: '하단의 준회원 가입 조건을 완료해주세요.',
+      variant: 'text',
+      status: 'error',
+      disabled: true
     },
     ASSOCIATE: {
-      title: `${convertRecruitmentName(currentRecruitment.name, currentRecruitment.roundTypeValue)}`,
-      description: `${convertRecruitmentPeriod(currentRecruitment.period)}`,
-      boxVariant: currentMembership ? 'text' : 'arrow',
-      status: 'error'
+      text: `${convertRecruitmentName(currentRecruitment.name, currentRecruitment.roundTypeValue)}`,
+      subText: currentMembership
+        ? '하단의 정회원 가입 조건을 완료해주세요'
+        : `${convertRecruitmentPeriod(currentRecruitment.period)}`,
+      variant: currentMembership ? 'text' : 'arrow',
+      status: 'error',
+      disabled: !!currentMembership
     }
   };
 
@@ -79,12 +77,7 @@ export const ApproveBox = ({
         if (role === 'ASSOCIATE' && !currentMembership) handleBottomSheet();
         else return;
       }}>
-      <Box
-        variant={boxContent[role].boxVariant}
-        text={boxContent[role].title}
-        subText={boxContent[role].description}
-        status={boxContent[role].status}
-      />
+      <Box {...boxContent[role]} />
     </BoxWrapper>
   );
 };

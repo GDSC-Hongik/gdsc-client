@@ -56,7 +56,7 @@ function App() {
       <Space height={40} />
       <Introduction direction="column">
         <Text typo="h1" color="primary">
-          GDSC?
+          GDGoC?
         </Text>
         <Space height={8} />
         <Text
@@ -66,20 +66,20 @@ function App() {
             text-align: center;
             word-break: keep-all;
           `}>
-          GDSC는 Google Developers에서 제공하는 프로그램을 통해 운영되는 대학교
+          GDGoC는 Google Developers에서 제공하는 프로그램을 통해 운영되는 대학교
           기반의 개발자 커뮤니티 그룹이에요.
           <br />
           개발자로서 성장하는 데 관심이 있는 학부생이라면 누구나 참여할 수
           있어요.
           <br />
-          GDSC의 목표는 전 세계의 대학생 개발자들이 구글 관련 기술 혹은
+          GDGoC의 목표는 전 세계의 대학생 개발자들이 구글 관련 기술 혹은
           프로그래밍 실력을 높이고 지역 사회와 협력하여 실제 문제를 해결하도록
           성장하는 것이에요.
         </Text>
       </Introduction>
       <Space height={80} />
       <Text typo="h1" color="textBlack">
-        GDSC Hongik
+        GDGoC Hongik
       </Text>
       <Space height={24} />
       <Img src={IMG_SRC[0]} height={200} />
@@ -98,13 +98,12 @@ function App() {
           text-align: center;
           word-break: keep-all;
         `}>
-        GDSC Hongik Open Community는 학생 개발자를 위한 홍익대학교의 개발
-        커뮤니티예요.
+        GDGoC Hongik Open Community는 학생 개발자를 위한 홍익대학교의 개발
+        커뮤니티입니다.
         <br />
-        “더 나은 환경을, 더 나은 학우에게” 제공하는 것을 목표로, 초심자들이
-        개발에 관심을 가지고 입문할 수 있도록 기초 학술 프로그램을 운영하며,
-        다양한 이벤트와 컨텐츠를 통해 학회원들과 소통할 수 있는 네트워킹
-        플랫폼을 제공하고 있어요.
+        초심자들이 개발에 관심을 가지고 입문할 수 있도록 기초 학술 프로그램을
+        운영하며, 다양한 이벤트와 컨텐츠를 통해 학회원들과 소통할 수 있는
+        네트워킹 플랫폼을 제공하고 있습니다.
       </Text>
       <Space height={80} />
       <Text typo="h1" color="black">
@@ -118,8 +117,9 @@ function App() {
           text-align: center;
           word-break: keep-all;
         `}>
-        이번 학기 GDSC Hongik은 변화와 발전에 초점을 두어, 현재에 안주하지 않고
-        변화를 통해 구성원이 함께 발전시켜나갈 수 있는 커뮤니티를 운영하려 해요.
+        GDGoC의 목표는 전 세계의 대학생 개발자들이 구글 관련 기술 혹은
+        프로그래밍 실력을 높이고 지역 사회와 협력하여 실제 문제를 해결하도록
+        성장하는 것입니다.
       </Text>
       <Space height={24} />
       <Flex direction="column" gap="md">
@@ -135,14 +135,17 @@ function App() {
           text-align: center;
           word-break: keep-all;
         `}>
-        초심자들을 위한 기초 학술 프로그램부터, 다양한 이벤트와 컨텐츠를 통해
-        학회원들과 소통할 수 있는 네트워킹 플랫폼을 제공할 예정이에요.
+        GDGoC의 이러한 비전에 맞추어, GDGoC Hongik은 초심자들이 개발에 관심을
+        가지고 입문할 수 있도록 기초 학술 프로그램을 운영하며, 다양한 이벤트와
+        콘텐츠를 통해 학회원들과 소통할 수 있는 네트워킹 플랫폼을 제공하고
+        있습니다.
       </Text>
       <Space height={48} />
       <Flex direction="column" gap="sm">
         <InformationBox
           title="모집 기간"
-          description="8월 26일(월) ~ 8월 30일(금)"
+          description="1차 지원 기간: 2월 27일 ~ 3월 1일"
+          description2="2차 지원 기간 : 3월 4일 ~ 3월 8일"
         />
         <InformationBox
           title="지원 자격"
@@ -151,7 +154,9 @@ function App() {
         />
         <InformationBox
           title="지원 시 유의사항"
-          description="GDSC 커뮤니티 가이드라인 및 오픈 커뮤니티 가이드라인을 준수해야 해요."
+          description="GDGoC 커뮤니티 가이드라인 및 오픈 커뮤니티 
+가이드라인을 준수해야 해요. 또한, 학기 당 
+2만원의 회비가 있어요."
         />
       </Flex>
       <Space height={48} />
@@ -177,22 +182,17 @@ function App() {
       <Flex direction="column" gap="sm">
         <InformationBox
           title="Q. 서류, 면접 전형이 있나요?"
-          description="A. 아니요. 본 서비스를 통해 가입하면 홍익대학교 학생 누구나 바로 커뮤니티에서 활동할 수 있어요."
+          description="A. 없습니다! 홍익대학교 학생이라면 누구나 본 사이트의 ‘지원하기' 를 통해 가입할 수 있어요."
+        />
+        <InformationBox
+          title="Q. 다른 동아리, 학회와 병행 가능한가요?"
+          description="A. 당연합니다!"
+          description2="GDGoC Hongik은 멤버 분들이 각자의 일정과 시간에 맞춰서 편하게 활동하실 수 있게, 모든 활동에 자율적으로 참여할 수 있는 환경을 제공하고 있어요."
         />
         <InformationBox
           title="Q. 저는 코딩을 하나도 모르는 새내기인데, 따라갈 수 있나요?"
           description="A. 당연하죠!"
-          description2="기초 스터디는 개발에 처음 입문하는 사람들을 위해서 만들어진 커리큘럼으로 강의가 진행돼요. 학습자 분들이 차근차근 따라올 수 있게끔 주차별 미션과 담당 멘토를 통해 도와드릴 예정이니, 부담갖지 않으셔도 돼요! 스터디에 참여하지 못하더라도, 사람들과 네트워킹하며 친분을 쌓아가는 것도 언제든지 환영입니다!"
-        />
-        <InformationBox
-          title="Q. 다른 동아리, 학회와 병행 가능한가요?"
-          description="A. 가능해요!"
-          description2="GDSC Hongik은 Open Community 체제로 운영되기에 모든 활동에 자율적으로 참여하실 수 있어요. 어딘가에 너무 오랫동안, 깊게 소속되지 않고, 가볍게 개발을 배우며 다른 사람들과 교류하고 싶은 분들에게 좋은 곳이에요."
-        />
-        <InformationBox
-          title="Q. GDSC Hongik에 대해 궁금한 것이 있어요!"
-          description="A. 이번 학기부터는 채널톡이 아닌, GDSC Hongik 카카오톡 채널을 통해 문의할 수 있어요!"
-          description2="카카오톡 채널을 추가하면 더욱 간편하게 이용할 수 있고, 추후 안내 사항을 빠르게 전달 받을 수 있어요."
+          description2="저희는 커뮤니티 멤버 개개인이 저마다 다른 목표와 속도를 가지고 있다는 점을 깊이 이해하고 있어요. 새내기와 입문자 분들이 개발자로서 함께 성장할 수 있도록 기초 커리큘럼과 다양한 학술 지원 프로그램을 운영하고 있으니, 너무 걱정하지 않으셔도 돼요."
         />
       </Flex>
       <Space height={59} />

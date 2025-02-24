@@ -1,5 +1,5 @@
 import { GitHubButton } from '@/components/auth/GitHubButton';
-import { Text } from '@/components/common/Wrapper';
+import { Flex, Space, Text } from '@/components/common/Wrapper';
 import RoutePath from '@/routes/routePath';
 import { color, space } from 'wowds-tokens';
 import { media } from '@/styles';
@@ -7,6 +7,9 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import GlobalSize from '@/constants/globalSize';
 import { Link } from 'react-router-dom';
+import Box from 'wowds-ui/Box';
+import { DownArrow } from 'wowds-icons';
+import { useState } from 'react';
 
 /** 깃허브 로그인 및 가입하기 */
 export const Auth = () => {
@@ -16,6 +19,11 @@ export const Auth = () => {
       document.location.href = RoutePath.AuthGithubLoginRedirect;
     }, 250);
   };
+
+  const [accordionState, setAccordionState] = useState({
+    githubInfo: false,
+    githubDetail: false
+  });
 
   return (
     <Container>
@@ -32,6 +40,89 @@ export const Auth = () => {
             새로 가입해야 해요.
           </Text>
         </TextContainer>
+        <Space height={40} />
+        <Flex
+          direction="column"
+          align="flex-start"
+          justify="flex-start"
+          gap="lg"
+          style={{ position: 'relative' }}>
+          <Box
+            text={
+              <AccordionContainer>
+                <Text
+                  css={css`
+                    font-weight: 700;
+                  `}>
+                  Q. GitHub가 무엇인가요?
+                </Text>
+                <div
+                  style={{
+                    cursor: 'pointer',
+                    position: 'absolute',
+                    right: '24px'
+                  }}>
+                  <DownArrow
+                    width={20}
+                    height={20}
+                    stroke="sub"
+                    onClick={() => {
+                      setAccordionState({
+                        ...accordionState,
+                        githubInfo: !accordionState.githubInfo
+                      });
+                    }}
+                  />
+                </div>
+                {accordionState.githubInfo && (
+                  <Text color="sub">
+                    GitHub는 Git을 이용하여 파일을 자유롭게 업로드 및 공유할 수
+                    있는 사이트예요. 개발자라면 누구나 이용하는 사이트로, GDGoC
+                    Hongik에서도 학회 운영을 위해 이용하고 있어요.
+                  </Text>
+                )}
+              </AccordionContainer>
+            }
+          />
+          <Box
+            text={
+              <AccordionContainer>
+                <Text
+                  css={css`
+                    font-weight: 700;
+                  `}>
+                  Q. GitHub는 왜 사용하나요?
+                </Text>
+                <div
+                  style={{
+                    cursor: 'pointer',
+                    position: 'absolute',
+                    right: '24px'
+                  }}>
+                  <DownArrow
+                    width={20}
+                    height={20}
+                    stroke="sub"
+                    onClick={() => {
+                      setAccordionState({
+                        ...accordionState,
+                        githubDetail: !accordionState.githubDetail
+                      });
+                    }}
+                  />
+                </div>
+                {accordionState.githubDetail && (
+                  <Text color="sub">
+                    GDGoC Hongik에서는
+                    <strong>정규 스터디의 과제를 GitHub를 통해 관리</strong>
+                    해요. 매 스터디, 혹은 여러 학술 프로그램에서 이용하기에
+                    GitHub를 통한 로그인 방식을 채택했어요.
+                  </Text>
+                )}
+              </AccordionContainer>
+            }
+          />
+        </Flex>
       </div>
       <ButtonContainer>
         <GitHubButton onClick={handleClick}>
@@ -78,9 +169,7 @@ const TextContainer = styled.div`
 `;
 
 const ButtonContainer = styled.div`
-  position: absolute;
-  bottom: 1.75rem;
-  padding: 0px 0.75rem;
+  padding-top: 1rem;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -100,4 +189,11 @@ const GithubGuideLink = styled(Link)`
   &:visited {
     color: ${color.black};
   }
+`;
+
+const AccordionContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: ${space.sm};
 `;

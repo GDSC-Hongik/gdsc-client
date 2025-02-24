@@ -68,7 +68,7 @@ const AssociateRequirementCheck = ({
         variant={infoStatus === 'UNSATISFIED' ? 'arrow' : 'text'}
       />
       <Box
-        text={'GDSC Hongik Discord'}
+        text={'GDGoC Hongik Discord'}
         textColor="discord"
         subText={
           discordStatus === 'UNSATISFIED'
