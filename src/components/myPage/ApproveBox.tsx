@@ -56,7 +56,7 @@ export const ApproveBox = ({
     GUEST: {
       text: `${convertRecruitmentName(currentRecruitment.name, currentRecruitment.roundTypeValue)}`,
       subText: '하단의 준회원 가입 조건을 완료해주세요.',
-      variant: 'warn',
+      variant: 'text',
       status: 'error',
       disabled: true
     },

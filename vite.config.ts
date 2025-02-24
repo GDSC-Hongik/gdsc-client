@@ -5,6 +5,9 @@ import { sentryVitePlugin } from '@sentry/vite-plugin';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server: {
+    allowedHosts: ['local-onboarding.wawoo.dev']
+  },
   plugins: [
     react(),
     tsconfigPaths(),
