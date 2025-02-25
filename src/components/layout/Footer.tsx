@@ -8,7 +8,7 @@ import { FooterLogoIcon } from '@/assets/FooterLogoIcon';
 const Footer = () => {
   return (
     <Container>
-      <Logo />
+      {/* <Logo /> */}
       <FooterLogoIcon />
 
       <Flex direction="column" align="start" gap="md">
