@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Logo } from '@/assets/LogoIcon';
 import { Link } from 'react-router-dom';
 import { color } from 'wowds-tokens';
 import { Flex, Text } from '../common/Wrapper';
@@ -7,7 +8,7 @@ import { FooterLogoIcon } from '@/assets/FooterLogoIcon';
 const Footer = () => {
   return (
     <Container>
-      {/* <Logo /> */}
+      <Logo />
       <FooterLogoIcon />
 
       <Flex direction="column" align="start" gap="md">
