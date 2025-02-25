@@ -46,7 +46,7 @@ export const JoinServer = ({ onNext }: { onNext: () => void }) => {
       </Flex>
       <Flex direction="column" gap="xs">
         <TextButton
-          text="GDSC Hongik 공식 디스코드 서버↗︎"
+          text="GDGoC Hongik 공식 디스코드 서버↗︎"
           style={{ color: color.discord }}
           onClick={() => window.open(RoutePath.GDSCHongikDiscord, '_blank')}
         />

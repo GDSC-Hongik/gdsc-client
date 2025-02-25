@@ -17,8 +17,8 @@ const setSentry = () => {
       tracesSampleRate: 1.0,
       tracePropagationTargets: [
         'localhost',
-        /^https:\/\/(?:dev-|local-)?onboarding\.gdschongik\.com(?:\/.*)/,
-        /^https:\/\/(?:dev-)?api\.gdschongik\.com(?:\/.*)/
+        /^https:\/\/(?:dev-|local-)?onboarding\.wawoo\.dev(?:\/.*)/,
+        /^https:\/\/(?:dev-)?api\.wawoo\.dev(?:\/.*)/
       ],
       integrations: [
         Sentry.browserTracingIntegration(),
