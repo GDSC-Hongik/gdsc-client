@@ -1,4 +1,3 @@
-import { Logo } from '@/assets/LogoIcon';
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import { color } from 'wowds-tokens';
@@ -8,7 +7,7 @@ import { FooterLogoIcon } from '@/assets/FooterLogoIcon';
 const Footer = () => {
   return (
     <Container>
-      <Logo />
+      {/* <Logo /> */}
       <FooterLogoIcon />
 
       <Flex direction="column" align="start" gap="md">
@@ -19,12 +18,12 @@ const Footer = () => {
         </Link>
         <Link to={'https://www.gdschongik.com/onboarding/community-rule'}>
           <Text typo="label2" style={{ textDecoration: 'underline' }}>
-            GDSC Hongik 회칙
+            GDGoC Hongik 회칙
           </Text>
         </Link>
         <Link to={'https://www.gdschongik.com/onboarding/community-guideline'}>
           <Text typo="label2" style={{ textDecoration: 'underline' }}>
-            GDSC Hongik 가이드라인{' '}
+            GDGoC Hongik 가이드라인{' '}
           </Text>
         </Link>
         <Link to={'https://www.gdschongik.com/term-of-use'}>

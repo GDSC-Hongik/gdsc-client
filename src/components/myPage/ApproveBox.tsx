@@ -63,11 +63,10 @@ export const ApproveBox = ({
     ASSOCIATE: {
       text: `${convertRecruitmentName(currentRecruitment.name, currentRecruitment.roundTypeValue)}`,
       subText: currentMembership
-        ? '하단의 정회원 가입 조건을 완료해주세요'
+        ? '정회원 가입 조건을 완료해주세요'
         : `${convertRecruitmentPeriod(currentRecruitment.period)}`,
       variant: currentMembership ? 'text' : 'arrow',
-      status: 'error',
-      disabled: !!currentMembership
+      status: 'error'
     }
   };
 

@@ -54,7 +54,11 @@ function App() {
         </Flex>
       </BlueSection>
       <Space height={40} />
-      <Introduction direction="column">
+      <Introduction
+        direction="column"
+        css={css`
+          background-color: white;
+        `}>
         <Text typo="h1" color="primary">
           GDGoC?
         </Text>
@@ -67,14 +71,11 @@ function App() {
             word-break: keep-all;
           `}>
           GDGoC는 Google Developers에서 제공하는 프로그램을 통해 운영되는 대학교
-          기반의 개발자 커뮤니티 그룹이에요.
-          <br />
-          개발자로서 성장하는 데 관심이 있는 학부생이라면 누구나 참여할 수
-          있어요.
-          <br />
-          GDGoC의 목표는 전 세계의 대학생 개발자들이 구글 관련 기술 혹은
+          기반의 개발자 커뮤니티 그룹입니다. 개발자로서 성장하는 데 관심이 있는
+          학부생이라면 누구나 참여할 수 있습니다.
+          <br /> GDGoC의 목표는 전 세계의 대학생 개발자들이 구글 관련 기술 혹은
           프로그래밍 실력을 높이고 지역 사회와 협력하여 실제 문제를 해결하도록
-          성장하는 것이에요.
+          성장하는 것입니다.
         </Text>
       </Introduction>
       <Space height={80} />
@@ -144,7 +145,7 @@ function App() {
       <Flex direction="column" gap="sm">
         <InformationBox
           title="모집 기간"
-          description="1차 지원 기간: 2월 27일 ~ 3월 1일"
+          description="1차 지원 기간 : 2월 27일 ~ 3월 1일"
           description2="2차 지원 기간 : 3월 4일 ~ 3월 8일"
         />
         <InformationBox
@@ -170,7 +171,7 @@ function App() {
             if (isAuthenticated()) navigate(RoutePath.Dashboard);
             else navigate(RoutePath.GithubSignin);
           }}>
-          가입하기
+          지원하기
         </ApplyButton>
         <Space height={40} />
       </BlueSection>
@@ -186,7 +187,7 @@ function App() {
         />
         <InformationBox
           title="Q. 다른 동아리, 학회와 병행 가능한가요?"
-          description="A. 당연합니다!"
+          description="A. 가능합니다!"
           description2="GDGoC Hongik은 멤버 분들이 각자의 일정과 시간에 맞춰서 편하게 활동하실 수 있게, 모든 활동에 자율적으로 참여할 수 있는 환경을 제공하고 있어요."
         />
         <InformationBox
@@ -246,7 +247,7 @@ const Img = styled.img`
 const ApplyButton = styled.button`
   height: 44px;
   width: calc(100% - 32px);
-  border-radius: 100px;
+  border-radius: 8px;
 
   background-color: ${color.white};
   color: ${color.primary};

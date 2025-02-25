@@ -10,6 +10,7 @@ import useCreateUserBasicInfo from '@/hooks/mutation/useCreateUserBasicInfo';
 import Button from 'wowds-ui/Button';
 import Checkbox from 'wowds-ui/Checkbox';
 import TextField from 'wowds-ui/TextField';
+
 import { LoadingForm } from '@/components/common/LoadingForm';
 import RoutePath from '@/routes/routePath';
 import { Suspense } from 'react';
@@ -218,7 +219,7 @@ export const SignUp = () => {
                         to={RoutePath.TermsLink}
                         target="_blank"
                         color={field.value ? 'textBlack' : 'sub'}>
-                        GDSC 회칙
+                        GDGoC 회칙
                       </GuideLink>
                       에 동의합니다.
                     </Text>
@@ -257,7 +258,11 @@ export const SignUp = () => {
             type="submit"
             role="button"
             disabled={!isValid}
-            style={{ maxWidth: '100%' }}>
+            style={{
+              maxWidth: '100%',
+              backgroundColor: isValid ? color.primary : color.darkDisabled,
+              color: 'white'
+            }}>
             가입 신청하기
           </Button>
         </Flex>
