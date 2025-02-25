@@ -113,7 +113,7 @@ export const Auth = () => {
                 </div>
                 {accordionState.githubDetail && (
                   <Text color="sub">
-                    GDGoC Hongik에서는
+                    GDGoC Hongik에서는{' '}
                     <strong>정규 스터디의 과제를 GitHub를 통해 관리</strong>
                     해요. 매 스터디, 혹은 여러 학술 프로그램에서 이용하기에
                     GitHub를 통한 로그인 방식을 채택했어요.
