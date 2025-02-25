@@ -65,7 +65,7 @@ const TextSection = memo(() => (
       <Text typo="h1">별명을 설정하세요.</Text>
       <Space height="sm" />
       <Text typo="body1">
-        GDSC Hongik 디스코드 서버에서 사용할 별명을 설정해주세요.
+        GDGoC Hongik 디스코드 서버에서 사용할 별명을 설정해주세요.
       </Text>
     </div>
     <Image src={DiscordImage} alt="discord-nickname" width={325} height={157} />
@@ -103,7 +103,7 @@ const NameField = ({ control }: { control: Control<DiscordFormValues> }) => {
           )}
           <li>최소 2자, 최대 6자의 한글만 작성 가능</li>
           <li>
-            <u>GDSC Hongik 가이드라인</u>에 어긋나지 않게 작성
+            <u>GDGoC Hongik 가이드라인</u>에 어긋나지 않게 작성
           </li>
         </ul>
       }

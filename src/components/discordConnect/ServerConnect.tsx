@@ -70,7 +70,7 @@ export const ServerConnect = ({ onNext }: { onNext: () => void }) => {
           <TextButton
             text="번호 발급받기↗︎"
             style={{ color: color.discord }}
-            as="a"
+            asProp="a"
             href={RoutePath.DiscordCodeLink}
             target="_blank"
           />

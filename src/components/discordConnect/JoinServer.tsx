@@ -36,7 +36,7 @@ export const JoinServer = ({ onNext }: { onNext: () => void }) => {
         <Text typo="h1">서버에 합류하세요.</Text>
         <Space height="lg" />
         <Text typo="body1">
-          아래 버튼을 통해 GDSC Hongik 디스코드 서버로 이동해서 가입하세요.
+          아래 버튼을 통해 GDGoC Hongik 디스코드 서버로 이동해서 가입하세요.
           서버에 가입 후 #명령어 채널에서 본인의 디스코드 계정을 연동할 수
           있어요.
           <br />
@@ -46,7 +46,7 @@ export const JoinServer = ({ onNext }: { onNext: () => void }) => {
       </Flex>
       <Flex direction="column" gap="xs">
         <TextButton
-          text="GDSC Hongik 공식 디스코드 서버↗︎"
+          text="GDGoC Hongik 공식 디스코드 서버↗︎"
           style={{ color: color.discord }}
           onClick={() => window.open(RoutePath.GDSCHongikDiscord, '_blank')}
         />
@@ -56,12 +56,20 @@ export const JoinServer = ({ onNext }: { onNext: () => void }) => {
             onNext();
           }}
           disabled={!data?.isJoined}
-          style={{ maxWidth: '100%' }}>
+          style={{
+            maxWidth: '100%',
+            backgroundColor: callQuery
+              ? color.darkDisabled
+              : data?.isJoined
+                ? color.primary
+                : color.darkDisabled,
+            color: 'white'
+          }}>
           {callQuery
             ? '합류 여부를 확인 중이에요.'
             : data?.isJoined
-              ? '합류가 확인되었어요.'
-              : '합류가 확인되지 않았어요.'}
+              ? '서버 합류가 확인되었어요.'
+              : '합류가 확인되면 넘어갈 수 있어요.'}
         </Button>
 
         <Text

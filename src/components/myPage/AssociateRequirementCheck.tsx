@@ -11,8 +11,7 @@ const AssociateRequirementCheck = ({
 }: {
   associateRequirement: AssociateRequirement;
 }) => {
-  const { infoStatus, discordStatus, bevyStatus, univStatus } =
-    associateRequirement;
+  const { infoStatus, discordStatus, univStatus } = associateRequirement;
   const navigate = useNavigate();
 
   const univStatusContent = (univStatus: UnivEmailStatus) => {
@@ -69,7 +68,7 @@ const AssociateRequirementCheck = ({
         variant={infoStatus === 'UNSATISFIED' ? 'arrow' : 'text'}
       />
       <Box
-        text={'GDSC Hongik Discord'}
+        text={'GDGoC Hongik Discord'}
         textColor="discord"
         subText={
           discordStatus === 'UNSATISFIED'
@@ -94,52 +93,6 @@ const AssociateRequirementCheck = ({
         text={univStatusContent(univStatus)}
         status={univStatus === 'SATISFIED' ? 'success' : 'error'}
         variant={univStatus === 'SATISFIED' ? 'text' : 'arrow'}
-      />
-      <Box
-        text={
-          bevyStatus === 'UNSATISFIED' ? (
-            <Flex
-              direction="column"
-              gap="xs"
-              justify="flex-start"
-              align="flex-start">
-              <Text typo="h3" color="textBlack">
-                GDSC Bevy 가입이 마무리되지 않았어요.
-              </Text>
-              <Text typo="body1" color="sub">
-                전체 GDSC 이벤트를 확인할 수 있는
-                <br />
-                플랫폼이에요. 지금 가입해볼까요?
-              </Text>
-            </Flex>
-          ) : (
-            <Flex
-              direction="column"
-              gap="xs"
-              justify="flex-start"
-              align="flex-start">
-              <Text typo="h3" color="textBlack">
-                GDSC Bevy 가입을 완료했어요.
-              </Text>
-              <Text typo="body1" color="sub">
-                이제 전체 GDSC 이벤트에 대한 정보를
-                <br />
-                확인하고 참여할 수 있어요.
-              </Text>
-            </Flex>
-          )
-        }
-        variant="arrow"
-        status={bevyStatus === 'UNSATISFIED' ? 'error' : 'success'}
-        onClick={() => {
-          if (bevyStatus === 'UNSATISFIED') {
-            navigate(RoutePath.Bevy);
-          } else {
-            window.open(
-              'https://gdsc.community.dev/hongik-university-seoul-south-korea/'
-            );
-          }
-        }}
       />
     </Flex>
   );
