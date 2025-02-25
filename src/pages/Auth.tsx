@@ -35,7 +35,7 @@ export const Auth = () => {
         </Text>
         <TextContainer>
           <Text typo="body1">
-            GDSC Hongik에서는 더 나은 커뮤니티 운영과 안전한 회원 정보 관리를
+            GDGoC Hongik에서는 더 나은 커뮤니티 운영과 안전한 회원 정보 관리를
             위해 Github 소셜 로그인을 사용하고 있어요. Github 계정이 없다면,
             새로 가입해야 해요.
           </Text>

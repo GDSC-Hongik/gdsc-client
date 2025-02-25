@@ -48,11 +48,8 @@ export const StudentVerification = () => {
           재학생 인증하기
         </Text>
         <div>
-          <Text>가입 신청서를 작성하려면 재학생 인증이 필요해요.</Text>
-          <Text>
-            본인의 홍익대학교 Gmail(g.hongik.ac.kr)로 재학생 인증을
-            수행해주세요.{' '}
-          </Text>
+          <Text>준회원으로 활동하기 위해서 재학생 인증 과정이 필요해요.</Text>
+          <Text>학교 이메일을 통해 재학생 인증을 마무리해주세요!</Text>
         </div>
       </TextContainer>
       <form onSubmit={handleSubmit}>
@@ -106,7 +103,13 @@ export const StudentVerification = () => {
           <br />* 인증메일이 스팸메일함에 전송될 수 있으니 확인해주세요.
         </Text>
         <ButtonContainer>
-          <Button disabled={!isValid} style={{ maxWidth: '100%' }}>
+          <Button
+            disabled={!isValid}
+            style={{
+              maxWidth: '100%',
+              backgroundColor: isValid ? color.primary : color.darkDisabled,
+              color: 'white'
+            }}>
             인증메일 받기
           </Button>
           <StudentGuideLink

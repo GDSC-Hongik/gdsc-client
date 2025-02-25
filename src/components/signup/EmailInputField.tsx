@@ -45,7 +45,11 @@ const EmailInputField = ({ control }: DepartmentSelectProps) => {
               onChange={field.onChange}
               onBlur={field.onBlur}
               placeholder="내용을 입력하세요"
-              helperText={fieldState.error ? fieldState.error?.message : ''}
+              helperText={
+                fieldState.error
+                  ? fieldState.error?.message
+                  : '* 추후 학회 활동에 대한 내용을 전달하는 데 사용될 예정입니다. '
+              }
             />
           </TextFieldWrapper>
         )}

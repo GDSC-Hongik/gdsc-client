@@ -56,7 +56,15 @@ export const JoinServer = ({ onNext }: { onNext: () => void }) => {
             onNext();
           }}
           disabled={!data?.isJoined}
-          style={{ maxWidth: '100%' }}>
+          style={{
+            maxWidth: '100%',
+            backgroundColor: callQuery
+              ? color.darkDisabled
+              : data?.isJoined
+                ? color.primary
+                : color.darkDisabled,
+            color: 'white'
+          }}>
           {callQuery
             ? '합류 여부를 확인 중이에요.'
             : data?.isJoined

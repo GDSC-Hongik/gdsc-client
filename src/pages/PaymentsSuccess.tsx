@@ -56,7 +56,7 @@ export function PaymentsSuccess() {
         </Heading>
         <Flex direction="column" align="start">
           <Text>이번 학기 회비 결제를 완료했어요.</Text>
-          <Text>이제 GDSC 정회원으로 이번 학기에 활동하실 수 있어요!</Text>
+          <Text>이제 GDGoC 정회원으로 이번 학기에 활동하실 수 있어요!</Text>
         </Flex>
       </Flex>
       <Flex direction="column">

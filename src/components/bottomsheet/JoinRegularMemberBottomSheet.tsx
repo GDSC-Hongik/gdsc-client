@@ -75,7 +75,7 @@ const JoinRegularMemberBottomSheet = ({
           <Text>
             자세한 내용은{' '}
             <TextLink to={RoutePath.GDSCHongikLink} target="_blank">
-              GDSC Hongik 페이지
+              GDGoC Hongik 페이지
             </TextLink>
             를 참고해주세요.
           </Text>

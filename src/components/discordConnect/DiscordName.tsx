@@ -76,7 +76,7 @@ const TextSection = memo(() => {
         <Text typo="h1">사용자명을 알려주세요.</Text>
         <Space height="sm" />
         <Text typo="body1">
-          GDSC Hongik 디스코드 서버에서는 사용자명을 통해 멤버를 구분해요.
+          GDGoC Hongik 디스코드 서버에서는 사용자명을 통해 멤버를 구분해요.
         </Text>
       </div>
       <Image
