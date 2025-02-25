@@ -32,7 +32,7 @@ export const ApproveBox = ({
         subText="GDGoC Hongik의 스터디 서비스인 WOW CLASS를 이용할 수 있어요."
         status="success"
         onClick={() => {
-          window.location.href = 'https://study.gdschongik.com/';
+          window.location.href = 'https://study.wawoo.dev/';
         }}
       />
     );
