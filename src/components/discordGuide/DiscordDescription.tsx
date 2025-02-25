@@ -15,10 +15,10 @@ export const DiscordDescription = ({ onNext }: { onNext: () => void }) => {
         <Space height="lg" />
         <Text typo="body1">
           디스코드는 음성, 화상 채팅이 가능한 메신저예요. <br />
-          GDSC Hongik에서는
+          GDGoC Hongik에서는
           <span style={{ color: color.discord }}> 멤버들 간의 소통,공지</span>를
           위해 디스코드를 사용하고 있어요. 모든 공지는 디스코드에서 안내하고
-          있으므로, 디스코드를 가입하고 GDSC Hongik 서버에 합류해야만 멤버로
+          있으므로, 디스코드를 가입하고 GDGoC Hongik 서버에 합류해야만 멤버로
           활동할 수 있어요.
         </Text>
       </Flex>
