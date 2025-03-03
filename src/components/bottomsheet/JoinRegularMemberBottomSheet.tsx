@@ -91,7 +91,7 @@ const JoinRegularMemberBottomSheet = ({
             joinRegularMember(currentRecruitment.recruitmentId);
           }}>
           {currentMembership
-            ? '정회원 가입 조건을 완료해주세요'
+            ? '정회원 가입 조건을 완료해주세요.'
             : '지원하러 가기'}
         </Button>
       </BottomSheetContent>
