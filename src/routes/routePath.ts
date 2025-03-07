@@ -18,7 +18,7 @@ const RoutePath = {
   AuthServerRedirect: '/social-login/redirect',
   StudentVerificationServerRedirect: '/onboarding/verify-email',
   GDSCHongikLink: 'https://www.gdschongik.com',
-  GDSCHongikDiscord: 'https://discord.gg/dSV6vSEuGU',
+  GDSCHongikDiscord: 'https://discord.gg/FeC5WHURTX',
   GitHubGuideLink: 'https://www.gdschongik.com/guide/github',
   StudentEmailLinkGuideLink: 'https://www.gdschongik.com/guide/student-email',
   CommunityGuideLink:
@@ -28,7 +28,7 @@ const RoutePath = {
 
   InstagramLink: 'https://www.instagram.com/gdsc.hongik/',
   DiscordRegisterLink: 'https://discord.com/register',
-  DiscordCodeLink: 'https://discord.gg/dSV6vSEuGU',
+  DiscordCodeLink: 'https://discord.gg/FeC5WHURTX',
 
   PaymentsCheckout: '/payments/checkout',
   PaymentsSuccess: '/payments/success',
